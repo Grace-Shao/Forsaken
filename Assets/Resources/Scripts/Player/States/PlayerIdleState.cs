@@ -45,6 +45,9 @@ public class PlayerIdleState : State
         } else if (playerContext.IsMovementPressed)
         {   
             SwitchState(new PlayerWalkState(playerContext));
-        } 
+        } else if (playerContext.IsDashPressed)
+        {
+            SwitchState(new PlayerDashState(playerContext));
+        }
     }
 }

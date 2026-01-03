@@ -13,6 +13,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private bool isJumpPressed;
     private bool isHitPressed;
     private bool isShootPressed;
+    private bool isDashPressed;
     private bool isHurt; 
     private bool attackFinished = false;
     private bool shootStarted = false;
@@ -25,12 +26,16 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private float damageCooldown;
     private float canTakeDamage;
 
+    //additional game objects
+    private GameObject dashTrail;
+
     //getters and settesr
     public bool IsMovementPressed {get {return isMovementPressed;} set {isMovementPressed = value;}}
     public bool IsRunPressed {get {return isRunPressed;} set {isRunPressed = value;}}
     public bool IsJumpPressed {get {return isJumpPressed;} set {isJumpPressed = value;}}
     public bool IsHitPressed {get {return isHitPressed;} set {isHitPressed = value;}}
     public bool IsShootPressed {get {return isShootPressed;} set {isShootPressed = value;}}
+    public bool IsDashPressed {get {return isDashPressed;} set {isDashPressed = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
     public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
@@ -42,6 +47,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public float RunSpeed {get {return runSpeed;}}
     public int Health {get {return health;} set {health = value;}}
     public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    public GameObject DashTrail {get {return dashTrail;}}
 
     protected override void Init()
     {
@@ -49,6 +55,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
         //set reference variables
         playerInput = new PlayerInput();
+        dashTrail = transform.Find("dashing trail").gameObject;
 
         //set player input callbacks
         playerInput.CharacterControls.Move.started += OnMovementPerformed;
@@ -62,6 +69,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Hit.canceled += OnHit;
         playerInput.CharacterControls.Shoot.started += OnShoot;
         playerInput.CharacterControls.Shoot.canceled += OnShoot;
+        playerInput.CharacterControls.Dash.started += OnDash;
+        playerInput.CharacterControls.Dash.canceled += OnDash;
 
         Health = 100;
         Cooldown = 1f;
@@ -118,9 +127,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         isShootPressed = context.ReadValueAsButton();
     }
-    void OnHurt(InputAction.CallbackContext context)
+    void OnDash(InputAction.CallbackContext context)
     {
-        isHurt = context.ReadValueAsButton();
+        isDashPressed = context.ReadValueAsButton();
     }
 
     void OnEnable()
@@ -149,6 +158,11 @@ public class PlayerStateMachine : StateMachine, IDamageable
             Time.timeScale = 0f;
         }
        
+    }
+
+    public void SetTimeScale(float scale)
+    {
+        Time.timeScale = scale;
     }
 
     void OnAttackAnimationStart()
