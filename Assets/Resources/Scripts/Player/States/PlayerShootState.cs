@@ -6,6 +6,7 @@ public class PlayerShootState : State
     public PlayerShootState(PlayerStateMachine currentContext) : base(currentContext)
     {
         playerContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
