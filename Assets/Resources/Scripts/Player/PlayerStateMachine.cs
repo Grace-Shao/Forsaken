@@ -12,8 +12,11 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private bool isRunPressed;
     private bool isJumpPressed;
     private bool isHitPressed;
+    private bool isShootPressed;
     private bool isHurt; 
     private bool attackFinished = false;
+    private bool shootStarted = false;
+    private bool shootFinished = false;
     private bool hurtFinished = false;
     private bool grounded = true;
 
@@ -27,8 +30,12 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool IsRunPressed {get {return isRunPressed;} set {isRunPressed = value;}}
     public bool IsJumpPressed {get {return isJumpPressed;} set {isJumpPressed = value;}}
     public bool IsHitPressed {get {return isHitPressed;} set {isHitPressed = value;}}
+    public bool IsShootPressed {get {return isShootPressed;} set {isShootPressed = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
+    public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
+    public bool ShootFinished {get {return shootFinished; } set {shootFinished = value;}}
+
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
     public Vector2 CurrentMovementInput {get {return currentMovementInput;}}
@@ -53,6 +60,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Jump.canceled += OnJump;
         playerInput.CharacterControls.Hit.started += OnHit;
         playerInput.CharacterControls.Hit.canceled += OnHit;
+        playerInput.CharacterControls.Shoot.started += OnShoot;
+        playerInput.CharacterControls.Shoot.canceled += OnShoot;
 
         Health = 100;
         Cooldown = 1f;
@@ -105,6 +114,10 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         isHitPressed = context.ReadValueAsButton();
     }
+    void OnShoot(InputAction.CallbackContext context)
+    {
+        isShootPressed = context.ReadValueAsButton();
+    }
     void OnHurt(InputAction.CallbackContext context)
     {
         isHurt = context.ReadValueAsButton();
@@ -145,6 +158,20 @@ public class PlayerStateMachine : StateMachine, IDamageable
     void OnAttackAnimationFinish()
     {
         AttackFinished = true;
+    }
+
+    void OnShootAnimationStart()
+    {
+        ShootFinished = false;
+    }
+    void TriggerBulletShooting()
+    {
+        ShootStarted = true;
+    }
+    void OnShootAnimationFinish()
+    {
+        ShootFinished = true;
+        ShootStarted = false;
     }
 
     void OnHurtAnimationStart()

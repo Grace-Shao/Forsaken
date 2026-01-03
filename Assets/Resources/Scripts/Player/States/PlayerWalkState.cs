@@ -33,6 +33,10 @@ public class PlayerWalkState : State
         else if (playerContext.IsHitPressed)
         {
             SwitchState(new PlayerAttackState(playerContext));
+        }
+        else if (playerContext.IsShootPressed)
+        {
+            SwitchState(new PlayerShootState(playerContext));
         } else if (playerContext.Grounded && playerContext.IsJumpPressed)
         {
             SwitchState(new PlayerJumpState(playerContext));
