@@ -91,7 +91,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         dashTrail = transform.Find("ghost trail").gameObject;
         dashArrow = transform.Find("dash arrow").gameObject;
         sword = sprite.transform.Find("sword").Find("sword trail tracker").gameObject;
-        Debug.Log(sword == null);
         groundCheck = transform.Find("groundedCheck");
 
         //set player input callbacks

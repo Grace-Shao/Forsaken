@@ -15,6 +15,7 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private float grappleDuration;
     [SerializeField] private float grappleSpeed;
 
+    private GameObject swordPoint;
     
     private bool isFlipped = false;
     private int grapplingFinished = 0;
@@ -44,6 +45,7 @@ public class BossStateMachine : StateMachine, IDamageable
         base.Init();
         sprite = transform.Find("Sprite");
         Health = 100;
+        swordPoint = sprite.Find("Broadsword").Find("sword trail tracker").gameObject;
     }
 
     protected override void EnterBeginningState()
@@ -116,6 +118,19 @@ public class BossStateMachine : StateMachine, IDamageable
         return Vector2.Distance(transform.position, Player.transform.position) > GrappleTargetDistance;
     }
 
+    public void OnAttackStart()
+    {
+        attackFinished = 0;
+        swordPoint.SetActive(true);
+
+    }
+
+    public void OnAttackEnd()
+    {
+        attackFinished = 1;
+        swordPoint.SetActive(false);
+
+    }
     
 
 }
