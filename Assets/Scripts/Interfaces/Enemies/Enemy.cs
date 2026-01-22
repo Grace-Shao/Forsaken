@@ -7,12 +7,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float targetDistance;
     [SerializeField] protected float cooldown;
     protected float canTakeDamage = 0f;
-    
-    protected Animator animator;
-    protected Transform sprite;
     protected Rigidbody2D rb;
     protected bool isFlipped;
     protected Transform player;
+    protected Vector2 target;
 
     public float Speed {get {return speed;} set {speed = value;}}
     public float TargetDistance {get {return targetDistance;} set {targetDistance = value;}}
@@ -25,49 +23,52 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Init()
     {
-        animator = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        sprite = transform.Find("Sprite");
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public virtual void Update()
+    public void Update()
     {
+        target = new Vector2(player.position.x, rb.gameObject.transform.position.y);
+        Vector2 current = rb.gameObject.transform.position;
+        if (Vector2.Distance(current, target) > TargetDistance)
+        {
+            Move();
+        } else
+        {
+            Attack();
+        }
+        
     }
 
     //by default, this moves to some position close to the player. Override for more complex behavior
     public virtual void Move()
     {
+        Debug.Log("moving");
         FacePlayer();
-        Vector2 target = new Vector2(player.position.x, animator.gameObject.transform.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, Speed * Time.fixedDeltaTime);
-        if (Vector2.Distance(newPos, target) <= TargetDistance)
-        {
-            Attack();
-        } else {
-            rb.MovePosition(newPos);
-        }
+        rb.MovePosition(newPos);
     }
 
     //override this method for each implemented Enemy to include more complex attack logic
     public virtual void Attack()
     {
-        animator.SetTrigger("Attack");
+        Debug.Log("attacking");
     }
 
     //DO NOT CHANGE
     //this flips the sprites to face the player
     public void FacePlayer()
     {
-        Vector3 flipped = sprite.localScale;
+        Vector3 flipped = rb.gameObject.transform.localScale;
         flipped.x *= -1f;
-        if (sprite.position.x < player.position.x && isFlipped)
+        if (rb.gameObject.transform.position.x < player.position.x && isFlipped)
         {
-            sprite.localScale = flipped;
+            rb.gameObject.transform.localScale = flipped;
             isFlipped = false;
-        } else if (sprite.position.x > player.position.x && !isFlipped)
+        } else if (rb.gameObject.transform.position.x > player.position.x && !isFlipped)
         {
-            sprite.localScale = flipped;
+            rb.gameObject.transform.localScale = flipped;
             isFlipped = true;
         }
     }
@@ -81,15 +82,13 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             canTakeDamage = Time.time + cooldown;
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
-            animator.SetTrigger("Hurt");
 
         }
         
         if (Health <= 0)
         {
             Debug.Log("Enemy killed!");
+            rb.gameObject.SetActive(false);
         }
     }
-
-
 }
