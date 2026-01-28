@@ -54,7 +54,11 @@ public class GameManager : MonoBehaviour
         bossStateMachine.Health = 100;
         bossStateMachine.Damage *= 2;
         bossStateMachine.MoveSpeed *= 1.5f;
-        playerStateMachine.UnlockAbility(currentStage);
+    }
+
+    public void UnlockPlayerAbility(int ability)
+    {
+        playerStateMachine.UnlockAbility(ability);
     }
 
     public void CheckWinStatus()

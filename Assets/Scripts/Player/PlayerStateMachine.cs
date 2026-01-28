@@ -269,14 +269,16 @@ public class PlayerStateMachine : StateMachine, IDamageable
         }
     }
 
-    public void UnlockAbility(int stage)
+    //ability 2 is shooting
+    //ability 3 is dashing
+    public void UnlockAbility(int abilityNum)
     {
-        if (stage == 2)
+        if (abilityNum == 2)
         {
             shootUnlocked = true;
             Debug.Log("you can now shoot! click LMB to shoot at your mouse position");
             shootIcon.SetActive(true);
-        } else if (stage == 3)
+        } else if (abilityNum == 3)
         {
             dashUnlocked = true;
             Debug.Log("you can now shoot! click and drag RMB to launch yourself!");
