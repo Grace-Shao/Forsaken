@@ -46,6 +46,8 @@ public class PlayerIdleState : State
         } else if (playerContext.IsMovementPressed)
         {   
             SwitchState(new PlayerWalkState(playerContext));
-        } 
+        } else if (playerContext.IsBlocking) {
+            SwitchState(new PlayerBlockState(playerContext));
+        }
     }
 }

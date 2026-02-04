@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
@@ -11,6 +12,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
     [SerializeField] private float slashForce = 30f;
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashDistance = 5f;
+    [SerializeField] private float parryTiming = 2.5f;
+    [SerializeField] private float parryCooldown = 2.5f;
+    [SerializeField] private float blockDamageDamper = 0.5f;
 
     [Header("Object References")]
     [SerializeField] private GameManager manager;
@@ -40,6 +44,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private bool isDashing = false;
     private bool hurtFinished = false;
     private bool grounded = true;
+    private bool isBlocking = false;
+    private bool isParrying = false;
+    private bool canParry = false;
 
     //player info
     private int health;
@@ -50,6 +57,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private GameObject dashTrail;
     private Transform groundCheck;
     private Player_Ranged rangedWeapon;
+    private int currentParryCooldownId;
 
     //getters and settesr
     public GameManager Manager {get {return manager;}}
@@ -66,6 +74,19 @@ public class PlayerStateMachine : StateMachine, IDamageable
         return Mathf.Sign(mouseDirX) == facing;
     }}
     public bool IsDashPressed {get {return isDashPressed;} set {isDashPressed = value;}}
+    public bool IsBlocking {get {return isBlocking;} set {isBlocking = value;}}
+
+    public bool CanParry {
+        get {
+            return canParry;
+        }
+        set {
+            canParry = value;
+            currentParryCooldownId++;
+        }
+    } // every change of the can parry variable makes a new id
+
+    public bool IsParrying {get {return isParrying;} set {isParrying = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
     public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
@@ -109,6 +130,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Hit.canceled += OnHit;
         playerInput.CharacterControls.Shoot.started += OnShoot;
         playerInput.CharacterControls.Shoot.canceled += OnShoot;
+        playerInput.CharacterControls.Block.performed += OnBlock;
+        playerInput.CharacterControls.Block.canceled += OnBlock;
 
         Health = 100;
         Cooldown = 1f;
@@ -184,6 +207,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         isShootPressed = shootUnlocked && context.ReadValueAsButton();
     }
+    void OnBlock(InputAction.CallbackContext context) {
+        isBlocking = context.ReadValueAsButton();
+    }
     void OnDash(InputAction.CallbackContext context)
     {
         isDashPressed = context.ReadValueAsButton();
@@ -198,13 +224,45 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         playerInput.CharacterControls.Disable();
     }
+    
+    private IEnumerator StartParryCooldownInternal() {
+        CanParry = true;
+        int targetParryCooldownId = currentParryCooldownId;
+        yield return new WaitForSeconds(parryCooldown);
+        if (targetParryCooldownId == currentParryCooldownId) {
+            CanParry = false; // nothing was changed during the wait so was in the same parry
+        }
+    }
+    
+    private IEnumerator StartParryInternal() {
+        if (IsParrying) yield break;
+        IsParrying = true;
+        yield return new WaitForSeconds(parryTiming);
+        IsParrying = false;
+    }
 
-    public void ApplyDamage(int damage)
-    {
+    public void StartParryCooldown() {
+        StartCoroutine(StartParryCooldownInternal());
+    }
+    public void ApplyDamage(int damage) {
+        if (IsParrying) return;
+        float damper = 1f;
+        if (IsBlocking) {
+            if (CanParry) {
+                StartCoroutine(StartParryInternal());
+                IsHurt = false;
+                CanParry = false; // Can only parry once during a block? TODO: check
+                return;
+            }
+            // damper = blockDamageDamper;  
+        }
+        else {
+            damper = 1 / blockDamageDamper; // TODO - do reverse of this lol - only did this cuz we are using ints and fractional damage floats will cast to 0
+        }
         if (Time.time > canTakeDamage && !isDashing)
         {
             canTakeDamage = Time.time + Cooldown;
-            Health -= damage;
+            Health -= (int) (damage * damper); //TODO: check if we need to do casting here. 
             IsHurt = true;
         }
         UpdateHealthText();
@@ -212,9 +270,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
         {
             manager.CheckWinStatus();
         }
-       
     }
-
 
     void OnAttackAnimationStart()
     {
