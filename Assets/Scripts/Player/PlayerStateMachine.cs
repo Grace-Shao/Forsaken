@@ -24,7 +24,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private bool isMovementPressed;
     private bool canMove = true;
     private bool shootUnlocked = false;
-    private bool dashUnlocked = false;
+    private bool canDash = false;
     private bool isRunPressed;
     private bool isJumpPressed;
     private bool isHitPressed;
@@ -71,8 +71,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool DashStarted {get {return dashStarted; } set {dashStarted = value;}}
     public bool DashFinished {get {return dashFinished; } set {dashFinished = value;}}
     public bool IsDashing {get {return isDashing; } set {isDashing = value;}}
-    public bool DashUnlocked {get {return dashUnlocked;}}
-    public bool CanDash {get {return dashUnlocked;}}
+    public bool CanDash {get {return canDash;}}
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
     public Vector2 CurrentMovementInput {get {return currentMovementInput;}}
@@ -106,8 +105,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Hit.canceled += OnHit;
         playerInput.CharacterControls.Shoot.started += OnShoot;
         playerInput.CharacterControls.Shoot.canceled += OnShoot;
-        // playerInput.CharacterControls.Dash.started += OnDash;
-        // playerInput.CharacterControls.Dash.canceled += OnDash;
 
         Health = 100;
         Cooldown = 1f;
@@ -278,7 +275,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
             shootIcon.SetActive(true);
         } else if (abilityNum == 3)
         {
-            dashUnlocked = true;
+            canDash = true;
             Debug.Log("you can now shoot! press shift to launch yourself!");
             dashBar.gameObject.SetActive(true);
         }
