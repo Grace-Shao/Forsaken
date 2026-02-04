@@ -9,8 +9,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
     [SerializeField] private  float runSpeed = 7f;
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float slashForce = 30f;
-    [SerializeField] private float dashForce = 30f;
-    [SerializeField] private int dashMeter = 10;
+    [SerializeField] private float dashSpeed = 15f;
+    [SerializeField] private float dashDistance = 5f;
 
     [Header("Object References")]
     [SerializeField] private GameManager manager;
@@ -44,11 +44,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private int health;
     private float damageCooldown;
     private float canTakeDamage;
-    private int currentDashMeter;
 
     //additional game objects
     private GameObject dashTrail;
-    private GameObject dashArrow;
     private Transform groundCheck;
 
     //getters and settesr
@@ -73,20 +71,19 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool DashStarted {get {return dashStarted; } set {dashStarted = value;}}
     public bool DashFinished {get {return dashFinished; } set {dashFinished = value;}}
     public bool IsDashing {get {return isDashing; } set {isDashing = value;}}
-    public int CurrentDashMeter {get {return currentDashMeter;} set {currentDashMeter = value;}}
     public bool DashUnlocked {get {return dashUnlocked;}}
-    public bool CanDash {get {return dashUnlocked && currentDashMeter >= dashMeter;}}
+    public bool CanDash {get {return dashUnlocked;}}
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
     public Vector2 CurrentMovementInput {get {return currentMovementInput;}}
     public float RunSpeed {get {return runSpeed;}}
     public float JumpForce {get {return jumpForce;}}
     public float SlashForce {get {return slashForce;}}
-    public float DashForce {get {return dashForce;}}
+    public float DashSpeed {get {return dashSpeed;}}
+    public float DashDistance {get {return dashDistance;}}
     public int Health {get {return health;} set {health = value;}}
     public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     public GameObject DashTrail {get {return dashTrail;}}
-    public GameObject DashArrow {get {return dashArrow;}}
 
     protected override void Init()
     {
@@ -95,7 +92,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         //set reference variables
         playerInput = new PlayerInput();
         dashTrail = transform.Find("ghost trail").gameObject;
-        dashArrow = transform.Find("dash arrow").gameObject;
         groundCheck = transform.Find("groundedCheck");
 
         //set player input callbacks
@@ -116,7 +112,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         Health = 100;
         Cooldown = 1f;
         canTakeDamage = 0f; 
-        currentDashMeter = 0;
     }
 
     protected override void EnterBeginningState()
@@ -124,7 +119,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         currentState = new PlayerIdleState(this);
         currentState.EnterState();
         UpdateHealthText();
-        UpdateDashText();
     }
 
     protected override void UpdateState()
@@ -184,12 +178,10 @@ public class PlayerStateMachine : StateMachine, IDamageable
     void OnShoot(InputAction.CallbackContext context)
     {
         isShootPressed = shootUnlocked && context.ReadValueAsButton();
-        UpdateDashText();
     }
     void OnDash(InputAction.CallbackContext context)
     {
         isDashPressed = context.ReadValueAsButton();
-        UpdateDashText();
     }
 
     public void OnEnable()
@@ -282,7 +274,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
         } else if (abilityNum == 3)
         {
             dashUnlocked = true;
-            Debug.Log("you can now shoot! click and drag RMB to launch yourself!");
+            Debug.Log("you can now shoot! press shift to launch yourself!");
             dashBar.gameObject.SetActive(true);
         }
     }
@@ -290,17 +282,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
     void UpdateHealthText()
     {
         healthBar.text = "Health: " + Health.ToString();
-    }
-    public void UpdateDashText()
-    {
-        dashBar.text = "Dash Meter: " + currentDashMeter.ToString();
-        if (currentDashMeter >= dashMeter)
-        {
-            dashBar.color = Color.green;
-        } else
-        {
-            dashBar.color = Color.black;
-        }
     }
 
 

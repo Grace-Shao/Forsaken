@@ -111,11 +111,6 @@ public class BossStateMachine : StateMachine, IDamageable
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
             flashCharacter();
-            if (!player.gameObject.GetComponent<PlayerStateMachine>().IsDashing && player.gameObject.GetComponent<PlayerStateMachine>().DashUnlocked)
-            {
-                player.gameObject.GetComponent<PlayerStateMachine>().CurrentDashMeter += 1;
-                player.gameObject.GetComponent<PlayerStateMachine>().UpdateDashText();
-            }
             
         }
         if (Health % StunInterval == 0 && !isStunned)

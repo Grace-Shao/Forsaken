@@ -21,7 +21,6 @@ public class PlayerDashState : State
         playerContext.DashFinished = false;
         playerContext.IsDashing = true;
         playerContext.CanMove = false;
-        playerContext.CurrentDashMeter = 0;
         // playerContext.AppliedMovementX = 0f;
         // playerContext.AppliedMovementY = 0f;
     }
