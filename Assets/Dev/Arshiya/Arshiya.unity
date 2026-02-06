@@ -6064,6 +6064,10 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2161162128141367380, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: m_labelHash
+      value: 1.1524204e-27
+      objectReference: {fileID: 0}
     - target: {fileID: 2283422278728380269, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -6239,6 +6243,14 @@ PrefabInstance:
     - target: {fileID: 4977402779569012497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091469479728073867, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: m_labelHash
+      value: 5.878249e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091469479728073867, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: m_CategoryHash
+      value: 1.2470063e-19
       objectReference: {fileID: 0}
     - target: {fileID: 5172333906780909125, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
       propertyPath: m_Layer
@@ -7108,7 +7120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9002506855560837565, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6415749645096660923, guid: c811212f66276e745b7177f4664bef92, type: 3}

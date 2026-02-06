@@ -34,6 +34,22 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -1127443842789160570, guid: cee25a2119951b549b096dfd0aaf2588, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 3
+  - m_Name: Arm
+    m_Hash: 538130548
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Cannon
+      m_Hash: 226745009
+      m_Sprite: {fileID: -3171537813148225651, guid: 64873e52bc00b464c9eebcb0759415a1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3171537813148225651, guid: 64873e52bc00b464c9eebcb0759415a1, type: 3}
+    - m_Name: Normal
+      m_Hash: 640249298
+      m_Sprite: {fileID: -476004075519584596, guid: cee25a2119951b549b096dfd0aaf2588, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -476004075519584596, guid: cee25a2119951b549b096dfd0aaf2588, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639026066114598952
+  m_ModificationHash: 639059194351768182
   m_Version: 1

@@ -11,7 +11,7 @@ public class PlayerMeleeOneState : State
     {
         playerContext.AttackFinished = false;
         playerContext.IsHitPressed = false;
-        playerContext.Anim.Play("Slash");
+        playerContext.Anim.SetTrigger("attack");
         Vector3 direction = new Vector3(Mathf.Sign(playerContext.Sprite.localScale.x), 0f, 0f);
         playerContext.RB.AddForce(direction * playerContext.SlashForce, ForceMode2D.Impulse);
     }
@@ -21,6 +21,8 @@ public class PlayerMeleeOneState : State
     }
     public override void ExitState()
     {
+        Debug.Log("exiting attack");
+        playerContext.Anim.ResetTrigger("attack");
     }
 
     public override void CheckSwitchStates()

@@ -10,7 +10,7 @@ public class PlayerShootState : State
     }
     public override void EnterState()
     {
-        playerContext.Anim.Play("Shoot");
+        playerContext.Anim.SetTrigger("shoot");
         playerContext.AppliedMovementX = 0f;
         playerContext.AppliedMovementY = 0f;
         playerContext.IsShootPressed = false;  // Reset to prevent continuous shooting
@@ -19,10 +19,10 @@ public class PlayerShootState : State
     public override void UpdateState()
     {
         // Call Shoot on the ranged weapon
-        Player_Ranged rangedWeapon = playerContext.GetComponentInChildren<Player_Ranged>();
-        if (rangedWeapon != null && playerContext.ShootStarted)
+        
+        if (playerContext.RangedWeapon != null && playerContext.ShootStarted)
         {
-            rangedWeapon.Shoot();
+            playerContext.RangedWeapon.Shoot();
             playerContext.ShootStarted = false;
         }
         CheckSwitchStates();

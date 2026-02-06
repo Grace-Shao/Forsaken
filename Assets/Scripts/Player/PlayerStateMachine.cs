@@ -49,6 +49,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     //additional game objects
     private GameObject dashTrail;
     private Transform groundCheck;
+    private Player_Ranged rangedWeapon;
 
     //getters and settesr
     public GameManager Manager {get {return manager;}}
@@ -84,6 +85,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public int Health {get {return health;} set {health = value;}}
     public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     public GameObject DashTrail {get {return dashTrail;}}
+    public Player_Ranged RangedWeapon { get { return rangedWeapon; } }
 
     protected override void Init()
     {
@@ -94,6 +96,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
         dashTrail = transform.Find("ghost trail").gameObject;
         groundCheck = transform.Find("groundedCheck");
         swordHitbox = sprite.Find("sword").GetComponent<BoxCollider2D>();
+        rangedWeapon = GetComponentInChildren<Player_Ranged>();
         //set player input callbacks
         playerInput.CharacterControls.Move.started += OnMovementPerformed;
         playerInput.CharacterControls.Move.canceled += OnMovementCancelled;

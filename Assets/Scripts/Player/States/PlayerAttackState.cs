@@ -13,7 +13,6 @@ public class PlayerAttackState : State
     {
         playerContext.CanMove = false;
         playerContext.AppliedMovementX = 0f;
-        
         playerContext.AttackFinished = false; 
     }
     public override void UpdateState()

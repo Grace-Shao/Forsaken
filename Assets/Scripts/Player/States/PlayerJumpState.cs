@@ -11,7 +11,7 @@ public class PlayerJumpState : State
     public override void EnterState()
     {
         playerContext.CanMove = false;
-        playerContext.Anim.Play("Jump");
+        playerContext.Anim.SetTrigger("jump");
         playerContext.Grounded = false;
         playerContext.RB.AddForce(Vector2.up * playerContext.JumpForce, ForceMode2D.Impulse);
         playerContext.AppliedMovementX = 0f;
@@ -25,6 +25,7 @@ public class PlayerJumpState : State
     }
     public override void ExitState()
     {
+        playerContext.Anim.ResetTrigger("jump");
         playerContext.CanMove = true;
         playerContext.AppliedMovementY = 0f;
     }
