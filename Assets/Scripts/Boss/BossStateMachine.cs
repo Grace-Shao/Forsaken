@@ -4,6 +4,7 @@ public class BossStateMachine : StateMachine, IDamageable
 {
     [Header("Object References")]
     [SerializeField] private GameManager manager;
+    [SerializeField] private ParticleSystem damageTakenParticles; // serialized so people know to add it if not in their scene
 
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
@@ -59,6 +60,7 @@ public class BossStateMachine : StateMachine, IDamageable
         base.Init();
         sprite = transform.Find("Sprite");
         Health = 100;
+        damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
     }
 
     protected override void EnterBeginningState()
@@ -111,7 +113,9 @@ public class BossStateMachine : StateMachine, IDamageable
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
             flashCharacter();
-            
+
+            damageTakenParticles.Play();
+
         }
         if (Health % StunInterval == 0 && !isStunned)
         {

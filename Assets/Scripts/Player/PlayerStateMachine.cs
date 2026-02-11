@@ -50,6 +50,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private GameObject dashTrail;
     private Transform groundCheck;
     private Player_Ranged rangedWeapon;
+    [SerializeField] private ParticleSystem damageTakenParticles; // serialized so people know to add it if not in their scene
 
     //getters and settesr
     public GameManager Manager {get {return manager;}}
@@ -97,6 +98,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
         groundCheck = transform.Find("groundedCheck");
         swordHitbox = sprite.Find("sword").GetComponent<BoxCollider2D>();
         rangedWeapon = GetComponentInChildren<Player_Ranged>();
+        damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+
         //set player input callbacks
         playerInput.CharacterControls.Move.started += OnMovementPerformed;
         playerInput.CharacterControls.Move.canceled += OnMovementCancelled;
@@ -206,6 +209,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
             canTakeDamage = Time.time + Cooldown;
             Health -= damage;
             IsHurt = true;
+            
+            damageTakenParticles.Play();
         }
         UpdateHealthText();
         if (Health <= 0f)
