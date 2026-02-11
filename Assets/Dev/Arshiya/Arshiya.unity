@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!61 &89805775 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7727526473472453808, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+  m_PrefabInstance: {fileID: 6243829946046175017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &219814331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,8 +6334,20 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5681770180199543497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: parryTiming
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681770180199543497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: swordHitbox
+      value: 
+      objectReference: {fileID: 89805775}
+    - target: {fileID: 5681770180199543497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
       propertyPath: dashDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681770180199543497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
+      propertyPath: parryCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5681770180199543497, guid: 7fe5bedb1a73043469c3f16722281380, type: 3}
       propertyPath: groundDetection
@@ -6760,7 +6777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2897944799598294983, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_TagString
-      value: Weapon
+      value: HUE Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 2947537428799851985, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_Layer
@@ -6931,8 +6948,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5155376191016209186, guid: c811212f66276e745b7177f4664bef92, type: 3}
+      propertyPath: m_Size.x
+      value: 7.1298866
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155376191016209186, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155376191016209186, guid: c811212f66276e745b7177f4664bef92, type: 3}
+      propertyPath: m_Offset.x
+      value: -3.3269186
       objectReference: {fileID: 0}
     - target: {fileID: 5155376191016209186, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_IsTrigger
@@ -7121,6 +7146,10 @@ PrefabInstance:
     - target: {fileID: 9002506855560837565, guid: c811212f66276e745b7177f4664bef92, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002506855560837565, guid: c811212f66276e745b7177f4664bef92, type: 3}
+      propertyPath: m_TagString
+      value: HUE Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6415749645096660923, guid: c811212f66276e745b7177f4664bef92, type: 3}

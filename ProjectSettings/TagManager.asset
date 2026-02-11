@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Ground
   - Note
+  - HUE Weapon
   layers:
   - Default
   - TransparentFX

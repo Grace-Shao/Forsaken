@@ -26,7 +26,7 @@ public class BossAttackState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(bossContext.canDash());
+        // Debug.Log(bossContext.canDash());
         if (bossContext.IsStunned)
         {   Debug.Log("switching states");
             SwitchState(new BossStunState(bossContext));

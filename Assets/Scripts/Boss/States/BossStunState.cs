@@ -7,6 +7,7 @@ public class BossStunState : State
     public BossStunState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
@@ -30,21 +31,7 @@ public class BossStunState : State
     {
         if (curTime > bossContext.StunTime)
         {
-            if (bossContext.CurrentStage >= 3 && bossContext.canDash())
-            {
-                SwitchState(new BossDashWindupState(bossContext));
-            }
-            if (bossContext.CurrentStage >= 2 && bossContext.GrappleInRange())
-            {
-                SwitchState(new BossGrappleState(bossContext));
-            }
-            else if (bossContext.InRange())
-            {
-                SwitchState(new BossAttackState(bossContext));
-            } else
-            {
-                SwitchState(new BossWalkState(bossContext));
-            }
+            SwitchState(new BossTransitionState(bossContext));
         } 
     }
 }

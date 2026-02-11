@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
         playerStateMachine.UnlockAbility(ability);
     }
 
+    public void PlayerParry()
+    {
+        bossStateMachine.JumpToState(new BossStunState(bossStateMachine));
+    }
     public void CheckWinStatus()
     {
         if (currentStage == numStages && bossStateMachine.Health <= 0)
