@@ -59,7 +59,7 @@ public class BossGrappleState : State
             elapsed += Time.deltaTime;
             float percent = elapsed / duration;
 
-            // bossCenter = bossContext.GetComponent<Collider2D>().bounds.center;
+            // bossCenter = dogContext.GetComponent<Collider2D>().bounds.center;
             playerCenter = bossContext.Player.GetComponent<Collider2D>().bounds.center;
 
             Vector3 chainTip = Vector3.Lerp(chainStart.position, playerCenter, percent);

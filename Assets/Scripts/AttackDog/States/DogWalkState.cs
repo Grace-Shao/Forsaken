@@ -1,13 +1,16 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
-public class BossWalkState : State
+public class DogWalkState : State
 {
-    private BossStateMachine dogContext;
-    public BossWalkState(BossStateMachine currentContext) : base(currentContext)
+    private DogStateMachine dogContext;
+    public DogWalkState(DogStateMachine currentContext) : base(currentContext)
     {
         dogContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
+        dogContext.AppliedMovementY = 0;
         dogContext.Anim.Play("Walk");
         
     }
@@ -28,10 +31,11 @@ public class BossWalkState : State
     {
         if (dogContext.IsStunned)
         {   
-            SwitchState(new BossStunState(dogContext));
-        } else if (dogContext.InRange())
+            SwitchState(new DogStunState(dogContext));
+        }
+        if (dogContext.InRange() && !dogContext.InAttack)
         {
-            SwitchState(new BossAttackState(dogContext));
+            SwitchState(new DogPounceState(dogContext));
         }
     }
 }
