@@ -119,6 +119,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &150964938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2662215905825280953, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+  m_PrefabInstance: {fileID: 802585725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &150964940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150964938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308edbd561a17f445b65d014eee72f94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 5
 --- !u!1 &219814331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,10 +1868,46 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4083527179500248980, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083527179500248980, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083527179500248980, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083527179500248980, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532998935701671996, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8873782
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532998935701671996, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.060547113
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532998935701671996, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1576479053}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunInterval
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7434262238889283829, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_Name
       value: Attack Dog
@@ -1916,7 +1971,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2662215905825280953, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 150964940}
   m_SourcePrefab: {fileID: 100100000, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
 --- !u!1 &852177002
 GameObject:

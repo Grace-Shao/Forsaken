@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 public class DogWalkState : State
 {
@@ -5,10 +6,11 @@ public class DogWalkState : State
     public DogWalkState(DogStateMachine currentContext) : base(currentContext)
     {
         dogContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
-        Debug.Log("We walk!");
+        dogContext.AppliedMovementY = 0;
         dogContext.Anim.Play("Walk");
         
     }
@@ -27,10 +29,13 @@ public class DogWalkState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(dogContext != null);
         if (dogContext.IsStunned)
         {   
             SwitchState(new DogStunState(dogContext));
+        }
+        if (dogContext.InRange() && !dogContext.InAttack)
+        {
+            SwitchState(new DogPounceState(dogContext));
         }
     }
 }

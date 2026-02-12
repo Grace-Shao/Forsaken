@@ -14,7 +14,8 @@ public class DogStateMachine : StateMachine, IDamageable
     
     private bool isFlipped = false;
     private bool isStunned = false;
-    private bool inAttack = true;
+    private bool inAttack = false;
+    private bool onGround = false;
     private bool windUpFinished = true;
     private int hurtFinished = 0;
     private int introFinished = 0;
@@ -25,6 +26,7 @@ public class DogStateMachine : StateMachine, IDamageable
     public bool IsTransitioning {get {return manager.IsTransitioning;} set {manager.IsTransitioning = value;}}
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
     public bool InAttack {get {return inAttack; } set {inAttack = value;}}
+    public bool OnGround {get { return onGround; } set { onGround = value; } }
     public bool Flipped { get {return isFlipped;}}
     public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
@@ -54,7 +56,14 @@ public class DogStateMachine : StateMachine, IDamageable
     {
         if (!IsTransitioning)
         {
-            rb.linearVelocity = appliedMovement;
+            if (!inAttack)
+            {
+                rb.linearVelocity = appliedMovement;
+            }
+            else
+            {
+                rb.AddForce(appliedMovement, ForceMode2D.Impulse);
+            }
         }
         currentState.UpdateStates();
     }
@@ -78,6 +87,18 @@ public class DogStateMachine : StateMachine, IDamageable
         if (other.gameObject.transform == player)
         {
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            onGround = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            onGround = false;
         }
     }
 

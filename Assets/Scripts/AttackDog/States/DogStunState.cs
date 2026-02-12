@@ -7,6 +7,7 @@ public class DogStunState : State
     public DogStunState(DogStateMachine currentContext) : base(currentContext)
     {
         dogContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
@@ -28,13 +29,12 @@ public class DogStunState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(dogContext);
         if (curTime > dogContext.StunTime)
         {
-            if (dogContext.InRange())
+            if (dogContext.InRange() && dogContext.OnGround)
             {
                 SwitchState(new DogPounceState(dogContext));
-            } else
+            } else if (!dogContext.InRange() && dogContext.OnGround)
             {
                 SwitchState(new DogWalkState(dogContext));
             }

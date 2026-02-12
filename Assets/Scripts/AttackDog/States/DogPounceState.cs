@@ -8,15 +8,23 @@ public class DogPounceState : State
     {
         
         dogContext = currentContext;
+        isBaseState = true;
     }
     public override void EnterState()
     {
+        Vector3 target = new Vector3(dogContext.Player.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
+        Vector3 currentPos = new Vector3(dogContext.RB.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
+        Vector3 direction = (target - currentPos).normalized;
+
         dogContext.InAttack = true;
-        dogContext.Anim.Play("Pounce");
-        dogContext.AppliedMovementX = 0f;
+        dogContext.OnGround = false;
+        dogContext.RB.AddForce(new Vector2(direction.x * 5, 20), ForceMode2D.Impulse);
+        dogContext.AppliedMovementX = 0;
+        dogContext.AppliedMovementY = 0;
     }
     public override void UpdateState()
     {
+        dogContext.AppliedMovementY = 0f;
         CheckSwitchStates();
     }
     public override void ExitState()
@@ -26,12 +34,11 @@ public class DogPounceState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(dogContext);
         if (dogContext.IsStunned)
         {
             SwitchState(new DogStunState(dogContext));
         }
-        else if (!dogContext.InAttack)
+        else if (dogContext.OnGround)
         {
             SwitchState(new DogWalkState(dogContext));
         }
