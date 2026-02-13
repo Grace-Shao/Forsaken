@@ -28,10 +28,11 @@ public class BossIdleState : State
         if (curTime > bossContext.TimeInIdle)
         {
             float randomChance = Random.Range(0f, 1f);
-            if (bossContext.CurrentStage >= 2 && randomChance < 0.33f && bossContext.GrappleInRange())
-            {
-                SwitchState(new BossGrappleState(bossContext));
-            } else if ( randomChance < 0.66f && bossContext.canDash())
+            // if (bossContext.CurrentStage >= 2 && bossContext.GrappleInRange())
+            // {
+            //     SwitchState(new BossGrappleState(bossContext));
+            // } else 
+            if ( randomChance < 0.5f && bossContext.canDash())
             {
                 SwitchState(new BossDashWindupState(bossContext));
             }

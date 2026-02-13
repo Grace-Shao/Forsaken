@@ -12,15 +12,15 @@ public class StageOne : State
     }
     public override void InitializeSubStates()
     {
-        if (bossContext.InRange())
+        if (bossContext.canDash())
         {
-            SetSubState(new BossAttackState(bossContext));
-        } else if (bossContext.IsStunned)
+            SetSubState(new BossDashWindupState(bossContext));
+        } else if (bossContext.InRange())
         {   
-            SetSubState(new BossStunState(bossContext));
+            SetSubState(new BossAttackState(bossContext));
         } else
         {
-            SetSubState(new BossWalkState(bossContext));
+            SetSubState(new BossIdleState(bossContext));
         }
     }
     public override void EnterState()

@@ -25,6 +25,7 @@ public class BossStateMachine : StateMachine, IDamageable
     private bool isFlipped = false;
     private bool isStunned = false;
     private int grapplingFinished = 0;
+    private bool isDashing = false;
     private int attackFinished = 0;
     private bool windUpFinished = true;
     private int hurtFinished = 0;
@@ -37,6 +38,7 @@ public class BossStateMachine : StateMachine, IDamageable
     
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
+    public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
     public bool IsTransitioning {get {return manager.IsTransitioning;} set {manager.IsTransitioning = value;}}
     public int GrapplingFinished {get {return grapplingFinished;} set {grapplingFinished = value;}}
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
