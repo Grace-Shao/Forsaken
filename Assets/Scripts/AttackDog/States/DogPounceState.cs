@@ -18,7 +18,7 @@ public class DogPounceState : State
 
         dogContext.InAttack = true;
         dogContext.OnGround = false;
-        dogContext.RB.AddForce(new Vector2(direction.x * 5, 20), ForceMode2D.Impulse);
+        dogContext.RB.AddForce(new Vector2(direction.x * 5, 10), ForceMode2D.Impulse);
         dogContext.AppliedMovementX = 0;
         dogContext.AppliedMovementY = 0;
     }
