@@ -8,27 +8,25 @@ public partial class CustomBar : VisualElement
 {
     private float _barValue;
     [UxmlAttribute, CreateProperty]
-    public float barValue { get => _barValue;  set { _barValue = value; UpdateFill(); } }
+    public float barValue { get => _barValue;  set { _barValue = value; UpdateBar(); } }
 
     private float _minValue;
     [UxmlAttribute, CreateProperty]
-    public float minValue { get => _minValue;  set { _minValue = value; UpdateFill(); } }
+    public float minValue { get => _minValue;  set { _minValue = value; UpdateBar(); } }
 
     private int _maxValue;
     [UxmlAttribute, CreateProperty]
-    public int maxValue { get => _maxValue;  set { _maxValue = value; UpdateFill(); } }
+    public int maxValue { get => _maxValue;  set { _maxValue = value; UpdateBar(); } }
 
+    private string _label;
     [UxmlAttribute, CreateProperty]
     public string label 
     { 
-        get => textLabel?.text ?? ""; 
+        get => _label; 
         set 
         { 
-            if (textLabel != null) 
-            { 
-                textLabel.text = value; 
-                UpdateFill(); 
-            } 
+            _label = value;
+            UpdateBar(); 
         } 
     }
 
@@ -58,11 +56,7 @@ public partial class CustomBar : VisualElement
         track.Add(fill);
 
         // TEXT
-        textLabel = new Label
-        {
-            name = "text",
-            text = label
-        };
+        textLabel = new Label(_label);
         textLabel.AddToClassList("custom-bar__text");
         textLabel.style.unityTextAlign = TextAnchor.MiddleCenter;
         textLabel.style.position = Position.Absolute;
@@ -73,11 +67,11 @@ public partial class CustomBar : VisualElement
         track.Add(textLabel);
 
 
-        RegisterCallback<GeometryChangedEvent>(_ => UpdateFill());
-        RegisterCallback<AttachToPanelEvent>(_ => UpdateFill());
+        RegisterCallback<GeometryChangedEvent>(_ => UpdateBar());
+        RegisterCallback<AttachToPanelEvent>(_ => UpdateBar());
     }
 
-    void UpdateFill()
+    void UpdateBar()
     {
         if (maxValue <= minValue) return;
 
@@ -85,6 +79,7 @@ public partial class CustomBar : VisualElement
         float width = track.resolvedStyle.width;
 
         fill.style.width = width * percent;
-        textLabel.text = label;
+        textLabel.text = $"{_label}: {barValue}";
+        Debug.Log($"Updated {label} bar: {barValue}/{maxValue} ({percent * 100}%)");
     }
 }
