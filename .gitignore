@@ -70,6 +70,20 @@ crashlytics-build.properties
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
-# Temporary auto-generated Android Assets
+    # Temporary auto-generated Android Assets
+    # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+*.slnx
+external packages [DO NOT TOUCH]
+Unity.VisualScripting.Generated
+Packages
+
+# Editor & workspace files
+*.code-workspace
+# Visual Studio solution extension
+*.slnx
+
+Forsaken.slnx
+
+*.code-workspace

@@ -1,0 +1,32 @@
+.panel {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-bar {
+    width: 200px;
+    height: 20px;
+}
+
+.custom-bar__track {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.custom-bar__fill {
+    height: 100%;
+    background-color: #3ddc84;
+}
+
+/* Variants */
+.bar.health .custom-bar__fill {
+    background-color: rgb(220, 50, 50);
+}
+
+.bar.cooldown .custom-bar__fill {
+    background-color: rgb(60, 120, 255);
+}
