@@ -72,8 +72,8 @@ public class BossCamera : MonoBehaviour
             return;
         }
 
-        if (!Cam.orthographic)
-            Debug.LogWarning("CameraController2: camera must be orthographic.");
+        // if (!Cam.orthographic)
+        //     Debug.LogWarning("CameraController2: camera must be orthographic.");
     }
 
     private void LateUpdate()
