@@ -9,7 +9,7 @@ public class BossTransitionState : State
         isBaseState = true;
     }
     public override void EnterState()
-    {   
+    {  
         bossContext.IntroFinished = 0;
         if (bossContext.CurrentStage == 1)
         {

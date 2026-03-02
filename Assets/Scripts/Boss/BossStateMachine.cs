@@ -138,7 +138,7 @@ public class BossStateMachine : StateMachine, IDamageable
         {
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
-            flashCharacter();
+            //flashCharacter();
 
             damageTakenParticles.Play();
 
