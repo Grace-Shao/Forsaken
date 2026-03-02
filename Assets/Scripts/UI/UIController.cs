@@ -130,14 +130,15 @@ public class UIController : MonoBehaviour
 
         // Get all CustomBar elements
         this.healthBar = barPanel.Query<CustomBar>().Where(el => el.ClassListContains("healthBar")).First();
-        this.cooldownBar = barPanel.Query<CustomBar>().Where(el => el.ClassListContains("cooldownBar")).First();
-
+        this.cooldownBar = barPanel.Query<CustomBar>().Where(el => el.ClassListContains("cdBar")).First();
+    
         // Bind health bar
         if (healthBar != null)
         {
             healthBar.SetBinding("barValue", new DataBinding()
             {
-                dataSourcePath = new PropertyPath(nameof(DamageableData.Health)),
+                dataSource = damageableData,
+                dataSourcePath = new PropertyPath(nameof(damageableData.Health)),
                 bindingMode = BindingMode.ToTarget
             });
         }
@@ -147,13 +148,11 @@ public class UIController : MonoBehaviour
         {
             cooldownBar.SetBinding("barValue", new DataBinding()
             {
-                dataSourcePath = new PropertyPath(nameof(DamageableData.Cooldown)),
+                dataSource = damageableData,
+                dataSourcePath = new PropertyPath(nameof(damageableData.Cooldown)),
                 bindingMode = BindingMode.ToTarget
             });
         }
-
-        Debug.Log(healthBar.label);
-
         Debug.Log("DamageableData bindings initialized");
     }
 
