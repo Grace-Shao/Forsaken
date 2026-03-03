@@ -38,6 +38,9 @@ public class UIController : MonoBehaviour
             if (damageableData == null)
             {
                 Debug.LogError("Assigned damageableComponent does not implement IDamageable!");
+            } else
+            {
+                Debug.Log(damageableData.Health);
             }
         }
 
@@ -95,8 +98,6 @@ public class UIController : MonoBehaviour
                 bindingMode = BindingMode.ToTarget
             });
         }
-
-        Debug.Log(healthBar.label);
 
         Debug.Log("DamageableData bindings initialized");
     }
