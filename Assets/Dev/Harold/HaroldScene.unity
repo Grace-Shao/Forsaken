@@ -1552,11 +1552,6 @@ Transform:
   - {fileID: 1524009596}
   m_Father: {fileID: 286688208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &555541705 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7854596110942828877, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
-  m_PrefabInstance: {fileID: 1558957426}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556671466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416567126023452613, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 445037681118995741, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2050,6 +2045,10 @@ PrefabInstance:
     - target: {fileID: 4303800826531678168, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.00000017136334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427710797904326775, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4437784745810876494, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16128,11 +16127,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7854596110942828877, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8500493607173370134, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1836188168}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+--- !u!4 &1558957427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8500493607173370134, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+  m_PrefabInstance: {fileID: 1558957426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1565350490
 GameObject:
   m_ObjectHideFlags: 0
@@ -17680,7 +17684,7 @@ Transform:
   m_LocalScale: {x: 0.3934115, y: 0.39341155, z: 0.39341176}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 555541705}
+  m_Father: {fileID: 1558957427}
   m_LocalEulerAnglesHint: {x: -18.14, y: 90, z: 0}
 --- !u!199 &1836188169
 ParticleSystemRenderer:
