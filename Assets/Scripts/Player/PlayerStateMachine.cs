@@ -112,8 +112,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public float SlashForce {get {return slashForce;}}
     public float DashSpeed {get {return dashSpeed;}}
     public float DashDistance {get {return dashDistance;}}
-    public int Health {get {return health;} set {health = value;}}
-    public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    [SerializeField] public int Health {get {return health;} set {health = value;}}
+    [SerializeField] public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     public GameObject DashTrail {get {return dashTrail;}}
     public Player_Ranged RangedWeapon { get { return rangedWeapon; } }
 
