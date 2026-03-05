@@ -153,7 +153,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         currentState = new PlayerIdleState(this);
         currentState.EnterState();
-        UpdateHealthText();
     }
 
     protected override void UpdateState()
@@ -277,7 +276,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
             currentState.SwitchState(new PlayerHurtState(this));
             damageTakenParticles.Play();
         }
-        UpdateHealthText();
         if (Health <= 0f)
         {
             manager.CheckWinStatus();
@@ -367,11 +365,4 @@ public class PlayerStateMachine : StateMachine, IDamageable
             dashBar.gameObject.SetActive(true);
         }
     }
-
-    public void UpdateHealthText()
-    {
-        healthBar.text = "Health: " + Health.ToString();
-    }
-
-
 }

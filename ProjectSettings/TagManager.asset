@@ -65,5 +65,8 @@ TagManager:
   - name: VFX
     uniqueID: 4200552967
     locked: 0
+  - name: UI
+    uniqueID: 4115937693
+    locked: 0
   m_RenderingLayers:
   - Default
