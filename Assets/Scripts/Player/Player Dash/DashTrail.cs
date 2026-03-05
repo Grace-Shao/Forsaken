@@ -70,7 +70,7 @@ public class DashTrail : MonoBehaviour
         string layer = LayerMask.LayerToName(other.gameObject.layer);
         if (layer.Equals("Enemies"))
         {
-            other.gameObject.GetComponent<IDamageable>().ApplyDamage(dashDamage);
+            // other.gameObject.GetComponent<IDamageable>().ApplyDamage(dashDamage);
         }
     }
 }

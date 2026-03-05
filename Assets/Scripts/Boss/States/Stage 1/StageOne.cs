@@ -14,7 +14,7 @@ public class StageOne : State
     {
         if (bossContext.NextAttack == 1)
         {   
-            SetSubState(new BossLaserAttackState(bossContext));
+            SetSubState(new BossLaserWindupState(bossContext));
         } else if (bossContext.NextAttack == 2)
         {
             SetSubState(new BossMeleeAttackState(bossContext));

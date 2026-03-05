@@ -103,6 +103,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool DashFinished {get {return dashFinished; } set {dashFinished = value;}}
     public bool IsDashing {get {return isDashing; } set {isDashing = value;}}
     public bool CanDash {get {return canDash;}}
+    public bool ShootUnlocked {get {return shootUnlocked;}}
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
     public Vector2 CurrentMovementInput {get {return currentMovementInput;}}
@@ -111,8 +112,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public float SlashForce {get {return slashForce;}}
     public float DashSpeed {get {return dashSpeed;}}
     public float DashDistance {get {return dashDistance;}}
-    public int Health {get {return health;} set {health = value;}}
-    public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    [SerializeField] public int Health {get {return health;} set {health = value;}}
+    [SerializeField] public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     public GameObject DashTrail {get {return dashTrail;}}
     public Player_Ranged RangedWeapon { get { return rangedWeapon; } }
 
@@ -367,7 +368,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
         }
     }
 
-    void UpdateHealthText()
+    public void UpdateHealthText()
     {
         healthBar.text = "Health: " + Health.ToString();
     }

@@ -14,5 +14,4 @@ public class Boss_Melee : Weapon
         }
 
     }
-
 }

@@ -18,7 +18,7 @@ public class StageTwo : State
         }
         else if (bossContext.NextAttack == 1)
         {   
-            SetSubState(new BossLaserAttackState(bossContext));
+            SetSubState(new BossLaserWindupState(bossContext));
         } else if (bossContext.NextAttack == 2)
         {
             SetSubState(new BossMeleeAttackState(bossContext));
@@ -29,7 +29,6 @@ public class StageTwo : State
     }
     public override void EnterState()
     {
-        bossContext.GrapplingFinished = 1;
     }
     public override void UpdateState()
     {
