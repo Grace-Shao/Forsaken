@@ -8,9 +8,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("M1 Demo");
+        SaveManager.DeleteData();
+        SceneManager.LoadScene("Level1");
+    }
 
-
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
