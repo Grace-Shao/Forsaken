@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Dev/Isabelle/Main_Menu.unity
     guid: e41dffc50934d465bb22bc1e625a6eb0
   - enabled: 0
-    path: Assets/Final Scenes/M1 Demo.unity
+    path: Assets/Final Scenes/old/M1 Demo.unity
     guid: c9ae370f8f873f947b70792fd036ae73
   - enabled: 1
     path: Assets/Final Scenes/Main_Menu.unity

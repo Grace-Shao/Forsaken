@@ -59,6 +59,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private Player_Ranged rangedWeapon;
     private int currentParryCooldownId;
     private ParticleSystem damageTakenParticles;
+    [SerializeField] private ParticleSystem parryParticles;
+
     //getters and settesr
     public GameManager Manager {get {return manager;}}
     public bool CanMove {get {return canMove;} set {canMove = value;}}
@@ -128,7 +130,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         swordHitbox = sprite.Find("sword").GetComponent<BoxCollider2D>();
         rangedWeapon = GetComponentInChildren<Player_Ranged>();
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
-
         //set player input callbacks
         playerInput.CharacterControls.Move.started += OnMovementPerformed;
         playerInput.CharacterControls.Move.canceled += OnMovementCancelled;
@@ -253,6 +254,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
     public void StartParry()
     {
+        parryParticles.Play();
         Debug.Log("starting parry");
         StartCoroutine(StartParryInternal());
         IsHurt = false;
