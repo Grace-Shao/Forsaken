@@ -56,6 +56,10 @@ public class PauseManager : MonoBehaviour
     // Main menu (not sure when this will be added but when it does just add this function ig)
     public void LoadMainMenu()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1f;
+        gamePaused = false;
+        pauseMenuUI.SetActive(false);
+        SceneManager.LoadScene("Main_Menu");
     }
 }

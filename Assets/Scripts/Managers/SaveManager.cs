@@ -21,4 +21,18 @@ public static class SaveManager {
         Debug.Log("[SaveManager] Load contents:\n" + json);
         return JsonUtility.FromJson<SaveData>(json);
     }
+
+    public static void DeleteData(string path = "")
+    {
+        if (path.Length == 0)
+        {
+            path = savePath;
+        }
+
+        if (!File.Exists(path)){
+            Debug.Log("[SaveManager] No save file found at: " + path + " — returning");
+            return;
+        }
+        File.Delete(path);
+    }
 }

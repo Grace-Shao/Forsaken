@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Control Variables")]
     [SerializeField] private int numStages;
     private int currentStage = 1;
-    private bool fightStarted = false;
+    private static bool fightStarted = false;
     private bool isTransitioning = false;
     private bool gameOver = false;
     private BossStateMachine bossStateMachine;
@@ -107,12 +107,16 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             playerStateMachine.OnDisable();
+            fightStarted = false;
+            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
             cutsceneManager.PlayCutScene(1);
         }
         else if (playerStateMachine.Health <= 0)
         {
             gameOver = true;
             playerStateMachine.OnDisable();
+            fightStarted = false;
+            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
             cutsceneManager.PlayCutScene(0);
         } else {
             BeginNextStage();
