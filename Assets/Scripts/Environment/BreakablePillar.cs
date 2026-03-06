@@ -18,10 +18,18 @@ public class BreakablePillar : MonoBehaviour, IDamageable
         health -= damage;
         float t = health / totalHealth;
         Color oldColor = gameObject.GetComponent<SpriteRenderer>().color;
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(255, oldColor.g / t, oldColor.b / t, 1f);
+        gameObject.GetComponent<SpriteRenderer>().color = oldColor * t;
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("hit player!");
         }
     }
 }
