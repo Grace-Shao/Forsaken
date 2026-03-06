@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         SetTimeScale(1f);
 
         saveData = SaveManager.Load();
-        currentStage = saveData.currentStage;
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
 
@@ -134,7 +133,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SaveGame(string spotID){
-        saveData.currentStage = currentStage;
+        saveData.currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         saveData.shootUnlocked = playerStateMachine.ShootUnlocked;
         saveData.canDash = playerStateMachine.CanDash;
         saveData.lastSaveSpotID = spotID;

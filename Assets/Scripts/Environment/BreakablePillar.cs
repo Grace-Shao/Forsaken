@@ -24,12 +24,4 @@ public class BreakablePillar : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
-
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("hit player!");
-        }
-    }
 }
