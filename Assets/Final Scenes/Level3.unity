@@ -842,7 +842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118228773}
   - component: {fileID: 118228774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316281317}
   - component: {fileID: 316281318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,9 +1496,9 @@ GameObject:
   m_Component:
   - component: {fileID: 382371587}
   - component: {fileID: 382371588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1921,7 +1921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 729700819}
   - component: {fileID: 729700820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 735662277}
   - component: {fileID: 735662278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2724,7 +2724,7 @@ Transform:
   m_GameObject: {fileID: 927467923}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.4, y: -0.2882753, z: 0.40910563}
+  m_LocalPosition: {x: -13.3, y: -0.2882753, z: 0.40910563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4820,7 +4820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277972159}
   - component: {fileID: 1277972160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5707,7 +5707,7 @@ Transform:
   m_GameObject: {fileID: 1525710697}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.1, y: -0.6882753, z: 0.40910563}
+  m_LocalPosition: {x: 33.55, y: -0.6882753, z: 0.40910563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6446,7 +6446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768501291}
   - component: {fileID: 1768501292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: light bridge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

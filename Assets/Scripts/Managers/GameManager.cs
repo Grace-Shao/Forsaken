@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Object References")]
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject eva;
     [SerializeField] private GameObject boss;
     [SerializeField] private CutsceneManager cutsceneManager;
     [SerializeField] private GameObject aggroArea;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     public bool IsTransitioning {get {return isTransitioning;} set {isTransitioning = value;}}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    void Start()
     {
         fightStarted = false;
         bossStateMachine = boss.GetComponent<BossStateMachine>();
@@ -40,20 +41,25 @@ public class GameManager : MonoBehaviour
         SetTimeScale(1f);
 
         saveData = SaveManager.Load();
-        currentScene = SceneManager.GetActiveScene().buildIndex;
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
-
         if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) return;
-        SaveSpot[] saveSpots = FindObjectsByType<SaveSpot>(FindObjectsSortMode.None);
-        foreach (SaveSpot spot in saveSpots) {
-            if (spot.SpotID == saveData.lastSaveSpotID) {
+        GameObject[] saveSpots = GameObject.FindGameObjectsWithTag("SavePoint");
+        Debug.Log(saveSpots.Length);
+        foreach (GameObject saveSpot in saveSpots) {
+            Debug.Log("iterating through save spots");
+            SaveSpot spot = saveSpot.GetComponent<SaveSpot>();
+            if (spot.SpotID.Equals(saveData.lastSaveSpotID)) {
+                Debug.Log("found a match!");
+                Debug.Log("loading save");
                 playerStateMachine.transform.position = new Vector3(spot.transform.position.x, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
                 playerStateMachine.Grounded = true;
+                eva.transform.position = new Vector3(spot.transform.position.x - 1f, eva.transform.position.y, eva.transform.position.z);
                 break;
             }
         }
     }
+
 
     public void MakeDecision()
     {
@@ -144,7 +150,16 @@ public class GameManager : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene(currentScene + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void EndChase()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }
     }
 
 }
