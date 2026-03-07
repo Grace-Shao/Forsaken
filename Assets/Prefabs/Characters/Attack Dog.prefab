@@ -108,7 +108,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 19
   m_Sprite: {fileID: 6613052858966909681, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7660885431777950277}
   - component: {fileID: 4248564548636948949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightLegSolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2917557068652310080}
   - component: {fileID: 1150961366492384230}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightArmSolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2309128604440559696}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftArmSolver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 19
   m_Sprite: {fileID: -5645145189003204161, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 7303136364799610531}
   - component: {fileID: 4553274875364653152}
   - component: {fileID: 6647227552972969039}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: hit received particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5305,7 +5305,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -94414329
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 22
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5380,7 +5380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3850587161189410822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftLegSolver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5509,7 +5509,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 18
   m_Sprite: {fileID: -8995753231789766707, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5584,7 +5584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6578261787627842306}
   - component: {fileID: 8257902620068632096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftArmSolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5714,7 +5714,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_Sprite: {fileID: -151683742202014778, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5757,7 +5757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139970639015653643}
   - component: {fileID: 4908895656291300394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftLegSolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6050,7 +6050,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 20
   m_Sprite: {fileID: -6367662790474341275, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6158,7 +6158,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_Sprite: {fileID: -1845789654523361798, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6267,7 +6267,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_Sprite: {fileID: 6272134809633613629, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6375,7 +6375,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_Sprite: {fileID: 2425432657723454482, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6418,7 +6418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3379471213040070623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightArmSolver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6515,7 +6515,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 6
   m_Sprite: {fileID: 6375471359773003686, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6623,7 +6623,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 16
   m_Sprite: {fileID: 1346712039062236987, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6731,7 +6731,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 18
   m_Sprite: {fileID: 1206778410953767563, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6901,7 +6901,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 16
   m_Sprite: {fileID: -6929882220178201283, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6980,7 +6980,7 @@ GameObject:
   - component: {fileID: 4532998935701671996}
   - component: {fileID: 2128199588845403183}
   - component: {fileID: 6832956387835755420}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attack Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6997,7 +6997,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -34.7726, y: -7.1933203, z: -0.03975423}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4730169175623901290}
@@ -7288,7 +7288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 18
   m_Sprite: {fileID: 5443147990045872553, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7428,7 +7428,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: 4022118627957855287, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7470,7 +7470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2389003215636923421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightLegSolver_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7599,7 +7599,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 19
   m_Sprite: {fileID: -6270092882520670127, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7707,7 +7707,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105041087
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 18
   m_Sprite: {fileID: -5102170304442118505, guid: 378b1f2a7134f2d41ac0e6b25b86fddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
