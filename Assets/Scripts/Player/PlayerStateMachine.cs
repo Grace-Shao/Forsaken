@@ -359,12 +359,12 @@ public class PlayerStateMachine : StateMachine, IDamageable
         {
             shootUnlocked = true;
             Debug.Log("you can now shoot! click LMB to shoot at your mouse position");
-            shootIcon.SetActive(true);
+            //shootIcon.SetActive(true);
         } else if (abilityNum == 3)
         {
             canDash = true;
             Debug.Log("you can now shoot! press shift to launch yourself!");
-            dashBar.gameObject.SetActive(true);
+            //dashBar.gameObject.SetActive(true);
         }
     }
 }
