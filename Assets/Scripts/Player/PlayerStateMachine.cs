@@ -5,6 +5,10 @@ using TMPro;
 
 public class PlayerStateMachine : StateMachine, IDamageable
 {
+    [SerializeField]private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
     //control variables
     [Header("Movement Control Variables")]
     [SerializeField] private  float runSpeed = 7f;
@@ -144,6 +148,8 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Shoot.canceled += OnShoot;
         playerInput.CharacterControls.Block.performed += OnBlock;
         playerInput.CharacterControls.Block.canceled += OnBlock;
+        playerInput.CharacterControls.Interact.performed += OnInteractPressed;
+        playerInput.CharacterControls.Interact.canceled += OnInteractPressed;
 
         Health = 100;
         Cooldown = 1f;
@@ -158,8 +164,17 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
     protected override void UpdateState()
     {
+        if (dialogueUI.IsOpen) return;
         HandleMovement();
         currentState.UpdateStates();
+    }
+
+    void OnInteractPressed(InputAction.CallbackContext context)
+    {
+        if (Interactable.CanInteract() && Interactable != null)
+        {
+           Interactable?.Interact(this); 
+        }
     }
 
     private void HandleMovement()
