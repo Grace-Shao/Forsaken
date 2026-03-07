@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Control Variables")]
     [SerializeField] private int numStages;
     private int currentStage = 1;
+    private int currentScene = 0;
     private static bool fightStarted = false;
     private bool isTransitioning = false;
     private bool gameOver = false;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         SetTimeScale(1f);
 
         saveData = SaveManager.Load();
+        currentScene = saveData.currentSceneIndex;
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
 
@@ -138,6 +140,11 @@ public class GameManager : MonoBehaviour
         saveData.canDash = playerStateMachine.CanDash;
         saveData.lastSaveSpotID = spotID;
         SaveManager.Save(saveData);
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(currentScene + 1);
     }
 
 }
