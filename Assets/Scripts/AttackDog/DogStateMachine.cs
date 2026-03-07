@@ -13,6 +13,7 @@ public class DogStateMachine : StateMachine, IDamageable
     [SerializeField] private float damageCooldown;
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
+    [SerializeField] private int maxHealth = 50;
     
     private bool isFlipped = false;
     private bool isStunned = false;
@@ -45,7 +46,7 @@ public class DogStateMachine : StateMachine, IDamageable
     {
         base.Init();
         sprite = transform.Find("Sprite");
-        Health = 100;
+        Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         manager = GameObject.Find("Management").transform.Find("GameManager").gameObject.GetComponent<GameManager>();
     }
