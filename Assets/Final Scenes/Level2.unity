@@ -2416,6 +2416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6242711781122676782}
+  hud: {fileID: 1365472655}
 --- !u!114 &304044541 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8906838996353302147, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
