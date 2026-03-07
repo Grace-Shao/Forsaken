@@ -16919,6 +16919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneManager: {fileID: 1731632024}
+  sceneIndex: 1
 --- !u!1 &2084872349
 GameObject:
   m_ObjectHideFlags: 0
