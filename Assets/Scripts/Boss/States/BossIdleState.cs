@@ -40,16 +40,13 @@ public class BossIdleState : State
             {
                 //Teleport every number of attacks
                 //Consider also making it a random chance to teleport?
-                if (bossContext.CurrentStage == 3)
+                teleport += 1;
+                if (bossContext.CurrentStage == 3 && teleport % 5 == 0)
                 {
-                    teleport += 1;
-                    if (teleport % 5 == 0)
-                    {
-                        SwitchState(new BossTeleportState(bossContext));
-                    }
+                    SwitchState(new BossTeleportState(bossContext));
                 }
                 // If stage 3 and boss can charged dash, always charged dash
-                if (bossContext.CurrentStage == 3 && bossContext.canDashAttack() && false)
+                else if (bossContext.CurrentStage == 3 && bossContext.canDashAttack() && false)
                 {
                     bossContext.NextAttack = 3;
                     SwitchState(new BossChargedDashState(bossContext));

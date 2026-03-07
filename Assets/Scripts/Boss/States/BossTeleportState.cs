@@ -3,6 +3,8 @@ public class BossTeleportState : State
 {
     private BossStateMachine bossContext;
     private GameObject hue;
+    private float timer = 0;
+    private float timeThreshold = 1;
     public BossTeleportState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
@@ -23,17 +25,19 @@ public class BossTeleportState : State
     }
     public override void UpdateState()
     {
+        timer += Time.deltaTime;
         CheckSwitchStates();
     }
     public override void ExitState()
     {
-        //Wait Timer
         //bossContext.Anim.ResetTrigger("teleport");
     }
 
     //fill in transition logic
     public override void CheckSwitchStates()
     {
-        SwitchState(new BossIdleState(bossContext));
+        if (timer >= timeThreshold) {
+            SwitchState(new BossIdleState(bossContext));
+        }
     }
 }
