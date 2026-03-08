@@ -355,6 +355,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
         if (other.gameObject.CompareTag("Ground"))
         {
             grounded = true;
+        } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Background"))
+        {
+            currentState.SwitchState(new PlayerIdleState(this));
         }
     }
 
@@ -363,7 +366,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
         if (other.gameObject.CompareTag("Ground"))
         {
             grounded = false;
-        }
+        } 
     }
 
     //ability 2 is shooting

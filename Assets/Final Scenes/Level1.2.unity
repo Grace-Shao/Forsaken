@@ -1427,7 +1427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 131474468}
   - component: {fileID: 131474469}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: left bound
   m_TagString: Ground
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -17871,7 +17871,7 @@ GameObject:
   - component: {fileID: 2083123966}
   - component: {fileID: 2083123967}
   - component: {fileID: 2083123968}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: right bound
   m_TagString: Ground
   m_Icon: {fileID: 0}
