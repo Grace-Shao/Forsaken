@@ -110,7 +110,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool DashStarted {get {return dashStarted; } set {dashStarted = value;}}
     public bool DashFinished {get {return dashFinished; } set {dashFinished = value;}}
     public bool IsDashing {get {return isDashing; } set {isDashing = value;}}
-    public bool CanDash {get {return canDash;}}
+    public bool CanDash {get {return canDash && !hitWall;}}
     public bool ShootUnlocked {get {return shootUnlocked;}}
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
@@ -372,6 +372,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
             grounded = false;
         } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Background"))
         {
+            Debug.Log($"Exit: {other.gameObject.name}, tag: {other.gameObject.tag}, layer: {LayerMask.LayerToName(other.gameObject.layer)}");
             hitWall = false;
         }
     }

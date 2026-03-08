@@ -21,12 +21,12 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().enabled = true;
         playerContext.DashTrail.GetComponent<DashTrail>().IsDrawingTrail = true;
         playerContext.DashTrail.GetComponent<DashTrail>().Direction = new Vector3(Mathf.Sign(direction.x), 0, 0);
-        playerContext.RB.isKinematic = true;
+        Time.timeScale = 0.75f;
     }
     public override void UpdateState()
     {
         Debug.Log("updating dash"); 
-        Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime);
+        Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime * 1.75f);
         if (playerContext.HitWall || Vector2.Distance(newPos, endGoal) <= 0.001)
         {
             playerContext.DashFinished = true;
@@ -46,7 +46,7 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().enabled = false;
         Physics2D.IgnoreLayerCollision(6, 7, false);
         Physics2D.IgnoreLayerCollision(6, 8, false);
-        playerContext.RB.isKinematic = false;
+        Time.timeScale = 1f;
         
     }
 

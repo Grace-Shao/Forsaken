@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject lossScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject decisionScreen;
+    [SerializeField] private GameObject nextSceenScreen;
 
     [Header("Control Variables")]
     [SerializeField] private int numStages;
@@ -152,7 +153,16 @@ public class GameManager : MonoBehaviour
         saveData.lastSaveSpotID = spotID;
         SaveManager.Save(saveData);
     }
-
+    public void OpenSceneMenu()
+    {
+        playerStateMachine.OnDisable();
+        nextSceenScreen.SetActive(true);
+    }
+    public void CloseSceneMenu()
+    {
+        playerStateMachine.OnEnable();
+        nextSceenScreen.SetActive(false);
+    }
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
