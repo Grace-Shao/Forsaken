@@ -24,13 +24,9 @@ public class PlayerDashAttackState : State
     }
     public override void UpdateState()
     {
-        Debug.Log("updating dash");
-        if (playerContext.HitWall)
-        {
-            SwitchState(new PlayerIdleState(playerContext));
-        }
+        Debug.Log("updating dash"); 
         Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(newPos, endGoal) <= 0.001)
+        if (playerContext.HitWall || Vector2.Distance(newPos, endGoal) <= 0.001)
         {
             playerContext.DashFinished = true;
             CheckSwitchStates();
