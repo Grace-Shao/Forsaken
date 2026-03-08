@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Investigate
   m_EditorClassIdentifier: 
   dialogue:
-  - Can we move on, Sis? I don't like it here
+  - Can we move on, ONE? I don't like it here
   responses:
   - responseText: Move On
     dialogueObject: {fileID: 11400000, guid: 2f65000149524ac4e9dff3c5fdcd5429, type: 2}
