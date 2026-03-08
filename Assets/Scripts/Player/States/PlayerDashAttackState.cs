@@ -11,6 +11,7 @@ public class PlayerDashAttackState : State
     }
     public override void EnterState()
     {
+        playerContext.SwordHitbox.enabled = true;
         direction = new Vector3(playerContext.IsMovementPressed ? playerContext.CurrentMovementInput.x : playerContext.Sprite.localScale.x, 0f, 0f);
         playerContext.Sprite.localScale = new Vector3(direction.x, 1f, 1f);
         endGoal = playerContext.Player.transform.position + direction * playerContext.DashDistance;
@@ -23,6 +24,11 @@ public class PlayerDashAttackState : State
     }
     public override void UpdateState()
     {
+        Debug.Log("updating dash");
+        if (playerContext.HitWall)
+        {
+            SwitchState(new PlayerIdleState(playerContext));
+        }
         Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime);
         if (Vector2.Distance(newPos, endGoal) <= 0.001)
         {
@@ -34,6 +40,7 @@ public class PlayerDashAttackState : State
     }
     public override void ExitState()
     {
+        playerContext.SwordHitbox.enabled = false;
         playerContext.DashFinished = false;
         playerContext.IsDashing = false;
         playerContext.Anim.ResetTrigger("dash");

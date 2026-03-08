@@ -10,6 +10,7 @@ public class PlayerIdleState : State
     }
     public override void EnterState()
     {
+        Debug.Log("entered idle");
         playerContext.CanMove = true;
         playerContext.Anim.SetTrigger("idle");
         playerContext.AppliedMovementX = 0f;
@@ -17,7 +18,6 @@ public class PlayerIdleState : State
     }
     public override void UpdateState()
     {
-        Debug.Log("idle");
         CheckSwitchStates();
     }
     public override void ExitState()
