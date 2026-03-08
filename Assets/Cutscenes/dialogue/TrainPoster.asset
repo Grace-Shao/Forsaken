@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrainPoster
   m_EditorClassIdentifier: 
   dialogue:
-  - '"Apparently, individuals with purple veins no longer have human rights."
+  - '"Breaking News: Individuals with purple veins no longer have human rights."
 
 '
   responses:
