@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class RoomBound : MonoBehaviour
 {
-    [SerializeField] private CutsceneManager cutsceneManager;
-    [SerializeField] private int sceneIndex;
+    [SerializeField] private GameManager gameManager;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            cutsceneManager.PlayCutScene(sceneIndex);
+            gameManager.OpenSceneMenu();
         }
     }
 }
