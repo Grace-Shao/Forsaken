@@ -46,7 +46,7 @@ public class BossIdleState : State
                     SwitchState(new BossTeleportState(bossContext));
                 }
                 // If stage 3 and boss can charged dash, always charged dash
-                else if (bossContext.CurrentStage == 3 && bossContext.canDashAttack() && false)
+                else if (randomChance < 0.4f && bossContext.CurrentStage == 3 && bossContext.canDashAttack())
                 {
                     bossContext.NextAttack = 3;
                     SwitchState(new BossChargedDashState(bossContext));

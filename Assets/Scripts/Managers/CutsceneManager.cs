@@ -35,6 +35,7 @@ public class CutsceneManager : MonoBehaviour
         {
             bossStateMachine.IsStunned = false;
             bossStateMachine.JumpToState(new BossStartState(bossStateMachine));  
+            manager.FightStarted = false;
         }
         
     }
@@ -44,6 +45,11 @@ public class CutsceneManager : MonoBehaviour
         if (!manager.GameOver)
         {
             playerStateMachine.OnEnable();
+        }
+        if (bossStateMachine.gameObject.activeInHierarchy == true)
+        {
+            bossStateMachine.IsStunned = false;
+            manager.FightStarted = true;
         }
         cutscenes[currentCutscene].GetComponent<PlayableDirector>().Stop();
     }

@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("found a match!");
                 Debug.Log("loading save");
                 playerStateMachine.transform.position = new Vector3(spot.transform.position.x, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
+                eva.transform.position = new Vector3(spot.transform.position.x - 1f, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
                 playerStateMachine.Grounded = true;
                 eva.transform.position = new Vector3(spot.transform.position.x - 1f, eva.transform.position.y, eva.transform.position.z);
                 break;
@@ -95,7 +96,6 @@ public class GameManager : MonoBehaviour
         songs[currentStage - 1].Stop();
         currentStage += 1;
         cutsceneManager.PlayCutScene(currentStage);
-        fightStarted = true;
         Debug.Log("entering next stage");
         IsTransitioning = true;
         bossStateMachine.Health = 100;

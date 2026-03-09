@@ -7,6 +7,7 @@ public class DogStateMachine : StateMachine, IDamageable
 
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
+    [SerializeField] private float aggroDistance;
     [SerializeField] private float stunTime;
     [SerializeField] private float stunInterval;
     [SerializeField] private int damage;
@@ -60,6 +61,7 @@ public class DogStateMachine : StateMachine, IDamageable
 
     protected override void UpdateState()
     {
+        Debug.Log(currentState);
         if (!IsTransitioning)
         {
             if (!inAttack)
@@ -127,7 +129,11 @@ public class DogStateMachine : StateMachine, IDamageable
 
     public bool InRange()
     {
-        return Vector3.Distance(transform.position,Player.transform.position) <= TargetDistance;
+        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= TargetDistance;
+    }
+    public bool InAggroRange()
+    {
+        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= aggroDistance;
     }
 
     public void onWindupStart()
