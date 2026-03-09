@@ -320,14 +320,12 @@ public class PlayerStateMachine : StateMachine, IDamageable
     void OnBlockAnimationStart()
     {
         BlockFinished = false;
-        swordHitbox.enabled = true;
 
     }
 
     void OnBlockAnimationFinish()
     {
         BlockFinished = true;
-        swordHitbox.enabled = false;
     }
 
     void OnShootAnimationStart()

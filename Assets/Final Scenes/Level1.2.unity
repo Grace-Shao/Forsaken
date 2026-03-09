@@ -1374,7 +1374,7 @@ GameObject:
   - component: {fileID: 131474469}
   m_Layer: 3
   m_Name: left bound
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4246,7 +4246,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 27710198953829577, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 30695349841600995, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Layer
@@ -4295,6 +4295,14 @@ PrefabInstance:
     - target: {fileID: 704557262791292499, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_SortingLayerID
       value: -1105041087
+      objectReference: {fileID: 0}
+    - target: {fileID: 771277454965814159, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: m_Mass
+      value: 1.3751717
+      objectReference: {fileID: 0}
+    - target: {fileID: 771277454965814159, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 790349478680456898, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_SortingLayer
@@ -20193,7 +20201,7 @@ GameObject:
   - component: {fileID: 2083123968}
   m_Layer: 3
   m_Name: right bound
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

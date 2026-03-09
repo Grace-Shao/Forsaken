@@ -3829,7 +3829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27710198953829577, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 27710198953829577, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Offset.x
@@ -9822,7 +9822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327244350917150012, guid: b359323362c6c8142b4e888e63b6721f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3497234558120973260, guid: b359323362c6c8142b4e888e63b6721f, type: 3}
       propertyPath: health
