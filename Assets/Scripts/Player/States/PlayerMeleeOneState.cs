@@ -21,7 +21,6 @@ public class PlayerMeleeOneState : State
     }
     public override void ExitState()
     {
-        Debug.Log("exiting attack");
         playerContext.Anim.ResetTrigger("attack");
     }
 
