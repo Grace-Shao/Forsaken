@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject lossScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject decisionScreen;
+    [SerializeField] private GameObject nextSceenScreen;
 
     [Header("Control Variables")]
     [SerializeField] private int numStages;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("found a match!");
                 Debug.Log("loading save");
                 playerStateMachine.transform.position = new Vector3(spot.transform.position.x, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
+                eva.transform.position = new Vector3(spot.transform.position.x - 1f, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
                 playerStateMachine.Grounded = true;
                 eva.transform.position = new Vector3(spot.transform.position.x - 1f, eva.transform.position.y, eva.transform.position.z);
                 break;
@@ -94,7 +96,6 @@ public class GameManager : MonoBehaviour
         songs[currentStage - 1].Stop();
         currentStage += 1;
         cutsceneManager.PlayCutScene(currentStage);
-        fightStarted = true;
         Debug.Log("entering next stage");
         IsTransitioning = true;
         bossStateMachine.Health = 100;
@@ -152,7 +153,16 @@ public class GameManager : MonoBehaviour
         saveData.lastSaveSpotID = spotID;
         SaveManager.Save(saveData);
     }
-
+    public void OpenSceneMenu()
+    {
+        playerStateMachine.OnDisable();
+        nextSceenScreen.SetActive(true);
+    }
+    public void CloseSceneMenu()
+    {
+        playerStateMachine.OnEnable();
+        nextSceenScreen.SetActive(false);
+    }
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

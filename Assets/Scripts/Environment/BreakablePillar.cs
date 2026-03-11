@@ -3,7 +3,6 @@ using UnityEngine;
 public class BreakablePillar : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
-    [SerializeField] private CutsceneManager cutsceneManager;
     private float totalHealth;
     private float cooldown = 0;
 
@@ -22,7 +21,7 @@ public class BreakablePillar : MonoBehaviour, IDamageable
         gameObject.GetComponent<SpriteRenderer>().color = oldColor * t;
         if (health <= 0)
         {
-            cutsceneManager.PlayCutScene(1);
+            Destroy(gameObject);
         }
     }
 }

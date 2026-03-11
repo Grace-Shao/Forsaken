@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287172029765451044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.39515904, w: 0.9186128}
+  m_LocalRotation: {x: 0, y: 0, z: 0.3951628, w: 0.9186111}
   m_LocalPosition: {x: 1.8419359, y: 0.00000014391176, z: 0}
   m_LocalScale: {x: 0.99999964, y: 0.99999964, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5426,7 +5426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571301056919053532}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7963836, w: 0.6047919}
+  m_LocalRotation: {x: 0, y: 0, z: -0.796384, w: 0.6047914}
   m_LocalPosition: {x: 0.79270303, y: -0.84453124, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5566,7 +5566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4046859317494998994}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.82272965, w: 0.56843287}
+  m_LocalRotation: {x: 0, y: 0, z: -0.8227309, w: 0.56843114}
   m_LocalPosition: {x: 2.5641687, y: -1.2438345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5967,7 +5967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6113089743680298486}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7864967, w: 0.6175945}
+  m_LocalRotation: {x: 0, y: 0, z: -0.78650177, w: 0.61758804}
   m_LocalPosition: {x: 1.3847528, y: -0.93532974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6960,7 +6960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7416394966209764360}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.000002712011, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0000007152557, w: 1}
   m_LocalPosition: {x: 2.76, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7112,7 +7112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   manager: {fileID: 0}
-  targetDistance: 6
+  targetDistance: 3
+  aggroDistance: 6
   stunTime: 2
   stunInterval: 5
   damage: 7
@@ -7144,7 +7145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7464411230131814721}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.042254236, w: 0.9991069}
+  m_LocalRotation: {x: -0, y: -0, z: 0.042262405, w: 0.9991066}
   m_LocalPosition: {x: 2.03, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7799,7 +7800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8942167010273306256}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.00000023841855, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00000086426724, w: 1}
   m_LocalPosition: {x: 2.85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -26,11 +26,10 @@ public class DogStartState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(dogContext);
         if (dogContext.InRange() && dogContext.OnGround)
         {
             SwitchState(new DogPounceState(dogContext));
-        } else if (!dogContext.InRange() && dogContext.OnGround)
+        } else if (dogContext.InAggroRange() && dogContext.OnGround)
         {
             SwitchState(new DogWalkState(dogContext));
         }

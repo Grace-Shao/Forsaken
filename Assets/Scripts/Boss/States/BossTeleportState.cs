@@ -13,6 +13,8 @@ public class BossTeleportState : State
     public override void EnterState()
     {
         Debug.Log("Teleporting");
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        Physics2D.IgnoreLayerCollision(7, 8, true);
         //bossContext.Anim.SetTrigger("teleport");
         if (hue.transform.position.x > -4)
         {
@@ -31,6 +33,8 @@ public class BossTeleportState : State
     public override void ExitState()
     {
         //bossContext.Anim.ResetTrigger("teleport");
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(7, 8, false);
     }
 
     //fill in transition logic
