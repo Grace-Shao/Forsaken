@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MoveOn
   m_EditorClassIdentifier: 
   dialogue:
-  - '*What has the world come to?*'
+  - '*Eva has been feeling sick lately... but she does not have these symptoms yet.
+    That''s good*'
   responses: []
