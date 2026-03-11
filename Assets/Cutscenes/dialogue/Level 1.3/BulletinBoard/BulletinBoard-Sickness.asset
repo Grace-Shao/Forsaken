@@ -10,12 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-  m_Name: TrainPoster
+  m_Name: BulletinBoard-Sickness
   m_EditorClassIdentifier: 
   dialogue:
   - '"Breaking News: Individuals with purple veins no longer have human rights."
 
 '
+  - '"Look for signs of infection: Purple Veins & Stained Skin all throughout the
+    body & blacked eyes."
+
+'
+  - '"Individuals with this disease last from 3 weeks to a month, with deterioting
+    conditions leading to a loss in mobility & motor functions, and can lead to violent
+    behavior & death.
+
+    This disease is airborne and highly contagious."
+
+'
   responses:
-  - responseText: Move On
+  - responseText: ...
     dialogueObject: {fileID: 11400000, guid: 0752fc9e76c6ee44fabe0199a50c1258, type: 2}
