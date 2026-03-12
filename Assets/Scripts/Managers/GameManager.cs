@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CutsceneManager cutsceneManager;
     [SerializeField] private GameObject aggroArea;
     [SerializeField] private AudioSource[] songs;
-
-
+    
     [Header("UI References")]
     [SerializeField] private GameObject lossScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject decisionScreen;
     [SerializeField] private GameObject nextSceenScreen;
+
 
     [Header("Control Variables")]
     [SerializeField] private int numStages;
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         aggroArea.SetActive(false);
         decisionScreen.SetActive(true);
     }
+
     public void BeginBattle()
     {
         Debug.Log("beginning battle");
