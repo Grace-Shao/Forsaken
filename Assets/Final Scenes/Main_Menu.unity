@@ -5205,6 +5205,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1909563259583671679, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
+      propertyPath: musicOnStart.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909563259583671679, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
+      propertyPath: musicOnStart.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909563259583671679, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
+      propertyPath: musicOnStart.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909563259583671679, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
+      propertyPath: musicOnStart.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909563259583671679, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
+      propertyPath: musicOnStart.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5123121585017600348, guid: 5204189373b7b5246bff05fcdefcc85c, type: 3}
       propertyPath: m_Name
       value: AudioManager
