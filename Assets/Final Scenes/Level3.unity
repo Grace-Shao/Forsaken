@@ -2883,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2795862760670629994, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3240867934085300364, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2931,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6040438501865548833, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6217942914267464521, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: manager
@@ -5730,6 +5730,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23035473592627920, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1958621180}
+    - target: {fileID: 23035473592627920, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5831,9 +5839,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1075818081}
     - target: {fileID: 3802319552376970646, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].value
+      value: 
+      objectReference: {fileID: 6163175544888521002}
+    - target: {fileID: 3802319552376970646, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].value
       value: 
       objectReference: {fileID: 1365472655}
+    - target: {fileID: 3802319552376970646, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[2].value
+      value: 
+      objectReference: {fileID: 4869140431642092503}
     - target: {fileID: 4349977751824661365, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[3].value
       value: 
@@ -5858,10 +5874,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TryAgain
       objectReference: {fileID: 0}
+    - target: {fileID: 5346302189243641235, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1958621180}
+    - target: {fileID: 5346302189243641235, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5804933098194417270, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6592745165520005059}
+    - target: {fileID: 8547237848314378546, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[5].value
+      value: 
+      objectReference: {fileID: 6163175544888521002}
+    - target: {fileID: 8547237848314378546, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].value
+      value: 
+      objectReference: {fileID: 4869140431642092503}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5958,6 +5990,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1365472655}
+    - target: {fileID: 8196066667409365152, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
+      propertyPath: numStages
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8196066667409365152, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: winScreen
       value: 
