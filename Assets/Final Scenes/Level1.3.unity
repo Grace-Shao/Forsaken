@@ -2172,7 +2172,7 @@ PlayableDirector:
   m_GameObject: {fileID: 189119078}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 4bb13d396af62894c9ee5ea6bb4c489e, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
@@ -2190,6 +2190,16 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -3936675824722351923, guid: 4bb13d396af62894c9ee5ea6bb4c489e, type: 2}
     value: {fileID: 71884684}
+  - key: {fileID: 365875749546105041, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
+    value: {fileID: 1942510344041767439}
+  - key: {fileID: -6395778934032317485, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
+    value: {fileID: 1942510344041767438}
+  - key: {fileID: -486701740990248656, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
+    value: {fileID: 1043510310}
+  - key: {fileID: 5622187327243592680, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
+    value: {fileID: 2084872349}
+  - key: {fileID: -3143104927655737147, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
+    value: {fileID: 940703457}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &189119081
@@ -17606,15 +17616,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5813708716190961812, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5813708716190961812, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5813708716190961812, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5813708716190961812, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17714,6 +17724,28 @@ PrefabInstance:
       addedObject: {fileID: 653089498}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
+--- !u!114 &1942510344041767438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6163175544965121793, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
+  m_PrefabInstance: {fileID: 1942510344041767437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1942510344041767439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4869140431599162876, guid: 37d6291cfcafaac449be5c622c0c56d3, type: 3}
+  m_PrefabInstance: {fileID: 1942510344041767437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2018197929890150571
 GameObject:
   m_ObjectHideFlags: 0
@@ -18510,8 +18542,8 @@ SceneRoots:
   - {fileID: 43923045}
   - {fileID: 732192987}
   - {fileID: 1140383579}
-  - {fileID: 1942510344041767437}
   - {fileID: 1365472658}
   - {fileID: 1252445829}
   - {fileID: 1439226559}
   - {fileID: 731498632}
+  - {fileID: 1942510344041767437}
