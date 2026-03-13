@@ -95,7 +95,11 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         playerStateMachine.gameObject.SetActive(false);
-        bossStateMachine.gameObject.SetActive(false);
+        if (bossStateMachine.gameObject.activeInHierarchy)
+        {
+           bossStateMachine.gameObject.SetActive(false); 
+        }
+        
         healthbar.SetActive(false);
     }
 
@@ -125,12 +129,12 @@ public class GameManager : MonoBehaviour
     }
     public void CheckWinStatus()
     {
-        if (currentStage == numStages && bossStateMachine.Health <= 0)
+        if (bossStateMachine.gameObject.activeInHierarchy && currentStage == numStages && bossStateMachine.Health <= 0)
         {
             gameOver = true;
             playerStateMachine.OnDisable();
             fightStarted = false;
-            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
+            //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
             cutsceneManager.PlayCutScene(1);
         }
         else if (playerStateMachine.Health <= 0)
@@ -138,7 +142,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             playerStateMachine.OnDisable();
             fightStarted = false;
-            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
+            //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
             cutsceneManager.PlayCutScene(0);
         } else {
             BeginNextStage();

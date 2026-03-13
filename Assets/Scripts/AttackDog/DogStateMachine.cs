@@ -49,7 +49,7 @@ public class DogStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
-        manager = GameObject.Find("Management").transform.Find("GameManager").gameObject.GetComponent<GameManager>();
+        //manager = GameObject.Find("Management").transform.Find("GameManager").gameObject.GetComponent<GameManager>();
     }
 
     protected override void EnterBeginningState()
