@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject decisionScreen;
     [SerializeField] private GameObject nextSceenScreen;
+    [SerializeField] private GameObject healthbar;
 
 
     [Header("Control Variables")]
@@ -88,7 +89,14 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         playerStateMachine.OnDisable();
         cutsceneManager.PlayCutScene(0);
-        
+    }
+
+    public void EndGame()
+    {
+        gameOver = true;
+        playerStateMachine.gameObject.SetActive(false);
+        bossStateMachine.gameObject.SetActive(false);
+        healthbar.SetActive(false);
     }
 
     //insert some way to transition here
