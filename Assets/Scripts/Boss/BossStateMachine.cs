@@ -188,9 +188,6 @@ public class BossStateMachine : StateMachine, IDamageable
         if (other.gameObject.transform == player)
         {
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
-        } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Background"))
-        {
-            JumpToState(new BossTeleportState(this));
         }
     }
     
