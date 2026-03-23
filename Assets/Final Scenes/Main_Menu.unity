@@ -5551,9 +5551,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 822412251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ae98d7e762d4c0b9e7d741c3149cd4, type: 3}
+  m_Script: {fileID: 11500000, guid: d49116ee86ebd6a4e9336ea99e778a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
+  gameManager: {fileID: 0}
+  pauseMenuUI: {fileID: 0}
+  nextSceenScreen: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!1 &822498998
 GameObject:
   m_ObjectHideFlags: 0
