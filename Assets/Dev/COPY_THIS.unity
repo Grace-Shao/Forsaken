@@ -14925,6 +14925,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1121229850}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1581276399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3651994614835438758, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 494349777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1598354746
 GameObject:
   m_ObjectHideFlags: 0
@@ -15280,6 +15285,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1617528747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4922549978311750965, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 494349777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632220900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3852785130957959443, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
@@ -21234,19 +21244,19 @@ PrefabInstance:
     - target: {fileID: 8922017970502453731, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: 'cutscenes.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1632220900}
     - target: {fileID: 8922017970502453731, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: 'cutscenes.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 803819580}
     - target: {fileID: 8922017970502453731, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: 'cutscenes.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1581276399}
     - target: {fileID: 8922017970502453731, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: 'cutscenes.Array.data[3]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1617528747}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
