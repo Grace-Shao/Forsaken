@@ -191,7 +191,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
     protected override void FaceMovement()
     {
-        if (IsMovementPressed)
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.05f)
         {
             sprite.localScale = new Vector3(Mathf.Sign(rb.linearVelocity.x), 1, 1);
         }
