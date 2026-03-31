@@ -11,6 +11,7 @@ public class BossLaserWindupState : State
     public override void EnterState()
     {
         //bossContext.flashCharacter();
+        bossContext.LasersFinished = 0;
         bossContext.Anim.SetTrigger("laser_windup");
     }
 

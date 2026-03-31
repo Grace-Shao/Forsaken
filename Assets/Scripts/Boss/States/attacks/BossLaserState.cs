@@ -71,7 +71,7 @@ public class BossLaserState : State
     {
         if (bossContext.LasersFinished == 1)
         {
-            Debug.Log("finished");
+            Debug.Log("laserState finished");
             SwitchState(new BossIdleState(bossContext));
         }
     }
