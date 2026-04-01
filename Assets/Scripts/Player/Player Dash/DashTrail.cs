@@ -7,7 +7,6 @@ public class DashTrail : MonoBehaviour
     [SerializeField] private GameObject trailMarker;
     [SerializeField] private int numMarkers = 5;
     [SerializeField] private float timeBetweenMarkers = 0.1f;
-    [SerializeField] private int dashDamage = 5;
 
     private float timeSinceLastMarker;
     private int curMarkers = 0;

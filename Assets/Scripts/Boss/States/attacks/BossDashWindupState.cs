@@ -11,7 +11,6 @@ public class BossDashWindupState : State
         bossContext.AttackFinished = 0;
         bossContext.IsDashing = true;
         bossContext.WindUpFinished = false;
-        bossContext.flashCharacter();
         bossContext.Anim.SetTrigger("charge");
         bossContext.AppliedMovementX = 0;
         bossContext.LastDashTime = Time.time;

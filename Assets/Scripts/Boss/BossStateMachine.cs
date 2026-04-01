@@ -1,7 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 public class BossStateMachine : StateMachine, IDamageable
-{
+{   
+    #region Serializable Entries
     [Header("Object References")]
     [SerializeField] private GameManager manager;
     [SerializeField] private Transform summonPosition;
@@ -32,26 +33,31 @@ public class BossStateMachine : StateMachine, IDamageable
     [Header("Enemy Summons Settings")]
     [SerializeField] private float summonCooldown;
     [SerializeField] private int numEnemies;
+    #endregion
 
+    #region Boss State Info
+    private int health;
     private bool isFlipped = false;
     private bool isStunned = false;
-    private int grapplingFinished = 0;
-    private bool isDashing = false;
+    private int introFinished = 0;
     private int attackFinished = 0;
     private int lasersFinished = 0;
-    private bool windUpFinished = true;
     private int hurtFinished = 0;
-    private int introFinished = 0;
-    private int health;
-    private ParticleSystem damageTakenParticles;
-
+    private int nextAttack;
+    private int grapplingFinished = 0;
+    private bool isDashing = false;
     private float lastDashTime = 0;
     private float lastDashMovementTime = 0;
+    private bool windUpFinished = true;
     private float lastDroneSummon = 0;
     private int curEnemies = 0;
+    #endregion
 
-    private int nextAttack;
+    #region VFX
+    private ParticleSystem damageTakenParticles;
+    #endregion
     
+    #region Getters and Setters
     public Transform SummonPos {get {return summonPosition;}}
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
@@ -83,74 +89,6 @@ public class BossStateMachine : StateMachine, IDamageable
     public float GrappleTargetDistance {get {return grappleTargetDistance;}}
     public int CurrentStage {get {return manager.CurrentStage;} set {manager.CurrentStage = value;}}
     public int NextAttack {get {return nextAttack;} set {nextAttack = value;}}
-
-    protected override void Init()
-    {
-        base.Init();
-        sprite = transform.Find("Sprite");
-        Health = 100;
-        damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
-    }
-
-    protected override void EnterBeginningState()
-    {
-        IsTransitioning = false;
-        currentState = new BossStartState(this);
-        currentState.EnterStates();
-    }
-
-    protected override void UpdateState()
-    {
-        if (!IsTransitioning)
-        {
-            rb.linearVelocity = appliedMovement;
-        }
-        currentState.UpdateStates();
-    }
-
-    protected override void FaceMovement()
-    {
-        Vector3 flipped = sprite.localScale;
-        flipped.x *= -1f;
-        if (sprite.position.x < player.transform.position.x && isFlipped)
-        {
-            sprite.localScale = flipped;
-            isFlipped = false;
-        } else if (sprite.position.x > player.transform.position.x && !isFlipped)
-        {
-            sprite.localScale = flipped;
-            isFlipped = true;
-        }
-    }
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.transform == player)
-        {
-            player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
-        }
-    }
-
-    public void flashCharacter()
-    {
-        sprite.GetComponent<DamageFlash>().BeginFlash();
-    }
-
-    public void ApplyDamage(int damage)
-    {
-        if (IntroFinished == 1 && manager.FightStarted)
-        {
-            Health -= damage;
-            Debug.Log("Enemy Health: " + Health);
-            //flashCharacter();
-            damageTakenParticles.Play();
-
-        }
-        if (Health <= 0f)
-        {
-            manager.CheckWinStatus();
-        }
-    }
-
     public bool canDashAttack()
     {
         return !InRange() && Vector3.Distance(transform.position, Player.transform.position) <= dashRange && (Time.time >= lastDashTime + dashCD);
@@ -180,7 +118,82 @@ public class BossStateMachine : StateMachine, IDamageable
     {
         return Vector2.Distance(transform.position, Player.transform.position) > GrappleTargetDistance;
     }
+    #endregion
 
+    #region State Machine Updates
+    protected override void Init()
+    {
+        base.Init();
+        sprite = transform.Find("Sprite");
+        Health = 100;
+        damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+    }
+
+    protected override void EnterBeginningState()
+    {
+        IsTransitioning = false;
+        currentState = new BossStartState(this);
+        currentState.EnterStates();
+    }
+
+    protected override void UpdateState()
+    {
+        if (!IsTransitioning)
+        {
+            rb.linearVelocity = appliedMovement;
+        }
+        currentState.UpdateStates();
+    }
+    #endregion
+    
+    #region Movement and Health Updates
+    protected override void FaceMovement()
+    {
+        Vector3 flipped = sprite.localScale;
+        flipped.x *= -1f;
+        if (sprite.position.x < player.transform.position.x && isFlipped)
+        {
+            sprite.localScale = flipped;
+            isFlipped = false;
+        } else if (sprite.position.x > player.transform.position.x && !isFlipped)
+        {
+            sprite.localScale = flipped;
+            isFlipped = true;
+        }
+    }
+    public void ApplyDamage(int damage)
+    {
+        if (IntroFinished == 1 && manager.FightStarted)
+        {
+            Health -= damage;
+            Debug.Log("Enemy Health: " + Health);
+            //flashCharacter();
+            damageTakenParticles.Play();
+
+        }
+        if (Health <= 0f)
+        {
+            manager.CheckWinStatus();
+        }
+    }
+    public void Stun()
+    {
+        JumpToState(new BossStunState(this));
+    }
+    #endregion
+
+    #region Collision Events
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.transform == player)
+        {
+            player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+    }
+    
+    #endregion
+
+    #region Animation Events
     public void onWindupStart()
     {
         windUpFinished = false;
@@ -214,11 +227,6 @@ public class BossStateMachine : StateMachine, IDamageable
         lasersFinished = 1;
 
     }
-
-    public void Stun()
-    {
-        JumpToState(new BossStunState(this));
-    }
-    
-    
+    #endregion
+ 
 }
