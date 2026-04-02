@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class PlayerStateMachine : StateMachine, IDamageable
+public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 {   
     #region SerializableElements
     [Header("Movement Control Variables")]
@@ -158,8 +158,6 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Interact.performed += OnInteractPressed;
         playerInput.CharacterControls.Interact.canceled += OnInteractPressed;
 
-        Health = 100;
-        Cooldown = 3f;
         canTakeDamage = 0f; 
     }
 
@@ -396,4 +394,23 @@ public class PlayerStateMachine : StateMachine, IDamageable
         HurtFinished = true;
     }
     #endregion
+    
+    public void HandleDifficulty(Difficulty difficulty)
+    {
+        switch (difficulty)
+        {
+            case Difficulty.Easy:
+                Health = 200;
+                Cooldown = 6f;
+                break;
+            case Difficulty.Normal:
+                Health = 100;
+                Cooldown = 3f;
+                break;
+            case Difficulty.Hard:
+                Health = 50;
+                Cooldown = 1.5f;
+                break;
+        }
+    }
 }

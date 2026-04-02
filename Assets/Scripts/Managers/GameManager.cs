@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -184,6 +186,7 @@ public class GameManager : MonoBehaviour
     private void LoadData()
     {
         saveData = SaveManager.Load();
+        SetAllDifficulties(saveData.difficulty);
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
         if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) return;
@@ -201,6 +204,17 @@ public class GameManager : MonoBehaviour
                 eva.transform.position = new Vector3(spot.transform.position.x - 1f, eva.transform.position.y, eva.transform.position.z);
                 break;
             }
+        }
+    }
+
+    private void SetAllDifficulties(Difficulty difficulty)
+    {
+        //search for all IDataPersistence objects, including inactive ones
+        IEnumerable<ISetDifficulty> objectsWithDifficulties = FindObjectsByType<MonoBehaviour>(0).OfType<ISetDifficulty>();
+
+        foreach (ISetDifficulty setDifficulty in objectsWithDifficulties)
+        {
+            setDifficulty.HandleDifficulty(difficulty);
         }
     }
 
