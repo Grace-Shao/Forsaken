@@ -688,6 +688,12 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 0}
   nextSceenScreen: {fileID: 0}
   hud: {fileID: 0}
+  startPanel: {fileID: 0}
+  continuePanel: {fileID: 0}
+  continueButton: {fileID: 0}
+  dropdown: {fileID: 0}
+  selectedProfile: 
+  selectedDifficulty: 1
 --- !u!1 &8482827102296225466
 GameObject:
   m_ObjectHideFlags: 0

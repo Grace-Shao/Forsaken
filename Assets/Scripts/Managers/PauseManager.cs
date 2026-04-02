@@ -26,16 +26,10 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    public void RestartGame()
-    {
-        SaveManager.DeleteData();
-        SceneManager.LoadScene("Level1.1");
-    }
-
     public void TryAgain()
     {
         SaveData saveData = SaveManager.Load();
-        if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) RestartGame();
+        if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) SceneManager.LoadScene("Main_Menu");
         int sceneIndex = saveData.currentSceneIndex;
         SceneManager.LoadScene(sceneIndex);
     }
