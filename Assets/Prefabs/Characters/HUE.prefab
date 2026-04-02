@@ -8951,15 +8951,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6184783247822821233, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.6666656
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 6184783247822821233, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.6666656
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 6184783247822821233, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.6666656
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 6184783247822821233, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9001,9 +9001,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6184783247822821233, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6361997728236094490, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_Name
       value: FX_Red_Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361997728236094490, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6856488564058940601, guid: fd25cbdb7c54fa4478d443fd2bea4ef1, type: 3}
       propertyPath: m_SortingOrder
