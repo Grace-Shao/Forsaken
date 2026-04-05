@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 257380513804923645, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 257380513804923645, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_MotionVectors
@@ -2819,7 +2819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 257380513804923645, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_SortingLayerID
-      value: -179029603
+      value: -94414329
       objectReference: {fileID: 0}
     - target: {fileID: 257380513804923645, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_Materials.Array.size
