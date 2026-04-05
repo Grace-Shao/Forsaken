@@ -180,7 +180,8 @@ public class BossStateMachine : StateMachine, IDamageable
     }
     public void Stun()
     {
-        JumpToState(new BossStunState(this));
+        Debug.Log("stunned");
+        currentState.SwitchState(new BossStunState(this));
     }
     #endregion
 
@@ -231,7 +232,6 @@ public class BossStateMachine : StateMachine, IDamageable
 
     public void AttackIndicator()
     {
-        Debug.Log("attack");
         attackIndicator.Play();
     }
     #endregion
