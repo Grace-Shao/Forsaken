@@ -16,7 +16,6 @@ public class DogPounceState : State
         Vector3 direction = (target - currentPos).normalized;
 
         dogContext.InAttack = true;
-        dogContext.Anim.Play("Pounce");
         dogContext.OnGround = false;
         dogContext.RB.AddForce(new Vector2(direction.x * dogContext.JumpForce.x, dogContext.JumpForce.y), ForceMode2D.Impulse);
         dogContext.AppliedMovementX = 0;

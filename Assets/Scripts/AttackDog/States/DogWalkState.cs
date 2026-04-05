@@ -10,11 +10,12 @@ public class DogWalkState : State
     public override void EnterState()
     {
         dogContext.AppliedMovementY = 0;
-        dogContext.Anim.Play("Walk");
+        dogContext.Anim.SetTrigger("Walk");
         
     }
     public override void UpdateState()
     {
+        Debug.Log("walking");
         Vector3 target = new Vector3(dogContext.Player.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
         Vector3 currentPos = new Vector3(dogContext.RB.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
         Vector3 direction = (target - currentPos).normalized;
@@ -24,17 +25,14 @@ public class DogWalkState : State
     }
     public override void ExitState()
     {
+        dogContext.Anim.ResetTrigger("Walk");
     }
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.IsStunned)
-        {   
-            SwitchState(new DogStunState(dogContext));
-        }
         if (dogContext.InRange() && !dogContext.InAttack)
         {
-            SwitchState(new DogPounceState(dogContext));
+            SwitchState(new DogWindupState(dogContext));
         }
     }
 }

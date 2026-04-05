@@ -20,6 +20,7 @@ public class DogStateMachine : StateMachine, IDamageable
     private bool windUpFinished = true;
     private int health;
     private ParticleSystem damageTakenParticles;
+    private ParticleSystem attackIndicator;
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
     public bool InAttack {get {return inAttack; } set {inAttack = value;}}
@@ -40,6 +41,7 @@ public class DogStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        attackIndicator = sprite.Find("HeadTop").Find("Attack Indicator").GetComponent<ParticleSystem>();
     }
 
     protected override void EnterBeginningState()
@@ -140,6 +142,11 @@ public class DogStateMachine : StateMachine, IDamageable
     public void OnAttackEnd()
     {
         inAttack = false;
+    }
+
+    public void AttackIndicator()
+    {
+        attackIndicator.Play();
     }
     
 
