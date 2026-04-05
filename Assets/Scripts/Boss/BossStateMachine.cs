@@ -55,6 +55,7 @@ public class BossStateMachine : StateMachine, IDamageable
 
     #region VFX
     private ParticleSystem damageTakenParticles;
+    private ParticleSystem attackIndicator;
     #endregion
     
     #region Getters and Setters
@@ -127,6 +128,7 @@ public class BossStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = 100;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        attackIndicator = sprite.Find("Broadsword").Find("ShootPoint").Find("Attack Indicator").GetComponent<ParticleSystem>();
     }
 
     protected override void EnterBeginningState()
@@ -223,9 +225,14 @@ public class BossStateMachine : StateMachine, IDamageable
 
     public void OnLaserAttackEnd()
     {
-        Debug.Log("lasers finished");
         lasersFinished = 1;
 
+    }
+
+    public void AttackIndicator()
+    {
+        Debug.Log("attack");
+        attackIndicator.Play();
     }
     #endregion
  
