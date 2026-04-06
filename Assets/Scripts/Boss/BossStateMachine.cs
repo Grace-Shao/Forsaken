@@ -104,6 +104,12 @@ public class BossStateMachine : StateMachine, IDamageable
         return Time.time >= lastDroneSummon + summonCooldown && curEnemies < numEnemies;
     }
 
+    public bool CanTriggerUltimate()
+    {
+        // turn into real trigger later
+        return Input.GetKeyDown(KeyCode.J);
+    }
+
 
     public bool InRange()
     {

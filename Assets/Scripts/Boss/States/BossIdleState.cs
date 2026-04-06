@@ -58,6 +58,7 @@ public class BossIdleState : State
                     && bossContext.GrappleInRange()
                 )
                 {
+                    bossContext.NextAttack = 4;
                     SwitchState(new BossGrappleState(bossContext));
                 }
                 else if (randomChance < 0.5f)
