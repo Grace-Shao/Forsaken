@@ -28,7 +28,7 @@ public class DogPounceState : State
     }
     public override void ExitState()
     {
-        //dogContext.InAttack = false;
+        dogContext.InAttack = false;
         dogContext.OnGround = true;
     }
 
