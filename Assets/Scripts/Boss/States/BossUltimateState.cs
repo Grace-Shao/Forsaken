@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class BossUltimateState : State
 {
@@ -18,9 +19,9 @@ public class BossUltimateState : State
     private SlashInfo[] slashes;
     private LineRenderer chain;
     private float slashLifetime = 1.5f;
-    private float slashTimer = 0f;
+    private Coroutine ultimateCoroutine;
 
-    // Slash configuration constants
+    // Slash config constants
     private int numSlashes = 8;
     private float minLength = 50f;
     private float maxLength = 80f;
@@ -41,13 +42,11 @@ public class BossUltimateState : State
         bossContext.AppliedMovementY = 0;
 
         Vector3 bossOrigin = bossContext.transform.position + Vector3.up * 2f;
-
         slashes = new SlashInfo[numSlashes];
-        slashTimer = 0f;
 
         chain = bossContext.GetComponentInChildren<LineRenderer>(true);
 
-        // Create slashes gameobject with chain linerenderer
+        // Create slashes gameobject with HUE's chain linerenderer
         for (int i = 0; i < numSlashes; i++)
         {
             LineRenderer lr = null;
@@ -81,28 +80,63 @@ public class BossUltimateState : State
             lr.SetPosition(1, origin);
             slashes[i] = new SlashInfo(lr, origin, end);
         }
+
+        // animate the chains expanding
+        ultimateCoroutine = bossContext.StartCoroutine(RunUltimate());
     }
 
     public override void UpdateState()
     {
-        slashTimer += Time.deltaTime;
+    }
 
-        // Animate outward for the full slash lifetime
-        if (slashes != null)
+    private IEnumerator RunUltimate()
+    {
+        float elapsed = 0f;
+        while (elapsed < slashLifetime)
         {
-            float t = Mathf.Clamp01(slashTimer / Mathf.Max(slashLifetime, 0.0001f));
+            elapsed += Time.deltaTime;
+            // t = normalized progress from 0 to 1, divide by 0.0001 to avoid divide by zero
+            float t = Mathf.Clamp01(elapsed / Mathf.Max(slashLifetime, 0.0001f));
+
+            // diving by 0.2 means last 20% of the animation time is chains fading out
+            // adjust 0.2 if needed
+            float alphaMultiplier = Mathf.Clamp01((1f - t) / 0.2f);
+
+            // for each slash, lerp the end point from origin to end, and fade out over time
             for (int i = 0; i < slashes.Length; i++)
             {
                 if (slashes[i] != null && slashes[i].LineRenderer != null)
+                {
                     slashes[i].LineRenderer.SetPosition(1, Vector3.Lerp(slashes[i].Origin, slashes[i].End, t));
+
+                    // grab the line render colors and apply the fade
+                    Color startColor = slashes[i].LineRenderer.startColor;
+                    Color endColor = slashes[i].LineRenderer.endColor;
+                    startColor.a = alphaMultiplier;
+                    endColor.a = alphaMultiplier;
+                    slashes[i].LineRenderer.startColor = startColor;
+                    slashes[i].LineRenderer.endColor = endColor;
+                }
             }
+            yield return null;
         }
-        CheckSwitchStates();
+        
+
+        ultimateCoroutine = null;
+
+        // automatically exit
+        SwitchState(new BossTransitionState(bossContext));
     }
 
     public override void ExitState()
     {
         Debug.Log("Boss Ultimate exited");
+        if (ultimateCoroutine != null)
+        {
+            bossContext.StopCoroutine(ultimateCoroutine);
+            ultimateCoroutine = null;
+        }
+
         // Clean up slashes
         if (slashes != null)
         {
@@ -114,7 +148,5 @@ public class BossUltimateState : State
 
     public override void CheckSwitchStates()
     {
-        if (slashTimer >= slashLifetime)
-            SwitchState(new BossTransitionState(bossContext));
     }
 }
