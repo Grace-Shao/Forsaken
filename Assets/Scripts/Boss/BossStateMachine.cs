@@ -106,8 +106,9 @@ public class BossStateMachine : StateMachine, IDamageable
 
     public bool CanTriggerUltimate()
     {
-        // turn into real trigger later
-        return Input.GetKeyDown(KeyCode.J);
+        // make it a smaller chance later
+        // bool lowHp = Health <= (Health * 0.2f);
+        return Health <= (Health * 1f);
     }
 
 

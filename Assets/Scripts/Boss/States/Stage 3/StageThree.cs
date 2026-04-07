@@ -43,11 +43,6 @@ public class StageThree : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.CanTriggerUltimate())
-        {
-            SwitchState(new BossUltimateState(bossContext));
-            return;
-        }
         if (bossContext.IsTransitioning)
         {
             SwitchState(new BossTransitionState(bossContext));
