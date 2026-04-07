@@ -4641,7 +4641,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &732192989 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7930054643031926133, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1825528825577352223, guid: 193c249e372e47042bbd482a433b6183, type: 3}
   m_PrefabInstance: {fileID: 732192987}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &732192993 stripped
