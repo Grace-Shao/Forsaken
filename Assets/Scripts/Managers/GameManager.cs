@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerParry()
     {
-        if (bossStateMachine != null)
+        if (bossStateMachine != null && bossStateMachine.gameObject.activeInHierarchy)
         {
             bossStateMachine.Stun();
         }

@@ -10,7 +10,7 @@ public class DogStartState : State
     }
     public override void EnterState()
     {
-        dogContext.Anim.Play("Idle");
+        dogContext.Anim.SetTrigger("Idle");
         dogContext.AppliedMovementX = 0f;
         dogContext.AppliedMovementY = 0f;
     }
@@ -20,6 +20,7 @@ public class DogStartState : State
     }
     public override void ExitState()
     {
+        dogContext.Anim.ResetTrigger("Idle");
         dogContext.AppliedMovementX = 0f;
         dogContext.AppliedMovementY = 0f;
     }
@@ -28,7 +29,7 @@ public class DogStartState : State
     {
         if (dogContext.InRange() && dogContext.OnGround)
         {
-            SwitchState(new DogPounceState(dogContext));
+            SwitchState(new DogWindupState(dogContext));
         } else if (dogContext.InAggroRange() && dogContext.OnGround)
         {
             SwitchState(new DogWalkState(dogContext));
