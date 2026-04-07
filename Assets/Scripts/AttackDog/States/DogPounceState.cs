@@ -34,7 +34,7 @@ public class DogPounceState : State
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.InAttack == false)
+        if (!dogContext.InAttack && dogContext.OnGround)
         {
             SwitchState(new DogStunState(dogContext));
         }

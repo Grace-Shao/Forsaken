@@ -30,10 +30,10 @@ public class DogStunState : State
     {
         if (curTime > dogContext.StunTime)
         {
-            if (dogContext.InRange() && dogContext.OnGround)
+            if (dogContext.InRange())
             {
                 SwitchState(new DogWindupState(dogContext));
-            } else if (!dogContext.InRange() && dogContext.OnGround)
+            } else if (!dogContext.InRange())
             {
                 SwitchState(new DogWalkState(dogContext));
             }

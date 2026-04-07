@@ -30,7 +30,7 @@ public class DogWalkState : State
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.InRange() && !dogContext.InAttack)
+        if (dogContext.InRange())
         {
             SwitchState(new DogWindupState(dogContext));
         }

@@ -17,7 +17,7 @@ public class DogStateMachine : StateMachine, IDamageable
     private bool isStunned = false;
     private bool inAttack = false;
     private bool onGround = false;
-    private bool windUpFinished = true;
+    private bool windUpFinished = false;
     private int health;
     private ParticleSystem damageTakenParticles;
     private ParticleSystem attackIndicator;
