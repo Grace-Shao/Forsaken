@@ -5,11 +5,13 @@ public class BossUltimateState : State
     private class SlashInfo
     {
         public LineRenderer LineRenderer;
+        public BoxCollider2D Collider;
         public Vector3 Origin;
         public Vector3 End;
-        public SlashInfo(LineRenderer lr, Vector3 origin, Vector3 end)
+        public SlashInfo(LineRenderer lr, BoxCollider2D collider, Vector3 origin, Vector3 end)
         {
             LineRenderer = lr;
+            Collider = collider;
             Origin = origin;
             End = end;
         }
@@ -27,6 +29,7 @@ public class BossUltimateState : State
     private float maxLength = 80f;
     private float angleSpread = 270f;
     private float originRadius = 2.5f;
+    private float slashColliderThickness = 0.35f;
 
     public BossUltimateState(BossStateMachine currentContext) : base(currentContext)
     {
@@ -50,6 +53,7 @@ public class BossUltimateState : State
         for (int i = 0; i < numSlashes; i++)
         {
             LineRenderer lr = null;
+            BoxCollider2D slashCollider = null;
             if (chain != null)
             {
                 lr = Object.Instantiate(chain);
@@ -63,6 +67,16 @@ public class BossUltimateState : State
                 lr = slashObj.AddComponent<LineRenderer>();
                 lr.widthMultiplier = 0.2f;
             }
+
+            // Box collider needed to deal dmg
+            slashCollider = lr.GetComponent<BoxCollider2D>();
+            if (slashCollider == null)
+            {
+                slashCollider = lr.gameObject.AddComponent<BoxCollider2D>();
+            }
+            slashCollider.isTrigger = true;
+            slashCollider.enabled = true;
+
             lr.positionCount = 2;
 
             float angle = Random.Range(0f, angleSpread);
@@ -75,10 +89,10 @@ public class BossUltimateState : State
             Vector3 origin = bossOrigin + offset;
             Vector3 end = origin + dir * length;
 
-            // Start both points at origin, animate outward in UpdateState
+            // Start both points at origin
             lr.SetPosition(0, origin);
             lr.SetPosition(1, origin);
-            slashes[i] = new SlashInfo(lr, origin, end);
+            slashes[i] = new SlashInfo(lr, slashCollider, origin, end);
         }
 
         // animate the chains expanding
@@ -98,7 +112,7 @@ public class BossUltimateState : State
             // t = normalized progress from 0 to 1, divide by 0.0001 to avoid divide by zero
             float t = Mathf.Clamp01(elapsed / Mathf.Max(slashLifetime, 0.0001f));
 
-            // diving by 0.2 means last 20% of the animation time is chains fading out
+            // dividing by 0.2 means last 20% of the animation time is chains fading out
             // adjust 0.2 if needed
             float alphaMultiplier = Mathf.Clamp01((1f - t) / 0.2f);
 
@@ -107,15 +121,33 @@ public class BossUltimateState : State
             {
                 if (slashes[i] != null && slashes[i].LineRenderer != null)
                 {
-                    slashes[i].LineRenderer.SetPosition(1, Vector3.Lerp(slashes[i].Origin, slashes[i].End, t));
+                    SlashInfo slash = slashes[i];
+                    Vector3 currentEnd = Vector3.Lerp(slash.Origin, slash.End, t);
+                    slash.LineRenderer.SetPosition(1, currentEnd);
+
+                    // scale each collider to match line render
+                    if (slash.Collider != null)
+                    {
+                        Vector3 start = slash.Origin;
+                        Vector3 delta = currentEnd - start;
+                        float length = delta.magnitude;
+
+                        slash.Collider.enabled = true;
+                        Vector3 midpoint = start + (delta * 0.5f); // centered on the slash
+                        // rotate collider to match angle of the slash (convert to rad)
+                        slash.Collider.transform.SetPositionAndRotation(midpoint, Quaternion.Euler(0f, 0f, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg));
+                        slash.Collider.size = new Vector2(length, slashColliderThickness);
+                        slash.Collider.offset = Vector2.zero;
+
+                    }
 
                     // grab the line render colors and apply the fade
-                    Color startColor = slashes[i].LineRenderer.startColor;
-                    Color endColor = slashes[i].LineRenderer.endColor;
+                    Color startColor = slash.LineRenderer.startColor;
+                    Color endColor = slash.LineRenderer.endColor;
                     startColor.a = alphaMultiplier;
                     endColor.a = alphaMultiplier;
-                    slashes[i].LineRenderer.startColor = startColor;
-                    slashes[i].LineRenderer.endColor = endColor;
+                    slash.LineRenderer.startColor = startColor;
+                    slash.LineRenderer.endColor = endColor;
                 }
             }
             yield return null;
