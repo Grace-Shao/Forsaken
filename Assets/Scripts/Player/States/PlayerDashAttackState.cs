@@ -11,6 +11,7 @@ public class PlayerDashAttackState : State
     }
     public override void EnterState()
     {
+        if (playerContext.Energy < playerContext.DashCost) {return;}
         playerContext.SwordHitbox.enabled = true;
         direction = new Vector3(playerContext.IsMovementPressed ? playerContext.CurrentMovementInput.x : playerContext.Sprite.localScale.x, 0f, 0f);
         playerContext.Sprite.localScale = new Vector3(direction.x, 1f, 1f);
@@ -22,10 +23,10 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().IsDrawingTrail = true;
         playerContext.DashTrail.GetComponent<DashTrail>().Direction = new Vector3(Mathf.Sign(direction.x), 0, 0);
         Time.timeScale = 0.75f;
+        playerContext.updateEnergy(-playerContext.DashCost);
     }
     public override void UpdateState()
-    {
-        Debug.Log("updating dash"); 
+    {     
         Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime * 1.75f);
         if (playerContext.HitWall || Vector2.Distance(newPos, endGoal) <= 0.001)
         {
