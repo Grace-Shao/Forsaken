@@ -1755,9 +1755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d6f5b175ea8a54fbb5c7e9599ca158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  targetDistance: 3
-  aggroDistance: 6
+  moveSpeed: 10
+  targetDistance: 2
+  aggroDistance: 10
   stunTime: 2
   stunInterval: 5
   damage: 7

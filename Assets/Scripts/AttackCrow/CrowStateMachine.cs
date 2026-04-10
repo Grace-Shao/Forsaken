@@ -49,14 +49,7 @@ public class CrowStateMachine : StateMachine, IDamageable
 
     protected override void UpdateState()
     {
-        if (!inAttack)
-        {
-            rb.linearVelocity = appliedMovement;
-        }
-        else
-        {
-            rb.AddForce(appliedMovement, ForceMode2D.Impulse);
-        }
+        rb.linearVelocity = appliedMovement;
         currentState.UpdateStates();
     }
 
@@ -95,11 +88,11 @@ public class CrowStateMachine : StateMachine, IDamageable
 
     public bool InRange()
     {
-        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= TargetDistance;
+        return (transform.position - Player.transform.position).magnitude <= TargetDistance;
     }
     public bool InAggroRange()
     {
-        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= aggroDistance;
+        return (transform.position - Player.transform.position).magnitude <= aggroDistance;
     }
 
     public void onWindupStart()
