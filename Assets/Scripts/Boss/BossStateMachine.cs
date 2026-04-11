@@ -55,6 +55,7 @@ public class BossStateMachine : StateMachine, IDamageable
 
     #region VFX
     private ParticleSystem damageTakenParticles;
+    private ParticleSystem attackIndicator;
     #endregion
     
     #region Getters and Setters
@@ -103,6 +104,13 @@ public class BossStateMachine : StateMachine, IDamageable
         return Time.time >= lastDroneSummon + summonCooldown && curEnemies < numEnemies;
     }
 
+    public bool CanTriggerUltimate()
+    {
+        // make it a smaller chance later
+        // bool lowHp = Health <= (Health * 0.2f);
+        return Health <= (Health * 1f);
+    }
+
 
     public bool InRange()
     {
@@ -127,6 +135,7 @@ public class BossStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = 100;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        attackIndicator = sprite.Find("Broadsword").Find("ShootPoint").Find("Attack Indicator").GetComponent<ParticleSystem>();
     }
 
     protected override void EnterBeginningState()
@@ -178,7 +187,8 @@ public class BossStateMachine : StateMachine, IDamageable
     }
     public void Stun()
     {
-        JumpToState(new BossStunState(this));
+        Debug.Log("stunned");
+        currentState.SwitchState(new BossStunState(this));
     }
     #endregion
 
@@ -223,9 +233,13 @@ public class BossStateMachine : StateMachine, IDamageable
 
     public void OnLaserAttackEnd()
     {
-        Debug.Log("lasers finished");
         lasersFinished = 1;
 
+    }
+
+    public void AttackIndicator()
+    {
+        attackIndicator.Play();
     }
     #endregion
  

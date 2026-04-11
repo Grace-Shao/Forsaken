@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Boss_Laser : Weapon
+public class Boss_Chain : Weapon
 {
     protected override void Init()
     {
