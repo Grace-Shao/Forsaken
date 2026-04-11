@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: df2b8cdcaab36409da006e6398589957
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - abilityAnimation: {instanceID: 0}
+  - iconUI: {instanceID: 0}
+  - abilityName: {instanceID: 0}
+  - abilityDescription: {instanceID: 0}
+  - dashAnimation: {fileID: 2000362092516522838, guid: f81a33df903a64994aa1722b40b00f38, type: 3}
+  - shootAnimation: {instanceID: 0}
+  - dashIconSprite: {fileID: 7040346865362410759, guid: ef46a249b293c466ba541edecdd88a24, type: 3}
+  - shootIconSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
