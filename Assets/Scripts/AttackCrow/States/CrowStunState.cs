@@ -10,7 +10,7 @@ public class CrowStunState : State
     }
     public override void EnterState()
     {
-        crowContext.Anim.Play("Idle");
+        crowContext.Anim.SetTrigger("Idle");
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;
         curTime = 0f;
@@ -23,6 +23,7 @@ public class CrowStunState : State
     }
     public override void ExitState()
     {
+        crowContext.Anim.ResetTrigger("Idle");
         crowContext.IsStunned = false;
     }
 

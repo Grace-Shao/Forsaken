@@ -72,6 +72,14 @@ public class CrowStateMachine : StateMachine, IDamageable
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("doing damage");
+            player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+    }
     public void flashCharacter()
     {
         sprite.GetComponent<DamageFlash>().BeginFlash();

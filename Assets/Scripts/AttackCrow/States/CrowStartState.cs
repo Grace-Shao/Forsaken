@@ -12,7 +12,7 @@ public class CrowStartState : State
     }
     public override void EnterState()
     {
-        crowContext.Anim.Play("Idle");
+        crowContext.Anim.SetTrigger("Idle");
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;
         Debug.Log("cro start");
@@ -23,6 +23,7 @@ public class CrowStartState : State
     }
     public override void ExitState()
     {
+        crowContext.Anim.ResetTrigger("Idle");
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;
     }

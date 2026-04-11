@@ -17,7 +17,7 @@ public class CrowWalkState : State
     }
     public override void EnterState()
     {
-        crowContext.Anim.Play("Walk");
+        crowContext.Anim.SetTrigger("Idle");
         startPos = new Vector3(crowContext.RB.gameObject.transform.position.x, crowContext.RB.gameObject.transform.position.y, 0f);
         endPos = new Vector3(crowContext.Player.gameObject.transform.position.x, 
             crowContext.Player.gameObject.transform.position.y, 0f);
@@ -43,6 +43,7 @@ public class CrowWalkState : State
 
     public override void ExitState()
     {
+        crowContext.Anim.ResetTrigger("Idle");
         crowContext.InAttack = false;
     }
 
