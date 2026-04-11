@@ -22,6 +22,7 @@ public class MobRushManager : MonoBehaviour
     [SerializeField] private BoxCollider2D rightBound;
     private GameManager gameManager;
     private List<DogStateMachine> dogs;
+    private List<CrowStateMachine> crows;
     private int numDogs;
     private int numCrows;
     #endregion
@@ -30,6 +31,7 @@ public class MobRushManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         dogs = new();
+        crows = new();
         numDogs = 0;
         numCrows = 0;
     }
@@ -39,9 +41,13 @@ public class MobRushManager : MonoBehaviour
         Debug.Log("starting stage one");
         leftBound.enabled = true;
         rightBound.enabled = true;
-        for (int i = 0; i < maxDogs; i++)
+        for (int i = 0; i < maxDogsAtOnce; i++)
         {
             SpawnDog();
+        }
+        for (int i = 0; i < maxCrowsAtOnce; i++)
+        {
+            SpawnCrow();
         }
     }
     public void FinishFight()
@@ -67,23 +73,58 @@ public class MobRushManager : MonoBehaviour
         dogs[dogs.Count - 1].Attack();
     }
 
+    public void SpawnCrow()
+    {
+        float randomChance = Random.Range(0f, 1f);
+        GameObject crowIsntance;
+        if (randomChance <= 0.5f)
+        {
+            crowIsntance = Instantiate(crow, crowSpawnPointOne.position, Quaternion.identity);
+        } else
+        {
+            crowIsntance = Instantiate(crow, crowSpawnPointTwo.position, Quaternion.identity);
+        }
+        crows.Add(crowIsntance.GetComponent<CrowStateMachine>());
+        crows[crows.Count - 1].CrowDeath += OnCrowDeath;
+        crows[crows.Count - 1].Attack();
+    }
+
     public void OnDogDeath(DogStateMachine dogInstance)
     {
         numDogs += 1;
         dogs.Remove(dogInstance);
         if (numDogs <= maxDogs)
         {
-            StartCoroutine(Cooldown());
+            StartCoroutine(CooldownDog());
         } else if (numCrows > maxCrows)
         {
             FinishFight();
         }
     }
 
-    System.Collections.IEnumerator Cooldown()
+    public void OnCrowDeath(CrowStateMachine crowInstance)
+    {
+        numCrows += 1;
+        crows.Remove(crowInstance);
+        if (numCrows <= maxCrows)
+        {
+            StartCoroutine(CooldownCrow());
+        } else if (numDogs > maxDogs)
+        {
+            FinishFight();
+        }
+    }
+
+    System.Collections.IEnumerator CooldownDog()
     {
         yield return new WaitForSecondsRealtime(cooldown);
         SpawnDog();
+    }
+
+    System.Collections.IEnumerator CooldownCrow()
+    {
+        yield return new WaitForSecondsRealtime(cooldown);
+        SpawnCrow();
     }
 
 }
