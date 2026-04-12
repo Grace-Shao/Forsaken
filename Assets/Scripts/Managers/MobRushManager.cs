@@ -17,6 +17,8 @@ public class MobRushManager : MonoBehaviour
     [SerializeField] private Transform dogSpawnPointTwo;
     [SerializeField] private Transform crowSpawnPointOne;
     [SerializeField] private Transform crowSpawnPointTwo;
+    [SerializeField] private GameObject blaster;
+
     private GameManager gameManager;
     private BossStateMachine boss;
     private PlayerStateMachine player;
@@ -132,6 +134,7 @@ public class MobRushManager : MonoBehaviour
     {
         boss.gameObject.SetActive(false);
         player.OnEnable();
+        blaster.SetActive(true);
     }
 
     System.Collections.IEnumerator CooldownDog()
