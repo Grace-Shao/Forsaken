@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
-{   
+{
     #region SerializableElements
     [Header("Movement Control Variables")]
     [SerializeField] private  float runSpeed = 7f;
@@ -32,7 +32,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public DialogueUI DialogueUI => dialogueUI;
 
     #endregion
-    
+
     #region PlayerStateInfo
     private PlayerInput playerInput;
     private Vector2 currentMovementInput;
@@ -45,7 +45,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     private bool isHitPressed;
     private bool isShootPressed;
     private bool isDashPressed;
-    private bool isHurt; 
+    private bool isHurt;
     private bool attackFinished = false;
     private bool blockFinished = true;
     private bool shootStarted = false;
@@ -76,7 +76,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     //additional game objects
     private GameObject dashTrail;
     private Player_Ranged rangedWeapon;
-    
+
     private ParticleSystem damageTakenParticles;
     [SerializeField] private ParticleSystem parryParticles;
     #endregion
@@ -178,6 +178,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         Energy = maxEnergy;
         Cooldown = 3f;
         canTakeDamage = 0f; 
+        canTakeDamage = 0f;
         energyFill.fillAmount = 1;
     }
 
@@ -223,9 +224,9 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             return;
         }
         if (Time.time > canTakeDamage && !IsParrying)
-        { 
+        {
             canTakeDamage = Time.time + Cooldown;
-            Health -= damage; 
+            Health -= damage;
             IsHurt = true;
             currentState.SwitchState(new PlayerHurtState(this));
             damageTakenParticles.Play();
@@ -261,7 +262,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         energyFill.fillAmount = currentEnergy / maxEnergy;
     }
     #endregion
-    
+
     #region Parry Controls
     private IEnumerator StartParryCooldownInternal() {
         CanParry = true;
@@ -271,7 +272,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             CanParry = false; // nothing was changed during the wait so was in the same parry
         }
     }
-    
+
     private IEnumerator StartParryInternal() {
         if (IsParrying) yield break;
         IsParrying = true;
@@ -284,14 +285,14 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         parryParticles.Play();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
-        CanParry = false; 
+        CanParry = false;
         IsBlocking = false;
     }
     public void StartParryCooldown() {
         StartCoroutine(StartParryCooldownInternal());
     }
     #endregion
-    
+
     #region Collision Events
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -315,13 +316,13 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         }
     }
     #endregion
-    
+
     #region Player Input Controls
     void OnMovementPerformed(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
         isMovementPressed = currentMovementInput.x != 0f;
-        
+
     }
     void OnMovementCancelled(InputAction.CallbackContext context)
     {
@@ -331,17 +332,17 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     void OnRunStart(InputAction.CallbackContext context)
     {
         isRunPressed = true;
-        
+
     }
     void OnRunEnd(InputAction.CallbackContext context)
     {
         isRunPressed = false;
-        
+
     }
     void OnJump(InputAction.CallbackContext context)
     {
         isJumpPressed = context.ReadValueAsButton();
-        
+
     }
     void OnHit(InputAction.CallbackContext context)
     {
@@ -362,7 +363,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     {
         if (Interactable != null && Interactable.CanInteract())
         {
-           Interactable?.Interact(this); 
+           Interactable?.Interact(this);
         }
     }
     public void OnEnable()
@@ -374,7 +375,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         playerInput.CharacterControls.Disable();
     }
     #endregion
-    
+
     #region animation events
     void OnAttackAnimationStart()
     {
@@ -405,11 +406,11 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         ShootFinished = false;
     }
     void TriggerBulletShooting()
-    {   
+    {
         if (Energy < 10) {return;}
         ShootStarted = true;
         updateEnergy(-shootCost);
-           
+
     }
     void OnShootAnimationFinish()
     {
@@ -426,7 +427,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         HurtFinished = true;
     }
     #endregion
-    
+
     public void HandleDifficulty(Difficulty difficulty)
     {
         switch (difficulty)
