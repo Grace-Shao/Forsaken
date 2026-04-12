@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class BossStateMachine : StateMachine, IDamageable
 {   
     #region Serializable Entries
@@ -126,6 +127,8 @@ public class BossStateMachine : StateMachine, IDamageable
     {
         return Vector2.Distance(transform.position, Player.transform.position) > GrappleTargetDistance;
     }
+
+    public Action BossDeath;
     #endregion
 
     #region State Machine Updates
@@ -182,7 +185,7 @@ public class BossStateMachine : StateMachine, IDamageable
         }
         if (Health <= 0f)
         {
-            manager.CheckWinStatus();
+            BossDeath?.Invoke();
         }
     }
     public void Stun()

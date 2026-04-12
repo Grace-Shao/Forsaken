@@ -51,7 +51,7 @@ public class BossLaserState : State
             hitBox.GetComponent<BoxCollider2D>().size = new Vector2(length / Mathf.Abs(hitBox.lossyScale.x), 0.1f / Mathf.Abs(hitBox.lossyScale.y));
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
         }
-        bossContext.Anim.Play("Laser");
+        //bossContext.Anim.Play("Laser");
     }
 
     public override void UpdateState()

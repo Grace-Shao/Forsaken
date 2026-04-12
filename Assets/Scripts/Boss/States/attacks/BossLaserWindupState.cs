@@ -14,6 +14,7 @@ public class BossLaserWindupState : State
         //bossContext.flashCharacter();
         bossContext.LasersFinished = 0;
         bossContext.Anim.SetTrigger("laser_windup");
+        bossContext.WindUpFinished = false;
         firePoint = bossContext.Sprite.transform.Find("Broadsword").Find("ShootPoint");
         if (firePoint != null)
         {

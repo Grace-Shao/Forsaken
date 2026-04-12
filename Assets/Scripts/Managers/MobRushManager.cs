@@ -4,7 +4,6 @@ public class MobRushManager : MonoBehaviour
 {
     #region Variables
     [Header("Control Variables")]
-    [SerializeField] private int numStages = 3;
     [SerializeField] private int maxCrows = 10;
     [SerializeField] private int maxDogs = 10;
     [SerializeField] private int maxCrowsAtOnce = 2;
@@ -18,9 +17,10 @@ public class MobRushManager : MonoBehaviour
     [SerializeField] private Transform dogSpawnPointTwo;
     [SerializeField] private Transform crowSpawnPointOne;
     [SerializeField] private Transform crowSpawnPointTwo;
-    [SerializeField] private BoxCollider2D leftBound;
-    [SerializeField] private BoxCollider2D rightBound;
     private GameManager gameManager;
+    private BossStateMachine boss;
+    private PlayerStateMachine player;
+
     private List<DogStateMachine> dogs;
     private List<CrowStateMachine> crows;
     private int numDogs;
@@ -30,17 +30,19 @@ public class MobRushManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        boss = GameObject.Find("HUE").GetComponent<BossStateMachine>();
+        player = GameObject.Find("Player").GetComponent<PlayerStateMachine>();
+        boss.BossDeath += OnBossDeath;
         dogs = new();
         crows = new();
         numDogs = 0;
         numCrows = 0;
     }
 
-    public void BeginStageOne()
+    public void BeginMobRush()
     {
-        Debug.Log("starting stage one");
-        leftBound.enabled = true;
-        rightBound.enabled = true;
+        gameManager.FightStarted = false;
+        boss.gameObject.SetActive(false);
         for (int i = 0; i < maxDogsAtOnce; i++)
         {
             SpawnDog();
@@ -50,11 +52,17 @@ public class MobRushManager : MonoBehaviour
             SpawnCrow();
         }
     }
+
+    public void TriggerHUE()
+    {
+        boss.gameObject.SetActive(true);
+        gameManager.FightStarted = true;
+    }
     public void FinishFight()
     {
         Debug.Log("ending");
-        leftBound.enabled = false;
-        rightBound.enabled = false;
+        gameManager.FightStarted = false;
+        boss.JumpToState(new BossStartState(boss));
     }
 
     public void SpawnDog()
@@ -93,12 +101,12 @@ public class MobRushManager : MonoBehaviour
     {
         numDogs += 1;
         dogs.Remove(dogInstance);
-        if (numDogs <= maxDogs)
+        if (numDogs < maxDogs)
         {
             StartCoroutine(CooldownDog());
-        } else if (numCrows > maxCrows)
+        } else if (numCrows >= maxCrows)
         {
-            FinishFight();
+            TriggerHUE();
         }
     }
 
@@ -106,13 +114,24 @@ public class MobRushManager : MonoBehaviour
     {
         numCrows += 1;
         crows.Remove(crowInstance);
-        if (numCrows <= maxCrows)
+        if (numCrows < maxCrows)
         {
             StartCoroutine(CooldownCrow());
-        } else if (numDogs > maxDogs)
+        } else if (numDogs >= maxDogs)
         {
-            FinishFight();
+            TriggerHUE();
         }
+    }
+
+    public void OnBossDeath()
+    {
+        FinishFight();
+    }
+
+    public void KillHUE()
+    {
+        boss.gameObject.SetActive(false);
+        player.OnEnable();
     }
 
     System.Collections.IEnumerator CooldownDog()

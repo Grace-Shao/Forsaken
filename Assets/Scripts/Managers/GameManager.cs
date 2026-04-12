@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
     #region Serializable Fields
@@ -54,7 +53,9 @@ public class GameManager : MonoBehaviour
     {
         fightStarted = false;
         bossStateMachine = boss.GetComponent<BossStateMachine>();
+        bossStateMachine.gameObject.SetActive(false);
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
+        bossStateMachine.BossDeath += CheckWinStatus;
         SetTimeScale(1f);
         LoadData();
     }

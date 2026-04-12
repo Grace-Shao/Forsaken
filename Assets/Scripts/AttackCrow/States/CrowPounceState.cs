@@ -13,7 +13,6 @@ public class CrowPounceState : State
     {
         crowContext.Anim.SetTrigger("Attack");
         crowContext.InAttack = true;
-        Debug.Log("cro hunt");
     }
     public override void UpdateState()
     {
@@ -27,7 +26,6 @@ public class CrowPounceState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log("in attack? " + crowContext.InAttack);
         if (!crowContext.InAttack) {
             SwitchState(new CrowRecoverState(crowContext));
         }   

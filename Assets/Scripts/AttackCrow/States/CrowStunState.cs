@@ -14,7 +14,6 @@ public class CrowStunState : State
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;
         curTime = 0f;
-        Debug.Log("cro stun is real!!!");
     }
     public override void UpdateState()
     {

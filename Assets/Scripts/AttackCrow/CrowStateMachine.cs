@@ -76,7 +76,6 @@ public class CrowStateMachine : StateMachine, IDamageable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("doing damage");
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
         }
     }
@@ -93,6 +92,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            CrowDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
     }

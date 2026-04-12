@@ -15,7 +15,6 @@ public class CrowStartState : State
         crowContext.Anim.SetTrigger("Idle");
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;
-        Debug.Log("cro start");
     }
     public override void UpdateState()
     {
