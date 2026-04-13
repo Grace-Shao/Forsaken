@@ -715,7 +715,7 @@ Transform:
   m_Children:
   - {fileID: 2519623491778998140}
   m_Father: {fileID: 7078745497228206282}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.499}
 --- !u!1 &1491963729360255123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2906,7 @@ Transform:
   m_Children:
   - {fileID: 8352545585238567646}
   m_Father: {fileID: 5427500244317294578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 177.129}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 169.454}
 --- !u!1 &5604027199075816081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,6 +3245,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   summonPosition: {fileID: 0}
   attackDog: {fileID: 7434262238889283829, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+  attackCrow: {fileID: 5995498573263051485, guid: 4639d366a2eeb4e70a3c7ac044e854ad, type: 3}
   targetDistance: 3
   timeInIdle: 1
   stunTime: 5
@@ -8942,7 +8943,7 @@ Transform:
   m_Children:
   - {fileID: 1464074668874889943}
   m_Father: {fileID: 5427500244317294578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -178.288}
 --- !u!1001 &3262695319942609099
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,8 +21,9 @@ public class BossDashWindupState : State
     }
     public override void ExitState()
     {
+        
         bossContext.IsDashing = false;
-        bossContext.WindUpFinished = true;
+        bossContext.WindUpFinished = false;
         bossContext.Anim.ResetTrigger("charge");
     }
 
