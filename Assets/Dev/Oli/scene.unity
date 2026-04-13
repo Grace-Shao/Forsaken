@@ -412,6 +412,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShockwaveDistortion
       objectReference: {fileID: 0}
+    - target: {fileID: 7778949342215850031, guid: 35c1c22ae4470e840b0b369281f2e844, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778949342215850031, guid: 35c1c22ae4470e840b0b369281f2e844, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2127914131
+      objectReference: {fileID: 0}
     - target: {fileID: 8153829328283155913, guid: 35c1c22ae4470e840b0b369281f2e844, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.47
