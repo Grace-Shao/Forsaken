@@ -33,6 +33,7 @@ public class MobRushManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         boss = GameObject.Find("HUE").GetComponent<BossStateMachine>();
+        boss.gameObject.SetActive(false);
         player = GameObject.Find("Player").GetComponent<PlayerStateMachine>();
         boss.BossDeath += OnBossDeath;
         dogs = new();

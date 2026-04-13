@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     {
         fightStarted = false;
         bossStateMachine = boss.GetComponent<BossStateMachine>();
-        bossStateMachine.gameObject.SetActive(false);
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
         bossStateMachine.BossDeath += CheckWinStatus;
         SetTimeScale(1f);
