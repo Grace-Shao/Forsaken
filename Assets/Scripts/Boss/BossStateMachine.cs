@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class BossStateMachine : StateMachine, IDamageable
 {   
     #region Serializable Entries
@@ -7,6 +8,7 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private GameManager manager;
     [SerializeField] private Transform summonPosition;
     [SerializeField] private GameObject attackDog;
+    [SerializeField] private GameObject attackCrow;
 
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
@@ -74,6 +76,7 @@ public class BossStateMachine : StateMachine, IDamageable
     public int Health {get {return health;} set {health = value;}}
     public int CurEnemies {get {return curEnemies;} set {curEnemies = value;}}
     public GameObject AttackDog {get {return attackDog;}}
+    public GameObject AttackCrow {get {return attackCrow;}}
     public int Damage {get {return damage;} set {damage = value;}}
     public float LastDashMovementTime { get { return lastDashMovementTime; } set { lastDashMovementTime = value; } }
     public float LastDashTime { get { return lastDashTime; } set { lastDashTime = value; } }
@@ -92,12 +95,7 @@ public class BossStateMachine : StateMachine, IDamageable
     public int NextAttack {get {return nextAttack;} set {nextAttack = value;}}
     public bool canDashAttack()
     {
-        return !InRange() && Vector3.Distance(transform.position, Player.transform.position) <= dashRange && (Time.time >= lastDashTime + dashCD);
-    }
-
-    public bool canDashMove()
-    {
-        return !InDashRange() && (Time.time >= lastDashMovementTime + dashMovementCooldown);
+        return InDashRange() && (Time.time >= lastDashTime + dashCD);
     }
     public bool CanSummon()
     {
@@ -126,6 +124,8 @@ public class BossStateMachine : StateMachine, IDamageable
     {
         return Vector2.Distance(transform.position, Player.transform.position) > GrappleTargetDistance;
     }
+
+    public Action BossDeath;
     #endregion
 
     #region State Machine Updates
@@ -182,7 +182,7 @@ public class BossStateMachine : StateMachine, IDamageable
         }
         if (Health <= 0f)
         {
-            manager.CheckWinStatus();
+            BossDeath?.Invoke();
         }
     }
     public void Stun()

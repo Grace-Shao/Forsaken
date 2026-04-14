@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class DogStateMachine : StateMachine, IDamageable
 {
     [Header("Attack Controls")]
@@ -35,6 +36,7 @@ public class DogStateMachine : StateMachine, IDamageable
     public float TargetDistance {get {return targetDistance;}}
     public float AggroDistance {get {return aggroDistance;} set {aggroDistance = value;}}
 
+    public Action<DogStateMachine> DogDeath;
     protected override void Init()
     {
         base.Init();
@@ -110,6 +112,7 @@ public class DogStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            DogDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
     }
@@ -149,5 +152,9 @@ public class DogStateMachine : StateMachine, IDamageable
         attackIndicator.Play();
     }
     
+    public void Attack()
+    {
+        currentState.SwitchState(new DogWalkState(this));
+    }
 
 }

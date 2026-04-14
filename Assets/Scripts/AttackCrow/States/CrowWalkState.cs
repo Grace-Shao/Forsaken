@@ -17,11 +17,10 @@ public class CrowWalkState : State
     }
     public override void EnterState()
     {
-        crowContext.Anim.Play("Walk");
+        crowContext.Anim.SetTrigger("Idle");
         startPos = new Vector3(crowContext.RB.gameObject.transform.position.x, crowContext.RB.gameObject.transform.position.y, 0f);
         endPos = new Vector3(crowContext.Player.gameObject.transform.position.x, 
             crowContext.Player.gameObject.transform.position.y, 0f);
-        Debug.Log(endPos);
         controlPoint = Vector3.down * 2f + startPos;
         t = 0f;
     }
@@ -31,7 +30,6 @@ public class CrowWalkState : State
             t = Mathf.Min(t + Time.deltaTime / swoopTime, 1);
             crowContext.RB.gameObject.transform.position = Bezier(startPos, controlPoint, endPos, t);
         }
-        Debug.Log(t);
         CheckSwitchStates();
     }
     Vector3 Bezier(Vector3 a, Vector3 b, Vector3 c, float t)
@@ -43,6 +41,7 @@ public class CrowWalkState : State
 
     public override void ExitState()
     {
+        crowContext.Anim.ResetTrigger("Idle");
         crowContext.InAttack = false;
     }
 
@@ -53,15 +52,12 @@ public class CrowWalkState : State
             SwitchState(new CrowStunState(crowContext));
         }
         if (t >= 1) {
-            Debug.Log(crowContext.InRange() + ", Attack: " + !crowContext.InAttack);
             if (crowContext.InRange() && !crowContext.InAttack)
             {
-                Debug.Log("We attack.");
                 SwitchState(new CrowPounceState(crowContext));
             }
             else
             {
-                Debug.Log("We recover.");
                 SwitchState(new CrowRecoverState(crowContext));
             }
         }

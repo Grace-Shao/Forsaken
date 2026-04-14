@@ -27,10 +27,7 @@ public class BossWalkState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.canDashMove())
-        {
-            SwitchState(new BossDashState(bossContext));
-        } else if (bossContext.InRange())
+        if (bossContext.InRange())
         {
             bossContext.NextAttack = 2;
             SwitchState(new BossMeleeAttackState(bossContext));

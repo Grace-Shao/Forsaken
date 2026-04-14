@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class CrowStateMachine : StateMachine, IDamageable
 {
     [Header("Attack Controls")]
@@ -32,6 +33,8 @@ public class CrowStateMachine : StateMachine, IDamageable
     public float StunInterval { get { return stunInterval; } }
     public float TargetDistance { get { return targetDistance; } }
     public float AggroDistance { get { return aggroDistance; } set { aggroDistance = value; } }
+
+    public Action<CrowStateMachine> CrowDeath;
 
     protected override void Init()
     {
@@ -69,6 +72,13 @@ public class CrowStateMachine : StateMachine, IDamageable
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+    }
     public void flashCharacter()
     {
         sprite.GetComponent<DamageFlash>().BeginFlash();
@@ -82,6 +92,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            CrowDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
     }
@@ -114,6 +125,11 @@ public class CrowStateMachine : StateMachine, IDamageable
     public void OnAttackEnd()
     {
         inAttack = false;
+    }
+
+    public void Attack()
+    {
+        currentState.SwitchState(new CrowWalkState(this));
     }
 
 

@@ -6,7 +6,7 @@ public class AbilityUIManager : MonoBehaviour
 {
 
 
-
+    [SerializeField] private GameObject abilityPickup;
     public Image iconUI;
 
     public TMP_Text abilityName;
@@ -103,6 +103,7 @@ public class AbilityUIManager : MonoBehaviour
 
 
         yield return new WaitUntil(() => Input.anyKeyDown);
+        abilityPickup.SetActive(false);
         mainCanvas.alpha = 0;
         Time.timeScale = 1f;
 
