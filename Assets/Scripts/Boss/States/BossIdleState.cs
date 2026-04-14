@@ -56,7 +56,7 @@ public class BossIdleState : State
                     bossContext.NextAttack = 3;
                     SwitchState(new BossDashWindupState(bossContext));
                 }
-                // Else, choose between melee and laser attack
+                //if at least stage 2 and can grapple, try grapple
                 else if (
                     bossContext.CurrentStage >= 2
                     && randomChance >= 0.5f
@@ -66,12 +66,17 @@ public class BossIdleState : State
                     bossContext.NextAttack = 4;
                     SwitchState(new BossGrappleState(bossContext));
                 }
-                else if (randomChance < 0.5f)
+                // Else, choose between melee, shooting, and laser attack
+                else if (randomChance < 0.3f)
                 {
                     bossContext.NextAttack = 1;
                     SwitchState(new BossLaserWindupState(bossContext));
                 }
-                else
+                else if (randomChance < 0.6f)
+                {
+                    bossContext.NextAttack = 5;
+                    SwitchState(new BossShootState(bossContext));
+                } else
                 {
                     SwitchState(new BossWalkState(bossContext));
                 }
