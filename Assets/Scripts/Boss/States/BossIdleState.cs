@@ -45,27 +45,38 @@ public class BossIdleState : State
                 {
                     SwitchState(new BossTeleportState(bossContext));
                 }
+                // // If stage 3 and ultimate is available, rand chance to ult
+                // else if (bossContext.CurrentStage == 3 && bossContext.CanTriggerUltimate() && randomChance < 0.5f)
+                // {
+                //     SwitchState(new BossUltimateState(bossContext));
+                // }
                 // If stage 3 and boss can charged dash, always charged dash
-                else if (randomChance < 0.4f && bossContext.CurrentStage == 3 && bossContext.canDashAttack())
+                else if (bossContext.CurrentStage == 3 && bossContext.canDashAttack())
                 {
                     bossContext.NextAttack = 3;
-                    SwitchState(new BossChargedDashState(bossContext));
+                    SwitchState(new BossDashWindupState(bossContext));
                 }
-                // Else, choose between melee and laser attack
+                //if at least stage 2 and can grapple, try grapple
                 else if (
                     bossContext.CurrentStage >= 2
                     && randomChance >= 0.5f
                     && bossContext.GrappleInRange()
                 )
                 {
+                    bossContext.NextAttack = 4;
                     SwitchState(new BossGrappleState(bossContext));
                 }
-                else if (randomChance < 0.5f)
+                // Else, choose between melee, shooting, and laser attack
+                else if (randomChance < 0.3f)
                 {
                     bossContext.NextAttack = 1;
                     SwitchState(new BossLaserWindupState(bossContext));
                 }
-                else
+                else if (randomChance < 0.6f)
+                {
+                    bossContext.NextAttack = 5;
+                    SwitchState(new BossShootState(bossContext));
+                } else
                 {
                     SwitchState(new BossWalkState(bossContext));
                 }

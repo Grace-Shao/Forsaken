@@ -16,7 +16,6 @@ public class DogPounceState : State
         Vector3 direction = (target - currentPos).normalized;
 
         dogContext.InAttack = true;
-        dogContext.Anim.Play("Pounce");
         dogContext.OnGround = false;
         dogContext.RB.AddForce(new Vector2(direction.x * dogContext.JumpForce.x, dogContext.JumpForce.y), ForceMode2D.Impulse);
         dogContext.AppliedMovementX = 0;
@@ -29,13 +28,13 @@ public class DogPounceState : State
     }
     public override void ExitState()
     {
-        //dogContext.InAttack = false;
+        dogContext.InAttack = false;
         dogContext.OnGround = true;
     }
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.InAttack == false)
+        if (!dogContext.InAttack && dogContext.OnGround)
         {
             SwitchState(new DogStunState(dogContext));
         }

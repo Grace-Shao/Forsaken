@@ -10,7 +10,7 @@ public class DogStunState : State
     }
     public override void EnterState()
     {
-        dogContext.Anim.Play("Idle");
+        dogContext.Anim.SetTrigger("Idle");
         dogContext.AppliedMovementX = 0f;
         dogContext.AppliedMovementY = 0f;
         curTime = 0f;
@@ -23,16 +23,17 @@ public class DogStunState : State
     public override void ExitState()
     {
         dogContext.IsStunned = false;
+        dogContext.Anim.ResetTrigger("Idle");
     }
 
     public override void CheckSwitchStates()
     {
         if (curTime > dogContext.StunTime)
         {
-            if (dogContext.InRange() && dogContext.OnGround)
+            if (dogContext.InRange())
             {
-                SwitchState(new DogPounceState(dogContext));
-            } else if (!dogContext.InRange() && dogContext.OnGround)
+                SwitchState(new DogWindupState(dogContext));
+            } else if (!dogContext.InRange())
             {
                 SwitchState(new DogWalkState(dogContext));
             }

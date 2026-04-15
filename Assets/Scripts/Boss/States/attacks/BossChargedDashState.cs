@@ -11,7 +11,10 @@ public class BossChargedDashState : State
         bossContext.AttackFinished = 0;
         bossContext.Anim.SetTrigger("dashAttack");
         bossContext.AppliedMovementX = ((bossContext.Flipped ? -1 : 1)) * bossContext.MoveSpeed * 3;
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        Physics2D.IgnoreLayerCollision(7, 8, true);
         bossContext.LastDashTime = Time.time;
+        bossContext.IsDashing = true;
     }
     public override void UpdateState()
     {
@@ -20,7 +23,10 @@ public class BossChargedDashState : State
     public override void ExitState()
     {
         bossContext.Anim.ResetTrigger("dashAttack");
-        bossContext.AttackFinished = 1;
+        bossContext.AttackFinished = 0;
+        bossContext.IsDashing = false;
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(7, 8, false);
     }
 
     public override void CheckSwitchStates()
