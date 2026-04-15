@@ -10,10 +10,10 @@ public class PlayerShootState : State
     }
     public override void EnterState()
     {
-        playerContext.Anim.SetTrigger("shoot");
-        playerContext.AppliedMovementX = 0f;
-        playerContext.AppliedMovementY = 0f;
-        playerContext.IsShootPressed = false;  // Reset to prevent continuous shooting
+            playerContext.Anim.SetTrigger("shoot");
+            playerContext.AppliedMovementX = 0f;
+            playerContext.AppliedMovementY = 0f;
+            playerContext.IsShootPressed = false;  // Reset to prevent continuous shooting
 
     }
     public override void UpdateState()
@@ -37,20 +37,16 @@ public class PlayerShootState : State
         if (playerContext.IsHurt)
         {
             SwitchState(new PlayerHurtState(playerContext));
-        }
-        else if (!playerContext.ShootFinished)
+        } else if (playerContext.IsRunPressed)
         {
-            return;
-        }
-        playerContext.ShootFinished = false; 
-        if (playerContext.IsRunPressed)
-        {
+            playerContext.ShootFinished = false; 
             SwitchState(new PlayerDashState(playerContext));
         } else if (playerContext.IsMovementPressed)
-        {   
+        {   playerContext.ShootFinished = false; 
             SwitchState(new PlayerWalkState(playerContext));
-        } else
+        } else if (playerContext.ShootFinished)
         {
+            playerContext.ShootFinished = false; 
             SwitchState(new PlayerIdleState(playerContext));
         }
     }

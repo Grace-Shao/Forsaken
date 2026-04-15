@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
     #region Serializable Fields
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     public bool FightStarted {get {return fightStarted;} set {fightStarted = value;}}
     public bool GameOver {get {return gameOver;} set {gameOver = value;}}
     public bool IsTransitioning {get {return isTransitioning;} set {isTransitioning = value;}}
+    public 
     #endregion
     
     #region Level Initialization
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
         fightStarted = false;
         bossStateMachine = boss.GetComponent<BossStateMachine>();
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
+        bossStateMachine.BossDeath += CheckWinStatus;
         SetTimeScale(1f);
         LoadData();
     }
@@ -61,7 +64,6 @@ public class GameManager : MonoBehaviour
     }
     public void BeginBattle()
     {
-        Debug.Log("beginning battle");
         Time.timeScale = 1f;
         IsTransitioning = true;
         fightStarted = true;
@@ -71,7 +73,6 @@ public class GameManager : MonoBehaviour
     {
         currentStage += 1;
         cutsceneManager.PlayCutScene(currentStage);
-        Debug.Log("entering next stage");
         IsTransitioning = true;
         bossStateMachine.Health = 100;
         bossStateMachine.Damage *= 2;
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             enemy.SetActive(false);
         }
     }
+
     #endregion
 
     #region Player Access
@@ -104,11 +106,14 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerParry()
     {
-        bossStateMachine.JumpToState(new BossStunState(bossStateMachine));
+        if (bossStateMachine != null && bossStateMachine.gameObject.activeInHierarchy)
+        {
+            bossStateMachine.Stun();
+        }
+        
     }
     public void UnlockPlayerAbility(int ability)
     {
-        Debug.Log("unlocking");
         playerStateMachine.UnlockAbility(ability);
     }
 
@@ -184,23 +189,31 @@ public class GameManager : MonoBehaviour
     private void LoadData()
     {
         saveData = SaveManager.Load();
+        SetAllDifficulties(saveData.difficulty);
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
         if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) return;
         GameObject[] saveSpots = GameObject.FindGameObjectsWithTag("SavePoint");
-        Debug.Log(saveSpots.Length);
         foreach (GameObject saveSpot in saveSpots) {
-            Debug.Log("iterating through save spots");
             SaveSpot spot = saveSpot.GetComponent<SaveSpot>();
             if (spot.SpotID.Equals(saveData.lastSaveSpotID)) {
-                Debug.Log("found a match!");
-                Debug.Log("loading save");
                 playerStateMachine.transform.position = new Vector3(spot.transform.position.x, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
                 eva.transform.position = new Vector3(spot.transform.position.x - 1f, playerStateMachine.transform.position.y, playerStateMachine.transform.position.z);
                 playerStateMachine.Grounded = true;
                 eva.transform.position = new Vector3(spot.transform.position.x - 1f, eva.transform.position.y, eva.transform.position.z);
                 break;
             }
+        }
+    }
+
+    private void SetAllDifficulties(Difficulty difficulty)
+    {
+        //search for all IDataPersistence objects, including inactive ones
+        IEnumerable<ISetDifficulty> objectsWithDifficulties = FindObjectsByType<MonoBehaviour>(0).OfType<ISetDifficulty>();
+
+        foreach (ISetDifficulty setDifficulty in objectsWithDifficulties)
+        {
+            setDifficulty.HandleDifficulty(difficulty);
         }
     }
 

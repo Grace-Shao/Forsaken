@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class BossStateMachine : StateMachine, IDamageable
 {   
     #region Serializable Entries
@@ -7,6 +8,7 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private GameManager manager;
     [SerializeField] private Transform summonPosition;
     [SerializeField] private GameObject attackDog;
+    [SerializeField] private GameObject attackCrow;
 
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
@@ -39,6 +41,8 @@ public class BossStateMachine : StateMachine, IDamageable
     private int health;
     private bool isFlipped = false;
     private bool isStunned = false;
+    private bool shootStarted = false;
+    private bool shootFinished = false;
     private int introFinished = 0;
     private int attackFinished = 0;
     private int lasersFinished = 0;
@@ -55,10 +59,13 @@ public class BossStateMachine : StateMachine, IDamageable
 
     #region VFX
     private ParticleSystem damageTakenParticles;
+    private ParticleSystem attackIndicator;
+    private Boss_Ranged rangedWeapon;
     #endregion
     
     #region Getters and Setters
     public Transform SummonPos {get {return summonPosition;}}
+    public Boss_Ranged RangedWeapon { get { return rangedWeapon; } }
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
@@ -67,12 +74,15 @@ public class BossStateMachine : StateMachine, IDamageable
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
     public int AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
     public int LasersFinished {get {return lasersFinished; } set {lasersFinished = value;}}
+    public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
+    public bool ShootFinished {get {return shootFinished; } set {shootFinished = value;}}
     public bool Flipped { get {return isFlipped;}}
     public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
     public int Health {get {return health;} set {health = value;}}
     public int CurEnemies {get {return curEnemies;} set {curEnemies = value;}}
     public GameObject AttackDog {get {return attackDog;}}
+    public GameObject AttackCrow {get {return attackCrow;}}
     public int Damage {get {return damage;} set {damage = value;}}
     public float LastDashMovementTime { get { return lastDashMovementTime; } set { lastDashMovementTime = value; } }
     public float LastDashTime { get { return lastDashTime; } set { lastDashTime = value; } }
@@ -91,16 +101,18 @@ public class BossStateMachine : StateMachine, IDamageable
     public int NextAttack {get {return nextAttack;} set {nextAttack = value;}}
     public bool canDashAttack()
     {
-        return !InRange() && Vector3.Distance(transform.position, Player.transform.position) <= dashRange && (Time.time >= lastDashTime + dashCD);
-    }
-
-    public bool canDashMove()
-    {
-        return !InDashRange() && (Time.time >= lastDashMovementTime + dashMovementCooldown);
+        return InDashRange() && (Time.time >= lastDashTime + dashCD);
     }
     public bool CanSummon()
     {
         return Time.time >= lastDroneSummon + summonCooldown && curEnemies < numEnemies;
+    }
+
+    public bool CanTriggerUltimate()
+    {
+        // make it a smaller chance later
+        // bool lowHp = Health <= (Health * 0.2f);
+        return Health <= (Health * 1f);
     }
 
 
@@ -118,6 +130,8 @@ public class BossStateMachine : StateMachine, IDamageable
     {
         return Vector2.Distance(transform.position, Player.transform.position) > GrappleTargetDistance;
     }
+
+    public Action BossDeath;
     #endregion
 
     #region State Machine Updates
@@ -127,6 +141,8 @@ public class BossStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = 100;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        attackIndicator = sprite.Find("Broadsword").Find("ShootPoint").Find("Attack Indicator").GetComponent<ParticleSystem>();
+        rangedWeapon = GetComponentInChildren<Boss_Ranged>();
     }
 
     protected override void EnterBeginningState()
@@ -173,12 +189,13 @@ public class BossStateMachine : StateMachine, IDamageable
         }
         if (Health <= 0f)
         {
-            manager.CheckWinStatus();
+            BossDeath?.Invoke();
         }
     }
     public void Stun()
     {
-        JumpToState(new BossStunState(this));
+        Debug.Log("stunned");
+        currentState.SwitchState(new BossStunState(this));
     }
     #endregion
 
@@ -223,9 +240,27 @@ public class BossStateMachine : StateMachine, IDamageable
 
     public void OnLaserAttackEnd()
     {
-        Debug.Log("lasers finished");
         lasersFinished = 1;
 
+    }
+
+    public void AttackIndicator()
+    {
+        attackIndicator.Play();
+    }
+    void OnShootAnimationStart()
+    {
+        ShootFinished = false;
+    }
+
+    void TriggerBulletShooting()
+    {
+        ShootStarted = true;
+    }
+    void OnShootAnimationFinish()
+    {
+        ShootFinished = true;
+        ShootStarted = false;
     }
     #endregion
  
