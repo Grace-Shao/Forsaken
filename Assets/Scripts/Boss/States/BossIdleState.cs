@@ -3,6 +3,7 @@ public class BossIdleState : State
 {
     private BossStateMachine bossContext;
     private float curTime;
+    private static int teleport = 0;
     public BossIdleState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
@@ -29,29 +30,57 @@ public class BossIdleState : State
         if (curTime > bossContext.TimeInIdle)
         {
             float randomChance = Random.Range(0f, 1f);
-            if (bossContext.CurrentStage >= 2 && randomChance > 0.7f && bossContext.GrappleInRange())
-            {
-                SwitchState(new BossGrappleState(bossContext));
-            } else 
+            // If stage 2 and boss can summon, always summon
             if (bossContext.CurrentStage == 2 && bossContext.CanSummon())
             {
                 bossContext.NextAttack = 2;
                 SwitchState(new BossBeginSummonsState(bossContext));
             }
-            else if (bossContext.CurrentStage == 3 && randomChance < 0.3f && bossContext.canDashAttack())
+            else
             {
-                bossContext.NextAttack = 3;
-                SwitchState(new BossChargedDashState(bossContext));
+                //Teleport every number of attacks
+                //Consider also making it a random chance to teleport?
+                teleport += 1;
+                if (bossContext.CurrentStage == 3 && teleport % 5 == 0)
+                {
+                    SwitchState(new BossTeleportState(bossContext));
+                }
+                // // If stage 3 and ultimate is available, rand chance to ult
+                // else if (bossContext.CurrentStage == 3 && bossContext.CanTriggerUltimate() && randomChance < 0.5f)
+                // {
+                //     SwitchState(new BossUltimateState(bossContext));
+                // }
+                // If stage 3 and boss can charged dash, always charged dash
+                else if (bossContext.CurrentStage == 3 && bossContext.canDashAttack())
+                {
+                    bossContext.NextAttack = 3;
+                    SwitchState(new BossDashWindupState(bossContext));
+                }
+                //if at least stage 2 and can grapple, try grapple
+                else if (
+                    bossContext.CurrentStage >= 2
+                    && randomChance >= 0.5f
+                    && bossContext.GrappleInRange()
+                )
+                {
+                    bossContext.NextAttack = 4;
+                    SwitchState(new BossGrappleState(bossContext));
+                }
+                // Else, choose between melee, shooting, and laser attack
+                else if (randomChance < 0.3f)
+                {
+                    bossContext.NextAttack = 1;
+                    SwitchState(new BossLaserWindupState(bossContext));
+                }
+                else if (randomChance < 0.6f)
+                {
+                    bossContext.NextAttack = 5;
+                    SwitchState(new BossShootState(bossContext));
+                } else
+                {
+                    SwitchState(new BossWalkState(bossContext));
+                }
             }
-            else if (randomChance < 0.3f)
-            {
-                bossContext.NextAttack = 1;
-                SwitchState(new BossLaserWindupState(bossContext));
-            }
-            else {
-                SwitchState(new BossWalkState(bossContext));
-            }
-            
         } 
     }
 }

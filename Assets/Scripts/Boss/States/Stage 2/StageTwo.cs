@@ -22,6 +22,9 @@ public class StageTwo : State
         } else if (bossContext.NextAttack == 2)
         {
             SetSubState(new BossMeleeAttackState(bossContext));
+        } else if (bossContext.NextAttack == 6)
+        {
+            SetSubState(new BossShootState(bossContext));
         } else 
         {
             SetSubState(new BossIdleState(bossContext));

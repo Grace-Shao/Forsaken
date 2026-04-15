@@ -11,6 +11,8 @@ public class PlayerDashAttackState : State
     }
     public override void EnterState()
     {
+        if (playerContext.Energy < playerContext.DashCost) {return;}
+        playerContext.SwordHitbox.enabled = true;
         direction = new Vector3(playerContext.IsMovementPressed ? playerContext.CurrentMovementInput.x : playerContext.Sprite.localScale.x, 0f, 0f);
         playerContext.Sprite.localScale = new Vector3(direction.x, 1f, 1f);
         endGoal = playerContext.Player.transform.position + direction * playerContext.DashDistance;
@@ -20,11 +22,13 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().enabled = true;
         playerContext.DashTrail.GetComponent<DashTrail>().IsDrawingTrail = true;
         playerContext.DashTrail.GetComponent<DashTrail>().Direction = new Vector3(Mathf.Sign(direction.x), 0, 0);
+        Time.timeScale = 0.75f;
+        playerContext.updateEnergy(-playerContext.DashCost);
     }
     public override void UpdateState()
-    {
-        Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime);
-        if (Vector2.Distance(newPos, endGoal) <= 0.001)
+    {     
+        Vector2 newPos = Vector2.MoveTowards(playerContext.Player.transform.position, endGoal, playerContext.DashSpeed * Time.fixedDeltaTime * 1.75f);
+        if (playerContext.HitWall || Vector2.Distance(newPos, endGoal) <= 0.001)
         {
             playerContext.DashFinished = true;
             CheckSwitchStates();
@@ -34,6 +38,7 @@ public class PlayerDashAttackState : State
     }
     public override void ExitState()
     {
+        playerContext.SwordHitbox.enabled = false;
         playerContext.DashFinished = false;
         playerContext.IsDashing = false;
         playerContext.Anim.ResetTrigger("dash");
@@ -42,6 +47,7 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().enabled = false;
         Physics2D.IgnoreLayerCollision(6, 7, false);
         Physics2D.IgnoreLayerCollision(6, 8, false);
+        Time.timeScale = 1f;
         
     }
 

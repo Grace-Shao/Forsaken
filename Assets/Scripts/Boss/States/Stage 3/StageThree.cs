@@ -20,8 +20,14 @@ public class StageThree : State
             SetSubState(new BossMeleeAttackState(bossContext));
         } else if (bossContext.NextAttack == 3)
         {
-            SetSubState(new BossChargedDashState(bossContext));
-        } 
+            SetSubState(new BossDashWindupState(bossContext));
+        } else if (bossContext.NextAttack == 4)
+        {
+            SetSubState(new BossGrappleState(bossContext));
+        } else if (bossContext.NextAttack == 6)
+        {
+            SetSubState(new BossShootState(bossContext));
+        }
         else 
         {
             SetSubState(new BossIdleState(bossContext));
@@ -44,6 +50,5 @@ public class StageThree : State
         {
             SwitchState(new BossTransitionState(bossContext));
         }
-        
     }
 }

@@ -26,10 +26,8 @@ public class BossStartState : State
 
     public override void CheckSwitchStates()
     {
-        Debug.Log(bossContext.FightStarted);
         if (bossContext.FightStarted)
         {
-            Debug.Log("beginning fight");
             SwitchState(new BossTransitionState(bossContext));
         
         } 

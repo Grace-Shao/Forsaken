@@ -1,4 +1,3 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DogPounceState : State
@@ -30,11 +29,12 @@ public class DogPounceState : State
     public override void ExitState()
     {
         dogContext.InAttack = false;
+        dogContext.OnGround = true;
     }
 
     public override void CheckSwitchStates()
     {
-        if (dogContext.OnGround)
+        if (!dogContext.InAttack && dogContext.OnGround)
         {
             SwitchState(new DogStunState(dogContext));
         }

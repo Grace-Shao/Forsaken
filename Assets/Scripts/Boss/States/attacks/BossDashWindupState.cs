@@ -11,11 +11,9 @@ public class BossDashWindupState : State
         bossContext.AttackFinished = 0;
         bossContext.IsDashing = true;
         bossContext.WindUpFinished = false;
-        bossContext.flashCharacter();
         bossContext.Anim.SetTrigger("charge");
         bossContext.AppliedMovementX = 0;
         bossContext.LastDashTime = Time.time;
-        Debug.Log("Attempting a dash here!");
     }
     public override void UpdateState()
     {
@@ -23,8 +21,9 @@ public class BossDashWindupState : State
     }
     public override void ExitState()
     {
+        
         bossContext.IsDashing = false;
-        bossContext.WindUpFinished = true;
+        bossContext.WindUpFinished = false;
         bossContext.Anim.ResetTrigger("charge");
     }
 
@@ -32,7 +31,6 @@ public class BossDashWindupState : State
     {
         if (bossContext.IsStunned)
         {
-            Debug.Log("switching states");
             SwitchState(new BossStunState(bossContext));
         }
         else if (bossContext.WindUpFinished == true)

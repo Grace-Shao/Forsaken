@@ -1,37 +1,32 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 public class DogStateMachine : StateMachine, IDamageable
 {
-    [Header("Object References")]
-    [SerializeField] private GameManager manager;
-
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
+    [SerializeField] private float aggroDistance;
     [SerializeField] private float stunTime;
     [SerializeField] private float stunInterval;
     [SerializeField] private int damage;
     [SerializeField] private float damageCooldown;
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
+    [SerializeField] private int maxHealth = 50;
     
     private bool isFlipped = false;
     private bool isStunned = false;
     private bool inAttack = false;
     private bool onGround = false;
-    private bool windUpFinished = true;
-    private int hurtFinished = 0;
-    private int introFinished = 0;
+    private bool windUpFinished = false;
     private int health;
     private ParticleSystem damageTakenParticles;
-    public bool FightStarted {get {return manager.FightStarted;}}
+    private ParticleSystem attackIndicator;
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
-    public bool IsTransitioning {get {return manager.IsTransitioning;} set {manager.IsTransitioning = value;}}
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
     public bool InAttack {get {return inAttack; } set {inAttack = value;}}
     public bool OnGround {get { return onGround; } set { onGround = value; } }
     public bool Flipped { get {return isFlipped;}}
-    public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
-    public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
     public int Health {get {return health;} set {health = value;}}
     public int Damage {get {return damage;} set {damage = value;}}
     public Vector2 JumpForce {get {return new Vector2(jumpForceX, jumpForceY);}}
@@ -39,35 +34,33 @@ public class DogStateMachine : StateMachine, IDamageable
     public float StunTime {get {return stunTime;}}
     public float StunInterval {get {return stunInterval;}}
     public float TargetDistance {get {return targetDistance;}}
-    public int CurrentStage {get {return manager.CurrentStage;} set {manager.CurrentStage = value;}}
+    public float AggroDistance {get {return aggroDistance;} set {aggroDistance = value;}}
 
+    public Action<DogStateMachine> DogDeath;
     protected override void Init()
     {
         base.Init();
         sprite = transform.Find("Sprite");
-        Health = 100;
+        Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        attackIndicator = sprite.Find("HeadTop").Find("Attack Indicator").GetComponent<ParticleSystem>();
     }
 
     protected override void EnterBeginningState()
     {
-        IsTransitioning = false;
         currentState = new DogStartState(this);
         currentState.EnterStates();
     }
 
     protected override void UpdateState()
     {
-        if (!IsTransitioning)
+        if (!inAttack)
         {
-            if (!inAttack)
-            {
-                rb.linearVelocity = appliedMovement;
-            }
-            else
-            {
-                rb.AddForce(appliedMovement, ForceMode2D.Impulse);
-            }
+            rb.linearVelocity = appliedMovement;
+        }
+        else
+        {
+            rb.AddForce(appliedMovement, ForceMode2D.Impulse);
         }
         currentState.UpdateStates();
     }
@@ -119,13 +112,18 @@ public class DogStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            DogDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
     }
 
     public bool InRange()
     {
-        return Vector3.Distance(transform.position,Player.transform.position) <= TargetDistance;
+        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= TargetDistance;
+    }
+    public bool InAggroRange()
+    {
+        return Mathf.Abs(transform.position.x - Player.transform.position.x) <= aggroDistance;
     }
 
     public void onWindupStart()
@@ -148,6 +146,15 @@ public class DogStateMachine : StateMachine, IDamageable
     {
         inAttack = false;
     }
+
+    public void AttackIndicator()
+    {
+        attackIndicator.Play();
+    }
     
+    public void Attack()
+    {
+        currentState.SwitchState(new DogWalkState(this));
+    }
 
 }

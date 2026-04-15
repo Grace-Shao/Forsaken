@@ -1,6 +1,4 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 public class BossLaserState : State
 {
     private BossStateMachine bossContext;
@@ -15,6 +13,8 @@ public class BossLaserState : State
         if (firePoint != null)
         {
             laser = firePoint.GetComponent<LineRenderer>();
+            laser.material.SetColor("_BaseColor", Color.white);
+            laser.material.EnableKeyword("_EMISSION");
         }
         hitBox = bossContext.Sprite.Find("LaserHitbox");
     }
@@ -24,7 +24,6 @@ public class BossLaserState : State
         bossContext.AppliedMovementX = 0;
         bossContext.AppliedMovementY = 0;
         Vector3 direction = (bossContext.Flipped ? -1 : 1) * Vector2.right;
-        Debug.Log(firePoint.position);
         // Update laser (line renderer) to display properly.
         if (laser != null)
         {
@@ -52,7 +51,7 @@ public class BossLaserState : State
             hitBox.GetComponent<BoxCollider2D>().size = new Vector2(length / Mathf.Abs(hitBox.lossyScale.x), 0.1f / Mathf.Abs(hitBox.lossyScale.y));
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
         }
-        bossContext.Anim.Play("Laser");
+        //bossContext.Anim.Play("Laser");
     }
 
     public override void UpdateState()
@@ -62,6 +61,7 @@ public class BossLaserState : State
 
     public override void ExitState()
     {
+        Debug.Log("exiting");
         if (laser != null)
         {
             laser.enabled = false;
@@ -73,7 +73,6 @@ public class BossLaserState : State
     {
         if (bossContext.LasersFinished == 1)
         {
-            Debug.Log("finished");
             SwitchState(new BossIdleState(bossContext));
         }
     }

@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class BossStunState : State
 {
@@ -11,7 +10,6 @@ public class BossStunState : State
     }
     public override void EnterState()
     {
-        Debug.Log("currently stunned");
         bossContext.Anim.SetTrigger("stun");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;

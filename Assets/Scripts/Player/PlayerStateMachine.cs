@@ -1,23 +1,25 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using TMPro;
 
-public class PlayerStateMachine : StateMachine, IDamageable
+public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 {
-    [SerializeField]private DialogueUI dialogueUI;
-    public DialogueUI DialogueUI => dialogueUI;
-    public IInteractable Interactable { get; set; }
-
-    //control variables
+    #region SerializableElements
     [Header("Movement Control Variables")]
     [SerializeField] private  float runSpeed = 7f;
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float slashForce = 30f;
+    [SerializeField] private float recoilForce = 30f;
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float parryTiming = 2.5f;
     [SerializeField] private float parryCooldown = 2.5f;
+    [SerializeField] private float maxEnergy = 100f;
+    [SerializeField] private float dashCost = 10f;
+    [SerializeField] private float shootCost = 10f;
+    [SerializeField] private float attackGain = 10f;
 
     [Header("Object References")]
     [SerializeField] private GameManager manager;
@@ -25,20 +27,25 @@ public class PlayerStateMachine : StateMachine, IDamageable
     [SerializeField] private TextMeshProUGUI healthBar;
     [SerializeField] private TextMeshProUGUI dashBar;
     [SerializeField] private GameObject shootIcon;
+    [SerializeField] private Image energyFill;
+    [SerializeField]private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
 
-    //player input system
+    #endregion
+
+    #region PlayerStateInfo
     private PlayerInput playerInput;
     private Vector2 currentMovementInput;
     private bool isMovementPressed;
     private bool canMove = true;
-    private bool shootUnlocked = false;
-    private bool canDash = false;
+    private bool shootUnlocked = true;
+    private bool canDash = true;
     private bool isRunPressed;
     private bool isJumpPressed;
     private bool isHitPressed;
     private bool isShootPressed;
     private bool isDashPressed;
-    private bool isHurt; 
+    private bool isHurt;
     private bool attackFinished = false;
     private bool blockFinished = true;
     private bool shootStarted = false;
@@ -50,20 +57,31 @@ public class PlayerStateMachine : StateMachine, IDamageable
     private bool grounded = true;
     private bool isBlocking = false;
     private bool isParrying = false;
+    private int currentParryCooldownId;
     private bool canParry = false;
+    private bool hitWall = false;
+    public IInteractable Interactable { get; set; }
+    #endregion
 
+    #region PlayerHealth
     //player info
     private int health;
     private float damageCooldown;
     private float canTakeDamage;
+    #endregion
 
+    private float currentEnergy;
+
+    #region VFX Items
     //additional game objects
     private GameObject dashTrail;
-    private Transform groundCheck;
     private Player_Ranged rangedWeapon;
-    private int currentParryCooldownId;
+
     private ParticleSystem damageTakenParticles;
-    //getters and settesr
+    [SerializeField] private ParticleSystem parryParticles;
+    #endregion
+
+    #region Getters and Setters
     public GameManager Manager {get {return manager;}}
     public bool CanMove {get {return canMove;} set {canMove = value;}}
     public bool IsMovementPressed {get {return isMovementPressed;} set {isMovementPressed = value;}}
@@ -99,6 +117,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
     public bool IsParrying {get {return isParrying;} set {isParrying = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
+     public bool HitWall{get {return hitWall;} set {hitWall = value;}}
     public bool AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
     public bool BlockFinished {get {return blockFinished; } set {blockFinished = value;}}
     public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
@@ -106,7 +125,7 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public bool DashStarted {get {return dashStarted; } set {dashStarted = value;}}
     public bool DashFinished {get {return dashFinished; } set {dashFinished = value;}}
     public bool IsDashing {get {return isDashing; } set {isDashing = value;}}
-    public bool CanDash {get {return canDash;}}
+    public bool CanDash {get {return canDash && !hitWall;}}
     public bool ShootUnlocked {get {return shootUnlocked;}}
     public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public bool Grounded {get {return grounded;} set {grounded = value;}}
@@ -116,11 +135,18 @@ public class PlayerStateMachine : StateMachine, IDamageable
     public float SlashForce {get {return slashForce;}}
     public float DashSpeed {get {return dashSpeed;}}
     public float DashDistance {get {return dashDistance;}}
-    [SerializeField] public int Health {get {return health;} set {health = value;}}
-    [SerializeField] public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    public int Health {get {return health;} set {health = value;}}
+    public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     public GameObject DashTrail {get {return dashTrail;}}
+    public BoxCollider2D SwordHitbox {get {return swordHitbox;}}
     public Player_Ranged RangedWeapon { get { return rangedWeapon; } }
+    public float Energy {get {return currentEnergy;} set {currentEnergy = value;}}
+    public float DashCost {get {return dashCost;}}
+    public float ShootCost {get {return shootCost;}}
+    public float AttackGain {get {return attackGain;}}
+    #endregion
 
+    #region StateMachine Updates
     protected override void Init()
     {
         base.Init();
@@ -128,11 +154,9 @@ public class PlayerStateMachine : StateMachine, IDamageable
         //set reference variables
         playerInput = new PlayerInput();
         dashTrail = transform.Find("ghost trail").gameObject;
-        groundCheck = transform.Find("groundedCheck");
         swordHitbox = sprite.Find("sword").GetComponent<BoxCollider2D>();
         rangedWeapon = GetComponentInChildren<Player_Ranged>();
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
-
         //set player input callbacks
         playerInput.CharacterControls.Move.started += OnMovementPerformed;
         playerInput.CharacterControls.Move.canceled += OnMovementCancelled;
@@ -151,32 +175,28 @@ public class PlayerStateMachine : StateMachine, IDamageable
         playerInput.CharacterControls.Interact.canceled += OnInteractPressed;
 
         Health = 100;
-        Cooldown = 1f;
+        Energy = maxEnergy;
+        Cooldown = 3f;
         canTakeDamage = 0f; 
+        canTakeDamage = 0f;
+        energyFill.fillAmount = 1;
     }
 
     protected override void EnterBeginningState()
     {
         currentState = new PlayerIdleState(this);
         currentState.EnterState();
-        UpdateHealthText();
     }
 
     protected override void UpdateState()
     {
-        if (dialogueUI.IsOpen) return;
+        if (dialogueUI != null && dialogueUI.IsOpen) return;
         HandleMovement();
         currentState.UpdateStates();
     }
+    #endregion
 
-    void OnInteractPressed(InputAction.CallbackContext context)
-    {
-        if (Interactable.CanInteract() && Interactable != null)
-        {
-           Interactable?.Interact(this); 
-        }
-    }
-
+    #region Movement and Health Updates
     private void HandleMovement()
     {
         if (canMove)
@@ -190,40 +210,139 @@ public class PlayerStateMachine : StateMachine, IDamageable
 
     protected override void FaceMovement()
     {
-        if (rb.linearVelocity.x != 0)
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.05f)
         {
             sprite.localScale = new Vector3(Mathf.Sign(rb.linearVelocity.x), 1, 1);
         }
     }
 
+    public void ApplyDamage(int damage) {
+        if (isBlocking && canParry)
+        {
+            StartParry();
+            ApplyRecoil(new Vector3(sprite.localScale.x * -1 * recoilForce, 0f, 0f));
+            return;
+        }
+        if (Time.time > canTakeDamage && !IsParrying)
+        {
+            canTakeDamage = Time.time + Cooldown;
+            Health -= damage;
+            IsHurt = true;
+            currentState.SwitchState(new PlayerHurtState(this));
+            damageTakenParticles.Play();
+        }
+        if (Health <= 0f)
+        {
+            manager.CheckWinStatus();
+        }
+    }
+    public void UnlockAbility(int abilityNum)
+    {
+        //ability 2 is shooting
+        //ability 3 is dashing
+        if (abilityNum == 2)
+        {
+            shootUnlocked = true;
+            Debug.Log("you can now shoot! click LMB to shoot at your mouse position");
+        } else if (abilityNum == 3)
+        {
+            canDash = true;
+            Debug.Log("you can now shoot! press shift to launch yourself!");
+        }
+    }
+
+    public void ApplyRecoil(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+    public void updateEnergy(float amount)
+    {
+        currentEnergy += amount;
+        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+        energyFill.fillAmount = currentEnergy / maxEnergy;
+    }
+    #endregion
+
+    #region Parry Controls
+    private IEnumerator StartParryCooldownInternal() {
+        CanParry = true;
+        int targetParryCooldownId = currentParryCooldownId;
+        yield return new WaitForSeconds(parryCooldown);
+        if (targetParryCooldownId == currentParryCooldownId) {
+            CanParry = false; // nothing was changed during the wait so was in the same parry
+        }
+    }
+
+    private IEnumerator StartParryInternal() {
+        if (IsParrying) yield break;
+        IsParrying = true;
+        yield return new WaitForSeconds(parryTiming);
+        IsParrying = false;
+    }
+
+    public void StartParry()
+    {
+        parryParticles.Play();
+        StartCoroutine(StartParryInternal());
+        IsHurt = false;
+        CanParry = false;
+        IsBlocking = false;
+    }
+    public void StartParryCooldown() {
+        StartCoroutine(StartParryCooldownInternal());
+    }
+    #endregion
+
+    #region Collision Events
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            grounded = true;
+        } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Background"))
+        {
+            hitWall = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            grounded = false;
+        } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Background"))
+        {
+            hitWall = false;
+        }
+    }
+    #endregion
+
+    #region Player Input Controls
     void OnMovementPerformed(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
         isMovementPressed = currentMovementInput.x != 0f;
-        
-    }
 
+    }
     void OnMovementCancelled(InputAction.CallbackContext context)
     {
         currentMovementInput = Vector2.zero;
         isMovementPressed = false;
     }
-
     void OnRunStart(InputAction.CallbackContext context)
     {
         isRunPressed = true;
-        
+
     }
     void OnRunEnd(InputAction.CallbackContext context)
     {
         isRunPressed = false;
-        
-    }
 
+    }
     void OnJump(InputAction.CallbackContext context)
     {
         isJumpPressed = context.ReadValueAsButton();
-        
+
     }
     void OnHit(InputAction.CallbackContext context)
     {
@@ -240,64 +359,22 @@ public class PlayerStateMachine : StateMachine, IDamageable
     {
         isDashPressed = context.ReadValueAsButton();
     }
-
+    void OnInteractPressed(InputAction.CallbackContext context)
+    {
+        if (Interactable != null && Interactable.CanInteract())
+        {
+           Interactable?.Interact(this);
+        }
+    }
     public void OnEnable()
     {
         playerInput.CharacterControls.Enable();
     }
-
     public void OnDisable()
     {
         playerInput.CharacterControls.Disable();
     }
-    
-    private IEnumerator StartParryCooldownInternal() {
-        CanParry = true;
-        int targetParryCooldownId = currentParryCooldownId;
-        yield return new WaitForSeconds(parryCooldown);
-        if (targetParryCooldownId == currentParryCooldownId) {
-            CanParry = false; // nothing was changed during the wait so was in the same parry
-        }
-    }
-    
-    private IEnumerator StartParryInternal() {
-        if (IsParrying) yield break;
-        IsParrying = true;
-        yield return new WaitForSeconds(parryTiming);
-        IsParrying = false;
-    }
-
-    public void StartParry()
-    {
-        Debug.Log("starting parry");
-        StartCoroutine(StartParryInternal());
-        IsHurt = false;
-        CanParry = false; 
-        IsBlocking = false;
-    }
-    public void StartParryCooldown() {
-        StartCoroutine(StartParryCooldownInternal());
-    }
-    public void ApplyDamage(int damage) {
-        if (isBlocking && canParry)
-        {
-            StartParry();
-            return;
-        }
-        if (Time.time > canTakeDamage && !IsParrying)
-        {   Debug.Log("taking damage");
-            canTakeDamage = Time.time + Cooldown;
-            Health -= damage; 
-            IsHurt = true;
-            currentState.SwitchState(new PlayerHurtState(this));
-            damageTakenParticles.Play();
-        }
-        UpdateHealthText();
-        if (Health <= 0f)
-        {
-            manager.CheckWinStatus();
-        }
-    }
+    #endregion
 
     #region animation events
     void OnAttackAnimationStart()
@@ -316,14 +393,12 @@ public class PlayerStateMachine : StateMachine, IDamageable
     void OnBlockAnimationStart()
     {
         BlockFinished = false;
-        swordHitbox.enabled = true;
 
     }
 
     void OnBlockAnimationFinish()
     {
         BlockFinished = true;
-        swordHitbox.enabled = false;
     }
 
     void OnShootAnimationStart()
@@ -332,7 +407,10 @@ public class PlayerStateMachine : StateMachine, IDamageable
     }
     void TriggerBulletShooting()
     {
+        if (Energy < 10) {return;}
         ShootStarted = true;
+        updateEnergy(-shootCost);
+
     }
     void OnShootAnimationFinish()
     {
@@ -350,43 +428,22 @@ public class PlayerStateMachine : StateMachine, IDamageable
     }
     #endregion
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void HandleDifficulty(Difficulty difficulty)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        switch (difficulty)
         {
-            grounded = true;
+            case Difficulty.Easy:
+                Health = 200;
+                Cooldown = 6f;
+                break;
+            case Difficulty.Normal:
+                Health = 100;
+                Cooldown = 3f;
+                break;
+            case Difficulty.Hard:
+                Health = 50;
+                Cooldown = 1.5f;
+                break;
         }
     }
-
-    public void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            grounded = false;
-        }
-    }
-
-    //ability 2 is shooting
-    //ability 3 is dashing
-    public void UnlockAbility(int abilityNum)
-    {
-        if (abilityNum == 2)
-        {
-            shootUnlocked = true;
-            Debug.Log("you can now shoot! click LMB to shoot at your mouse position");
-            shootIcon.SetActive(true);
-        } else if (abilityNum == 3)
-        {
-            canDash = true;
-            Debug.Log("you can now shoot! press shift to launch yourself!");
-            dashBar.gameObject.SetActive(true);
-        }
-    }
-
-    public void UpdateHealthText()
-    {
-        healthBar.text = "Health: " + Health.ToString();
-    }
-
-
 }
