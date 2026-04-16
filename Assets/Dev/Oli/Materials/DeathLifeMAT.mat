@@ -109,11 +109,11 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Darkness: 0.763
+    - _Darkness: 0.902
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableExternalAlpha: 0
-    - _FlashingSpeed: 7.76
+    - _FlashingSpeed: 6.9
     - _GlitchNoiseAmount: 79.1
     - _GlitchStrength: 0.1
     - _GlossMapScale: 1
@@ -130,8 +130,8 @@ Material:
     - _Speed: 20
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VignetteIntensity: 1.709
-    - _VignettePower: 0.41
+    - _VignetteIntensity: 1.37
+    - _VignettePower: 0.19
     - _VonoroiSpeed: 0.84
     - _VoronoiDensity: 92.1
     - _VoronoiIntensity: 4.16
@@ -141,7 +141,7 @@ Material:
     - _shockwavestrength: -0.1
     - _wavedistance: -0.1
     m_Colors:
-    - _Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.5686275}
+    - _Color: {r: 0.8037735, g: 0.75069416, b: 0.75069416, a: 0.5686275}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LineNoiseColor: {r: 0.5372549, g: 0, b: 0, a: 1}
     - _LineNoiseColor_1: {r: 0.9245283, g: 0.87967247, b: 0.87742966, a: 0}
