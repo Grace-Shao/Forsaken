@@ -38,6 +38,7 @@ public class PlayerDashAttackState : State
     }
     public override void ExitState()
     {
+        Debug.Log("exiting state");
         playerContext.SwordHitbox.enabled = false;
         playerContext.DashFinished = false;
         playerContext.IsDashing = false;
@@ -48,7 +49,6 @@ public class PlayerDashAttackState : State
         Physics2D.IgnoreLayerCollision(6, 7, false);
         Physics2D.IgnoreLayerCollision(6, 8, false);
         Time.timeScale = 1f;
-        
     }
 
     public override void CheckSwitchStates()
