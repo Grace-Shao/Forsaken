@@ -160,6 +160,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         }
     } // every change of the can parry variable makes a new id
 
+    public float ParryCooldown {get {return parryCooldown;}}
     public bool IsParrying {get {return isParrying;} set {isParrying = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool HitWall{get {return hitWall;} set {hitWall = value;}}

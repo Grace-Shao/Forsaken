@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 public abstract class StateMachine : MonoBehaviour
 {
     //control variables
@@ -69,5 +70,27 @@ public abstract class StateMachine : MonoBehaviour
         {
             sprite.localScale = new Vector3(Mathf.Sign(rb.linearVelocity.x), 1, 1);
         }
+    }
+
+    public void Stun(float time)
+    {
+        Debug.Log("stunned");
+        BeginSlowDown(time);
+    }
+
+    private void BeginSlowDown(float time)
+    {
+        StartCoroutine(SlowDown(time));
+    }
+
+    IEnumerator SlowDown(float time)
+    {
+        moveSpeed /= 2f;
+        animator.speed = 0.5f;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        moveSpeed *= 2f;
+        animator.speed = 1f;
     }
 }
