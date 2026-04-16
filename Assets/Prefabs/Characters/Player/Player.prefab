@@ -8109,12 +8109,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  runSpeed: 15
-  jumpForce: 20
+  runSpeed: 10
+  jumpForce: 25
   slashForce: 7
   recoilForce: 30
   dashSpeed: 15
+  dashDuration: 0.18
   dashDistance: 5
+  dashEndDrag: 0
+  dashDisableGravity: 1
+  coyoteTime: 0.12
+  jumpBufferTime: 0.12
+  fallGravityMultiplier: 2.6
+  jumpCutGravityMultiplier: 2.2
+  groundAccel: 80
+  groundDecel: 150
+  airAccel: 45
+  airDecel: 30
+  inputDeadzone: 0.02
   parryTiming: 2
   parryCooldown: 2
   maxEnergy: 100
@@ -8128,6 +8140,17 @@ MonoBehaviour:
   shootIcon: {fileID: 0}
   energyFill: {fileID: 0}
   dialogueUI: {fileID: 0}
+  groundCheck: {fileID: 0}
+  groundCheckSize: {x: 0.6, y: 0.12}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  wallCheck: {fileID: 0}
+  wallCheckDistance: 0.45
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  dashBufferTime: 0.12
   parryParticles: {fileID: 1825528825577352223}
 --- !u!1 &6957010694041407059
 GameObject:
