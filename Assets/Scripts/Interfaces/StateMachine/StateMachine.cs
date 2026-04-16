@@ -15,6 +15,7 @@ public abstract class StateMachine : MonoBehaviour
 
     //States
     protected State currentState;
+    protected bool isStunned = false;
 
     //getters and settesr
     public State CurrentState {get {return currentState; } set {currentState = value;}}
@@ -26,6 +27,7 @@ public abstract class StateMachine : MonoBehaviour
     public float AppliedMovementX {get {return appliedMovement.x;} set {appliedMovement.x = value;}}
     public float AppliedMovementY {get {return appliedMovement.y;} set {appliedMovement.y = value;}}
     public float MoveSpeed {get {return moveSpeed;} set {moveSpeed = value;}}
+    public bool IsStunned {get {return isStunned;}}
 
     public void Awake()
     {
@@ -72,25 +74,27 @@ public abstract class StateMachine : MonoBehaviour
         }
     }
 
-    public void Stun(float time)
+    public void Stun(float time, float rate)
     {
         Debug.Log("stunned");
-        BeginSlowDown(time);
+        BeginSlowDown(time, rate);
     }
 
-    private void BeginSlowDown(float time)
+    private void BeginSlowDown(float time, float rate)
     {
-        StartCoroutine(SlowDown(time));
+        StartCoroutine(SlowDown(time, rate));
     }
 
-    IEnumerator SlowDown(float time)
+    public IEnumerator SlowDown(float time, float rate)
     {
-        moveSpeed /= 2f;
-        animator.speed = 0.5f;
+        isStunned = true;
+        moveSpeed /= rate;
+        animator.speed = rate;
 
         yield return new WaitForSecondsRealtime(time);
 
-        moveSpeed *= 2f;
+        moveSpeed *= rate;
         animator.speed = 1f;
+        isStunned = false;
     }
 }
