@@ -134,6 +134,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     
     private ParticleSystem damageTakenParticles;
     [SerializeField] private ParticleSystem parryParticles;
+    [SerializeField] private ShockwaveTrigger shockwave;
     #endregion
 
     #region Getters and Setters
@@ -531,6 +532,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public void StartParry()
     {
         parryParticles.Play();
+        shockwave.PlayShockwave();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
         CanParry = false; 
