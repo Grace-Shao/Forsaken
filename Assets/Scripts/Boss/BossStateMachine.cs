@@ -41,6 +41,8 @@ public class BossStateMachine : StateMachine, IDamageable
     private int health;
     private bool isFlipped = false;
     private bool isStunned = false;
+    private bool shootStarted = false;
+    private bool shootFinished = false;
     private int introFinished = 0;
     private int attackFinished = 0;
     private int lasersFinished = 0;
@@ -58,10 +60,12 @@ public class BossStateMachine : StateMachine, IDamageable
     #region VFX
     private ParticleSystem damageTakenParticles;
     private ParticleSystem attackIndicator;
+    private Boss_Ranged rangedWeapon;
     #endregion
     
     #region Getters and Setters
     public Transform SummonPos {get {return summonPosition;}}
+    public Boss_Ranged RangedWeapon { get { return rangedWeapon; } }
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
@@ -70,6 +74,8 @@ public class BossStateMachine : StateMachine, IDamageable
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
     public int AttackFinished {get {return attackFinished; } set {attackFinished = value;}}
     public int LasersFinished {get {return lasersFinished; } set {lasersFinished = value;}}
+    public bool ShootStarted {get {return shootStarted; } set {shootStarted = value;}}
+    public bool ShootFinished {get {return shootFinished; } set {shootFinished = value;}}
     public bool Flipped { get {return isFlipped;}}
     public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
@@ -136,6 +142,7 @@ public class BossStateMachine : StateMachine, IDamageable
         Health = 100;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         attackIndicator = sprite.Find("Broadsword").Find("ShootPoint").Find("Attack Indicator").GetComponent<ParticleSystem>();
+        rangedWeapon = GetComponentInChildren<Boss_Ranged>();
     }
 
     protected override void EnterBeginningState()
@@ -240,6 +247,20 @@ public class BossStateMachine : StateMachine, IDamageable
     public void AttackIndicator()
     {
         attackIndicator.Play();
+    }
+    void OnShootAnimationStart()
+    {
+        ShootFinished = false;
+    }
+
+    void TriggerBulletShooting()
+    {
+        ShootStarted = true;
+    }
+    void OnShootAnimationFinish()
+    {
+        ShootFinished = true;
+        ShootStarted = false;
     }
     #endregion
  

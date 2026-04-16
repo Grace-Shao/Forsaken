@@ -24,6 +24,9 @@ public class StageThree : State
         } else if (bossContext.NextAttack == 4)
         {
             SetSubState(new BossGrappleState(bossContext));
+        } else if (bossContext.NextAttack == 6)
+        {
+            SetSubState(new BossShootState(bossContext));
         }
         else 
         {

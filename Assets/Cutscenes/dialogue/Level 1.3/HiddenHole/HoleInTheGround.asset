@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
+  m_Name: HoleInTheGround
+  m_EditorClassIdentifier: 
+  dialogue:
+  - '"ONE, what''s that?"
+
+'
+  - '"There''s a crack in the ground, be careful Eva!"'
+  - '"Wait ONE, I think I see something glowing down there! Could we check it out?"'
+  - You pause for a second. Knowing that HUE could catch up any moment, it is hard
+    to say yes. But maybe Eva could be right about something. And she doesn't have
+    much time left...
+  responses:
+  - responseText: Explore
+    dialogueObject: {fileID: 11400000, guid: 1c93a13196fd376448ff6bdfedf41af5, type: 2}
+  - responseText: Don't Explore
+    dialogueObject: {fileID: 11400000, guid: 6ad4636f437959c4d9aa2d64a29156fe, type: 2}

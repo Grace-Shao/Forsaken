@@ -29,7 +29,8 @@ public class PlayerShootState : State
     }
     public override void ExitState()
     {
-
+        playerContext.ShootFinished = false;
+        playerContext.Anim.ResetTrigger("shoot"); 
     }
 
     public override void CheckSwitchStates()
@@ -39,14 +40,14 @@ public class PlayerShootState : State
             SwitchState(new PlayerHurtState(playerContext));
         } else if (playerContext.IsRunPressed)
         {
-            playerContext.ShootFinished = false; 
+            
             SwitchState(new PlayerDashState(playerContext));
         } else if (playerContext.IsMovementPressed)
-        {   playerContext.ShootFinished = false; 
+        {   
             SwitchState(new PlayerWalkState(playerContext));
         } else if (playerContext.ShootFinished)
         {
-            playerContext.ShootFinished = false; 
+            
             SwitchState(new PlayerIdleState(playerContext));
         }
     }
