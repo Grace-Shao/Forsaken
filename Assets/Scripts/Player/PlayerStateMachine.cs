@@ -406,8 +406,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         ShootFinished = false;
     }
     void TriggerBulletShooting()
-    {
-        if (Energy < 10) {return;}
+    {   
+        if (Energy < shootCost) {return;}
         ShootStarted = true;
         updateEnergy(-shootCost);
 
