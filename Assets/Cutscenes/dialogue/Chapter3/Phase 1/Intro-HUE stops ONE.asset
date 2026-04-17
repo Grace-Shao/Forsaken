@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: Intro-HUE stops ONE
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'HUE: Stop right there! That human is highly infectious. I am under orders to
-    take her to quarantine. Why do you keep running away?'
-  - "ONE: I don\u2019t believe a single word you say. You exterminate humans, not
-    heal them. Eva\u2026 Eva won\u2019t last long without a cure. If you leave us
-    be, I\u2019m sure we can find a cure\u2013"
-  - 'HUE: Even if you run to the ends of the earth, there might not be a cure.'
-  - 'HUE: Her disease is highly infectious, how many more humans will become infected
-    and die before you find the so-called cure?'
-  - "HUE: So\u2026 what will you do now?"
-  responses: []
+  - name: Bee
+    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
+    text: Hi I'm Bee hahaha
+  - name: Bone Fish
+    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
+    text: Hi I'm Bone Fish hahaha
+  - name: Bee
+    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
+    text: Buzzzzzzzz
+  - name: Bone Fish
+    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
+    text: Blubbbb
+  responses:
+  - responseText: booooo
+    dialogueObject: {fileID: 11400000, guid: 83062288514022a48a713b545948d1d6, type: 2}
+  - responseText: Yessss
+    dialogueObject: {fileID: 11400000, guid: 83062288514022a48a713b545948d1d6, type: 2}
