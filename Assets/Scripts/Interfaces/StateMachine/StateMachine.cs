@@ -89,7 +89,7 @@ public abstract class StateMachine : MonoBehaviour
     {
         isStunned = true;
         moveSpeed /= rate;
-        animator.speed = rate;
+        animator.speed /= rate;
 
         yield return new WaitForSecondsRealtime(time);
 
