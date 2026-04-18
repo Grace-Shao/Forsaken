@@ -34,13 +34,13 @@ public class BossUltimateState : State
     public BossUltimateState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
-        isBaseState = true;
+        bossContext.RB.gravityScale = 0f;
     }
 
     public override void EnterState()
     {
         Debug.Log("Boss Ultimate entered");
-        
+        bossContext.Anim.SetTrigger("grapple");
         bossContext.AppliedMovementX = 0;
         bossContext.AppliedMovementY = 0;
 
@@ -176,9 +176,11 @@ public class BossUltimateState : State
                 if (slash != null && slash.LineRenderer != null) Object.Destroy(slash.LineRenderer.gameObject);
             slashes = null;
         }
+        EnterState();
     }
 
     public override void CheckSwitchStates()
     {
+        
     }
 }

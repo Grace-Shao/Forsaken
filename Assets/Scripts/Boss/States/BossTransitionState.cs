@@ -23,7 +23,7 @@ public class BossTransitionState : State
         {
             triggerName = "phaseThree";
             bossContext.Anim.SetTrigger("phaseThree");
-        }
+        } 
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
     }
@@ -54,6 +54,9 @@ public class BossTransitionState : State
             } else if (bossContext.CurrentStage == 3)
             {
                 SwitchState(new StageThree(bossContext));
+            } else
+            {
+                SwitchState(new BossFinalState(bossContext));
             }
         }
     }
