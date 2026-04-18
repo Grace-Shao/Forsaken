@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: No
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
   dialogue:
-  - 'What! I can''t believe you!
+  - name: b
+    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
+    text: 'Blah
 
-    How dare you say no!'
+'
   responses: []

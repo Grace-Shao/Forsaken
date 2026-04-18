@@ -747,6 +747,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 370626023838987139, guid: daec83a58f0f682458a18b1a21f75275, type: 3}
   m_PrefabInstance: {fileID: 43923045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &80244900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4305974430216122030, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 2446096774501070469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23178b3c3b963740be399a0d066e2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &107285692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2227,7 +2238,7 @@ PrefabInstance:
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: dialogueUI
       value: 
-      objectReference: {fileID: 2446096774501070476}
+      objectReference: {fileID: 80244900}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: energyFill
       value: 
@@ -5362,6 +5373,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1675025261763630760, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675025261763630760, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675025261763630760, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675025261763630760, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675025261763630760, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
@@ -5474,17 +5505,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
   m_PrefabInstance: {fileID: 2446096774501070469}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2446096774501070476 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3922289177878139302, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
-  m_PrefabInstance: {fileID: 2446096774501070469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23178b3c3b963740be399a0d066e2f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2693003131189483145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2774664289110392617, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}

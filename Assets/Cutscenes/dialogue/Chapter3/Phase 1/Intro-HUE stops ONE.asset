@@ -28,6 +28,6 @@ MonoBehaviour:
     text: Blubbbb
   responses:
   - responseText: booooo
-    dialogueObject: {fileID: 0}
+    dialogueObject: {fileID: 11400000, guid: cb61e93894019a248a19fb6d406c63c9, type: 2}
   - responseText: Yessss
     dialogueObject: {fileID: 0}

@@ -12,16 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: Bulletin-Sickness
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 4425007608166331093, guid: 698f8fc363d80d64190075509d110e23, type: 3}
   dialogue:
-  - '"Breaking News: Individuals with purple veins no longer have human rights."
-
-'
-  - '"Individuals with this disease last from 3 weeks to a month, with deterioting
-    conditions leading to a loss in mobility & motor functions, and can lead to violent
-    behavior & death.
-
-
-    This disease is airborne and highly contagious."'
-  responses:
-  - responseText: Move On
-    dialogueObject: {fileID: 11400000, guid: 0752fc9e76c6ee44fabe0199a50c1258, type: 2}
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: test
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: test
+  responses: []
