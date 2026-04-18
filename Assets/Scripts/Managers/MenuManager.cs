@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropdown;
     public string selectedProfile = "";
     public Difficulty selectedDifficulty = Difficulty.Normal;
+    private int loadSceneIndex = 0;
     List<SaveData> saveDatas;
 
     public void Start()
@@ -51,11 +52,13 @@ public class MenuManager : MonoBehaviour
     #region Main Mennu
     public void StartGame()
     {
+        nextSceenScreen.SetActive(true);
         CreateAndLaunchNewProfile();
     }
 
     public void ContinueGame()
     {
+        nextSceenScreen.SetActive(true);
         ContinueGameOnSelectedProfile();
     }
     public void SelectDifficulty(int difficulty)
@@ -76,14 +79,15 @@ public class MenuManager : MonoBehaviour
         saveData.profileName = selectedProfile;
         saveData.difficulty = selectedDifficulty;
         SaveManager.Save(saveData);
-        SceneManager.LoadScene("Level1.1");
+        loadSceneIndex = 1;
+        //SceneManager.LoadScene("Level1.1");
     }
 
     public void ContinueGameOnSelectedProfile()
     {
         SaveData saveData = SaveManager.Load(selectedProfile);
-        int sceneIndex = saveData.currentSceneIndex;
-        SceneManager.LoadScene(sceneIndex);
+        loadSceneIndex = saveData.currentSceneIndex;
+        //SceneManager.LoadScene(sceneIndex);
     }
 
     public void DeleteSelectedProfile()
@@ -157,6 +161,10 @@ public class MenuManager : MonoBehaviour
     {
         gameManager.EnablePlayer();
         nextSceenScreen.SetActive(false);
+    }
+    public void MainMenuNextScene()
+    {
+        SceneManager.LoadScene(loadSceneIndex);
     }
     public void NextScene()
     {
