@@ -31,6 +31,8 @@ public class BossFinalState : State
     }
     public override void ExitState()
     {
+        Debug.Log("exitting state");
+        bossContext.InUltimate = false;
     }
 
     public override void CheckSwitchStates()

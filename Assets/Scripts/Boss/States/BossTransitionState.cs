@@ -19,11 +19,15 @@ public class BossTransitionState : State
         {
             triggerName = "phaseTwo";
            bossContext.Anim.SetTrigger("phaseTwo");
-        } else
+        } else if (bossContext.CurrentStage == 3)
         {
             triggerName = "phaseThree";
             bossContext.Anim.SetTrigger("phaseThree");
-        } 
+        } else
+        {
+            triggerName = "final";
+            bossContext.Anim.SetTrigger("final");
+        }
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
     }

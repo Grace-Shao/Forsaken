@@ -137,8 +137,9 @@ public class GameManager : MonoBehaviour
     {
         if (bossStateMachine.gameObject.activeInHierarchy && currentStage >= numStages && bossStateMachine.Health <= 0)
         {
-            if (bossStateMachine.InUltimate || numStages < 3)
+            if (currentStage >= 4 || numStages < 3)
             {
+                Debug.Log("here");
                 gameOver = true;
                 playerStateMachine.OnDisable();
                 fightStarted = false;
@@ -146,9 +147,9 @@ public class GameManager : MonoBehaviour
                 cutsceneManager.PlayCutScene(1); 
             } else
             {
+                bossStateMachine.Health += bossStateMachine.UltimateHealth;
                 IsTransitioning = true;
                 currentStage += 1;
-                bossStateMachine.Health = bossStateMachine.UltimateHealth;
             }
            
         }

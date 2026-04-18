@@ -37,8 +37,9 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private float summonCooldown;
     [SerializeField] private int numEnemies;
 
-    [Header("Ultimate Settings")]
+    [Header("Ultimate Settings Settings")]
     [SerializeField] private int ultimateHealth;
+
     #endregion
 
     #region Boss State Info
@@ -87,11 +88,11 @@ public class BossStateMachine : StateMachine, IDamageable
     public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
     public int Health {get {return health;} set {health = value;}}
+    public int UltimateHealth {get {return ultimateHealth;}}
     public int CurEnemies {get {return curEnemies;} set {curEnemies = value;}}
     public GameObject AttackDog {get {return attackDog;}}
     public GameObject AttackCrow {get {return attackCrow;}}
     public int Damage {get {return damage;} set {damage = value;}}
-    public int UltimateHealth { get { return ultimateHealth; }}
     public float LastDashMovementTime { get { return lastDashMovementTime; } set { lastDashMovementTime = value; } }
     public float LastDashTime { get { return lastDashTime; } set { lastDashTime = value; } }
     public float LastDroneSummon { get { return lastDroneSummon; } set { lastDroneSummon = value; } }
@@ -187,16 +188,16 @@ public class BossStateMachine : StateMachine, IDamageable
     }
     public void ApplyDamage(int damage)
     {
-        if (IntroFinished == 1 && manager.FightStarted)
+        if (IntroFinished == 1 && manager.FightStarted && !InUltimate)
         {
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
             //flashCharacter();
             damageTakenParticles.Play();
-
         }
         if (Health <= 0f)
         {
+            Debug.Log("dying");
             BossDeath?.Invoke();
         }
     }

@@ -2,7 +2,6 @@ using UnityEngine;
 public class BossStunState : State
 {
     private BossStateMachine bossContext;
-    private float curTime;
     public BossStunState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
@@ -10,15 +9,14 @@ public class BossStunState : State
     }
     public override void EnterState()
     {
+        bossContext.RB.gravityScale = 5f;
         bossContext.Anim.SetTrigger("stun");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
-        curTime = 0f;
     }
     public override void UpdateState()
     {
-        curTime += Time.deltaTime;
-        CheckSwitchStates();
+        // CheckSwitchStates();
     }
     public override void ExitState()
     {
@@ -28,9 +26,9 @@ public class BossStunState : State
 
     public override void CheckSwitchStates()
     {
-        if (curTime > bossContext.StunTime)
-        {
-            SwitchState(new BossTransitionState(bossContext));
-        } 
+        // if (bossContext.Health <= 0f)
+        // {
+        //     bossContext.BossDeath?.Invoke();
+        // } 
     }
 }

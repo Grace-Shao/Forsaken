@@ -15,7 +15,7 @@ public class BossBeginUltimateState : State
     public override void EnterState()
     {
         bossContext.GrapplingFinished = 0;
-        bossContext.Anim.SetTrigger("grapple");
+        bossContext.Anim.SetTrigger("final");
 
         lineRenderer = bossContext.GetComponentInChildren<LineRenderer>(true);
         if (lineRenderer == null)
@@ -37,7 +37,7 @@ public class BossBeginUltimateState : State
 
     public override void ExitState()
     {
-        bossContext.Anim.ResetTrigger("grapple");
+        bossContext.Anim.ResetTrigger("final");
         lineRenderer.gameObject.SetActive(false);
     }
 
