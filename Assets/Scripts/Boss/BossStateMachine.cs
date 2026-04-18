@@ -7,6 +7,7 @@ public class BossStateMachine : StateMachine, IDamageable
     [Header("Object References")]
     [SerializeField] private GameManager manager;
     [SerializeField] private Transform summonPosition;
+    [SerializeField] private Transform centerPosition;
     [SerializeField] private GameObject attackDog;
     [SerializeField] private GameObject attackCrow;
 
@@ -35,6 +36,10 @@ public class BossStateMachine : StateMachine, IDamageable
     [Header("Enemy Summons Settings")]
     [SerializeField] private float summonCooldown;
     [SerializeField] private int numEnemies;
+
+    [Header("Ultimate Settings Settings")]
+    [SerializeField] private int ultimateHealth;
+
     #endregion
 
     #region Boss State Info
@@ -50,6 +55,7 @@ public class BossStateMachine : StateMachine, IDamageable
     private int nextAttack;
     private int grapplingFinished = 0;
     private bool isDashing = false;
+    private bool inUltimate = false;
     private float lastDashTime = 0;
     private float lastDashMovementTime = 0;
     private bool windUpFinished = true;
@@ -65,10 +71,12 @@ public class BossStateMachine : StateMachine, IDamageable
     
     #region Getters and Setters
     public Transform SummonPos {get {return summonPosition;}}
+    public Transform CenterPos {get {return centerPosition;}}
     public Boss_Ranged RangedWeapon { get { return rangedWeapon; } }
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}
+    public bool InUltimate {get {return inUltimate;} set {inUltimate = value;}}
     public bool IsTransitioning {get {return manager.IsTransitioning;} set {manager.IsTransitioning = value;}}
     public int GrapplingFinished {get {return grapplingFinished;} set {grapplingFinished = value;}}
     public bool WindUpFinished { get {return windUpFinished;} set { windUpFinished = value; } }
@@ -80,6 +88,7 @@ public class BossStateMachine : StateMachine, IDamageable
     public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int IntroFinished {get {return introFinished; } set {introFinished = value;}}
     public int Health {get {return health;} set {health = value;}}
+    public int UltimateHealth {get {return ultimateHealth;}}
     public int CurEnemies {get {return curEnemies;} set {curEnemies = value;}}
     public GameObject AttackDog {get {return attackDog;}}
     public GameObject AttackCrow {get {return attackCrow;}}
@@ -179,16 +188,16 @@ public class BossStateMachine : StateMachine, IDamageable
     }
     public void ApplyDamage(int damage)
     {
-        if (IntroFinished == 1 && manager.FightStarted)
+        if (IntroFinished == 1 && manager.FightStarted && !InUltimate)
         {
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
             //flashCharacter();
             damageTakenParticles.Play();
-
         }
         if (Health <= 0f)
         {
+            Debug.Log("dying");
             BossDeath?.Invoke();
         }
     }

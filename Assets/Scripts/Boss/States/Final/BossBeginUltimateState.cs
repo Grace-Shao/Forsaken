@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class BossGrappleState : State
+public class BossBeginUltimateState : State
 {
     private BossStateMachine bossContext;
     private LineRenderer lineRenderer;
     private Transform chainStart;
 
-    public BossGrappleState(BossStateMachine currentContext) : base(currentContext)
+    public BossBeginUltimateState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
     }
@@ -15,7 +15,7 @@ public class BossGrappleState : State
     public override void EnterState()
     {
         bossContext.GrapplingFinished = 0;
-        bossContext.Anim.SetTrigger("grapple");
+        bossContext.Anim.SetTrigger("final");
 
         lineRenderer = bossContext.GetComponentInChildren<LineRenderer>(true);
         if (lineRenderer == null)
@@ -37,8 +37,7 @@ public class BossGrappleState : State
 
     public override void ExitState()
     {
-        bossContext.GrapplingFinished = 0;
-        bossContext.Anim.ResetTrigger("grapple");
+        bossContext.Anim.ResetTrigger("final");
         lineRenderer.gameObject.SetActive(false);
     }
 
@@ -46,7 +45,7 @@ public class BossGrappleState : State
     {
         if (bossContext.GrapplingFinished == 1)
         {
-            SwitchState(new BossIdleState(bossContext));
+            SwitchState(new BossUltimateState(bossContext));
         }
     }
 
@@ -54,16 +53,7 @@ public class BossGrappleState : State
     {
         float elapsed = 0f;
         float duration = bossContext.GrappleDuration * (bossContext.IsParryStunned ? 0.5f : 1f);
-        float stopDistance = 2f;
-
-        // Jump up before throwing the chain
-        float jumpHeight = 5f;
-        Vector3 jumpTarget = bossContext.transform.position + Vector3.up * jumpHeight;
-        while (bossContext.transform.position.y < jumpTarget.y)
-        {
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, jumpTarget, bossContext.GrappleSpeed * Time.deltaTime);
-            yield return null;
-        }
+        float stopDistance = 0f;
 
         // The throwing of the chain
         while (elapsed < duration)
@@ -71,7 +61,7 @@ public class BossGrappleState : State
             elapsed += Time.deltaTime;
             float percent = elapsed / duration;
 
-            Vector3 chainTip = Vector3.Lerp(chainStart.position, bossContext.Player.transform.position, percent);
+            Vector3 chainTip = Vector3.Lerp(chainStart.position, bossContext.CenterPos.position, percent);
 
             lineRenderer.SetPosition(0, chainStart.position);
             lineRenderer.SetPosition(1, chainTip);
@@ -79,11 +69,11 @@ public class BossGrappleState : State
         }
 
         // The pulling of the boss towards the grapple target
-        while (Vector3.Distance(bossContext.transform.position, bossContext.Player.transform.position) > stopDistance)
+        while (Vector3.Distance(bossContext.transform.position, bossContext.CenterPos.position) > stopDistance)
         {
             lineRenderer.SetPosition(0, bossContext.GetComponent<Collider2D>().bounds.center);
-            lineRenderer.SetPosition(1, bossContext.Player.transform.position);
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.Player.transform.position, bossContext.GrappleSpeed * Time.deltaTime);
+            lineRenderer.SetPosition(1, bossContext.CenterPos.position);
+            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.CenterPos.position, bossContext.GrappleSpeed * Time.deltaTime);
             yield return null;
         }
         bossContext.GrapplingFinished = 1;

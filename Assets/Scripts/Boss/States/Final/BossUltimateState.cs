@@ -22,28 +22,46 @@ public class BossUltimateState : State
     private LineRenderer chain;
     private float slashLifetime = 1.5f;
     private Coroutine ultimateCoroutine;
+    
 
     // Slash config constants
     private int numSlashes = 8;
     private float minLength = 50f;
     private float maxLength = 80f;
     private float angleSpread = 270f;
-    private float originRadius = 2.5f;
+    private float originRadius = 1f;
     private float slashColliderThickness = 0.35f;
+    private int numLoops;
+    private bool isAttacking;
 
     public BossUltimateState(BossStateMachine currentContext) : base(currentContext)
     {
         bossContext = currentContext;
-        isBaseState = true;
+        bossContext.RB.gravityScale = 0f;
+        numLoops = 0;
+        isAttacking = false;
     }
+    
 
     public override void EnterState()
     {
-        Debug.Log("Boss Ultimate entered");
-        
+        bossContext.Anim.SetTrigger("finalAttack");
+        bossContext.InUltimate = true;
         bossContext.AppliedMovementX = 0;
         bossContext.AppliedMovementY = 0;
 
+    }
+
+    public override void UpdateState()
+    {
+        if (!isAttacking)
+        {
+            BeginUltimate();
+        }
+    }
+
+    private void BeginUltimate()
+    {
         Vector3 bossOrigin = bossContext.transform.position + Vector3.up * 2f;
         slashes = new SlashInfo[numSlashes];
 
@@ -95,16 +113,13 @@ public class BossUltimateState : State
             slashes[i] = new SlashInfo(lr, slashCollider, origin, end);
         }
 
-        // animate the chains expanding
+        //animate the chains expanding
         ultimateCoroutine = bossContext.StartCoroutine(RunUltimate());
-    }
-
-    public override void UpdateState()
-    {
     }
 
     private IEnumerator RunUltimate()
     {
+        isAttacking = true;
         float elapsed = 0f;
         while (elapsed < slashLifetime)
         {
@@ -155,14 +170,9 @@ public class BossUltimateState : State
         
 
         ultimateCoroutine = null;
-
-        // automatically exit
-        SwitchState(new BossTransitionState(bossContext));
-    }
-
-    public override void ExitState()
-    {
-        Debug.Log("Boss Ultimate exited");
+        numLoops += 1;
+        isAttacking = false;
+        
         if (ultimateCoroutine != null)
         {
             bossContext.StopCoroutine(ultimateCoroutine);
@@ -176,9 +186,24 @@ public class BossUltimateState : State
                 if (slash != null && slash.LineRenderer != null) Object.Destroy(slash.LineRenderer.gameObject);
             slashes = null;
         }
+
+        
+        // automatically exit
+        CheckSwitchStates();
+        // SwitchState(new BossTransitionState(bossContext));
+    }
+
+    public override void ExitState()
+    {
+        bossContext.Anim.ResetTrigger("finalAttack");
+        bossContext.InUltimate = false;   
     }
 
     public override void CheckSwitchStates()
     {
+        if (numLoops >= 3)
+        {
+            SwitchState(new BossStunState(bossContext));
+        }
     }
 }

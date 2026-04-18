@@ -135,13 +135,23 @@ public class GameManager : MonoBehaviour
     #region Multiple Endings
     public void CheckWinStatus()
     {
-        if (bossStateMachine.gameObject.activeInHierarchy && currentStage == numStages && bossStateMachine.Health <= 0)
+        if (bossStateMachine.gameObject.activeInHierarchy && currentStage >= numStages && bossStateMachine.Health <= 0)
         {
-            gameOver = true;
-            playerStateMachine.OnDisable();
-            fightStarted = false;
-            //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
-            cutsceneManager.PlayCutScene(1);
+            if (currentStage >= 4 || numStages < 3)
+            {
+                Debug.Log("here");
+                gameOver = true;
+                playerStateMachine.OnDisable();
+                fightStarted = false;
+                //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
+                cutsceneManager.PlayCutScene(1); 
+            } else
+            {
+                bossStateMachine.Health += bossStateMachine.UltimateHealth;
+                IsTransitioning = true;
+                currentStage += 1;
+            }
+           
         }
         else if (playerStateMachine.Health <= 0)
         {
