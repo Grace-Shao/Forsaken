@@ -50,6 +50,9 @@ public class CutsceneManager : MonoBehaviour
         {
             bossStateMachine.IsStunned = false;
             manager.FightStarted = true;
+        } else
+        {
+            playerStateMachine.OnEnable();
         }
         cutscenes[currentCutscene].GetComponent<PlayableDirector>().Stop();
     }
