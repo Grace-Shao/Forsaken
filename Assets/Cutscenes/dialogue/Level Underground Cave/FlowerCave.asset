@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: FlowerCave
   m_EditorClassIdentifier: 
-  characterPortrait: {fileID: 0}
+  characterPortrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
   dialogue:
   - name: Eva
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
     text: ...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: ...what is it? Are you in pain again?
+    text: Are you in pain again, Eva?
   - name: Eva
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
     text: N-no... it's just... um...
@@ -39,8 +39,7 @@ MonoBehaviour:
   - name: Eva
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
     text: Oh, yes! I'd love to see it in person when I'm not sick anymore!
-  responses:
-  - responseText: Refuse
-    dialogueObject: {fileID: 11400000, guid: 9faf5be6c647cd24b8b4389d7b2e33f9, type: 2}
-  - responseText: Allow
-    dialogueObject: {fileID: 11400000, guid: 32167e152ab5aa94e9d9038d6505ea12, type: 2}
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: I'll try my best to take you there, Eva.
+  responses: []
