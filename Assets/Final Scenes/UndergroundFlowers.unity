@@ -529,6 +529,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 43aa979278679c1409b00fa64a47d4a9, type: 2}
+    - target: {fileID: 4759975921790451847, guid: daec83a58f0f682458a18b1a21f75275, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1498093552}
     - target: {fileID: 5077743869278946720, guid: daec83a58f0f682458a18b1a21f75275, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1446,6 +1450,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &129671114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4305974430216122030, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 1753448461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23178b3c3b963740be399a0d066e2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &164271196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2461,7 @@ PrefabInstance:
     - target: {fileID: 1679987632708151612, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: dialogueObject
       value: 
-      objectReference: {fileID: 11400000, guid: eac738fb796fd444580a47e860e07013, type: 2}
+      objectReference: {fileID: 11400000, guid: acbec5b8831894279b5cb05fdabb6533, type: 2}
     - target: {fileID: 2591959164288240870, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: m_Name
       value: TempDialogueInteractable
@@ -5638,7 +5653,7 @@ PrefabInstance:
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: dialogueUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 129671114}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: energyFill
       value: 
