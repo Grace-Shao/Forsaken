@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 public class MobRushManager : MonoBehaviour
 {
     #region Variables
@@ -27,6 +28,7 @@ public class MobRushManager : MonoBehaviour
     private List<CrowStateMachine> crows;
     private int numDogs;
     private int numCrows;
+    public Action<StateMachine> AddedEnemy;
     #endregion
 
     void Start()
@@ -59,6 +61,7 @@ public class MobRushManager : MonoBehaviour
     public void TriggerHUE()
     {
         boss.gameObject.SetActive(true);
+        AddedEnemy?.Invoke(boss);
         gameManager.FightStarted = true;
     }
     public void FinishFight()
@@ -70,7 +73,7 @@ public class MobRushManager : MonoBehaviour
 
     public void SpawnDog()
     {
-        float randomChance = Random.Range(0f, 1f);
+        float randomChance = UnityEngine.Random.Range(0f, 1f);
         GameObject dogInstance;
         if (randomChance <= 0.5f)
         {
@@ -80,13 +83,15 @@ public class MobRushManager : MonoBehaviour
             dogInstance = Instantiate(dog, dogSpawnPointTwo.position, Quaternion.identity);
         }
         dogs.Add(dogInstance.GetComponent<DogStateMachine>());
+        AddedEnemy?.Invoke(dogs[dogs.Count - 1]);
         dogs[dogs.Count - 1].DogDeath += OnDogDeath;
         dogs[dogs.Count - 1].Attack();
+        
     }
 
     public void SpawnCrow()
     {
-        float randomChance = Random.Range(0f, 1f);
+        float randomChance = UnityEngine.Random.Range(0f, 1f);
         GameObject crowIsntance;
         if (randomChance <= 0.5f)
         {
@@ -96,8 +101,10 @@ public class MobRushManager : MonoBehaviour
             crowIsntance = Instantiate(crow, crowSpawnPointTwo.position, Quaternion.identity);
         }
         crows.Add(crowIsntance.GetComponent<CrowStateMachine>());
+        AddedEnemy?.Invoke(crows[crows.Count - 1]);
         crows[crows.Count - 1].CrowDeath += OnCrowDeath;
         crows[crows.Count - 1].Attack();
+        
     }
 
     public void OnDogDeath(DogStateMachine dogInstance)
@@ -133,9 +140,11 @@ public class MobRushManager : MonoBehaviour
 
     public void KillHUE()
     {
+        boss.AggroEnd?.Invoke(boss);
         boss.gameObject.SetActive(false);
         player.OnEnable();
         blaster.SetActive(true);
+
     }
 
     System.Collections.IEnumerator CooldownDog()

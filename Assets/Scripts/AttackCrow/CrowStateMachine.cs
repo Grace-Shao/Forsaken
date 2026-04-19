@@ -52,6 +52,7 @@ public class CrowStateMachine : StateMachine, IDamageable
 
     protected override void UpdateState()
     {
+        Debug.Log(currentState);
         rb.linearVelocity = appliedMovement;
         currentState.UpdateStates();
     }
@@ -92,6 +93,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            AggroEnd?.Invoke(this);
             CrowDeath?.Invoke(this);
             gameObject.SetActive(false);
         }

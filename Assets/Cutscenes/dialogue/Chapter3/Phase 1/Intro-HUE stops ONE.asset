@@ -12,14 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: Intro-HUE stops ONE
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'HUE: Stop right there! That human is highly infectious. I am under orders to
-    take her to quarantine. Why do you keep running away?'
-  - "ONE: I don\u2019t believe a single word you say. You exterminate humans, not
-    heal them. Eva\u2026 Eva won\u2019t last long without a cure. If you leave us
-    be, I\u2019m sure we can find a cure\u2013"
-  - 'HUE: Even if you run to the ends of the earth, there might not be a cure.'
-  - 'HUE: Her disease is highly infectious, how many more humans will become infected
-    and die before you find the so-called cure?'
-  - "HUE: So\u2026 what will you do now?"
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Stop right there. I'm to take that infected human to quarantine. Why do
+      you continue to run away?
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: 'I won''t believe a single lie that comes out of your mouth! You don''t
+      heal humans, you exterminate them. '
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Eva... she won't last long without a cure. Just leave us be and I'm sure-
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: A cure? Even if you search the ends of the earth you won't find a cure.
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: You know her disease is highly infectious. How many more humans will you
+      let her infect and kill before you accept reality?
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Hand the human over, or else...
   responses: []

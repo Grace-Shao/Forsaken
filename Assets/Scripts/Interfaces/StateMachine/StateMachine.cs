@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System;
+
 public abstract class StateMachine : MonoBehaviour
 {
     //control variables
@@ -14,6 +17,7 @@ public abstract class StateMachine : MonoBehaviour
 
     //States
     protected State currentState;
+    protected bool isParryStunned = false;
 
     //getters and settesr
     public State CurrentState {get {return currentState; } set {currentState = value;}}
@@ -25,7 +29,10 @@ public abstract class StateMachine : MonoBehaviour
     public float AppliedMovementX {get {return appliedMovement.x;} set {appliedMovement.x = value;}}
     public float AppliedMovementY {get {return appliedMovement.y;} set {appliedMovement.y = value;}}
     public float MoveSpeed {get {return moveSpeed;} set {moveSpeed = value;}}
+    public bool IsParryStunned {get {return isParryStunned;}}
 
+    public Action<StateMachine> AggroStart;
+    public Action<StateMachine> AggroEnd;
     public void Awake()
     {
         Init();
@@ -69,5 +76,29 @@ public abstract class StateMachine : MonoBehaviour
         {
             sprite.localScale = new Vector3(Mathf.Sign(rb.linearVelocity.x), 1, 1);
         }
+    }
+
+    public void Stun(float time, float rate)
+    {
+        Debug.Log("stunned");
+        BeginSlowDown(time, rate);
+    }
+
+    private void BeginSlowDown(float time, float rate)
+    {
+        StartCoroutine(SlowDown(time, rate));
+    }
+
+    public IEnumerator SlowDown(float time, float rate)
+    {
+        isParryStunned = true;
+        moveSpeed /= rate;
+        animator.speed /= rate;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        moveSpeed *= rate;
+        animator.speed = 1f;
+        isParryStunned = false;
     }
 }

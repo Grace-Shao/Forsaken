@@ -23,6 +23,10 @@ public class EvaIdleState : State
 
     public override void CheckSwitchStates()
     {
+        if (evaContext.CurrentState is EvaMoveToHideState || evaContext.CurrentState is EvaHiddenState)
+        {
+            return; 
+        }
         if (evaContext.FollowRange())
         {
             SwitchState(new EvaFollowState(evaContext));

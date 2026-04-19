@@ -5,27 +5,29 @@ using System.Collections;
 public class BossDialogue : MonoBehaviour
 {
 
-		public BossStateMachine stateMachine;
-		public GameObject text;
-		public TextMeshProUGUI textField;
+	public BossStateMachine stateMachine;
+	public GameObject text;
+	public TextMeshProUGUI textField;
 
-		int atkPrev = 0;
-		int stunCount = 0; 
+	int stunCount = 0; 
 
-    // Update is called once per frame
-    void Update() {
-				if (stateMachine.IsStunned){
-						stunCount++;
-						PrintText(true);
-				}
-				if (stateMachine.AttackFinished == 0 && atkPrev == 1) {
-					atkPrev = 0;
-				}
-				if (stateMachine.AttackFinished == 1 && atkPrev == 0) {
-					PrintText(false);
-				}
+	// Update is called once per frame
+	bool prevStunned = false;
+	int prevAttackFinished = 0;
+	void Update() {
+		// Detect stun
+		if (stateMachine.IsStunned && !prevStunned) {
+			stunCount++;
+			PrintText(true);
+		}
+		prevStunned = stateMachine.IsStunned;
 
-    }
+		// Detect attack finished
+		if (stateMachine.AttackFinished == 1 && prevAttackFinished == 0) {
+			PrintText(false);
+		}
+		prevAttackFinished = stateMachine.AttackFinished;
+	}
 
 		void CloseText() {
 			text.SetActive(false);
@@ -35,11 +37,11 @@ public class BossDialogue : MonoBehaviour
 			string a = "p";
 			if (stunned) {
 				if (stunCount == 1) {
-					a = "stunOne test";
+					a = "Ugh!";
 				} else if (stunCount == 2) {
-					a = "stunTwo test";
+					a = "Impressive...";
 				} else if (stunCount == 3) {
-					a = "stunThree test";
+					a = "Ngh!";
 				}
 				textField.text = a;
 				text.SetActive(true);
@@ -49,15 +51,14 @@ public class BossDialogue : MonoBehaviour
 					if (dialougeChoice == 0) {
 						a = "\"This must be done...\"";
 					} else if (dialougeChoice == 1) {
-						a = "placeholder";
+						a = "\"You should have surrendered, ONE.\"";
 					} else if (dialougeChoice == 2) {
-						a = "placeholder";
+						a = "\"Duty outweighs desire.\"";
 					} else if (dialougeChoice == 3) {
-						a = "placeholder";
+						a = "\"There is no other way.\"";
 					} else if (dialougeChoice == 4) {
-						a = "placeholder";
+						a = "\"Things could have been different...\"";
 					}
-					atkPrev = 1;
 					textField.text = a;
 					text.SetActive(true);
 					CancelInvoke("CloseText");

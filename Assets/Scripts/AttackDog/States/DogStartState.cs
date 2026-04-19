@@ -20,6 +20,7 @@ public class DogStartState : State
     }
     public override void ExitState()
     {
+        dogContext.AggroStart?.Invoke(dogContext);
         dogContext.Anim.ResetTrigger("Idle");
         dogContext.AppliedMovementX = 0f;
         dogContext.AppliedMovementY = 0f;

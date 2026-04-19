@@ -137,4 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbb51469e6dd043980e939af3e046f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 43aa979278679c1409b00fa64a47d4a9, type: 2}
+  outlineColor: {r: 0.9622642, g: 0.67630833, b: 0.79409504, a: 1}
+  outlineThickness: 0.2
   dialogueObject: {fileID: 11400000, guid: 826f84c14481b4544ae28315a2118df5, type: 2}

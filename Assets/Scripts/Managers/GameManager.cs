@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 public class GameManager : MonoBehaviour
 {
     #region Serializable Fields
@@ -13,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameObject aggroArea;
+    [SerializeField] private FullScreenPassRendererFeature deathShader;
+    [SerializeField] private MobRushManager mobRushManager;
+    [SerializeField] private List<StateMachine> enemies;
     
     [Header("UI References")]
     [SerializeField] private GameObject lossScreen;
@@ -31,12 +36,15 @@ public class GameManager : MonoBehaviour
     private static bool fightStarted = false;
     private bool isTransitioning = false;
     private bool gameOver = false;
+    private bool inCombat = false;
+    private List<StateMachine> angryEnemies;
     #endregion
 
     #region Object References
     private BossStateMachine bossStateMachine;
     private PlayerStateMachine playerStateMachine;
     private SaveData saveData;
+    
     #endregion
 
     #region Getters and Setters
@@ -45,6 +53,8 @@ public class GameManager : MonoBehaviour
     public bool FightStarted {get {return fightStarted;} set {fightStarted = value;}}
     public bool GameOver {get {return gameOver;} set {gameOver = value;}}
     public bool IsTransitioning {get {return isTransitioning;} set {isTransitioning = value;}}
+    public Action CombatStarted;
+    public Action CombatEnded;
     public 
     #endregion
     
@@ -55,6 +65,17 @@ public class GameManager : MonoBehaviour
         bossStateMachine = boss.GetComponent<BossStateMachine>();
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
         bossStateMachine.BossDeath += CheckWinStatus;
+        if (mobRushManager != null)
+        {
+            mobRushManager.AddedEnemy += OnAddedEnemy;
+        }
+        foreach(StateMachine enemy in enemies)
+        {
+            enemy.AggroStart += OnAggro;
+            enemy.AggroEnd += OnAggroEnded;
+        }
+        deathShader?.SetActive(false);
+        angryEnemies = new();
         SetTimeScale(1f);
         LoadData();
     }
@@ -62,12 +83,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = scale;
     }
+
     public void BeginBattle()
     {
         Time.timeScale = 1f;
         IsTransitioning = true;
         fightStarted = true;
         decisionScreen.SetActive(false);
+        OnAggro(bossStateMachine);
     }
     public void BeginNextStage()
     {
@@ -77,6 +100,10 @@ public class GameManager : MonoBehaviour
         bossStateMachine.Health = 100;
         bossStateMachine.Damage *= 2;
         bossStateMachine.MoveSpeed *= 1.5f;
+        if (currentStage >= 3)
+        {
+            deathShader?.SetActive(true);
+        }
     }
     public void EndChase()
     {
@@ -88,6 +115,35 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Events
+    public void OnAddedEnemy(StateMachine sm)
+    {
+        sm.AggroStart += OnAggro;
+        sm.AggroEnd += OnAggroEnded;
+        enemies.Add(sm);
+    }
+    public void OnAggro(StateMachine sm)
+    {
+        if (!inCombat)
+        {
+            inCombat = true;
+            CombatStarted?.Invoke();
+        }
+        angryEnemies.Add(sm);
+    }
+
+    public void OnAggroEnded(StateMachine sm)
+    {
+        angryEnemies.Remove(sm);
+        if (angryEnemies.Count <= 0 && inCombat)
+        {
+            inCombat = false;
+            CombatEnded?.Invoke();
+        }
+    }
+    #endregion
+
 
     #region Player Access
 
@@ -108,9 +164,14 @@ public class GameManager : MonoBehaviour
     {
         if (bossStateMachine != null && bossStateMachine.gameObject.activeInHierarchy)
         {
-            bossStateMachine.Stun();
+            bossStateMachine.Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
         }
-        
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<StateMachine>().Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
+        }
     }
     public void UnlockPlayerAbility(int ability)
     {
@@ -130,16 +191,31 @@ public class GameManager : MonoBehaviour
     #region Multiple Endings
     public void CheckWinStatus()
     {
-        if (bossStateMachine.gameObject.activeInHierarchy && currentStage == numStages && bossStateMachine.Health <= 0)
+        if (bossStateMachine.gameObject.activeInHierarchy && currentStage >= numStages && bossStateMachine.Health <= 0)
         {
-            gameOver = true;
-            playerStateMachine.OnDisable();
-            fightStarted = false;
-            //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
-            cutsceneManager.PlayCutScene(1);
+            if (currentStage >= 4 || numStages < 3)
+            {
+                gameOver = true;
+                playerStateMachine.OnDisable();
+                fightStarted = false;
+                deathShader?.SetActive(false);
+                //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
+                if (mobRushManager == null)
+                {
+                   OnAggroEnded(bossStateMachine); 
+                }
+                cutsceneManager.PlayCutScene(1); 
+            } else
+            {
+                bossStateMachine.Health += bossStateMachine.UltimateHealth;
+                IsTransitioning = true;
+                currentStage += 1;
+            }
+           
         }
         else if (playerStateMachine.Health <= 0)
         {
+            deathShader?.SetActive(false);
             gameOver = true;
             playerStateMachine.OnDisable();
             fightStarted = false;
@@ -193,6 +269,7 @@ public class GameManager : MonoBehaviour
         if (saveData.shootUnlocked) UnlockPlayerAbility(2);
         if (saveData.canDash) UnlockPlayerAbility(3);
         if (string.IsNullOrEmpty(saveData.lastSaveSpotID)) return;
+        Debug.Log(saveData.lastSaveSpotID);
         GameObject[] saveSpots = GameObject.FindGameObjectsWithTag("SavePoint");
         foreach (GameObject saveSpot in saveSpots) {
             SaveSpot spot = saveSpot.GetComponent<SaveSpot>();

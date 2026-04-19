@@ -12,6 +12,7 @@ TagManager:
   - HUE Weapon
   - Breakable
   - SavePoint
+  - RangedBreakable
   layers:
   - Default
   - TransparentFX

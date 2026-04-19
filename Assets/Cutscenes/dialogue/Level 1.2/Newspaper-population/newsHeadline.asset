@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
+  m_Name: newsHeadline
+  m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
+  dialogue:
+  - name: BREAKING NEWS
+    portrait: {fileID: 0}
+    text: GLOBAL HUMAN POPULATION DROPS BELOW 500
+  - name: BREAKING NEWS
+    portrait: {fileID: 0}
+    text: THE COUNCIL HAS DEPLOYED HUMAN UNIT EXTERMINATORS TO ELIMINATE REMAINING
+      THREATS TO HUMANITY
+  - name: BREAKING NEWS
+    portrait: {fileID: 0}
+    text: UNINFECTED HUMANS ARE ORDERED TO QUARANTINE AT ALL TIMES
+  - name: BREAKING NEWS
+    portrait: {fileID: 0}
+    text: FURTHER INFECTION WILL RESULT IN THE EXTINCTION OF HUMANKIND
+  responses:
+  - responseText: Show to Eva
+    dialogueObject: {fileID: 11400000, guid: 2f65000149524ac4e9dff3c5fdcd5429, type: 2}
+  - responseText: Don't Show
+    dialogueObject: {fileID: 11400000, guid: 8bb76da9c4546614aad76f8772f9eff5, type: 2}

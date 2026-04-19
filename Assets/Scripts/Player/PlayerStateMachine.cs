@@ -36,6 +36,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [Header("Parry")]
     [SerializeField] private float parryTiming = 2.5f;
     [SerializeField] private float parryCooldown = 2.5f;
+    [SerializeField] private float parrySlowDownAmount = 2f;
 
     [Header("Stamina/Energy")]
     [SerializeField] private float maxEnergy = 100f;
@@ -75,8 +76,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     private bool isMovementPressed;
     private bool canMove = true;
-    private bool shootUnlocked = true;
-    private bool canDash = true;
+    private bool shootUnlocked = false;
+    private bool canDash = false;
 
     private bool isRunPressed;
     private bool isHitPressed;
@@ -137,6 +138,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     
     private ParticleSystem damageTakenParticles;
     [SerializeField] private ParticleSystem parryParticles;
+    [SerializeField] private ShockwaveTrigger shockwave;
     #endregion
 
     #region Getters and Setters
@@ -162,6 +164,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         }
     } // every change of the can parry variable makes a new id
 
+    public float ParryCooldown {get {return parryCooldown;}}
+    public float ParrySlowDownAmount {get {return parrySlowDownAmount;}}
     public bool IsParrying {get {return isParrying;} set {isParrying = value;}}
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool HitWall{get {return hitWall;} set {hitWall = value;}}
@@ -533,6 +537,15 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         );
         }
     }
+
+    public void Interact()
+    {
+        if (Interactable != null && Interactable.CanInteract())
+        {
+            currentState.SwitchState(new PlayerIdleState(this));
+           Interactable?.Interact(this); 
+        }
+    }
     #endregion
 
     #region Parry Controls
@@ -555,6 +568,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public void StartParry()
     {
         parryParticles.Play();
+        shockwave.PlayShockwave();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
         CanParry = false; 
@@ -622,10 +636,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     }
     void OnInteractPressed(InputAction.CallbackContext context)
     {
-        if (Interactable != null && Interactable.CanInteract())
-        {
-           Interactable?.Interact(this); 
-        }
+        Interact();
     }
 
     public void OnEnable()

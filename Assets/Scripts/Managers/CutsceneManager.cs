@@ -23,6 +23,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void PlayCutScene(int index)
     { 
+        Debug.Log("playing");
         manager.FightStarted = false;
         cutscenes[index].GetComponent<PlayableDirector>().Play();
         currentCutscene = index;
@@ -50,6 +51,9 @@ public class CutsceneManager : MonoBehaviour
         {
             bossStateMachine.IsStunned = false;
             manager.FightStarted = true;
+        } else
+        {
+            playerStateMachine.OnEnable();
         }
         cutscenes[currentCutscene].GetComponent<PlayableDirector>().Stop();
     }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
+  m_Name: Test_Characters
+  m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
+  dialogue:
+  - name: Bee
+    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
+    text: Hi I'm Bee hahaha
+  - name: Bone Fish
+    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
+    text: Hi I'm Bone Fish hahaha
+  - name: Bee
+    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
+    text: Buzzzzzzzz
+  - name: Bone Fish
+    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
+    text: Blubbbb
+  responses:
+  - responseText: booooo
+    dialogueObject: {fileID: 11400000, guid: 576cb25d3248ea549b7c731955671517, type: 2}
+  - responseText: Yessss
+    dialogueObject: {fileID: 11400000, guid: 576cb25d3248ea549b7c731955671517, type: 2}

@@ -112,6 +112,7 @@ public class DogStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            AggroEnd?.Invoke(this);
             DogDeath?.Invoke(this);
             gameObject.SetActive(false);
         }

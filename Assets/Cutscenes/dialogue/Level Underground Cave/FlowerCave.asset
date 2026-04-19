@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
+  m_Name: FlowerCave
+  m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
+  dialogue:
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: ...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: ...what is it? Are you in pain again?
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: N-no... it's just... um...
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: The flower. It's pretty. My dad gave me ones just like these once.
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: I always wanted to go to the beach to see the ocean but dad was always
+      so busy. He got me these pretty blue flowers instead!
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: ...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: ...do you still want to see the ocean?
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: Oh, yes! I'd love to see it in person when I'm not sick anymore!
+  responses:
+  - responseText: Refuse
+    dialogueObject: {fileID: 11400000, guid: 9faf5be6c647cd24b8b4389d7b2e33f9, type: 2}
+  - responseText: Allow
+    dialogueObject: {fileID: 11400000, guid: 32167e152ab5aa94e9d9038d6505ea12, type: 2}
