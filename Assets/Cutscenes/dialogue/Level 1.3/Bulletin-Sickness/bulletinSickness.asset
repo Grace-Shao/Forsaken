@@ -15,7 +15,7 @@ MonoBehaviour:
   characterPortrait: {fileID: 4425007608166331093, guid: 698f8fc363d80d64190075509d110e23, type: 3}
   dialogue:
   - name: Newspaper
-    portrait: {fileID: 0}
+    portrait: {fileID: -5327032465792708617, guid: 2290b35cddd28114c96c88a49cd698f0, type: 3}
     text: '"Council Decree: Purple Veined Humans to be Executed on Sight"'
   - name: Eva
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}

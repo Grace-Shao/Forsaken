@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 0}
   dialogue:
-  - name: NEWS BROADCAST
+  - name: BREAKING NEWS
     portrait: {fileID: 0}
     text: GLOBAL HUMAN POPULATION DROPS BELOW 500
-  - name: NEWS BROADCAST
+  - name: BREAKING NEWS
     portrait: {fileID: 0}
     text: THE COUNCIL HAS DEPLOYED HUMAN UNIT EXTERMINATORS TO ELIMINATE REMAINING
       THREATS TO HUMANITY
-  - name: NEWS BROADCAST
+  - name: BREAKING NEWS
     portrait: {fileID: 0}
     text: UNINFECTED HUMANS ARE ORDERED TO QUARANTINE AT ALL TIMES
-  - name: NEWS BROADCAST
+  - name: BREAKING NEWS
     portrait: {fileID: 0}
     text: FURTHER INFECTION WILL RESULT IN THE EXTINCTION OF HUMANKIND
   responses:

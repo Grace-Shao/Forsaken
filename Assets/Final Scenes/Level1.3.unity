@@ -9973,6 +9973,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 931239300}
     m_Modifications:
     - target: {fileID: 1679987632708151612, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679987632708151612, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: dialogueObject
       value: 
       objectReference: {fileID: 11400000, guid: c76b232e3b0b56a4b91844d1e9a88189, type: 2}
