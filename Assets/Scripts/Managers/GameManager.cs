@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 public class GameManager : MonoBehaviour
 {
     #region Serializable Fields
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameObject aggroArea;
+    [SerializeField] private FullScreenPassRendererFeature deathShader;
     
     [Header("UI References")]
     [SerializeField] private GameObject lossScreen;
@@ -77,6 +79,10 @@ public class GameManager : MonoBehaviour
         bossStateMachine.Health = 100;
         bossStateMachine.Damage *= 2;
         bossStateMachine.MoveSpeed *= 1.5f;
+        if (currentStage >= 3)
+        {
+            deathShader?.SetActive(true);
+        }
     }
     public void EndChase()
     {
@@ -143,6 +149,7 @@ public class GameManager : MonoBehaviour
                 gameOver = true;
                 playerStateMachine.OnDisable();
                 fightStarted = false;
+                deathShader?.SetActive(false);
                 //bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
                 cutsceneManager.PlayCutScene(1); 
             } else
