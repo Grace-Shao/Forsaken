@@ -1,8 +1,8 @@
 using UnityEngine;
-public class EvaIdleState : State
+public class EvaHiddenState : State
 {
     private EvaStateMachine evaContext;
-    public EvaIdleState(EvaStateMachine currentContext) : base(currentContext)
+    public EvaHiddenState(EvaStateMachine currentContext) : base(currentContext)
     {
         evaContext = currentContext;
         isBaseState = true;
@@ -15,7 +15,7 @@ public class EvaIdleState : State
     }
     public override void UpdateState()
     {
-        CheckSwitchStates();
+
     }
     public override void ExitState()
     {
@@ -23,13 +23,5 @@ public class EvaIdleState : State
 
     public override void CheckSwitchStates()
     {
-        if (evaContext.CurrentState is EvaMoveToHideState || evaContext.CurrentState is EvaHiddenState)
-        {
-            return; 
-        }
-        if (evaContext.FollowRange())
-        {
-            SwitchState(new EvaFollowState(evaContext));
-        }
     }
 }

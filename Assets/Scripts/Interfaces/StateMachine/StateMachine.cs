@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System;
+
 public abstract class StateMachine : MonoBehaviour
 {
     //control variables
@@ -29,6 +31,8 @@ public abstract class StateMachine : MonoBehaviour
     public float MoveSpeed {get {return moveSpeed;} set {moveSpeed = value;}}
     public bool IsParryStunned {get {return isParryStunned;}}
 
+    public Action<StateMachine> AggroStart;
+    public Action<StateMachine> AggroEnd;
     public void Awake()
     {
         Init();

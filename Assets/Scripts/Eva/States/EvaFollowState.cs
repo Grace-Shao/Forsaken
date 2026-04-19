@@ -14,6 +14,8 @@ public class EvaFollowState : State
     }
     public override void UpdateState()
     {
+        if (evaContext.CurrentState is TestEvaMoveToHideState || evaContext.CurrentState is TestEvaHiddenState) 
+            return;
         Vector3 target = new Vector3(evaContext.Player.gameObject.transform.position.x, evaContext.RB.gameObject.transform.position.y, 0f);
         Vector3 currentPos = new Vector3(evaContext.RB.gameObject.transform.position.x, evaContext.RB.gameObject.transform.position.y, 0f);
         Vector3 direction = (target - currentPos).normalized;
