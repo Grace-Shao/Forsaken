@@ -1875,7 +1875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116196398618925377, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: attackDamage
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2232978214380274909, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Layer
@@ -5525,6 +5525,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4542973667952813159, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7893792363976659561, guid: c1fb1571327fdfe4d917dedd9aee88f1, type: 3}
     - target: {fileID: 5064966858246261328, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5553,6 +5557,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6592745165520005059}
+    - target: {fileID: 7414189240808006079, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8511675761167548954, guid: f47a78078096d4a4a9df5856c40cd949, type: 3}
     - target: {fileID: 8547237848314378546, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
@@ -5561,6 +5569,14 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[6].value
       value: 
       objectReference: {fileID: 4869140431642092503}
+    - target: {fileID: 8547237848314378546, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[8].value
+      value: 
+      objectReference: {fileID: 2446096774501070473}
+    - target: {fileID: 8547237848314378546, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[9].value
+      value: 
+      objectReference: {fileID: 2446096774501070472}
     - target: {fileID: 8868086122233568341, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5587,6 +5603,16 @@ MonoBehaviour:
 --- !u!224 &2446096774501070471 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 2446096774501070469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2446096774501070472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3570234272770647344, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 2446096774501070469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2446096774501070473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1042620644199040919, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
   m_PrefabInstance: {fileID: 2446096774501070469}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3903958377360978742 stripped
