@@ -23,6 +23,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void PlayCutScene(int index)
     { 
+        Debug.Log("playing");
         manager.FightStarted = false;
         cutscenes[index].GetComponent<PlayableDirector>().Play();
         currentCutscene = index;
