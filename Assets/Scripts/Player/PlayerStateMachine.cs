@@ -34,8 +34,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float inputDeadzone = 0.02f;
 
     [Header("Parry")]
-    [SerializeField] private float parryTiming = 2.5f;
     [SerializeField] private float parryCooldown = 2.5f;
+    [SerializeField] private float parryDuration = 2.5f;
     [SerializeField] private float parrySlowDownAmount = 2f;
 
     [Header("Stamina/Energy")]
@@ -556,18 +556,20 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         if (targetParryCooldownId == currentParryCooldownId) {
             CanParry = false; // nothing was changed during the wait so was in the same parry
         }
+        shockwave.gameObject.SetActive(false);
     }
     
     private IEnumerator StartParryInternal() {
         if (IsParrying) yield break;
         IsParrying = true;
-        yield return new WaitForSeconds(parryTiming);
+        yield return new WaitForSeconds(parryDuration);
         IsParrying = false;
     }
 
     public void StartParry()
     {
         parryParticles.Play();
+        shockwave.gameObject.SetActive(true);
         shockwave.PlayShockwave();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
@@ -704,18 +706,24 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public void HandleDifficulty(Difficulty difficulty) {
         switch (difficulty) {
             case Difficulty.Easy:
+                parryDuration = 5f;
+                parryCooldown = 0.5f;
                 maxHealth = 200;
                 SetHealth(maxHealth);
                 Cooldown = 6f;
                 break;
 
             case Difficulty.Normal:
+                parryDuration = 2.5f;
+                parryCooldown = 2.5f;
                 maxHealth = 100;
                 SetHealth(maxHealth);
                 Cooldown = 3f;
                 break;
 
             case Difficulty.Hard:
+                parryDuration = 2.0f;
+                parryCooldown = 2.5f;
                 maxHealth = 50;
                 SetHealth(maxHealth);
                 Cooldown = 1.5f;

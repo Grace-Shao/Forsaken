@@ -1764,7 +1764,7 @@ MonoBehaviour:
   damageCooldown: 10
   jumpForceX: 5
   jumpForceY: 5
-  maxHealth: 50
+  maxHealth: 15
 --- !u!1 &6063971599116066333
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,10 @@ public class Player_Melee : Weapon
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (weilder.gameObject.GetComponent<PlayerStateMachine>().IsBlocking)
+        {
+            return;
+        }
         string layer = LayerMask.LayerToName(other.gameObject.layer);
         if (layer == "Enemies" || other.gameObject.CompareTag("Breakable"))
         {

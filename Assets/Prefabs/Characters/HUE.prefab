@@ -3469,6 +3469,7 @@ MonoBehaviour:
   dashRange: 5
   summonCooldown: 10
   numEnemies: 3
+  ultimateHealth: 10
 --- !u!1 &6542832211614046976
 GameObject:
   m_ObjectHideFlags: 0

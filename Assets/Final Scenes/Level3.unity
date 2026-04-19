@@ -1504,7 +1504,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &446487279 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 475392921487432006, guid: 59fc5d53d93d5f841afef30f41838788, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2455181090307840000, guid: 59fc5d53d93d5f841afef30f41838788, type: 3}
   m_PrefabInstance: {fileID: 446487277}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
