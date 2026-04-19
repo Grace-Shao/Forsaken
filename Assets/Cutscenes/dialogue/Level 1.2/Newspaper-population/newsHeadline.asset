@@ -10,13 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-  m_Name: Newspaper-Population
+  m_Name: newsHeadline
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'Headline: GLOBAL POPULATION FALLS BELOW 500'
-  - The Council has deployed Human Unit Exterminators (HUEs) to contain threats to
-    Humanity
-  - Authorities warn that any further spread of infection could lead to total extinction.
+  - name: NEWS BROADCAST
+    portrait: {fileID: 0}
+    text: GLOBAL HUMAN POPULATION DROPS BELOW 500
+  - name: NEWS BROADCAST
+    portrait: {fileID: 0}
+    text: THE COUNCIL HAS DEPLOYED HUMAN UNIT EXTERMINATORS TO ELIMINATE REMAINING
+      THREATS TO HUMANITY
+  - name: NEWS BROADCAST
+    portrait: {fileID: 0}
+    text: UNINFECTED HUMANS ARE ORDERED TO QUARANTINE AT ALL TIMES
+  - name: NEWS BROADCAST
+    portrait: {fileID: 0}
+    text: FURTHER INFECTION WILL RESULT IN THE EXTINCTION OF HUMANKIND
   responses:
   - responseText: Show to Eva
     dialogueObject: {fileID: 11400000, guid: 2f65000149524ac4e9dff3c5fdcd5429, type: 2}
