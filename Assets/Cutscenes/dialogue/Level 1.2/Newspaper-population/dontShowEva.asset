@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-  m_Name: Thinking
+  m_Name: dontShowEva
   m_EditorClassIdentifier: 
-  characterPortrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+  characterPortrait: {fileID: 0}
   dialogue:
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: The professor would know, althought he isn't here anymore...
+    text: Eva doesn''t need to know this... This would only scare her.
   responses: []

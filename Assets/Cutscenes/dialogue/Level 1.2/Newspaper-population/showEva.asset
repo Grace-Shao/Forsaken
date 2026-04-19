@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-  m_Name: RestaurantPoster
+  m_Name: showEva
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - "What is a restaurant, ONE? It\u2019s making me hungry"
-  responses:
-  - responseText: I'm not sure either, Eva...
-    dialogueObject: {fileID: 11400000, guid: 268fb21f1c5333b4b97f92e84672f05a, type: 2}
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: O-only five hundred...? Th-they must be scared...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: ...
+  responses: []
