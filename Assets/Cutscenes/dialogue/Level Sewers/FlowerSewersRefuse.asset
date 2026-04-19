@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: FlowerSewersRefuse
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'ONE: ...We''ll see lots more flowers, Eva. That one might be dirty, so let''s
-    leave it to grow, ok?'
-  - 'Eva: Okay...'
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: I think you should leave it be. It is working so hard to keep growing,
+      taking it with us would mean killing it.
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: You're right... Bye bye flower!
   responses: []

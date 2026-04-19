@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: FlowerSewersAllow
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'ONE: Sure, you can bring it. It''s been in the sewers though, are you sure?'
-  - 'Eva: Oh...actually, maybe I''ll let it grow instead. '
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Go ahead, it is just like you after all. Small, but thriving despite the
+      odds.
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: I'll take good care of!
   responses: []

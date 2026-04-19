@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: FlowerSewers
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - 'Eva: ONE, look! A flower! It''s almost the same color as dad''s eyes...'
-  - Can I bring it with us?
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: ONE look at this flower! Can I take it?
   responses:
   - responseText: Refuse
     dialogueObject: {fileID: 11400000, guid: 9faf5be6c647cd24b8b4389d7b2e33f9, type: 2}
