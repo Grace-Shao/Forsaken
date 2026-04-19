@@ -52,10 +52,10 @@ public class CrowWalkState : State
 
     public override void CheckSwitchStates()
     {
-        if (crowContext.IsStunned)
-        {   
-            SwitchState(new CrowStunState(crowContext));
-        }
+        // if (crowContext.IsStunned)
+        // {   
+        //     SwitchState(new CrowStunState(crowContext));
+        // }
         if (t >= 1) {
             if (crowContext.InRange() && !crowContext.InAttack)
             {
@@ -63,7 +63,7 @@ public class CrowWalkState : State
             }
             else
             {
-                SwitchState(new CrowRecoverState(crowContext));
+                SwitchState(new CrowStunState(crowContext));
             }
         }
         

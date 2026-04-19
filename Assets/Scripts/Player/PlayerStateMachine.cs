@@ -12,8 +12,10 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float slashForce = 30f;
     [SerializeField] private float recoilForce = 30f;
+    [SerializeField] private bool shootUnlocked = false;
 
     [Header("Dash")]
+    [SerializeField] private bool canDash = false;
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashDuration = 0.18f; // Duration based dash
     [SerializeField] private float dashDistance = 5f;
@@ -76,8 +78,6 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     private bool isMovementPressed;
     private bool canMove = true;
-    private bool shootUnlocked = false;
-    private bool canDash = false;
 
     private bool isRunPressed;
     private bool isHitPressed;

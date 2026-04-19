@@ -27,7 +27,7 @@ public class CrowPounceState : State
     public override void CheckSwitchStates()
     {
         if (!crowContext.InAttack) {
-            SwitchState(new CrowRecoverState(crowContext));
+            SwitchState(new CrowStunState(crowContext));
         }   
     }
 }

@@ -53,10 +53,10 @@ public class CrowRecoverState : State
 
     public override void CheckSwitchStates()
     {
-        if (crowContext.IsStunned)
-        {
-            SwitchState(new CrowStunState(crowContext));
-        }
+        // if (crowContext.IsStunned)
+        // {
+        //     SwitchState(new CrowStunState(crowContext));
+        // }
         if (t >= 1)
         {
             SwitchState(new CrowWalkState(crowContext));

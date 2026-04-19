@@ -30,13 +30,14 @@ public class CrowStunState : State
     {
         if (curTime > crowContext.StunTime)
         {
-            if (crowContext.InRange())
-            {
-                SwitchState(new CrowPounceState(crowContext));
-            } else if (!crowContext.InRange())
-            {
-                SwitchState(new CrowWalkState(crowContext));
-            }
+            SwitchState(new CrowRecoverState(crowContext));
+            // if (crowContext.InRange())
+            // {
+            //     SwitchState(new CrowPounceState(crowContext));
+            // } else if (!crowContext.InRange())
+            // {
+            //     SwitchState(new CrowWalkState(crowContext));
+            // }
         } 
     }
 }
