@@ -22,6 +22,7 @@ public class CrowStartState : State
     }
     public override void ExitState()
     {
+        crowContext.AggroStart?.Invoke(crowContext);
         crowContext.Anim.ResetTrigger("Idle");
         crowContext.AppliedMovementX = 0f;
         crowContext.AppliedMovementY = 0f;

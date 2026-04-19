@@ -49,7 +49,7 @@ public class AbilityUIManager : MonoBehaviour
         else if (abilityNum == 2)
         {
             name = "Arm Cannon";
-            description = "Point with your mouse and click LMB to shoot an explosive projectile!";
+            description = "Point with your mouse and click RIGHT MOUSE BUTTON to shoot an explosive projectile!";
             iconSprite = shootIconSprite;
             abilityAnimation = shootAnimation;
         }
@@ -104,8 +104,9 @@ public class AbilityUIManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.anyKeyDown);
         abilityPickup.SetActive(false);
-        mainCanvas.alpha = 0;
         Time.timeScale = 1f;
+        mainCanvas.blocksRaycasts = true;
+        Destroy(gameObject);
 
 
     }

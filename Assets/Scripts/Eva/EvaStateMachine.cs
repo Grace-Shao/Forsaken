@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class EvaStateMachine : StateMachine
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private float followDistance;
     [SerializeField] private float timeInIdle;
     [SerializeField] private List<Transform> hidingSpots = new List<Transform>();
@@ -34,8 +35,9 @@ public class EvaStateMachine : StateMachine
         base.Init();
         sprite = transform.Find("Sprite");
         Health = 100;
-        if (scaredParticles == null) 
         scaredParticles = GetComponentInChildren<ParticleSystem>();
+        gameManager.CombatStarted += Hide;
+        gameManager.CombatEnded += StopHiding;
     }
 
     protected override void EnterBeginningState()
@@ -47,7 +49,7 @@ public class EvaStateMachine : StateMachine
 
     protected override void UpdateState()
     {
-        HandleHideInput();
+        //HandleHideInput();
         
         if (!IsTransitioning)
         {
@@ -83,28 +85,43 @@ public class EvaStateMachine : StateMachine
         return Vector3.Distance(transform.position,Player.transform.position) >= FollowDistance;
     }
 
-
-    //Handle Hide Input and trigger hiding behavior
-    public void HandleHideInput()
+    public void Hide()
     {
-        if (Input.GetKey(KeyCode.J))
+        if (scaredParticles != null) scaredParticles.Play();
+        StartHiding();
+        
+    }
+
+    public void StopHiding()
+    {
+        if (currentState is EvaHiddenState || currentState is EvaMoveToHideState)
         {
-            //quit hidden or moving to hidespot if pressed j
-            //Debug.Log("J key was pressed! Current frame: " + Time.frameCount);
-            if (currentState is EvaHiddenState || currentState is EvaMoveToHideState)
-            {
-                //Debug.Log("J, Off, switching to idle.");
-                currentState.SwitchState(new EvaIdleState(this));
-                if (scaredParticles != null) scaredParticles.Stop();
-            }
-            else //idle/follow then start hiding if pressed j
-            {
-                //Debug.Log("J, On, starting to hide.");
-                StartHiding();
-                if (scaredParticles != null) scaredParticles.Play();
-            }
+            //Debug.Log("J, Off, switching to idle.");
+            currentState.SwitchState(new EvaIdleState(this));
+            if (scaredParticles != null) scaredParticles.Stop();
         }
     }
+    //Handle Hide Input and trigger hiding behavior
+    // public void HandleHideInput()
+    // {
+    //     if (Input.GetKey(KeyCode.J))
+    //     {
+    //         //quit hidden or moving to hidespot if pressed j
+    //         //Debug.Log("J key was pressed! Current frame: " + Time.frameCount);
+    //         if (currentState is EvaHiddenState || currentState is EvaMoveToHideState)
+    //         {
+    //             //Debug.Log("J, Off, switching to idle.");
+    //             currentState.SwitchState(new EvaIdleState(this));
+    //             if (scaredParticles != null) scaredParticles.Stop();
+    //         }
+    //         else //idle/follow then start hiding if pressed j
+    //         {
+    //             //Debug.Log("J, On, starting to hide.");
+    //             StartHiding();
+    //             if (scaredParticles != null) scaredParticles.Play();
+    //         }
+    //     }
+    // }
     
 
     //Function to find closest hiding spot and switch to move to hide state

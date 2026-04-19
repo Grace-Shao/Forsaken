@@ -73,8 +73,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     private bool isMovementPressed;
     private bool canMove = true;
-    private bool shootUnlocked = true;
-    private bool canDash = true;
+    private bool shootUnlocked = false;
+    private bool canDash = false;
 
     private bool isRunPressed;
     private bool isHitPressed;

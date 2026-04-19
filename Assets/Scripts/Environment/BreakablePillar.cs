@@ -3,6 +3,7 @@ using UnityEngine;
 public class BreakablePillar : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
+    [SerializeField] private GameObject broken;
     private float totalHealth;
     private float cooldown = 0;
 
@@ -16,12 +17,11 @@ public class BreakablePillar : MonoBehaviour, IDamageable
     public void ApplyDamage(int damage)
     {
         health -= damage;
-        float t = health / totalHealth;
-        Color oldColor = gameObject.GetComponent<SpriteRenderer>().color;
-        gameObject.GetComponent<SpriteRenderer>().color = oldColor * t;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            broken.SetActive(true);
         }
     }
 }

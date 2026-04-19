@@ -28,6 +28,7 @@ public class BossStartState : State
     {
         if (bossContext.FightStarted)
         {
+            bossContext.AggroStart?.Invoke(bossContext);
             SwitchState(new BossTransitionState(bossContext));
         
         } 

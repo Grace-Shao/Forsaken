@@ -4,7 +4,7 @@ public class Player_Ranged : Weapon
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private float bulletSpeed = 20f;
 
     protected override void Init()
     {

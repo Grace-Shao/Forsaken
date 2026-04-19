@@ -93,6 +93,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         damageTakenParticles.Play();
         if (Health <= 0)
         {
+            AggroEnd?.Invoke(this);
             CrowDeath?.Invoke(this);
             gameObject.SetActive(false);
         }
