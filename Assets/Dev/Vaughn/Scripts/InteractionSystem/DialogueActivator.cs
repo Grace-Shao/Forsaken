@@ -17,6 +17,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         outlineObject.transform.SetParent(transform);
         outlineObject.transform.localPosition = Vector3.zero;
         outlineObject.transform.localScale = Vector3.one * (1 + outlineThickness);
+        outlineObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         outlineRenderer = outlineObject.AddComponent<SpriteRenderer>();
         outlineRenderer.sprite = GetComponent<SpriteRenderer>().sprite;
         outlineRenderer.material = outlineMaterial;

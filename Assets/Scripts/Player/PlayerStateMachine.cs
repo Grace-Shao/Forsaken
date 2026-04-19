@@ -513,6 +513,15 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             energyFill.fillAmount = currentEnergy / maxEnergy;
         }
     }
+
+    public void Interact()
+    {
+        if (Interactable != null && Interactable.CanInteract())
+        {
+            currentState.SwitchState(new PlayerIdleState(this));
+           Interactable?.Interact(this); 
+        }
+    }
     #endregion
 
     #region Parry Controls
@@ -603,10 +612,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     }
     void OnInteractPressed(InputAction.CallbackContext context)
     {
-        if (Interactable != null && Interactable.CanInteract())
-        {
-           Interactable?.Interact(this); 
-        }
+        Interact();
     }
 
     public void OnEnable()
