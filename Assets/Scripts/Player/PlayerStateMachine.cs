@@ -46,10 +46,13 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [Header("Object References")]
     [SerializeField] private GameManager manager;
     [SerializeField] private BoxCollider2D swordHitbox;
-    [SerializeField] private TextMeshProUGUI healthBar;
-    [SerializeField] private TextMeshProUGUI dashBar;
+    // [SerializeField] private TextMeshProUGUI healthBar;
+    // [SerializeField] private TextMeshProUGUI dashBar;
     [SerializeField] private GameObject shootIcon;
     [SerializeField] private Image energyFill;
+    private float maxHeight = 100f;
+    [SerializeField] private Image healthFillRadial;
+    [SerializeField] private int maxHealth = 100;
 
 
     [SerializeField]private DialogueUI dialogueUI;
@@ -266,11 +269,12 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         playerInput.CharacterControls.Interact.performed += OnInteractPressed;
         playerInput.CharacterControls.Interact.canceled += OnInteractPressed;
 
-        Health = 100;
+        maxHealth = 100;
+        SetHealth(maxHealth);
         Energy = maxEnergy;
         Cooldown = 3f;
-        canTakeDamage = 0f; 
-        energyFill.fillAmount = 1;
+        canTakeDamage = 0f;
+        updateEnergy(0f);
     }
 
     protected override void EnterBeginningState()
@@ -278,7 +282,6 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         currentState = new PlayerIdleState(this);
         currentState.EnterState();
     }
-
     
     private void Update()
     {
@@ -460,6 +463,21 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         }
     }
 
+    private void UpdateHealthUI() {
+        if (healthFillRadial != null)
+        {
+            float t = (maxHealth <= 0) ? 0f : (float)health / maxHealth;
+            healthFillRadial.fillAmount = Mathf.Clamp01(t);
+        }
+    }
+
+    
+    public void SetHealth(int value) {
+        health = Mathf.Clamp(value, 0, maxHealth);
+        UpdateHealthUI();
+    }
+
+
     public void ApplyDamage(int damage) {
         if (isBlocking && canParry)
         {
@@ -470,7 +488,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         if (Time.time > canTakeDamage && !IsParrying)
         { 
             canTakeDamage = Time.time + Cooldown;
-            Health -= damage; 
+            SetHealth(health - damage);
             IsHurt = true;
             currentState.SwitchState(new PlayerHurtState(this));
             damageTakenParticles.Play();
@@ -506,7 +524,13 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         currentEnergy += amount;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
         if (energyFill != null) {
-            energyFill.fillAmount = currentEnergy / maxEnergy;
+            
+        float used = 1f - (currentEnergy / maxEnergy);
+        RectTransform rt = energyFill.rectTransform;
+        rt.SetSizeWithCurrentAnchors(
+            RectTransform.Axis.Vertical,
+            used * maxHeight
+        );
         }
     }
     #endregion
@@ -666,20 +690,23 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     }
     #endregion
     
-    public void HandleDifficulty(Difficulty difficulty)
-    {
-        switch (difficulty)
-        {
+    public void HandleDifficulty(Difficulty difficulty) {
+        switch (difficulty) {
             case Difficulty.Easy:
-                Health = 200;
+                maxHealth = 200;
+                SetHealth(maxHealth);
                 Cooldown = 6f;
                 break;
+
             case Difficulty.Normal:
-                Health = 100;
+                maxHealth = 100;
+                SetHealth(maxHealth);
                 Cooldown = 3f;
                 break;
+
             case Difficulty.Hard:
-                Health = 50;
+                maxHealth = 50;
+                SetHealth(maxHealth);
                 Cooldown = 1.5f;
                 break;
         }
