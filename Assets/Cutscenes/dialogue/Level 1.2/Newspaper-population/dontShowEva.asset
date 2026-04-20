@@ -10,24 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-<<<<<<<< HEAD:Assets/Cutscenes/dialogue/Level 1.3/Bulletin-Sickness/bulletinSickness.asset
-  m_Name: bulletinSickness
-========
   m_Name: dontShowEva
->>>>>>>> 6726da642a42c7e02dfe01923f01cecc1659731d:Assets/Cutscenes/dialogue/Level 1.2/Newspaper-population/dontShowEva.asset
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 0}
   dialogue:
-<<<<<<<< HEAD:Assets/Cutscenes/dialogue/Level 1.3/Bulletin-Sickness/bulletinSickness.asset
-  - name: Newspaper
-    portrait: {fileID: 0}
-    text: '"Council Decree: Purple Veined Humans to be Executed on Sight"'
-  - name: Eva
-    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
-    text: Purple veins...? ONE, I'm scared...
-========
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: Eva doesn''t need to know this... This would only scare her.
->>>>>>>> 6726da642a42c7e02dfe01923f01cecc1659731d:Assets/Cutscenes/dialogue/Level 1.2/Newspaper-population/dontShowEva.asset
   responses: []
