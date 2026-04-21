@@ -518,6 +518,94 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 834, y: 513}
     spritePosition: {x: 0, y: 0}
+  - name: train_cabins_v2_top_wall
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 681
+      width: 1081
+      height: 20
+    spriteID: e26fb0a1e8404bb409482a0a3ebd7513
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1092, y: 681}
+    spritePosition: {x: 0, y: 0}
+  - name: train_cabins_v2_0_bot_wall
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1093
+      y: 5
+      width: 1080
+      height: 36
+    spriteID: a0f74e8b7e7708d44b23768293f73b28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1093, y: 5}
+    spritePosition: {x: 0, y: 0}
+  - name: train_cabins_v2_right_wall
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2146
+      y: 43
+      width: 26
+      height: 638
+    spriteID: b826b154f3f94d540a8f6f6e69e30e1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2146, y: 43}
+    spritePosition: {x: 0, y: 0}
+  - name: train_cabins_v2_left_wall
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1093
+      y: 43
+      width: 40
+      height: 638
+    spriteID: c18ff8871413b5a41b5ad30df634927b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1093, y: 43}
+    spritePosition: {x: 0, y: 0}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
