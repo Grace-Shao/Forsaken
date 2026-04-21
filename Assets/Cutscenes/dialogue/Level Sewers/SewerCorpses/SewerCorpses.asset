@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
-  m_Name: showEva
+  m_Name: SewerCorpses
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 0}
   dialogue:
-  - name: Eva
-    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
-    text: O-only five hundred...? Th-they must be scared...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: ...
-  - name: 
+    text: Is that a...
+  - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: '*The professor did not inform me of this...*'
+    text: Eva, don't look!
+  - name: Eva
+    portrait: {fileID: 8988825013458691813, guid: 310fda55cece8e04884130e62c9bf9e4, type: 3}
+    text: Okay ONE, I'm really scared...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: '*They likely tried to escape the quarantine zone but failed...I won''t
+      let that happen to Eva*'
   responses: []
