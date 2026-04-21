@@ -6737,6 +6737,10 @@ PrefabInstance:
       value: -94414329
       objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: canDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: dashBar
       value: 
       objectReference: {fileID: 0}
@@ -6760,6 +6764,10 @@ PrefabInstance:
       propertyPath: energyFill
       value: 
       objectReference: {fileID: 726799991}
+    - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: shootUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: parryParticles
       value: 

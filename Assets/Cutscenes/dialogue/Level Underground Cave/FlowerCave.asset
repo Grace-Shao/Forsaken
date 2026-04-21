@@ -41,5 +41,6 @@ MonoBehaviour:
     text: Oh, yes! I'd love to see it in person when I'm not sick anymore!
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: I'll try my best to take you there, Eva.
+    text: I will try my best to take you there, Eva. I will take this flower with
+      me as a reminder of my promise.
   responses: []

@@ -12,17 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
   m_Name: HoleInTheGround
   m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
   dialogue:
-  - '"ONE, what''s that?"
-
-'
-  - '"There''s a crack in the ground, be careful Eva!"'
-  - '"Wait ONE, I think I see something glowing down there! Could we check it out?"'
-  - You pause for a second. Knowing that HUE could catch up any moment, it is hard
-    to say yes. But maybe Eva could be right about something. And she doesn't have
-    much time left...
-  responses:
-  - responseText: Explore
-    dialogueObject: {fileID: 11400000, guid: 1c93a13196fd376448ff6bdfedf41af5, type: 2}
-  - responseText: Don't Explore
-    dialogueObject: {fileID: 11400000, guid: 6ad4636f437959c4d9aa2d64a29156fe, type: 2}
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: ONE, what's that?
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: There is a crack in the ground, be careful Eva!
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: Wait ONE, I think I see something glowing down there! Could we check it
+      out?
+  - name: '-'
+    portrait: {fileID: 21300000, guid: 37e07b1bd28380b4f9cbfa0fc8bd564c, type: 3}
+    text: You pause for a second. Knowing that HUE could catch up any moment, it
+      is hard to say yes. But maybe Eva could be right about something. And she doesn't
+      have much time left...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Of course we can. Stay close to me, okay?
+  responses: []

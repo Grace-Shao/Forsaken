@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Final Scenes/Level1.3.unity
     guid: 800baba4653a1d142a59973846f6dcc2
   - enabled: 1
+    path: Assets/Final Scenes/UndergroundFlowers.unity
+    guid: 56040f6261fae904d862f177373d315f
+  - enabled: 1
     path: Assets/Final Scenes/Level2.unity
     guid: 344667680099ef442807a2ab34883b3a
   - enabled: 1

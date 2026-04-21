@@ -2519,6 +2519,10 @@ PrefabInstance:
       value: -94414329
       objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: canDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 6592745165520005059}
@@ -2530,6 +2534,10 @@ PrefabInstance:
       propertyPath: energyFill
       value: 
       objectReference: {fileID: 446487279}
+    - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: shootUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: healthFillRadial
       value: 
