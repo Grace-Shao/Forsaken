@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private PlayableDirector timeline;
+    [SerializeField] private FullScreenPassRendererFeature deathShader;
     public string selectedProfile = "";
     public Difficulty selectedDifficulty = Difficulty.Normal;
     private int loadSceneIndex = 0;
@@ -24,6 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
+        deathShader?.SetActive(false);
         RefreshSaveDataOptions();
     }
     

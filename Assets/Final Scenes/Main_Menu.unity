@@ -7783,6 +7783,8 @@ MonoBehaviour:
   continuePanel: {fileID: 604533107}
   continueButton: {fileID: 1338905861}
   dropdown: {fileID: 1357883806}
+  timeline: {fileID: 0}
+  deathShader: {fileID: -6000224519762644637, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
   selectedProfile: 
   selectedDifficulty: 1
 --- !u!114 &822412254
