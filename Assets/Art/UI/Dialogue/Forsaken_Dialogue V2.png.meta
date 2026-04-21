@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1454c311441ffba428c7a5b026c74c60
+guid: 4c07017e7209b5b499908cab4eb398c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6782461270032722983
-    second: Forsaken Dialogue Box_0
+      213: 7579225474043285903
+    second: Forsaken_Dialogue V2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Forsaken Dialogue Box_0
+      name: Forsaken_Dialogue V2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d3dad0f86bdfd1a0800000000000000
-      internalID: -6782461270032722983
+      spriteID: f8111f48961de2960800000000000000
+      internalID: 7579225474043285903
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Forsaken Dialogue Box_0: -6782461270032722983
+      Forsaken_Dialogue V2_0: 7579225474043285903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
