@@ -2145,7 +2145,7 @@ PrefabInstance:
     - target: {fileID: 550232715237411596, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1127443842789160570, guid: cee25a2119951b549b096dfd0aaf2588, type: 3}
+      objectReference: {fileID: -877338140, guid: 55345d318bd407a4ebbd7c4198e09955, type: 3}
     - target: {fileID: 550232715237411596, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -5674,12 +5674,42 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 18944f7918566a145a7128a0b908dd88, type: 2}
+    - {fileID: 11400000, guid: 55cdd3a5779053040b47c110632f6092, type: 2}
+    - {fileID: 11400000, guid: 87d44d9c03b464d4297fac6d0e90a29e, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1973770677}
           m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
           m_MethodName: NextScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1973770677}
+          m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+          m_MethodName: LoadBadCredits
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1973770677}
+          m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+          m_MethodName: LoadGoodCredits
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6134,7 +6164,11 @@ PrefabInstance:
     - target: {fileID: 4349977751824661365, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[3].value
       value: 
-      objectReference: {fileID: 4869140431642092503}
+      objectReference: {fileID: 6163175544888521002}
+    - target: {fileID: 4349977751824661365, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_SceneBindings.Array.data[8].value
+      value: 
+      objectReference: {fileID: 1973770679}
     - target: {fileID: 4349977751824661365, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[10].value
       value: 
@@ -6240,6 +6274,7 @@ PrefabInstance:
     - {fileID: 1273802960492618119, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
     - {fileID: 3330648901521299693, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
     - {fileID: 1862934032511047679, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+    - {fileID: 7625843002634705650, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       insertIndex: 0
