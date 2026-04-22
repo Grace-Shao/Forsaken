@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8752702637287593018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
+  m_Name: AnimationPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 7400000, guid: 4689b94a41f859640b50b7acaf3c7cab, type: 2}
+  m_Position: {x: 0, y: 0, z: 0}
+  m_EulerAngles: {x: 0, y: 0, z: 0}
+  m_UseTrackMatchFields: 1
+  m_MatchTargetFields: 63
+  m_RemoveStartOffset: 1
+  m_ApplyFootIK: 1
+  m_Loop: 0
+  m_Version: 1
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &-7562561184553352539
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -48,8 +70,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 5909471236289051549}
-    m_Duration: 1
+    m_Asset: {fileID: -8752702637287593018}
+    m_Duration: 2
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5476193002621412415}
     m_EaseInDuration: 0
@@ -113,7 +135,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
     m_PreExtrapolationTime: 0
-    m_DisplayName: fadeToBlack
+    m_DisplayName: cutsceneFadeIn
   m_Markers:
     m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
@@ -159,7 +181,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -1337356500984110451}
-    m_Duration: 0.9999999999999999
+    m_Duration: 2
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4510230374957456512}
     m_EaseInDuration: 0
@@ -239,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 8.5
+  m_Time: 8.05
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 2c0a05dd1c29b35478b5abe2ce7562f2, type: 2}
@@ -409,10 +431,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.4499999999999977
-    m_ClipIn: 0
+    m_Start: 0.4999999999999981
+    m_ClipIn: 0.05000000000000043
     m_Asset: {fileID: -1591160243923954623}
-    m_Duration: 4.2166666666666694
+    m_Duration: 4.166666666666669
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3217116989640842229}
     m_EaseInDuration: 0
@@ -475,7 +497,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 0.4499999999999977
+    m_PreExtrapolationTime: 0.4999999999999981
     m_DisplayName: win
   m_Markers:
     m_Objects: []
@@ -639,28 +661,6 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: -1977378542932709328}
---- !u!114 &5909471236289051549
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030f85c3f73729f4f976f66ffb23b875, type: 3}
-  m_Name: AnimationPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 7400000, guid: 14315f440d96e5c4081be0a90e4598bf, type: 2}
-  m_Position: {x: 0, y: 0, z: 0}
-  m_EulerAngles: {x: 0, y: 0, z: 0}
-  m_UseTrackMatchFields: 1
-  m_MatchTargetFields: 63
-  m_RemoveStartOffset: 1
-  m_ApplyFootIK: 1
-  m_Loop: 0
-  m_Version: 1
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &6094706269551462431
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,10 +673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 8.5
+  m_Time: 8.05
   m_Retroactive: 0
   m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: 18944f7918566a145a7128a0b908dd88, type: 2}
+  m_Asset: {fileID: 11400000, guid: 87d44d9c03b464d4297fac6d0e90a29e, type: 2}
 --- !u!114 &6112818708646010155
 MonoBehaviour:
   m_ObjectHideFlags: 1

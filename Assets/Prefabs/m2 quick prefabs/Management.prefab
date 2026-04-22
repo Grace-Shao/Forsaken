@@ -88,6 +88,9 @@ MonoBehaviour:
   menuManager: {fileID: 3594599085982035242}
   audioManager: {fileID: 0}
   aggroArea: {fileID: 2709364804060126061}
+  deathShader: {fileID: 0}
+  mobRushManager: {fileID: 0}
+  enemies: []
   lossScreen: {fileID: 0}
   winScreen: {fileID: 0}
   decisionScreen: {fileID: 0}
@@ -692,6 +695,8 @@ MonoBehaviour:
   continuePanel: {fileID: 0}
   continueButton: {fileID: 0}
   dropdown: {fileID: 0}
+  timeline: {fileID: 0}
+  deathShader: {fileID: -6000224519762644637, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
   selectedProfile: 
   selectedDifficulty: 1
 --- !u!1 &8482827102296225466

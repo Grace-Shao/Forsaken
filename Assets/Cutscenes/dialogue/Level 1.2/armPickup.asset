@@ -21,8 +21,4 @@ MonoBehaviour:
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: I wonder...
-  responses:
-  - responseText: Show to Eva
-    dialogueObject: {fileID: 11400000, guid: 2f65000149524ac4e9dff3c5fdcd5429, type: 2}
-  - responseText: Don't Show
-    dialogueObject: {fileID: 11400000, guid: 8bb76da9c4546614aad76f8772f9eff5, type: 2}
+  responses: []

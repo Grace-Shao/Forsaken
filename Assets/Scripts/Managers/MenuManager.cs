@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 
 public class MenuManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject continuePanel;
     [SerializeField] private GameObject continueButton;
     [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private PlayableDirector timeline;
+    [SerializeField] private FullScreenPassRendererFeature deathShader;
     public string selectedProfile = "";
     public Difficulty selectedDifficulty = Difficulty.Normal;
     private int loadSceneIndex = 0;
@@ -22,6 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
+        deathShader?.SetActive(false);
         RefreshSaveDataOptions();
     }
     
@@ -108,7 +113,14 @@ public class MenuManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
-        hud.SetActive(false);
+        if (hud != null)
+        {
+           hud.SetActive(false); 
+        }
+        if (timeline != null)
+        {
+            timeline.Pause();
+        }
         Time.timeScale = 0f;
         gamePaused = true;
     }
@@ -116,7 +128,14 @@ public class MenuManager : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
-        hud.SetActive(true);
+        if (hud != null)
+        {
+            hud.SetActive(true);
+        }
+        if (timeline != null)
+        {
+            timeline.Play();
+        }
         Time.timeScale = 1f;
         gamePaused = false;
     }
@@ -172,7 +191,13 @@ public class MenuManager : MonoBehaviour
     }
 
     public void LoadEndCredits() {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(12);
+    }
+    public void LoadGoodCredits() {
+        SceneManager.LoadScene(11);
+    }
+    public void LoadBadCredits() {
+        SceneManager.LoadScene(10);
     }
     #endregion
 
