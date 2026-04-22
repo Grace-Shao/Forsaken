@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b97d428ca44f1468506e98addd1ee8, type: 3}
+  m_Name: HUE-FirstIntro
+  m_EditorClassIdentifier: 
+  characterPortrait: {fileID: 0}
+  dialogue:
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Halt, where do you think you are going?
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: I won't hand Eva over. Not to you...
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: You are a threat to humanity. You broke into the quarantine zone and escaped
+      with a highly dangerous individual.
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Eva, please hide somewhere safe. I will take care of this.
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Hand the human over, or else...
+  responses: []
