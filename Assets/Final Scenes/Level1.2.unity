@@ -5761,11 +5761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.9101255
+      value: 6.015812
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.594788
+      value: 7.4983397
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalScale.z
@@ -5773,11 +5773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.102
+      value: -1.007
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.165
+      value: 1.089
       objectReference: {fileID: 0}
     - target: {fileID: 5708381526986771344, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5813,7 +5813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6721563993336030373, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: duration
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721563993336030373, guid: 193c249e372e47042bbd482a433b6183, type: 3}
+      propertyPath: playOnStart
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6850391457608690544, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Name
@@ -5897,11 +5901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: parryCooldown
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: parryDuration
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8206160355613416833, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: parryParticles

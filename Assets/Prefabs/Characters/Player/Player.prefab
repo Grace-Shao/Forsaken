@@ -8110,7 +8110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   runSpeed: 10
-  jumpForce: 25
+  jumpForce: 30
   slashForce: 7
   recoilForce: 30
   shootUnlocked: 0

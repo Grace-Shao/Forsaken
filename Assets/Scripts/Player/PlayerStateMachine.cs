@@ -568,6 +568,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     public void StartParry()
     {
+        manager.PlayerParry();
         parryParticles.Play();
         shockwave.gameObject.SetActive(true);
         shockwave.PlayShockwave();
@@ -706,24 +707,24 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public void HandleDifficulty(Difficulty difficulty) {
         switch (difficulty) {
             case Difficulty.Easy:
-                parryDuration = 5f;
-                parryCooldown = 0.5f;
+                parryDuration = 15f;
+                parryCooldown = 15f;
                 maxHealth = 200;
                 SetHealth(maxHealth);
                 Cooldown = 6f;
                 break;
 
             case Difficulty.Normal:
-                parryDuration = 2.5f;
-                parryCooldown = 2.5f;
+                parryDuration = 10f;
+                parryCooldown = 10f;
                 maxHealth = 100;
                 SetHealth(maxHealth);
                 Cooldown = 3f;
                 break;
 
             case Difficulty.Hard:
-                parryDuration = 2.0f;
-                parryCooldown = 2.5f;
+                parryDuration = 5f;
+                parryCooldown = 5f;
                 maxHealth = 50;
                 SetHealth(maxHealth);
                 Cooldown = 1.5f;
