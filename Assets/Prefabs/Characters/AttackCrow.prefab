@@ -1760,7 +1760,7 @@ MonoBehaviour:
   aggroDistance: 10
   stunTime: 2
   stunInterval: 5
-  damage: 5
+  damage: 3
   damageCooldown: 10
   jumpForceX: 5
   jumpForceY: 5

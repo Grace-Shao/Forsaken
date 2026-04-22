@@ -1841,6 +1841,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243336993}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
@@ -1849,8 +1853,12 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: jumpForceX
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6897718195049590314, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7335,6 +7343,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243336993}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
@@ -7343,8 +7355,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: jumpForceX
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6897718195049590314, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10275,6 +10291,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243336993}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
@@ -10283,8 +10303,12 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: jumpForceX
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6897718195049590314, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_LocalRotation.w

@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6897718195049590314, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5865,6 +5865,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
@@ -5873,8 +5877,12 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: jumpForceX
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6897718195049590314, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22753,7 +22761,7 @@ Transform:
   m_GameObject: {fileID: 866302513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -241.76, y: 8.04, z: 0}
+  m_LocalPosition: {x: -236.75, y: 8.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29870,12 +29878,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: stunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: maxHealth
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: moveSpeed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
+      propertyPath: jumpForceX
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6832956387835755420, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
       propertyPath: targetDistance
