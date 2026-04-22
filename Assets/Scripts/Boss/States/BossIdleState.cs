@@ -10,6 +10,10 @@ public class BossIdleState : State
     }
     public override void EnterState()
     {
+        if (Random.Range(0f, 1f) < 0.3f)
+        {
+            bossContext.BossDialogue?.Invoke();
+        }
         bossContext.Anim.SetTrigger("idle");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
