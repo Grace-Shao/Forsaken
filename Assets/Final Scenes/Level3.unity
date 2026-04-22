@@ -3671,6 +3671,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.00046888576
       objectReference: {fileID: 0}
+    - target: {fileID: 8452814217397176529, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_Mass
+      value: 1.4193462
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452814217397176529, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452814217397176529, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_GravityScale
+      value: 2.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8535764046458131495, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9999989

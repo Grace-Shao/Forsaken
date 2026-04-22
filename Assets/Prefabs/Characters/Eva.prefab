@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622137543324922760}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.00000045448536, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000046096735, w: 1}
   m_LocalPosition: {x: 1.75, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -549,7 +549,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2654068796318261802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.019152254, w: 0.9998166}
+  m_LocalRotation: {x: 0, y: 0, z: -0.019056473, w: 0.99981844}
   m_LocalPosition: {x: 2.1234622, y: -0.00000020794049, z: 0}
   m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
   m_ConstrainProportionsScale: 0
@@ -581,7 +581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3040733052766218250}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.9999328, w: 0.011591156}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9999323, w: 0.011640403}
   m_LocalPosition: {x: -0.071471244, y: 0.6634838, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2100,7 +2100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284939750335105411}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.9996914, w: 0.024841366}
+  m_LocalRotation: {x: 0, y: 0, z: -0.99969566, w: 0.024671733}
   m_LocalPosition: {x: -0.047227584, y: -0.46641976, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2348,7 +2348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7823056262869795009}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.00010219973, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00008897285, w: 1}
   m_LocalPosition: {x: 1.76, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2851,7 +2851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9058426616961283559}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.0015302951, w: 0.9999988}
+  m_LocalRotation: {x: 0, y: 0, z: -0.0011694378, w: 0.9999994}
   m_LocalPosition: {x: 2.0551028, y: -0.000000022134405, z: 0}
   m_LocalScale: {x: 0.99999976, y: 0.99999976, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3049,6 +3049,22 @@ PrefabInstance:
     - target: {fileID: 5376440932106723408, guid: e8d1ccb6fef225b4d9592892a2a5eded, type: 3}
       propertyPath: m_Name
       value: ScaredParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376440932106723408, guid: e8d1ccb6fef225b4d9592892a2a5eded, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670626549655412998, guid: e8d1ccb6fef225b4d9592892a2a5eded, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670626549655412998, guid: e8d1ccb6fef225b4d9592892a2a5eded, type: 3}
+      propertyPath: m_SortingOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670626549655412998, guid: e8d1ccb6fef225b4d9592892a2a5eded, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1105041087
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

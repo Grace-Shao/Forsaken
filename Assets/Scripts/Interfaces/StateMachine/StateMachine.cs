@@ -91,14 +91,18 @@ public abstract class StateMachine : MonoBehaviour
 
     public IEnumerator SlowDown(float time, float rate)
     {
-        isParryStunned = true;
-        moveSpeed /= rate;
-        animator.speed /= rate;
+        if (!isParryStunned)
+        {
+           isParryStunned = true;
+            moveSpeed /= rate;
+            animator.speed /= rate;
 
-        yield return new WaitForSecondsRealtime(time);
+            yield return new WaitForSecondsRealtime(time);
 
-        moveSpeed *= rate;
-        animator.speed = 1f;
-        isParryStunned = false;
-    }
+            moveSpeed *= rate;
+            animator.speed = 1f;
+            isParryStunned = false;
+    } 
+        }
+        
 }
