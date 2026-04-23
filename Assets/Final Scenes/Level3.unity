@@ -6702,7 +6702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].key
@@ -6743,7 +6743,7 @@ PrefabInstance:
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[10].key
       value: 
-      objectReference: {fileID: -7562561184553352539, guid: 47c2d34e6bae7174bab2444d2bc46e96, type: 2}
+      objectReference: {fileID: -276670894325628346, guid: 47c2d34e6bae7174bab2444d2bc46e96, type: 2}
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[11].key
       value: 
@@ -6791,7 +6791,7 @@ PrefabInstance:
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[10].value
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 858812454}
     - target: {fileID: 2061890042285355908, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_SceneBindings.Array.data[11].value
       value: 
@@ -7122,10 +7122,10 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1825082487}
     - targetCorrespondingSourceObject: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 848306877}
     - targetCorrespondingSourceObject: {fileID: 739706171714392139, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 359138329}
     - targetCorrespondingSourceObject: {fileID: 8023674735751752767, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       insertIndex: -1
