@@ -199,6 +199,7 @@ public class BossUltimateState : State
     {
         bossContext.Anim.ResetTrigger("finalAttack");
         bossContext.InUltimate = false;   
+        bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
     }
 
     public override void CheckSwitchStates()

@@ -13,6 +13,7 @@ public class BossDialogue : MonoBehaviour
 	// Update is called once per frame
 	bool prevStunned = false;
 	int prevAttackFinished = 0;
+	int finalText = 0;
 
 	void Start()
 	{
@@ -85,15 +86,10 @@ public class BossDialogue : MonoBehaviour
 			else
 			{
 				//ultimate dialogue
-				if (dialougeChoice == 0) {
-				a = "\"This must be done...\"";
-				} else if (dialougeChoice == 1) {
-					a = "\"You should have surrendered, ONE.\"";
-				} else if (dialougeChoice == 2) {
-					a = "\"Duty outweighs desire.\"";
-				} else if (dialougeChoice == 3) {
-					a = "\"There is no other way.\"";
-				} else if (dialougeChoice == 4) {
+				if (finalText == 0) {
+				a = "\"For... Humanity...\"";
+				finalText++;
+				} else {
 					a = "\"Things could have been different...\"";
 				}
 			}
