@@ -28,8 +28,8 @@ public class BossGrappleState : State
         }
         //lineRenderer.gameObject.SetActive(true);
         chainStart = lineRenderer.transform;
+        
         hitBox = bossContext.Sprite.Find("ChainHitbox");
-
         bossContext.StartCoroutine(AnimateGrapple());
     }
 
@@ -44,6 +44,7 @@ public class BossGrappleState : State
         bossContext.Anim.ResetTrigger("grapple");
         lineRenderer.gameObject.SetActive(false);
         bossContext.Chain.SetActive(false);
+        lineRenderer.enabled = false;
     }
 
     public override void CheckSwitchStates()
@@ -58,6 +59,12 @@ public class BossGrappleState : State
     {
         float elapsed = 0f;
         float duration = bossContext.GrappleDuration * (bossContext.IsParryStunned ? 0.5f : 1f);
+        float speed = bossContext.GrappleSpeed;
+        if (bossContext.IsParryStunned)
+        {
+            duration *= 2f;
+            speed /= 2f;
+        }
         float stopDistance = 2f;
 
         // Jump up before throwing the chain
@@ -68,6 +75,8 @@ public class BossGrappleState : State
             bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, jumpTarget, bossContext.GrappleSpeed * Time.deltaTime);
             yield return null;
         }
+
+        lineRenderer.enabled = true;
 
         // The throwing of the chain
         while (elapsed < duration)
@@ -98,7 +107,7 @@ public class BossGrappleState : State
         {
             lineRenderer.SetPosition(0, bossContext.GetComponent<Collider2D>().bounds.center);
             lineRenderer.SetPosition(1, bossContext.Player.transform.position);
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.Player.transform.position, bossContext.GrappleSpeed * Time.deltaTime);
+            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.Player.transform.position, speed * Time.deltaTime);
             
             Vector3 direction = bossContext.Player.transform.position- bossContext.GetComponent<Collider2D>().bounds.center;
             float length = direction.magnitude;

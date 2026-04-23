@@ -10,6 +10,7 @@ public class BossTransitionState : State
     }
     public override void EnterState()
     {  
+        bossContext.ClearLineRenderers();
         bossContext.IntroFinished = 0;
         if (bossContext.CurrentStage == 1)
         {

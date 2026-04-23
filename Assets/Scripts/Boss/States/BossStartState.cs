@@ -13,6 +13,7 @@ public class BossStartState : State
         bossContext.Anim.Play("Idle");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
+        bossContext.ClearLineRenderers();
     }
     public override void UpdateState()
     {

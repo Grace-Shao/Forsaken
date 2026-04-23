@@ -205,6 +205,14 @@ public class BossStateMachine : StateMachine, IDamageable
         }
     }
     
+    public void ClearLineRenderers()
+    {
+        LineRenderer[] lines = GetComponentsInChildren<LineRenderer>(true);
+        foreach (LineRenderer line in lines)
+        {
+            line.enabled = false;
+        }
+    }
     #endregion
 
     #region Collision Events
