@@ -25,6 +25,7 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private float dashSpeed;
 
     [Header("Grapple Settings")]
+    [SerializeField] private GameObject chain;
     [SerializeField] private float grappleTargetDistance;
     [SerializeField] private float grappleDuration;
     [SerializeField] private float grappleSpeed;
@@ -73,6 +74,7 @@ public class BossStateMachine : StateMachine, IDamageable
     public Transform SummonPos {get {return summonPosition;}}
     public Transform CenterPos {get {return centerPosition;}}
     public Boss_Ranged RangedWeapon { get { return rangedWeapon; } }
+    public GameObject Chain { get { return chain; } }
     public bool FightStarted {get {return manager.FightStarted;}}
     public bool IsStunned {get {return isStunned;} set {isStunned = value;}}
     public bool IsDashing {get {return isDashing;} set {isDashing = value;}}

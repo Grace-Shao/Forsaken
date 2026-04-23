@@ -65,8 +65,8 @@ public class BossLaserState : State
         if (laser != null)
         {
             laser.enabled = false;
-            hitBox.GetComponent<BoxCollider2D>().enabled = false;
         }
+        hitBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public override void CheckSwitchStates()
