@@ -20,6 +20,7 @@ public class MobRushManager : MonoBehaviour
     [SerializeField] private Transform crowSpawnPointTwo;
     [SerializeField] private GameObject blaster;
     [SerializeField] private CutsceneManager cutsceneManager;
+    [SerializeField] private DialogueActivator bossDialogue;
 
     private GameManager gameManager;
     private BossStateMachine boss;
@@ -62,6 +63,8 @@ public class MobRushManager : MonoBehaviour
     public void TriggerHUE()
     {
         AddedEnemy?.Invoke(boss);
+        Debug.Log("hello");
+        player.Interactable = bossDialogue;
         cutsceneManager.PlayCutScene(3);
     }
     public void FinishFight()

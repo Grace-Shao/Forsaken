@@ -14,4 +14,9 @@ public class YellOut : MonoBehaviour
             player.Interact();
         }
     }
+
+    public void TriggerInteract()
+    {
+        player.Interact();
+    }
 }

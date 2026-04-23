@@ -14,6 +14,7 @@ public class DialogueUI : MonoBehaviour
 
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
+    private bool automaticTrigger = false;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class DialogueUI : MonoBehaviour
         {
             responseHandler = GetComponentInParent<ResponseHandler>();
         }
+        automaticTrigger = false;
     }
 
     private void Start()
@@ -90,7 +92,8 @@ public class DialogueUI : MonoBehaviour
                 break;
             }
 
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E) || automaticTrigger);
+            automaticTrigger = false;
         }
 
         if (dialogueObject.HasResponses)
@@ -154,5 +157,10 @@ public class DialogueUI : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SetAutomaticTrigger()
+    {
+        automaticTrigger = true;
     }
 }
