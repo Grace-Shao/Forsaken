@@ -9,6 +9,7 @@ public class BossStunState : State
     }
     public override void EnterState()
     {
+        bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
         bossContext.RB.gravityScale = 5f;
         bossContext.Anim.SetTrigger("stun");
         bossContext.AppliedMovementX = 0f;

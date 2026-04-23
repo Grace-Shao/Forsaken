@@ -12,7 +12,7 @@ public class BossIdleState : State
     {
         if (Random.Range(0f, 1f) < 0.3f)
         {
-            bossContext.BossDialogue?.Invoke();
+            bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
         }
         bossContext.Anim.SetTrigger("idle");
         bossContext.AppliedMovementX = 0f;

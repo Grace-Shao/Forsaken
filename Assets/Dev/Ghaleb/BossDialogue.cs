@@ -37,20 +37,67 @@ public class BossDialogue : MonoBehaviour
 			text.SetActive(false);
 		}
 
-		void PrintText() {
+		void PrintText(int stage) {
 			string a = "p";
 			int dialougeChoice = Random.Range(0,5);
-			if (dialougeChoice == 0) {
+			if (stage == 1)
+			{
+				if (dialougeChoice == 0) {
 				a = "\"This must be done...\"";
-			} else if (dialougeChoice == 1) {
-				a = "\"You should have surrendered, ONE.\"";
-			} else if (dialougeChoice == 2) {
-				a = "\"Duty outweighs desire.\"";
-			} else if (dialougeChoice == 3) {
-				a = "\"There is no other way.\"";
-			} else if (dialougeChoice == 4) {
-				a = "\"Things could have been different...\"";
+				} else if (dialougeChoice == 1) {
+					a = "\"You should have surrendered, ONE.\"";
+				} else if (dialougeChoice == 2) {
+					a = "\"Duty outweighs desire.\"";
+				} else if (dialougeChoice == 3) {
+					a = "\"There is no other way.\"";
+				} else if (dialougeChoice == 4) {
+					a = "\"Things could have been different...\"";
+				}
 			}
+			else if (stage == 2)
+			{
+				if (dialougeChoice == 0) {
+				a = "\"This must be done...\"";
+				} else if (dialougeChoice == 1) {
+					a = "\"You should have surrendered, ONE.\"";
+				} else if (dialougeChoice == 2) {
+					a = "\"Duty outweighs desire.\"";
+				} else if (dialougeChoice == 3) {
+					a = "\"There is no other way.\"";
+				} else if (dialougeChoice == 4) {
+					a = "\"Things could have been different...\"";
+				}
+			} 
+			else if (stage == 3)
+			{
+				if (dialougeChoice == 0) {
+				a = "\"This must be done...\"";
+				} else if (dialougeChoice == 1) {
+					a = "\"You should have surrendered, ONE.\"";
+				} else if (dialougeChoice == 2) {
+					a = "\"Duty outweighs desire.\"";
+				} else if (dialougeChoice == 3) {
+					a = "\"There is no other way.\"";
+				} else if (dialougeChoice == 4) {
+					a = "\"Things could have been different...\"";
+				}
+			} 
+			else
+			{
+				//ultimate dialogue
+				if (dialougeChoice == 0) {
+				a = "\"This must be done...\"";
+				} else if (dialougeChoice == 1) {
+					a = "\"You should have surrendered, ONE.\"";
+				} else if (dialougeChoice == 2) {
+					a = "\"Duty outweighs desire.\"";
+				} else if (dialougeChoice == 3) {
+					a = "\"There is no other way.\"";
+				} else if (dialougeChoice == 4) {
+					a = "\"Things could have been different...\"";
+				}
+			}
+			
 			textField.text = a;
 			text.SetActive(true);
 			CancelInvoke("CloseText");

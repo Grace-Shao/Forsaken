@@ -143,7 +143,7 @@ public class BossStateMachine : StateMachine, IDamageable
     }
 
     public Action BossDeath;
-    public Action BossDialogue;
+    public Action<int> BossDialogue;
     #endregion
 
     #region State Machine Updates

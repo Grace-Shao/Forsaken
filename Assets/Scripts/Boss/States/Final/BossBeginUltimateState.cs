@@ -15,6 +15,7 @@ public class BossBeginUltimateState : State
 
     public override void EnterState()
     {
+        bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
         bossContext.Chain.SetActive(true);
         bossContext.GrapplingFinished = 0;
         bossContext.Anim.SetTrigger("final");
