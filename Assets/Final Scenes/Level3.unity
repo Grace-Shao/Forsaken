@@ -2469,7 +2469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116196398618925377, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: attackDamage
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2232978214380274909, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_Layer
@@ -3583,6 +3583,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.99983335
       objectReference: {fileID: 0}
+    - target: {fileID: 4641988318378741731, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4934567932455743890, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: manager
       value: 
@@ -3642,6 +3646,18 @@ PrefabInstance:
     - target: {fileID: 6312988070320212037, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.9456428
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518560539986877611, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518560539986877611, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: attackDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949772067159455633, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078745497228206282, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5087,7 +5103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1306327674
 Transform:
   m_ObjectHideFlags: 0
