@@ -2402,7 +2402,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1481475377419425582, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: m_Name
-      value: spot_03
+      value: spot_06
       objectReference: {fileID: 0}
     - target: {fileID: 1481475377419425582, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: m_TagString
@@ -2422,7 +2422,7 @@ PrefabInstance:
       objectReference: {fileID: 732192994}
     - target: {fileID: 6323485789337428041, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: spotID
-      value: spot_03
+      value: spot_06
       objectReference: {fileID: 0}
     - target: {fileID: 6323485789337428041, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: manager
@@ -13506,7 +13506,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: 3fa51b1d703531542afd026e99986a9c, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 2
+  m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -1720609759294940588, guid: 4bb13d396af62894c9ee5ea6bb4c489e, type: 2}
@@ -20253,12 +20253,12 @@ RectTransform:
   - {fileID: 1591813184}
   - {fileID: 1212449914}
   - {fileID: 988798619}
-  - {fileID: 512785853340104313}
   - {fileID: 1722188837}
   - {fileID: 1260291817}
   - {fileID: 1960892765}
   - {fileID: 592696493}
   - {fileID: 1168324846}
+  - {fileID: 512785853340104313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -25391,7 +25391,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1481475377419425582, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: m_Name
-      value: spot_04
+      value: spot_07
       objectReference: {fileID: 0}
     - target: {fileID: 1481475377419425582, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: m_TagString
@@ -25411,7 +25411,7 @@ PrefabInstance:
       objectReference: {fileID: 732192994}
     - target: {fileID: 6323485789337428041, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: spotID
-      value: spot_04
+      value: spot_07
       objectReference: {fileID: 0}
     - target: {fileID: 6323485789337428041, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: manager
