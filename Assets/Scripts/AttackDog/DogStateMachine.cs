@@ -46,7 +46,7 @@ public class DogStateMachine : StateMachine, IDamageable
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         attackIndicator = sprite.Find("HeadTop").Find("Attack Indicator").GetComponent<ParticleSystem>();
-        ApplyDamage(0);
+        EnterBeginningState();
     }
 
     protected override void EnterBeginningState()
