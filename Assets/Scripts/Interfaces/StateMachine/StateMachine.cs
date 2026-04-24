@@ -78,10 +78,18 @@ public abstract class StateMachine : MonoBehaviour
         }
     }
 
-    public void Stun(float time, float rate)
+    public bool Stun(float time, float rate)
     {
-        Debug.Log("stunned");
-        BeginSlowDown(time, rate);
+        if (!isParryStunned)
+        {
+            Debug.Log("stunned");
+            BeginSlowDown(time, rate);
+            return true;
+        } else
+        {
+            return false;
+        }
+        
     }
 
     private void BeginSlowDown(float time, float rate)
@@ -91,18 +99,15 @@ public abstract class StateMachine : MonoBehaviour
 
     public IEnumerator SlowDown(float time, float rate)
     {
-        if (!isParryStunned)
-        {
-           isParryStunned = true;
-            moveSpeed /= rate;
-            animator.speed /= rate;
+        isParryStunned = true;
+        moveSpeed /= rate;
+        animator.speed /= rate;
 
-            yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSecondsRealtime(time);
 
-            moveSpeed *= rate;
-            animator.speed = 1f;
-            isParryStunned = false;
-    } 
-        }
+        moveSpeed *= rate;
+        animator.speed = 1f;
+        isParryStunned = false;
+    }
         
 }

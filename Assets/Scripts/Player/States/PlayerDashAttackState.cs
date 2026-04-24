@@ -24,6 +24,7 @@ public class PlayerDashAttackState : State
         playerContext.DashTrail.GetComponent<DashTrail>().Direction = new Vector3(Mathf.Sign(direction.x), 0, 0);
         Time.timeScale = 0.75f;
         playerContext.updateEnergy(-playerContext.DashCost);
+        AudioControl.Instance.PlaySFX("dash", playerContext.gameObject);
     }
     public override void UpdateState()
     {     

@@ -163,15 +163,20 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerParry()
     {
+        bool success = false;
         if (bossStateMachine != null && bossStateMachine.gameObject.activeInHierarchy)
         {
-            bossStateMachine.Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
+            success = bossStateMachine.Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
         }
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            enemy.GetComponent<StateMachine>().Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
+            success = enemy.GetComponent<StateMachine>().Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
+        }
+        if (success)
+        {
+            AudioControl.Instance.PlaySFX("time-slow", playerStateMachine.gameObject);
         }
     }
     public void UnlockPlayerAbility(int ability)

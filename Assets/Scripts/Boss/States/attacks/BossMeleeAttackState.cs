@@ -13,6 +13,7 @@ public class BossMeleeAttackState : State
         bossContext.AttackFinished = 0;
         bossContext.Anim.SetTrigger("melee");
         bossContext.AppliedMovementX = 0f;
+        AudioControl.Instance.PlaySFX("HUESlash", bossContext.gameObject);
     }
     public override void UpdateState()
     {

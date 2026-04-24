@@ -10,6 +10,7 @@ public class BossLaserState : State
     {
         bossContext = currentContext;
         firePoint = bossContext.Sprite.transform.Find("Broadsword").Find("ShootPoint");
+        AudioControl.Instance.PlaySFX("laser", firePoint.gameObject);
         if (firePoint != null)
         {
             laser = firePoint.GetComponent<LineRenderer>();

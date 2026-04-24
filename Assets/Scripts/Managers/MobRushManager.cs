@@ -66,12 +66,14 @@ public class MobRushManager : MonoBehaviour
         Debug.Log("hello");
         player.Interactable = bossDialogue;
         cutsceneManager.PlayCutScene(3);
+        AudioControl.Instance.PlayMusic("Level1-2-Fight");
     }
     public void FinishFight()
     {
         Debug.Log("ending");
         gameManager.FightStarted = false;
         boss.JumpToState(new BossStartState(boss));
+        AudioControl.Instance.PlayMusic("Level1-2");
     }
 
     public void SpawnDog()

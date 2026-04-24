@@ -277,6 +277,7 @@ public class BossStateMachine : StateMachine, IDamageable
     void TriggerBulletShooting()
     {
         ShootStarted = true;
+        AudioControl.Instance.PlaySFX("shoot", gameObject);
     }
     void OnShootAnimationFinish()
     {

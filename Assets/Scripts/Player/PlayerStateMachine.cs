@@ -669,6 +669,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     void OnBlockAnimationStart()
     {
+        AudioControl.Instance.PlaySFX("parry", gameObject);
         BlockFinished = false;
 
     }
@@ -685,6 +686,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     void TriggerBulletShooting()
     {   
         if (Energy < shootCost) {return;}
+        AudioControl.Instance.PlaySFX("shoot", gameObject);
         ShootStarted = true;
         updateEnergy(-shootCost);
            
@@ -697,6 +699,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     void OnHurtAnimationStart()
     {
+        AudioControl.Instance.PlaySFX("hurt", gameObject);
         HurtFinished = false;
     }
     void OnHurtAnimationFinish()
