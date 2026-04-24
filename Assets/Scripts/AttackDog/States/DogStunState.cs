@@ -33,7 +33,7 @@ public class DogStunState : State
             if (dogContext.InRange())
             {
                 SwitchState(new DogWindupState(dogContext));
-            } else if (!dogContext.InRange())
+            } else
             {
                 SwitchState(new DogWalkState(dogContext));
             }
