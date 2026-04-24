@@ -28,6 +28,6 @@ public class BreakablePillar : MonoBehaviour, IDamageable
 
     public void flashCharacter()
     {
-        this.gameObject.GetComponent<DamageFlash>().BeginFlash();
+        this.gameObject.GetComponent<DamageFlashObject>().BeginFlash();
     }
 }

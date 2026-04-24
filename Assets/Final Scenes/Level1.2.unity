@@ -20536,6 +20536,7 @@ GameObject:
   - component: {fileID: 2143807103}
   - component: {fileID: 2143807102}
   - component: {fileID: 2143807101}
+  - component: {fileID: 2143807105}
   m_Layer: 3
   m_Name: breakable pillar
   m_TagString: RangedBreakable
@@ -20675,6 +20676,20 @@ Transform:
   - {fileID: 1611977019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2143807105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143807100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deef0b6531296f5409619a11c91456b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 1d60d740d8880e6458f528534d3b5b23, type: 2}
+  duration: 0.1
 --- !u!114 &2146614625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2947349626522745311, guid: 13ee3afd1df03634ea7e987775873cc9, type: 3}
