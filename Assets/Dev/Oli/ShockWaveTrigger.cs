@@ -33,6 +33,7 @@ public class ShockwaveTrigger : MonoBehaviour
 
     private void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         // Trigger by default if playOnStart is true
         if (playOnStart)
         {
@@ -42,12 +43,14 @@ public class ShockwaveTrigger : MonoBehaviour
 
     public void PlayShockwave()
     {
+        
         StopAllCoroutines(); 
         StartCoroutine(AnimateWave());
     }
 
     IEnumerator AnimateWave()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         float elapsed = 0f;
         while (elapsed < duration)
         {
@@ -64,5 +67,6 @@ public class ShockwaveTrigger : MonoBehaviour
             yield return null;
         }
         ShockwaveMat.SetFloat(distProperty, -0.1f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

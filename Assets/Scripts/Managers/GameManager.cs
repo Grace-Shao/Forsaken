@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
     }
     public void EndChase()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in aggroEnemies)
         {
             enemy.SetActive(false);
         }
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
         if (success)
         {
             AudioControl.Instance.PlaySFX("time-slow", playerStateMachine.gameObject);
+            playerStateMachine.Shockwave.PlayShockwave();
         }
     }
     public void UnlockPlayerAbility(int ability)

@@ -143,7 +143,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     #region Getters and Setters
     public GameManager Manager {get {return manager;}}
-
+    public ShockwaveTrigger Shockwave {get {return shockwave;}}
     public bool CanMove {get {return canMove;} set {canMove = value;}}
     public bool IsMovementPressed {get {return isMovementPressed;} set {isMovementPressed = value;}}
     public bool IsRunPressed {get {return isRunPressed;} set {isRunPressed = value;}}
@@ -556,7 +556,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         if (targetParryCooldownId == currentParryCooldownId) {
             CanParry = false; // nothing was changed during the wait so was in the same parry
         }
-        shockwave.gameObject.SetActive(false);
+        //shockwave.gameObject.SetActive(false);
     }
     
     private IEnumerator StartParryInternal() {
@@ -570,8 +570,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     {
         manager.PlayerParry();
         parryParticles.Play();
-        shockwave.gameObject.SetActive(true);
-        shockwave.PlayShockwave();
+        // shockwave.gameObject.SetActive(true);
+        // shockwave.PlayShockwave();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
         CanParry = false; 
