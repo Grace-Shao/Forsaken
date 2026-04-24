@@ -3440,6 +3440,8 @@ PlayableDirector:
     value: {fileID: 553199546}
   - key: {fileID: -8261539142736979249, guid: f46a0837953ce8846a440628ea43f825, type: 2}
     value: {fileID: 558130438}
+  - key: {fileID: 4723704026992828005, guid: f46a0837953ce8846a440628ea43f825, type: 2}
+    value: {fileID: 558130439}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &478362893
@@ -4414,6 +4416,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &558130439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 203535032502492505, guid: c39bb788edab37748b11e9c62bad316e, type: 3}
+  m_PrefabInstance: {fileID: 558130434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &572295180
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,7 +6108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8495044246870410432, guid: 193c249e372e47042bbd482a433b6183, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

@@ -51,7 +51,7 @@ public static class SaveManager {
 
         DirectoryInfo d = new DirectoryInfo(Application.persistentDataPath);
 
-        foreach (FileInfo fi in d.GetFiles())
+        foreach (FileInfo fi in d.GetFiles("*.json"))
         {
             string json = File.ReadAllText(fi.FullName);
             saveProfiles.Add(JsonUtility.FromJson<SaveData>(json));
