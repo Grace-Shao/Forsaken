@@ -657,6 +657,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     {
         AttackFinished = false;
         swordHitbox.enabled = true;
+        AudioControl.Instance.PlaySFX("slash", gameObject);
 
     }
 
