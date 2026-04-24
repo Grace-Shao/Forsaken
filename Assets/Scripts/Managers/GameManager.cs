@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject boss;
     [SerializeField] private CutsceneManager cutsceneManager;
     [SerializeField] private MenuManager menuManager;
-    [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameObject aggroArea;
     [SerializeField] private FullScreenPassRendererFeature deathShader;
     [SerializeField] private MobRushManager mobRushManager;

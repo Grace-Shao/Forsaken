@@ -183,23 +183,49 @@ MonoBehaviour:
   musicSounds:
   - name: Title
     clip: {fileID: 8300000, guid: 9c19f0b2b9b668c41b2a5bed5df1b3ba, type: 3}
-  - name: Exploration
-    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
-  - name: Chase
+  - name: Level0-0
     clip: {fileID: 8300000, guid: db1e60a23acf3f74b9ae01d3a4d183f1, type: 3}
-  - name: Chill
-    clip: {fileID: 8300000, guid: 2bb619cbb65f1c64f82164dbb262629e, type: 3}
-  - name: ChillGuitar
+  - name: Level1-0
+    clip: {fileID: 8300000, guid: db1e60a23acf3f74b9ae01d3a4d183f1, type: 3}
+  - name: Level1-1
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
+  - name: Level1-2
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
+  - name: Level1-2-Fight
+    clip: {fileID: 8300000, guid: fe1e54aacaf6e5943831eac2e795ff18, type: 3}
+  - name: Level1-3
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
+  - name: Underground-Flower
     clip: {fileID: 8300000, guid: ff1c7e8dc5af21648ab9c94c36420132, type: 3}
-  - name: Boss1Leveled
-    clip: {fileID: 8300000, guid: 52720d2c6b9cbdd4ab00077012ec61ba, type: 3}
-  - name: Boss2Leveled
+  - name: Level2
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
+  - name: Phase1
     clip: {fileID: 8300000, guid: 55fc1eccd0706f7409568071c4a3524b, type: 3}
-  - name: Boss2Phase3
+  - name: Phase2
     clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
+  - name: Phase3
+    clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: 9c19f0b2b9b668c41b2a5bed5df1b3ba, type: 3}
+  - name: Opening
+    clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
+  - name: GoodEnding
+    clip: {fileID: 8300000, guid: a6970556e2bbd174a8f804f35c46cf85, type: 3}
+  - name: BadEnding
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
+  - name: GenericCredits
+    clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
   sfxSounds:
   - name: slash
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 676466ddcb535454399705039deff9bc, type: 3}
+  - name: parry
+    clip: {fileID: 8300000, guid: d9826deb1d0bdde4ea6017aeb2302c45, type: 3}
+  - name: parry-over
+    clip: {fileID: 8300000, guid: 12be3e64a21efa94c8eb8692696d4dec, type: 3}
+  - name: dash
+    clip: {fileID: 8300000, guid: 7891f9df727de294ab4e9eb93e0506f7, type: 3}
+  - name: break
+    clip: {fileID: 8300000, guid: a54726c6ad5fbd443816af429d044092, type: 3}
 --- !u!1 &7652403055511237822
 GameObject:
   m_ObjectHideFlags: 0
