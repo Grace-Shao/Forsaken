@@ -35,10 +35,18 @@ MonoBehaviour:
     text: ...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: ...do you still want to see the ocean?
+    text: ...do you still want to see the ocean? Even though you...you're in so much
+      pain?
+  - name: Eva
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: '*Eva pauses for a moment, as if deep in thought*'
   - name: Eva
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
-    text: Oh, yes! I'd love to see it in person when I'm not sick anymore!
+    text: Yes...ONE... There's so many things I want to do! I want to see the ocean,
+      I want to see dad again. Mostly...I'm scared of leaving you all alone.
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Eva...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: I will try my best to take you there, Eva. I will take this flower with

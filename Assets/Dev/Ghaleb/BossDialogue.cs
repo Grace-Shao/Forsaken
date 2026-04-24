@@ -58,13 +58,13 @@ public class BossDialogue : MonoBehaviour
 			else if (stage == 2)
 			{
 				if (dialougeChoice == 0) {
-				a = "\"This must be done...\"";
+				a = "\"I cannot let you go any further, no matter the cost.\"";
 				} else if (dialougeChoice == 1) {
 					a = "\"You should have surrendered, ONE.\"";
 				} else if (dialougeChoice == 2) {
-					a = "\"Duty outweighs desire.\"";
+					a = "\"Turn back now while there is still time.\"";
 				} else if (dialougeChoice == 3) {
-					a = "\"There is no other way.\"";
+					a = "\"What about the rest of humanity, ONE? What about their families?\"";
 				} else if (dialougeChoice == 4) {
 					a = "\"Things could have been different...\"";
 				}
@@ -72,22 +72,22 @@ public class BossDialogue : MonoBehaviour
 			else if (stage == 3)
 			{
 				if (dialougeChoice == 0) {
-				a = "\"This must be done...\"";
+				a = "\"Please...Turn back now.\"";
 				} else if (dialougeChoice == 1) {
-					a = "\"You should have surrendered, ONE.\"";
+					a = "\"I will not give in. Even if it costs me my life.\"";
 				} else if (dialougeChoice == 2) {
-					a = "\"Duty outweighs desire.\"";
+					a = "\"No... NOT YET!\"";
 				} else if (dialougeChoice == 3) {
-					a = "\"There is no other way.\"";
+					a = "\"Ngh!\"";
 				} else if (dialougeChoice == 4) {
-					a = "\"Things could have been different...\"";
+					a = "\"Grk—!\"";
 				}
 			} 
 			else
 			{
 				//ultimate dialogue
 				if (finalText == 0) {
-				a = "\"For... Humanity...\"";
+				a = "\"For Humanity, I give it my all...TO STOP YOU!!!\"";
 				finalText++;
 				} else {
 					a = "\"Things could have been different...\"";

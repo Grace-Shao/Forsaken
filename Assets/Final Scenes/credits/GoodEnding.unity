@@ -5347,6 +5347,103 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3148507442475574990}
     m_Modifications:
+    - target: {fileID: 297343910392768336, guid: 77907048c0a203841b94f5e8e53153e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287279839728796824, guid: 77907048c0a203841b94f5e8e53153e4, type: 3}
+      propertyPath: m_text
+      value: 'Team Lead
+
+        Team Lead
+
+        Audio Sublead
+
+
+        Animation
+        Specialist
+
+        VGDEV Mentor, Programmer
+
+
+        2D Artist
+
+        2D
+        Artist, Technical Artist
+
+        Programmer, 2D Artist
+
+        2D Artist
+
+        Programmer
+
+
+        Programmer,
+        Game Designer
+
+        Programmer, Technical Artist
+
+        Programmer
+
+        2D
+        Artist
+
+        Technical Artist
+
+        2D Artist, Game Designer
+
+        Musician
+
+        Programmer,
+        2D Artist
+
+        Programmer
+
+        Programmer
+
+        Musician
+
+        2D
+        Artist
+
+        2D Artist
+
+        Programmer
+
+        2D Artist
+
+        2D
+        Artist
+
+        2D Artist
+
+        2D Artist
+
+        2D Artist
+
+        Programmer
+
+        Programmer
+
+        Story
+        Writer, Game Designer
+
+        Musician
+
+        SFX Artist
+
+        2D Artist
+
+        Programmer,
+        Technical Artist
+
+        Programmer, Musician
+
+
+
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5755751004221840214, guid: 77907048c0a203841b94f5e8e53153e4, type: 3}
       propertyPath: m_Name
       value: Credits
