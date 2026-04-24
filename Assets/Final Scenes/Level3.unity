@@ -4031,6 +4031,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4934567932455743890, guid: f658be0e1921d404fab436784adcace6, type: 3}
+      propertyPath: grappleSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934567932455743890, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: centerPosition
       value: 
       objectReference: {fileID: 1026915559}

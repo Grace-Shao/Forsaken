@@ -70,7 +70,7 @@ public class BossGrappleState : State
         // Jump up before throwing the chain
         float jumpHeight = 5f;
         Vector3 jumpTarget = bossContext.transform.position + Vector3.up * jumpHeight;
-        while (bossContext.transform.position.y < jumpTarget.y)
+        while (Vector3.Distance(bossContext.transform.position, jumpTarget) > 0.01f)
         {
             bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, jumpTarget, bossContext.GrappleSpeed * Time.deltaTime);
             yield return null;
