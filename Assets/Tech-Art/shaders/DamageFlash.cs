@@ -19,7 +19,7 @@ public class DamageFlash : MonoBehaviour
     private Coroutine flashRoutine;
     #endregion
 
-    void Start()
+    void Awake()
     {
         // Get the SpriteRenderer to be used,
         // alternatively you could set it from the inspector.

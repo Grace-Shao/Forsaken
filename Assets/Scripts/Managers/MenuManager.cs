@@ -183,6 +183,28 @@ public class MenuManager : MonoBehaviour
     }
     public void MainMenuNextScene()
     {
+        if (loadSceneIndex == 2)
+        {
+            AudioControl.Instance.PlayMusic("Level0-0");
+        } else if (loadSceneIndex == 3)
+        {
+            AudioControl.Instance.PlayMusic("Level1-0");
+        } else if (loadSceneIndex == 4)
+        {
+            AudioControl.Instance.PlayMusic("Level1-1");
+        } else if (loadSceneIndex == 5)
+        {
+            AudioControl.Instance.PlayMusic("Level1-2");
+        } else if (loadSceneIndex == 6)
+        {
+            AudioControl.Instance.PlayMusic("Level1-3");
+        } else if (loadSceneIndex == 7)
+        {
+            AudioControl.Instance.PlayMusic("Underground-Flower");
+        } else if (loadSceneIndex == 8)
+        {
+            AudioControl.Instance.PlayMusic("Level2");
+        }  
         SceneManager.LoadScene(loadSceneIndex);
     }
     public void NextScene()
