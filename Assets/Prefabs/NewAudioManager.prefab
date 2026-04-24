@@ -200,9 +200,9 @@ MonoBehaviour:
   - name: Level2
     clip: {fileID: 8300000, guid: 9242313bde7e44d47acbec633c2ae345, type: 3}
   - name: Phase1
-    clip: {fileID: 8300000, guid: 55fc1eccd0706f7409568071c4a3524b, type: 3}
+    clip: {fileID: 8300000, guid: 52720d2c6b9cbdd4ab00077012ec61ba, type: 3}
   - name: Phase2
-    clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
+    clip: {fileID: 8300000, guid: 55fc1eccd0706f7409568071c4a3524b, type: 3}
   - name: Phase3
     clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
   - name: MainMenu

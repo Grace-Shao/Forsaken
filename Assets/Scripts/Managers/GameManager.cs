@@ -89,12 +89,14 @@ public class GameManager : MonoBehaviour
         IsTransitioning = true;
         fightStarted = true;
         decisionScreen.SetActive(false);
+        AudioControl.Instance.PlayMusic("Phase1");
         OnAggro(bossStateMachine);
     }
     public void BeginNextStage()
     {
         currentStage += 1;
         cutsceneManager.PlayCutScene(currentStage);
+        AudioControl.Instance.FadeMusic(true, false);
         IsTransitioning = true;
         bossStateMachine.Health = 100;
         bossStateMachine.Damage *= 2;
@@ -290,6 +292,17 @@ public class GameManager : MonoBehaviour
         foreach (ISetDifficulty setDifficulty in objectsWithDifficulties)
         {
             setDifficulty.HandleDifficulty(difficulty);
+        }
+    }
+
+    public void ResumeAudio()
+    {
+        if (currentStage == 2)
+        {
+            AudioControl.Instance.PlayMusic("Phase2");
+        } else if (currentStage == 3)
+        {
+            AudioControl.Instance.PlayMusic("Phase3");
         }
     }
 
