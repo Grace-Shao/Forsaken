@@ -24,11 +24,13 @@ public class BossSummonState : State
         float randomChance = Random.Range(0f, 1f);
         if (attackDog != null && randomChance < 0.5f) {
             dog = Object.Instantiate(attackDog, t.position, t.rotation);
+            bossContext.AddedEnemy?.Invoke(dog.GetComponent<DogStateMachine>());
             dog.GetComponent<DogStateMachine>().Attack();
         } else if (attackCrow != null)
         {
             crow = Object.Instantiate(attackCrow, t.position, t.rotation);
             crow.transform.position = new Vector3(t.position.x, t.position.y + 5f, t.position.z);
+            bossContext.AddedEnemy?.Invoke(crow.GetComponent<CrowStateMachine>());
             crow.GetComponent<CrowStateMachine>().Attack();
         }
     }

@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
         bossStateMachine = boss.GetComponent<BossStateMachine>();
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
         bossStateMachine.BossDeath += CheckWinStatus;
+        if (bossStateMachine != null)
+        {
+            bossStateMachine.AddedEnemy += OnAddedEnemy;
+        }
         if (mobRushManager != null)
         {
             mobRushManager.AddedEnemy += OnAddedEnemy;
@@ -94,6 +98,7 @@ public class GameManager : MonoBehaviour
     }
     public void BeginNextStage()
     {
+        EndChase();
         currentStage += 1;
         cutsceneManager.PlayCutScene(currentStage);
         AudioControl.Instance.FadeMusic(true, false);
@@ -111,7 +116,11 @@ public class GameManager : MonoBehaviour
         //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (StateMachine enemy in angryEnemies)
         {
-            enemy.gameObject.SetActive(false);
+            if (enemy != bossStateMachine)
+            {
+                enemy.gameObject.SetActive(false);
+            }
+            
         }
     }
 
@@ -202,6 +211,7 @@ public class GameManager : MonoBehaviour
         {
             if (currentStage >= 4 || numStages < 3)
             {
+                AudioControl.Instance.FadeMusic(true, false);
                 gameOver = true;
                 playerStateMachine.OnDisable();
                 fightStarted = false;
@@ -222,6 +232,7 @@ public class GameManager : MonoBehaviour
         }
         else if (playerStateMachine.Health <= 0)
         {
+            AudioControl.Instance.FadeMusic(true, false);
             deathShader?.SetActive(false);
             gameOver = true;
             playerStateMachine.OnDisable();

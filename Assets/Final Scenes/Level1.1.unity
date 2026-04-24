@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8196066667409365152, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
   m_PrefabInstance: {fileID: 1591387865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591387868}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4c490930def7647b7baf25553ff67e, type: 3}
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
   m_PrefabInstance: {fileID: 1591387865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591387868}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
@@ -9646,19 +9646,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Events.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Signals.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: 'm_Events.m_Signals.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 18944f7918566a145a7128a0b908dd88, type: 2}
+      objectReference: {fileID: 11400000, guid: 6d572afb32652934db1cc465a707693c, type: 2}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -9667,10 +9667,22 @@ PrefabInstance:
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1591387868}
+      objectReference: {fileID: 243336993}
     - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndChase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595967241315374139, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
+      propertyPath: m_Events.m_Events.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3594599085982035242, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
       propertyPath: hud
@@ -9845,11 +9857,6 @@ MonoBehaviour:
 --- !u!1 &1591387867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7377742853480386710, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
-  m_PrefabInstance: {fileID: 1591387865}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1591387868 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1641824013040381612, guid: 75bc2ad809befe849a4148a471bd34f2, type: 3}
   m_PrefabInstance: {fileID: 1591387865}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1591387869
