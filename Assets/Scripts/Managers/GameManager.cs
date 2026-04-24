@@ -109,9 +109,9 @@ public class GameManager : MonoBehaviour
     public void EndChase()
     {
         //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in aggroEnemies)
+        foreach (StateMachine enemy in angryEnemies)
         {
-            enemy.SetActive(false);
+            enemy.gameObject.SetActive(false);
         }
     }
 
