@@ -3,6 +3,7 @@ using UnityEngine;
 public class DogPounceState : State
 {
     private DogStateMachine dogContext;
+    private float curTimeInState;
     public DogPounceState(DogStateMachine currentContext) : base(currentContext)
     {
         
@@ -14,7 +15,7 @@ public class DogPounceState : State
         Vector3 target = new Vector3(dogContext.Player.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
         Vector3 currentPos = new Vector3(dogContext.RB.gameObject.transform.position.x, dogContext.RB.gameObject.transform.position.y, 0f);
         Vector3 direction = (target - currentPos).normalized;
-
+        curTimeInState = 0f;
         dogContext.InAttack = true;
         dogContext.OnGround = false;
         dogContext.RB.AddForce(new Vector2(direction.x * dogContext.JumpForce.x, dogContext.JumpForce.y), ForceMode2D.Impulse);
@@ -23,6 +24,8 @@ public class DogPounceState : State
     }
     public override void UpdateState()
     {
+        Debug.Log("updating");
+        curTimeInState += Time.deltaTime;
         dogContext.AppliedMovementY = 0f;
         CheckSwitchStates();
     }
@@ -34,8 +37,9 @@ public class DogPounceState : State
 
     public override void CheckSwitchStates()
     {
-        if (!dogContext.InAttack && dogContext.OnGround)
+        if ((!dogContext.InAttack && dogContext.OnGround) || (curTimeInState > dogContext.StunTime))
         {
+            Debug.Log("switching");
             SwitchState(new DogStunState(dogContext));
         }
     }
