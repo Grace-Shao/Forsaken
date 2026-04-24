@@ -195,7 +195,7 @@ public class BossStateMachine : StateMachine, IDamageable
         {
             Health -= damage;
             Debug.Log("Enemy Health: " + Health);
-            //flashCharacter();
+            flashCharacter();
             damageTakenParticles.Play();
         }
         if (Health <= 0f)
@@ -203,6 +203,11 @@ public class BossStateMachine : StateMachine, IDamageable
             Debug.Log("dying");
             BossDeath?.Invoke();
         }
+    }
+
+    public void flashCharacter()
+    {
+        sprite.GetComponent<DamageFlash>().BeginFlash();
     }
     
     public void ClearLineRenderers()

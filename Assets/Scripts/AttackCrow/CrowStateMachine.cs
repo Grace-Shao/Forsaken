@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 public class CrowStateMachine : StateMachine, IDamageable
 {
@@ -13,6 +14,7 @@ public class CrowStateMachine : StateMachine, IDamageable
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
     [SerializeField] private int maxHealth = 50;
+    [SerializeField] private Image healthBarFill;
 
     private bool isFlipped = false;
     private bool isStunned = false;
@@ -42,6 +44,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         sprite = transform.Find("Sprite");
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
+        ApplyDamage(0);
     }
 
     protected override void EnterBeginningState()
@@ -90,6 +93,7 @@ public class CrowStateMachine : StateMachine, IDamageable
         Health -= damage;
         Debug.Log("Enemy Health: " + Health);
         flashCharacter();
+        healthBarFill.fillAmount = Health / (float)maxHealth;
         damageTakenParticles.Play();
         if (Health <= 0)
         {

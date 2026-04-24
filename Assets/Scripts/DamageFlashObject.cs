@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageFlash : MonoBehaviour
+public class DamageFlashObject : MonoBehaviour
 {
     [Tooltip("Material to switch to during the flash.")]
     [SerializeField] private Material flashMaterial;
@@ -23,7 +23,7 @@ public class DamageFlash : MonoBehaviour
     {
         // Get the SpriteRenderer to be used,
         // alternatively you could set it from the inspector.
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        spriteRenderers = GetComponents<SpriteRenderer>();
 
         // Get the material that the SpriteRenderer uses, 
         // so we can switch back to it after the flash ended.
