@@ -8132,8 +8132,8 @@ MonoBehaviour:
   parryCooldown: 2
   parryDuration: 2.5
   parrySlowDownAmount: 2
-  maxEnergy: 100
-  dashCost: 10
+  maxEnergy: 50
+  dashCost: 20
   shootCost: 10
   attackGain: 10
   manager: {fileID: 0}
