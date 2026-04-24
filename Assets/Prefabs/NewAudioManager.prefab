@@ -199,7 +199,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 09eeadbbbcef64947be95f3003758335, type: 3}
   sfxSounds:
   - name: slash
-    clip: {fileID: 8300000, guid: 676466ddcb535454399705039deff9bc, type: 3}
+    clip: {fileID: 0}
 --- !u!1 &7652403055511237822
 GameObject:
   m_ObjectHideFlags: 0

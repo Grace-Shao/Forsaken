@@ -8,6 +8,7 @@ public class BossFinalState : State
         
         bossContext = currentContext;
         isBaseState = true;
+        bossContext.ClearLineRenderers();
         InitializeSubStates();
     }
     public override void InitializeSubStates()

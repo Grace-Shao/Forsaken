@@ -21,12 +21,7 @@ public class BossBeginUltimateState : State
         bossContext.Anim.SetTrigger("final");
 
         lineRenderer = bossContext.Chain.GetComponent<LineRenderer>();
-        if (lineRenderer == null)
-        {
-            Debug.Log("LineRenderer component not found on boss GameObject");
-            SwitchState(new BossTransitionState(bossContext));
-            return;
-        }
+        lineRenderer.enabled = true;
         lineRenderer.gameObject.SetActive(true);
         chainStart = lineRenderer.transform;
         hitBox = bossContext.Sprite.Find("ChainHitbox");
@@ -57,7 +52,7 @@ public class BossBeginUltimateState : State
     private IEnumerator AnimateGrapple()
     {
         float elapsed = 0f;
-        float duration = bossContext.GrappleDuration * (bossContext.IsParryStunned ? 0.5f : 1f);
+        float duration = bossContext.GrappleDuration ;
         float stopDistance = 0f;
 
         // The throwing of the chain
@@ -89,7 +84,7 @@ public class BossBeginUltimateState : State
         {
             lineRenderer.SetPosition(0, bossContext.GetComponent<Collider2D>().bounds.center);
             lineRenderer.SetPosition(1, bossContext.CenterPos.position);
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.CenterPos.position, bossContext.GrappleSpeed * Time.deltaTime);
+            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.CenterPos.position, bossContext.GrappleSpeed * 1.5f * Time.deltaTime);
             Vector3 direction = bossContext.Player.transform.position- bossContext.GetComponent<Collider2D>().bounds.center;
             float length = direction.magnitude;
 

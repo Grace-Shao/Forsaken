@@ -25,11 +25,11 @@ public class BossUltimateState : State
     
 
     // Slash config constants
-    private int numSlashes = 8;
+    private int numSlashes = 5;
     private float minLength = 50f;
-    private float maxLength = 80f;
-    private float angleSpread = 270f;
-    private float originRadius = 1f;
+    private float maxLength = 100f;
+    private float angleSpread = 180f;
+    private float originRadius = 0f;
     private float slashColliderThickness = 0.35f;
     private int numLoops;
     private bool isAttacking;
@@ -65,7 +65,7 @@ public class BossUltimateState : State
         Vector3 bossOrigin = bossContext.transform.position + Vector3.up * 2f;
         slashes = new SlashInfo[numSlashes];
 
-        chain = bossContext.GetComponentInChildren<LineRenderer>(true);
+        chain = bossContext.Chain.GetComponent<LineRenderer>();
 
         // Create slashes gameobject with HUE's chain linerenderer
         for (int i = 0; i < numSlashes; i++)
@@ -78,6 +78,8 @@ public class BossUltimateState : State
                 lr.transform.SetParent(null);
                 lr.gameObject.name = $"UltimateSlash_{i}";
                 lr.gameObject.SetActive(true);
+                lr.enabled = true;
+                lr.gameObject.GetComponent<Boss_Chain>().enabled = true;
             }
             else
             {
@@ -99,7 +101,7 @@ public class BossUltimateState : State
 
             float angle = Random.Range(0f, angleSpread);
             float length = Random.Range(minLength, maxLength);
-            Vector3 dir = Quaternion.Euler(0, 0, angle) * Vector3.right;
+            Vector3 dir = Quaternion.Euler(0, 0, -1 * angle) * Vector3.right;
 
             float offsetAngle = Random.Range(0f, 360f);
             float offsetDist = Random.Range(0f, originRadius);
@@ -197,6 +199,7 @@ public class BossUltimateState : State
     {
         bossContext.Anim.ResetTrigger("finalAttack");
         bossContext.InUltimate = false;   
+        bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
     }
 
     public override void CheckSwitchStates()
