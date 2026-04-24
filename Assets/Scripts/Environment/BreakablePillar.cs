@@ -12,16 +12,22 @@ public class BreakablePillar : MonoBehaviour, IDamageable
 
     void Start()
     {
-       totalHealth = health; 
+       totalHealth = health;
     }
     public void ApplyDamage(int damage)
     {
         health -= damage;
+        flashCharacter();
         if (health <= 0)
         {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
             broken.SetActive(true);
         }
+    }
+
+    public void flashCharacter()
+    {
+        this.gameObject.GetComponent<DamageFlash>().BeginFlash();
     }
 }
