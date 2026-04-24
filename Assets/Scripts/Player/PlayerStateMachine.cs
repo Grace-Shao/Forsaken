@@ -276,7 +276,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         maxHealth = 100;
         SetHealth(maxHealth);
         Energy = maxEnergy;
-        Cooldown = 1f;
+        Cooldown = 0.25f;
         canTakeDamage = 0f;
         updateEnergy(0f);
     }
@@ -470,14 +470,14 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     private void UpdateHealthUI() {
         if (healthFillRadial != null)
         {
-            float t = (maxHealth <= 0) ? 0f : (float)health / maxHealth;
-            healthFillRadial.fillAmount = Mathf.Clamp01(t);
+            float t = (maxHealth <= 0) ? 0f : ((float)health) / ((float)maxHealth);
+            healthFillRadial.fillAmount = t;
         }
     }
 
     
     public void SetHealth(int value) {
-        health = Mathf.Clamp(value, 0, maxHealth);
+        health = value;
         UpdateHealthUI();
     }
 
@@ -489,7 +489,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             ApplyRecoil(new Vector3(sprite.localScale.x * -1 * recoilForce, 0f, 0f));
             return;
         }
-        if (Time.time > canTakeDamage && !IsParrying)
+        else
         { 
             canTakeDamage = Time.time + Cooldown;
             SetHealth(health - damage);

@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c643e1e2e8cfbbd45bdfa7476b59a75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 15
+  attackDamage: 0
 --- !u!1 &4696842897058663048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c643e1e2e8cfbbd45bdfa7476b59a75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 15
+  attackDamage: 10
 --- !u!1 &5136919570875441708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ Transform:
   m_Children:
   - {fileID: 8352545585238567646}
   m_Father: {fileID: 5427500244317294578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 169.454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.031}
 --- !u!1 &5604027199075816081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,7 +3127,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.3269186, y: 0}
+  m_Offset: {x: -1.0661688, y: -0.031798124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3137,7 +3137,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7.1298866, y: 1}
+  m_Size: {x: 11.651386, y: 1.9067974}
   m_EdgeRadius: 0
 --- !u!1 &5869647979059838546
 GameObject:
