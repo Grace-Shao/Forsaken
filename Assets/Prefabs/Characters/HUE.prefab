@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334032192298170051}
   - component: {fileID: 7037217122723507859}
-  - component: {fileID: 2795862760670629994}
+  - component: {fileID: 8082511259472244158}
   m_Layer: 8
   m_Name: LaserHitbox
   m_TagString: HUE Weapon
@@ -218,7 +218,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2795862760670629994
+--- !u!114 &8082511259472244158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,10 +227,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 542239758584834503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2142ce36b5ef14c97416d9ea944920, type: 3}
+  m_Script: {fileID: 11500000, guid: 21e7c57a4373eb44c9c77fc241b1454d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 7
 --- !u!1 &649752681083284179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1907,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9206635396353010457}
   - component: {fileID: 708457094531434232}
-  - component: {fileID: 8254373201419796265}
   m_Layer: 8
   m_Name: ChainHitbox
   m_TagString: HUE Weapon
@@ -1976,19 +1975,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8254373201419796265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4615688747530633124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c643e1e2e8cfbbd45bdfa7476b59a75a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 0
 --- !u!1 &4696842897058663048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c643e1e2e8cfbbd45bdfa7476b59a75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 5
 --- !u!1 &5136919570875441708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,12 +3531,12 @@ MonoBehaviour:
   centerPosition: {fileID: 0}
   attackDog: {fileID: 7434262238889283829, guid: 56d86d85a3c83854e90d37c1aa2cec13, type: 3}
   attackCrow: {fileID: 5995498573263051485, guid: 4639d366a2eeb4e70a3c7ac044e854ad, type: 3}
+  rangedWeapon: {fileID: 3482049916707444005}
+  swordHitbox: {fileID: 6040438501865548833}
+  laserHitbox: {fileID: 8082511259472244158}
+  chainUltimate: {fileID: 6518560539986877611}
   targetDistance: 3
-  timeInIdle: 0.5
-  stunTime: 5
   stunInterval: 40
-  damage: 5
-  damageCooldown: 1
   dashMovementCooldown: 5
   dashDistance: 5
   dashSpeed: 5

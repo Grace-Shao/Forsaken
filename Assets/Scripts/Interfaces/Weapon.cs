@@ -21,4 +21,9 @@ public abstract class Weapon : MonoBehaviour
         damageable.ApplyDamage(attackDamage);
     }
 
+    public void SetDamage(int damage)
+    {
+        attackDamage = damage;
+    }
+
 }

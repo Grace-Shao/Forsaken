@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
-public class BossStateMachine : StateMachine, IDamageable
+public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
 {   
     #region Serializable Entries
     [Header("Object References")]
@@ -11,13 +11,20 @@ public class BossStateMachine : StateMachine, IDamageable
     [SerializeField] private GameObject attackDog;
     [SerializeField] private GameObject attackCrow;
 
+    [Header("Weapon References")]
+    [SerializeField] private Boss_Ranged rangedWeapon;
+    [SerializeField] private Boss_Melee swordHitbox;
+    [SerializeField] private Boss_Laser laserHitbox;
+    [SerializeField] private Boss_Chain chainUltimate;
+
+
     [Header("Attack Controls")]
     [SerializeField] private float targetDistance;
-    [SerializeField] private float timeInIdle;
-    [SerializeField] private float stunTime;
     [SerializeField] private float stunInterval;
-    [SerializeField] private int damage;
-    [SerializeField] private float damageCooldown;
+    private float timeInIdle;
+    private float stunTime;
+    private int damage;
+     private float damageCooldown;
 
     [Header("Dash Targetting Controls")]
     [SerializeField] private float dashMovementCooldown;
@@ -67,7 +74,6 @@ public class BossStateMachine : StateMachine, IDamageable
     #region VFX
     private ParticleSystem damageTakenParticles;
     private ParticleSystem attackIndicator;
-    private Boss_Ranged rangedWeapon;
     #endregion
     
     #region Getters and Setters
@@ -155,7 +161,6 @@ public class BossStateMachine : StateMachine, IDamageable
         Health = 100;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         attackIndicator = sprite.Find("Broadsword").Find("ShootPoint").Find("Attack Indicator").GetComponent<ParticleSystem>();
-        rangedWeapon = GetComponentInChildren<Boss_Ranged>();
     }
 
     protected override void EnterBeginningState()
@@ -217,6 +222,34 @@ public class BossStateMachine : StateMachine, IDamageable
         foreach (LineRenderer line in lines)
         {
             line.enabled = false;
+        }
+    }
+
+    public void HandleDifficulty(Difficulty difficulty) {
+        switch (difficulty) {
+            case Difficulty.Easy:
+                swordHitbox.SetDamage(2);
+                rangedWeapon.SetDamage(3);
+                laserHitbox.SetDamage(2);
+                chainUltimate.SetDamage(1);
+                timeInIdle = 1.5f;
+                break;
+
+            case Difficulty.Normal:
+                swordHitbox.SetDamage(4);
+                rangedWeapon.SetDamage(6);
+                laserHitbox.SetDamage(4);
+                chainUltimate.SetDamage(3);
+                timeInIdle = 1f;
+                break;
+
+            case Difficulty.Hard:
+                swordHitbox.SetDamage(6);
+                rangedWeapon.SetDamage(8);
+                laserHitbox.SetDamage(6);
+                chainUltimate.SetDamage(5);
+                timeInIdle = 0.5f;
+                break;
         }
     }
     #endregion

@@ -14,9 +14,9 @@ public class PlayerBlockState : State
     }
     public override void EnterState()
     {
+        playerContext.Anim.SetTrigger("block");
         playerContext.IsBlocking = true;
         playerContext.CanParry = true;
-        playerContext.Anim.SetTrigger("block");
         if (allowParry) playerContext.StartParryCooldown();
     }
     public override void UpdateState()

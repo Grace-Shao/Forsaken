@@ -40,17 +40,14 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float parryDuration = 2.5f;
     [SerializeField] private float parrySlowDownAmount = 2f;
 
-    [Header("Stamina/Energy")]
-    [SerializeField] private float maxEnergy = 100f;
-    [SerializeField] private float dashCost = 10f;
-    [SerializeField] private float shootCost = 10f;
-    [SerializeField] private float attackGain = 10f;
+
+    [Header("Weapon References")]
+    [SerializeField] private Player_Melee sword;
+    [SerializeField] private Player_Ranged rangedWeapon;
 
     [Header("Object References")]
     [SerializeField] private GameManager manager;
     [SerializeField] private BoxCollider2D swordHitbox;
-    // [SerializeField] private TextMeshProUGUI healthBar;
-    // [SerializeField] private TextMeshProUGUI dashBar;
     [SerializeField] private GameObject shootIcon;
     [SerializeField] private Image energyFill;
     private float maxHeight = 100f;
@@ -72,6 +69,12 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     #endregion
     
+    #region Energy
+    private float maxEnergy = 100f;
+    private float dashCost = 10f;
+    private float shootCost = 10f;
+    private float attackGain = 10f;
+    #endregion
     #region PlayerStateInfo
     private PlayerInput playerInput;
     private Vector2 currentMovementInput;
@@ -134,7 +137,6 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     #region VFX Items
     //additional game objects
     private GameObject dashTrail;
-    private Player_Ranged rangedWeapon;
     
     private ParticleSystem damageTakenParticles;
     [SerializeField] private ParticleSystem parryParticles;
@@ -238,8 +240,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
         dashTrail = transform.Find("ghost trail").gameObject;
         Debug.Log(dashTrail == null);
-        swordHitbox = sprite.Find("sword").GetComponent<BoxCollider2D>();
-        rangedWeapon = GetComponentInChildren<Player_Ranged>();
+        swordHitbox = sword.gameObject.GetComponent<BoxCollider2D>();
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
 
         // for jump/dash gravity adjust
@@ -489,7 +490,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             ApplyRecoil(new Vector3(sprite.localScale.x * -1 * recoilForce, 0f, 0f));
             return;
         }
-        else
+        else if (Time.time > canTakeDamage)
         { 
             canTakeDamage = Time.time + Cooldown;
             SetHealth(health - damage);
@@ -712,26 +713,41 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         switch (difficulty) {
             case Difficulty.Easy:
                 parryDuration = 15f;
-                parryCooldown = 15f;
+                parryCooldown = 1f;
                 maxHealth = 200;
                 SetHealth(maxHealth);
-                Cooldown = 6f;
+                sword.SetDamage(15);
+                rangedWeapon.SetDamage(20);
+                maxEnergy = 150;
+                shootCost = 10;
+                dashCost = 15;
+                Cooldown = 2f;
                 break;
 
             case Difficulty.Normal:
                 parryDuration = 10f;
-                parryCooldown = 10f;
+                parryCooldown = 1f;
                 maxHealth = 100;
                 SetHealth(maxHealth);
-                Cooldown = 3f;
+                sword.SetDamage(10);
+                rangedWeapon.SetDamage(15);
+                maxEnergy = 100;
+                shootCost = 10;
+                dashCost = 15;
+                Cooldown = 1f;
                 break;
 
             case Difficulty.Hard:
                 parryDuration = 5f;
-                parryCooldown = 5f;
-                maxHealth = 50;
+                parryCooldown = 1f;
+                maxHealth = 75;
                 SetHealth(maxHealth);
-                Cooldown = 1.5f;
+                sword.SetDamage(7);
+                rangedWeapon.SetDamage(12);
+                maxEnergy = 100;
+                shootCost = 15;
+                dashCost = 17;
+                Cooldown = 0.5f;
                 break;
         }
     }

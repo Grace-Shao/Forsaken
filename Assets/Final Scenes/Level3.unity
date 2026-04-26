@@ -4102,7 +4102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3482049916707444005, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4142753762154906301, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4138,7 +4138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4934567932455743890, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: grappleSpeed
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4934567932455743890, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: centerPosition
@@ -4158,7 +4158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6040438501865548833, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6217942914267464521, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: manager
@@ -4194,7 +4194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6518560539986877611, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6520774366829320448, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalPosition.y
