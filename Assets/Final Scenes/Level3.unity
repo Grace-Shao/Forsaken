@@ -3456,6 +3456,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.0780945, y: 29.44539}
   m_EdgeRadius: 0
+--- !u!1 &792972976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6725153761754005522, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 2446096774501070469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &792972977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 988183529816629009, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+  m_PrefabInstance: {fileID: 2446096774501070469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &792972978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792972977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e1d8ca3fc9b3d48b7e11c9497a2e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoFileName: Eva_Death.mp4
 --- !u!1 &809289459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,12 +5229,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6878056054174830721, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
   m_PrefabInstance: {fileID: 2446096774501070469}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 792972976}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1169312987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792972976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e1d8ca3fc9b3d48b7e11c9497a2e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoFileName: Cross_Swords.mp4
 --- !u!1 &1174813937
 GameObject:
   m_ObjectHideFlags: 0
@@ -7757,6 +7793,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050966770482854497, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_Url
+      value: file://G:/Code/Unity/VgDev/Forsaken/Assets/StreamingAssets/Eva_Death.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050966770482854497, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050966770482854497, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 1075818081}
@@ -7977,6 +8021,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3546304551791263063, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_Url
+      value: file://G:/Code/Unity/VgDev/Forsaken/Assets/StreamingAssets/Cross_Swords.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546304551791263063, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_Looping
       value: 1
       objectReference: {fileID: 0}
@@ -7984,6 +8032,10 @@ PrefabInstance:
       propertyPath: m_VideoClip
       value: 
       objectReference: {fileID: 32900000, guid: e39298b29b8b8394d9ff19152b1db1b4, type: 3}
+    - target: {fileID: 3546304551791263063, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3546304551791263063, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_TargetCamera
       value: 
@@ -8464,7 +8516,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8023674735751752767, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 700621433}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 988183529816629009, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 792972978}
+    - targetCorrespondingSourceObject: {fileID: 6725153761754005522, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1169312987}
   m_SourcePrefab: {fileID: 100100000, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
 --- !u!114 &2446096774501070470 stripped
 MonoBehaviour:
