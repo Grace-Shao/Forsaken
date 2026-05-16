@@ -27,28 +27,31 @@ MonoBehaviour:
     portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
     text: The flower. It's pretty. My dad gave me ones just like these once.
   - name: Eva
-    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    portrait: {fileID: 6673427560084947148, guid: 6dc0c58f66cb0a64e9d4a629fcb34c29, type: 3}
     text: I always wanted to go to the beach to see the ocean but dad was always
       so busy. He got me these pretty blue flowers instead!
   - name: ONE
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    portrait: {fileID: -7681941923864288992, guid: f75a347f39494cc478f9891ed4ffb582, type: 3}
     text: ...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: ...do you still want to see the ocean? Even though you...you're in so much
+    text: ...Do you still want to see the ocean? Even though you...you're in so much
       pain?
   - name: Eva
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    portrait: {fileID: 0}
     text: '*Eva pauses for a moment, as if deep in thought*'
   - name: Eva
-    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    portrait: {fileID: 6673427560084947148, guid: 6dc0c58f66cb0a64e9d4a629fcb34c29, type: 3}
     text: Yes...ONE... There's so many things I want to do! I want to see the ocean,
-      I want to see dad again. Mostly...I'm scared of leaving you all alone.
+      I want to see dad again.
+  - name: Eva
+    portrait: {fileID: 667460543939708609, guid: c720872bbc600a84999e39ec9f2d2a81, type: 3}
+    text: Mostly...I'm scared of leaving you all alone.
   - name: ONE
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    portrait: {fileID: -7681941923864288992, guid: f75a347f39494cc478f9891ed4ffb582, type: 3}
     text: Eva...
   - name: ONE
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    portrait: {fileID: 7132038174795172404, guid: 3a21f2e61d66e394aa09aebc226b02c7, type: 3}
     text: I will try my best to take you there, Eva. I will take this flower with
       me as a reminder of my promise.
   responses: []

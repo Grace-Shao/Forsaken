@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 310fda55cece8e04884130e62c9bf9e4
+guid: 6dc0c58f66cb0a64e9d4a629fcb34c29
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8988825013458691813
-    second: Eva_Character_Pained_0
+      213: 6673427560084947148
+    second: EvaSmile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eva_Character_Pained_0
+      name: EvaSmile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e6e95399b8bebc70800000000000000
-      internalID: 8988825013458691813
+      spriteID: cc04a213207cc9c50800000000000000
+      internalID: 6673427560084947148
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9d0ae7b449d43fb4bbda90fc81387be9
+    spriteID: 2e29423576ce7d749a6d806ae2dfc98d
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Eva_Character_Pained_0: 8988825013458691813
+      EvaSmile_0: 6673427560084947148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
