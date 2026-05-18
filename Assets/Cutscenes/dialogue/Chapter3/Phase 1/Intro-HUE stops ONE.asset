@@ -19,17 +19,17 @@ MonoBehaviour:
     text: Stop right there. I'm to take that infected human to quarantine. Why do
       you continue to run away?
   - name: ONE
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    portrait: {fileID: -7334636040450362905, guid: 978c015eeb6b01946a0c3c6f9014c5b6, type: 3}
     text: 'I won''t believe a single lie that comes out of your mouth! You don''t
       heal humans, you exterminate them. '
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: Eva... she won't last long without a cure. Just leave us be and I'm sure-
   - name: HUE
-    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    portrait: {fileID: -5518308983432409015, guid: bc713c828ed0d9c45b387bdfffda6a47, type: 3}
     text: A cure? Even if you search the ends of the earth you won't find a cure.
   - name: HUE
-    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    portrait: {fileID: -5518308983432409015, guid: bc713c828ed0d9c45b387bdfffda6a47, type: 3}
     text: You know her disease is highly infectious. How many more humans will you
       let her infect and kill before you accept reality?
   - name: HUE
