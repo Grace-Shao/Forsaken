@@ -7,6 +7,7 @@ public class BossGrappleState : State
     private LineRenderer lineRenderer;
     private Transform chainStart;
     private Transform hitBox;
+    private Rigidbody2D bossBody;
 
     public BossGrappleState(BossStateMachine currentContext) : base(currentContext)
     {
@@ -15,6 +16,7 @@ public class BossGrappleState : State
 
     public override void EnterState()
     {
+        bossBody = bossContext.RB;
         bossContext.Chain.SetActive(true);
         bossContext.GrapplingFinished = 0;
         bossContext.Anim.SetTrigger("grapple");
@@ -69,11 +71,11 @@ public class BossGrappleState : State
 
         // Jump up before throwing the chain
         float jumpHeight = 5f;
-        Vector3 jumpTarget = bossContext.transform.position + Vector3.up * jumpHeight;
-        while (Vector3.Distance(bossContext.transform.position, jumpTarget) > 0.01f)
+        Vector2 jumpTarget = bossBody.position + Vector2.up * jumpHeight;
+        while (Vector2.Distance(bossBody.position, jumpTarget) > 0.1f)
         {
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, jumpTarget, bossContext.GrappleSpeed * Time.deltaTime);
-            yield return null;
+            bossBody.MovePosition(Vector2.MoveTowards(bossBody.position, jumpTarget, speed * Time.fixedDeltaTime));
+            yield return new WaitForFixedUpdate();
         }
 
         lineRenderer.enabled = true;
@@ -103,11 +105,11 @@ public class BossGrappleState : State
         }
 
         // The pulling of the boss towards the grapple target
-        while (Vector3.Distance(bossContext.transform.position, bossContext.Player.transform.position) > stopDistance)
+        while (Vector2.Distance(bossBody.position, bossContext.Player.transform.position) > stopDistance)
         {
             lineRenderer.SetPosition(0, bossContext.GetComponent<Collider2D>().bounds.center);
             lineRenderer.SetPosition(1, bossContext.Player.transform.position);
-            bossContext.transform.position = Vector3.MoveTowards(bossContext.transform.position, bossContext.Player.transform.position, speed * Time.deltaTime);
+            bossBody.MovePosition(Vector2.MoveTowards(bossBody.position, bossContext.Player.transform.position, speed * Time.fixedDeltaTime));
             
             Vector3 direction = bossContext.Player.transform.position- bossContext.GetComponent<Collider2D>().bounds.center;
             float length = direction.magnitude;
@@ -119,7 +121,7 @@ public class BossGrappleState : State
 
             hitBox.GetComponent<BoxCollider2D>().size = new Vector2(length / Mathf.Abs(hitBox.lossyScale.x), 0.1f / Mathf.Abs(hitBox.lossyScale.y));
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         bossContext.GrapplingFinished = 1;
     }
