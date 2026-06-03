@@ -16,8 +16,8 @@ MonoBehaviour:
   dialogue:
   - name: Eva
     portrait: {fileID: 8988825013458691813, guid: 310fda55cece8e04884130e62c9bf9e4, type: 3}
-    text: It... It hurts so much...
+    text: Haah, Haah, It... It hurts so much...
   - name: ONE
-    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: ...just hold on. We're almost there.
+    portrait: {fileID: 6858934605669242410, guid: fc9924c1374852f4381cd25593623593, type: 3}
+    text: We're almost there, just hold on a little longer...
   responses: []

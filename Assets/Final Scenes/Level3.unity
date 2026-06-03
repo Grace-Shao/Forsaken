@@ -8224,6 +8224,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4418266012093473503, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7706447193805880111, guid: 045f0e55217e8014ea9ce3d1d8ac0c38, type: 3}
     - target: {fileID: 4542973667952813159, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_Sprite
       value: 
