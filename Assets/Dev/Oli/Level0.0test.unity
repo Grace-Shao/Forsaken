@@ -2222,6 +2222,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4782354404978404663, guid: daec83a58f0f682458a18b1a21f75275, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4966585628758704521, guid: daec83a58f0f682458a18b1a21f75275, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7639457
@@ -2604,8 +2608,7 @@ MonoBehaviour:
   hidingSpots: []
   scaredParticles: {fileID: 1579609696}
   healthBar: {fileID: 1811830956}
-  maxHealth: 100
-  damageCooldown: 0.6
+  maxHealth: 25
 --- !u!1 &45968058
 GameObject:
   m_ObjectHideFlags: 0
@@ -10189,7 +10192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372221849}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.00086213637, w: 0.99999964}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0010105929, w: 0.99999946}
   m_LocalPosition: {x: 1.89, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
