@@ -1,25 +1,36 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class TestEvaStateMachine : StateMachine
+using UnityEngine.UI;
+public class TestEvaStateMachine : StateMachine,IDamageable
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private float followDistance;
     [SerializeField] private float timeInIdle;
     [SerializeField] private List<Transform> hidingSpots = new List<Transform>();
     // Use the child sprite reference found in Init()
     [Header("VFX")]
     [SerializeField] private ParticleSystem scaredParticles;
+    //private ParticleSystem damageTakenParticles;
+    [Header("UI Setup")]
+    [SerializeField] private Image healthBar;
+    [SerializeField] private int maxHealth = 100;
 
+    private float damageCooldown = 0.6f; // tweak.
     private bool isFlipped = false;
     private bool isHurt = false; 
     private bool isTransitioning = false;
-    private int hurtFinished = 0;
+    private bool hurtFinished = false;
     private int health;
+    private float nextDamageTime = 0f; // Tracks the internal timestamp clock
+
     
     
     public bool IsHurt{get {return isHurt;} set {isHurt = value;}}
     public bool IsTransitioning {get {return isTransitioning;} set {isTransitioning = value;}}
-    public int HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
+    public bool HurtFinished {get {return hurtFinished; } set {hurtFinished = value;}}
     public int Health {get {return health;} set {health = value;}}
+    public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    
     public ParticleSystem ScaredParticles {get {return scaredParticles;}}
     // This allows states to read the current state, but not change it directly
     // public State CurrentState {get {return currentState;}}
@@ -33,9 +44,17 @@ public class TestEvaStateMachine : StateMachine
     {
         base.Init();
         sprite = transform.Find("Sprite");
-        Health = 100;
-        if (scaredParticles == null) 
+        maxHealth = 100;
+        SetHealth(maxHealth);
         scaredParticles = GetComponentInChildren<ParticleSystem>();
+        //damageTakenParticles = sprite.Find("hit received particles eva").GetComponent<ParticleSystem>();
+        gameManager.CombatStarted += Hide;
+        gameManager.CombatEnded += StopHiding;
+        nextDamageTime = 0f;
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = Health / (float)maxHealth;
+        }
     }
 
     protected override void EnterBeginningState()
@@ -47,7 +66,7 @@ public class TestEvaStateMachine : StateMachine
 
     protected override void UpdateState()
     {
-        HandleHideInput();
+        //HandleHideInput();
         
         if (!IsTransitioning)
         {
@@ -83,28 +102,51 @@ public class TestEvaStateMachine : StateMachine
         return Vector3.Distance(transform.position,Player.transform.position) >= FollowDistance;
     }
 
+    public void SetHealth(int value) {
+        health = value;
+        // UpdateHealthUI();
+    }
 
-    //Handle Hide Input and trigger hiding behavior
-    public void HandleHideInput()
+    public void Hide()
     {
-        if (Input.GetKey(KeyCode.J))
+
+        Debug.Log($"play scaredparticles");
+        
+        if (scaredParticles != null) scaredParticles.Play();
+        StartHiding();
+        
+    }
+
+    public void StopHiding()
+    {
+        if (currentState is TestEvaHiddenState || currentState is TestEvaMoveToHideState)
         {
-            //quit hidden or moving to hidespot if pressed j
-            //Debug.Log("J key was pressed! Current frame: " + Time.frameCount);
-            if (currentState is TestEvaHiddenState || currentState is TestEvaMoveToHideState)
-            {
-                //Debug.Log("J, Off, switching to idle.");
-                currentState.SwitchState(new TestEvaIdleState(this));
-                if (scaredParticles != null) scaredParticles.Stop();
-            }
-            else //idle/follow then start hiding if pressed j
-            {
-                //Debug.Log("J, On, starting to hide.");
-                StartHiding();
-                if (scaredParticles != null) scaredParticles.Play();
-            }
+            //Debug.Log("J, Off, switching to idle.");
+            currentState.SwitchState(new TestEvaIdleState(this));
+            if (scaredParticles != null) scaredParticles.Stop();
         }
     }
+    //Handle Hide Input and trigger hiding behavior
+    // public void HandleHideInput()
+    // {
+    //     if (Input.GetKey(KeyCode.J))
+    //     {
+    //         //quit hidden or moving to hidespot if pressed j
+    //         //Debug.Log("J key was pressed! Current frame: " + Time.frameCount);
+    //         if (currentState is EvaHiddenState || currentState is EvaMoveToHideState)
+    //         {
+    //             //Debug.Log("J, Off, switching to idle.");
+    //             currentState.SwitchState(new EvaIdleState(this));
+    //             if (scaredParticles != null) scaredParticles.Stop();
+    //         }
+    //         else //idle/follow then start hiding if pressed j
+    //         {
+    //             //Debug.Log("J, On, starting to hide.");
+    //             StartHiding();
+    //             if (scaredParticles != null) scaredParticles.Play();
+    //         }
+    //     }
+    // }
     
 
     //Function to find closest hiding spot and switch to move to hide state
@@ -133,18 +175,31 @@ public class TestEvaStateMachine : StateMachine
         }
             
     }
+ 
+ 
+    //Eva taking damage
+    public void ApplyDamage(int damage) {
+        if (Time.time < nextDamageTime) return;
 
-    //Debug code
+        SetHealth(health - damage);
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = Health / (float)maxHealth;
+        }
+        IsHurt = true;
+        currentState.SwitchState(new TestEvaHurtState(this));
 
-    // private void OnGUI()
-    // {
-    //     // This will stay on your screen in the top-left
-    //     string stateInfo = currentState != null ? currentState.GetType().Name : "No State";
-    //     GUI.Box(new Rect(10, 10, 250, 50), "EVA DEBUGGER");
-    //     GUI.Label(new Rect(20, 30, 200, 20), "State: " + stateInfo);
-        
-    //     if (TargetHideSpot != null)
-    //         GUI.Label(new Rect(20, 45, 200, 20), "Target: " + TargetHideSpot.name);
-    // }
+        nextDamageTime = Time.time + damageCooldown;
+
+        //damageTakenParticles.Play();
     
+        
+        Debug.Log($"<color=cyan>[EVA HEALTH]</color> Eva took {damage} damage. Current Health is {Health}/{maxHealth}");
+        // damageTakenParticles.Play();
+
+        // if (Health <= 0f)
+        // {
+        //     manager.CheckWinStatus();
+        // }
+    }
 }
