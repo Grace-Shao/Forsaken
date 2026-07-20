@@ -13,7 +13,6 @@ TagManager:
   - Breakable
   - SavePoint
   - RangedBreakable
-  - Eva
   layers:
   - Default
   - TransparentFX

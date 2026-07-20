@@ -84,15 +84,9 @@ public class DogStateMachine : StateMachine, IDamageable
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log($"Dog physically collided with: {other.gameObject.name} (Tag: {other.gameObject.tag})");
         if (other.gameObject.CompareTag("Player"))
         {
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
-        }
-        if (other.gameObject.CompareTag("Eva"))
-        {
-            TestEvaStateMachine eva = other.gameObject.GetComponent<TestEvaStateMachine>();
-            eva.ApplyDamage(Damage);
         }
         if (other.gameObject.CompareTag("Ground"))
         {
