@@ -19,11 +19,15 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         outlineObject.transform.localScale = Vector3.one * (1 + outlineThickness);
         outlineObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         outlineRenderer = outlineObject.AddComponent<SpriteRenderer>();
-        outlineRenderer.sprite = GetComponent<SpriteRenderer>().sprite;
+
+        SpriteRenderer outlineSprite = GetComponent<SpriteRenderer>();
+        outlineRenderer.sprite = outlineSprite.sprite;
+        outlineRenderer.flipX = outlineSprite.flipX;
+        outlineRenderer.flipY = outlineSprite.flipY;
         outlineRenderer.material = outlineMaterial;
         outlineRenderer.color = outlineColor;
-        outlineRenderer.sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
-        outlineRenderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1; //
+        outlineRenderer.sortingLayerID = outlineSprite.sortingLayerID;
+        outlineRenderer.sortingOrder = outlineSprite.sortingOrder - 1;
         outlineRenderer.enabled = false;
     }
 

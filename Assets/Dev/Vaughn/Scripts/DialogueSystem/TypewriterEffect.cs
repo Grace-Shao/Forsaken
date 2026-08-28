@@ -13,7 +13,7 @@ public class TypewriterEffect : MonoBehaviour
 
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
-        textLabel.text = string.Empty;
+        textLabel.text = textToType;
 
         float t = 0;
         int charIndex = 0;
@@ -24,7 +24,7 @@ public class TypewriterEffect : MonoBehaviour
             charIndex = Mathf.FloorToInt(t);
             charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
 
-            textLabel.text = textToType.Substring(0, charIndex);
+            textLabel.maxVisibleCharacters = charIndex;
 
             yield return null;
         }
