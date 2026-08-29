@@ -190,6 +190,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public float DashSpeed {get {return dashSpeed;}}
 
     public int Health {get {return health;} set {health = value;}}
+    public int MaxHealth {get {return maxHealth;}}
     public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
     
     public GameObject DashTrail {get {return dashTrail;}}
@@ -197,6 +198,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public Player_Ranged RangedWeapon { get { return rangedWeapon; } }
 
     public float Energy {get {return currentEnergy;} set {currentEnergy = value;}}
+    public float MaxEnergy {get {return maxEnergy;}}
     public float DashCost {get {return dashCost;}}
     public float ShootCost {get {return shootCost;}}
     public float AttackGain {get {return attackGain;}}
@@ -273,9 +275,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         playerInput.CharacterControls.Interact.performed += OnInteractPressed;
         playerInput.CharacterControls.Interact.canceled += OnInteractPressed;
 
-        maxHealth = 100;
-        SetHealth(maxHealth);
-        Energy = maxEnergy;
+        currentEnergy = maxEnergy;
         Cooldown = 0.25f;
         canTakeDamage = 0f;
         updateEnergy(0f);
