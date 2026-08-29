@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
-public class BossStateMachine : StateMachine, IDamageable
+public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
 {   
     #region Serializable Entries
     [Header("Object References")]
@@ -217,6 +217,67 @@ public class BossStateMachine : StateMachine, IDamageable
         foreach (LineRenderer line in lines)
         {
             line.enabled = false;
+        }
+    }
+
+    public void HandleDifficulty(Difficulty difficulty) {
+        switch (difficulty) {
+            case Difficulty.Easy:
+                targetDistance = 3f;
+                timeInIdle = 1f;
+                stunTime = 5;
+                stunInterval = 40;
+                damage = 0;
+                damageCooldown = 1f;
+                dashMovementCooldown = 5f;
+                dashDistance = 5f;
+                dashSpeed = 5f;
+                grappleTargetDistance = 4f;
+                grappleDuration = 0.5f;
+                grappleSpeed = 12f;
+                dashCD = 2f;
+                dashRange = 5f;
+                summonCooldown = 10f;
+                numEnemies = 3;
+                break;
+
+            case Difficulty.Normal:
+                targetDistance = 2f;
+                timeInIdle = 1.5f;
+                stunTime = 7;
+                stunInterval = 30;
+                damage = 1;
+                damageCooldown = 1f;
+                dashMovementCooldown = 5f;
+                dashDistance = 5f;
+                dashSpeed = 5f;
+                grappleTargetDistance = 4f;
+                grappleDuration = 0.5f;
+                grappleSpeed = 12f;
+                dashCD = 2f;
+                dashRange = 5f;
+                summonCooldown = 15f;
+                numEnemies = 2;
+                break;
+
+            case Difficulty.Hard:
+                targetDistance = 3f;
+                timeInIdle = 1f;
+                stunTime = 5;
+                stunInterval = 40;
+                damage = 5;
+                damageCooldown = 1f;
+                dashMovementCooldown = 5f;
+                dashDistance = 5f;
+                dashSpeed = 5f;
+                grappleTargetDistance = 4f;
+                grappleDuration = 0.5f;
+                grappleSpeed = 12f;
+                dashCD = 2f;
+                dashRange = 5f;
+                summonCooldown = 10f;
+                numEnemies = 3;
+                break;
         }
     }
     #endregion
