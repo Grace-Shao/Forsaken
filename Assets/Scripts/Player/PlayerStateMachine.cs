@@ -483,6 +483,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
 
     public void ApplyDamage(int damage) {
+        
         if (isBlocking && canParry)
         {
             StartParry();
@@ -543,7 +544,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         if (Interactable != null && Interactable.CanInteract())
         {
             currentState.SwitchState(new PlayerIdleState(this));
-           Interactable?.Interact(this); 
+            Interactable?.Interact(this); 
         }
     }
     #endregion

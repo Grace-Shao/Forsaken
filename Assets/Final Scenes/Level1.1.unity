@@ -3858,6 +3858,10 @@ PrefabInstance:
       propertyPath: outlineColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1679987632708151612, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
+      propertyPath: nextCutsceneIndex
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2591959164288240870, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: m_Name
       value: TempDialogueInteractable

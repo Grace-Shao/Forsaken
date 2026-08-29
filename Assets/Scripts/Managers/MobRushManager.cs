@@ -63,14 +63,12 @@ public class MobRushManager : MonoBehaviour
     public void TriggerHUE()
     {
         AddedEnemy?.Invoke(boss);
-        Debug.Log("hello");
         player.Interactable = bossDialogue;
         cutsceneManager.PlayCutScene(3);
         AudioControl.Instance.PlayMusic("Level1-2-Fight");
     }
     public void FinishFight()
     {
-        Debug.Log("ending");
         gameManager.FightStarted = false;
         boss.JumpToState(new BossStartState(boss));
         AudioControl.Instance.PlayMusic("Level1-2");

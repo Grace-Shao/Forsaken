@@ -16,7 +16,6 @@ public class DialogueUI : MonoBehaviour
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
     private bool automaticTrigger = false;
-
     private int nextCutsceneIndex = -1;
 
     private void Awake()
@@ -130,6 +129,7 @@ public class DialogueUI : MonoBehaviour
         if (cutsceneManager && nextCutsceneIndex != -1)
         {
             cutsceneManager.PlayCutScene(nextCutsceneIndex);
+            nextCutsceneIndex = -1;
         }
     }
 
