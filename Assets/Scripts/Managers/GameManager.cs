@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour
             } else
             {
                 bossStateMachine.Health += bossStateMachine.UltimateHealth;
+                bossStateMachine.Damage = 0;
                 IsTransitioning = true;
                 currentStage += 1;
             }

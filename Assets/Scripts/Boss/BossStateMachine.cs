@@ -221,41 +221,42 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
     }
 
     public void HandleDifficulty(Difficulty difficulty) {
+        Debug.Log("current difficulty: " + difficulty);
         switch (difficulty) {
             case Difficulty.Easy:
-                targetDistance = 3f;
-                timeInIdle = 1f;
-                stunTime = 5;
-                stunInterval = 40;
-                damage = 0;
-                damageCooldown = 1f;
-                dashMovementCooldown = 5f;
-                dashDistance = 5f;
-                dashSpeed = 5f;
-                grappleTargetDistance = 4f;
-                grappleDuration = 0.5f;
-                grappleSpeed = 12f;
-                dashCD = 2f;
+                targetDistance = 2f;
+                timeInIdle = 5f;
+                stunTime = 10;
+                stunInterval = 20;
+                damage = 1;
+                damageCooldown = 0.5f;
+                dashMovementCooldown = 7f;
+                dashDistance = 2f;
+                dashSpeed = 1.25f;
+                grappleTargetDistance = 3f;
+                grappleDuration = 1f;
+                grappleSpeed = 7.5f;
+                dashCD = 5f;
                 dashRange = 5f;
-                summonCooldown = 10f;
-                numEnemies = 3;
+                summonCooldown = 30f;
+                numEnemies = 1;
                 break;
 
             case Difficulty.Normal:
-                targetDistance = 2f;
-                timeInIdle = 1.5f;
+                targetDistance = 3f;
+                timeInIdle = 2f;
                 stunTime = 7;
                 stunInterval = 30;
                 damage = 1;
                 damageCooldown = 1f;
                 dashMovementCooldown = 5f;
-                dashDistance = 5f;
-                dashSpeed = 5f;
+                dashDistance = 3f;
+                dashSpeed = 1.5f;
                 grappleTargetDistance = 4f;
-                grappleDuration = 0.5f;
-                grappleSpeed = 12f;
+                grappleDuration = 0.75f;
+                grappleSpeed = 10f;
                 dashCD = 2f;
-                dashRange = 5f;
+                dashRange = 7f;
                 summonCooldown = 15f;
                 numEnemies = 2;
                 break;
