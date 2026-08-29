@@ -16,6 +16,7 @@ public class PlayerBlockState : State
     {
         playerContext.IsBlocking = true;
         playerContext.CanParry = true;
+        playerContext.BlockFinished = false;
         playerContext.Anim.SetTrigger("block");
         if (allowParry) playerContext.StartParryCooldown();
     }
