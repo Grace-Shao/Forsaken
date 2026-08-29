@@ -3026,7 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptPanel: {fileID: 829356264}
   prompt: {fileID: 120612264}
-  promptText: HOLD F To Parry and Slow Down Time
+  promptText: Press and HOLD F To Parry and Slow Down Time
 --- !u!61 &504941699
 BoxCollider2D:
   m_ObjectHideFlags: 0
