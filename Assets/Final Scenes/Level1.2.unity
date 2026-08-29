@@ -2192,7 +2192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &236815455
 Transform:
   m_ObjectHideFlags: 0
@@ -3284,6 +3284,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 0.75, b: 0.93541205, a: 1}
   outlineThickness: 0.2
   dialogueObject: {fileID: 11400000, guid: 7d655c23de3fda948b145ef9a5b66175, type: 2}
+  nextCutsceneIndex: 2
 --- !u!1 &454204279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,6 +4336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7429220743804161415, guid: c39bb788edab37748b11e9c62bad316e, type: 3}
+      propertyPath: cutsceneManager
+      value: 
+      objectReference: {fileID: 1989035608}
     - target: {fileID: 8385024766387800641, guid: c39bb788edab37748b11e9c62bad316e, type: 3}
       propertyPath: m_Name
       value: DialogueManagerUI
@@ -8581,19 +8586,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519623491778998140, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9981609
+      value: 0.99993515
       objectReference: {fileID: 0}
     - target: {fileID: 2519623491778998140, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.060620848
+      value: 0.011387688
       objectReference: {fileID: 0}
     - target: {fileID: 2533347656311171340, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99896985
+      value: 0.9998933
       objectReference: {fileID: 0}
     - target: {fileID: 2533347656311171340, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.045378383
+      value: -0.014611363
       objectReference: {fileID: 0}
     - target: {fileID: 3240867934085300364, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8677,11 +8682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248514665892689813, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9961572
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248514665892689813, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08758288
+      value: 0.0000021010635
       objectReference: {fileID: 0}
     - target: {fileID: 8352545585238567646, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8697,11 +8702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535764046458131495, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8209875
+      value: 0.9999986
       objectReference: {fileID: 0}
     - target: {fileID: 8535764046458131495, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.57094616
+      value: 0.0016625418
       objectReference: {fileID: 0}
     - target: {fileID: 8737583487541521480, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12457,7 +12462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1521392986}
   - component: {fileID: 1521392988}
-  - component: {fileID: 1521392987}
+  - component: {fileID: 1521392989}
   m_Layer: 0
   m_Name: dialogueTrigger
   m_TagString: Untagged
@@ -12480,19 +12485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 236815455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1521392987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521392985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99fc8a33a61b1964ebf86da551092384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 732192994}
 --- !u!61 &1521392988
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12539,6 +12531,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.0463867, y: 27.909027}
   m_EdgeRadius: 0
+--- !u!114 &1521392989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521392985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f3c7996dbf0d942a77a1894a99e85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptPanel: {fileID: 1635179496}
+  prompt: {fileID: 722805437}
+  promptText: Press E to Interact
 --- !u!1 &1524634296
 GameObject:
   m_ObjectHideFlags: 0

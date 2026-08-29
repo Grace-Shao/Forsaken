@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
+    [SerializeField] private CutsceneManager cutsceneManager; //leave as unassigned if there is no cutscene to trigger
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private TMP_Text speakerName;
@@ -15,6 +16,8 @@ public class DialogueUI : MonoBehaviour
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
     private bool automaticTrigger = false;
+
+    private int nextCutsceneIndex = -1;
 
     private void Awake()
     {
@@ -42,7 +45,7 @@ public class DialogueUI : MonoBehaviour
         CloseDialogueBox();
     }
 
-    public void ShowDialogue(DialogueObject dialogueObject)
+    public void ShowDialogue(DialogueObject dialogueObject, int cutscene = -1)
     {
         if (!HasRequiredReferences())
         {
@@ -51,6 +54,7 @@ public class DialogueUI : MonoBehaviour
 
         IsOpen = true;
         dialogueBox.SetActive(true);
+        nextCutsceneIndex = cutscene;
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 
@@ -122,6 +126,11 @@ public class DialogueUI : MonoBehaviour
 
         if (speakerName != null)
             speakerName.text = "";
+
+        if (cutsceneManager && nextCutsceneIndex != -1)
+        {
+            cutsceneManager.PlayCutScene(nextCutsceneIndex);
+        }
     }
 
     private bool HasRequiredReferences()

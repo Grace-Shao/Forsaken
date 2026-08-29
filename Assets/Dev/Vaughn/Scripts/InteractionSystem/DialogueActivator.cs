@@ -7,6 +7,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     public float outlineThickness = .2f;
     private SpriteRenderer outlineRenderer;
     [SerializeField] private DialogueObject dialogueObject;
+    [SerializeField] private int nextCutsceneIndex = -1; //assign as -1 if there is no cutscene to trigger
 
     private bool isDialogueActive;
 
@@ -58,7 +59,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     }
     public void Interact(PlayerStateMachine player)
     {
-        player.DialogueUI.ShowDialogue(dialogueObject);
+        player.DialogueUI.ShowDialogue(dialogueObject, nextCutsceneIndex);
         isDialogueActive = true;
 
         // Optionally, you can disable the outline while the dialogue is active

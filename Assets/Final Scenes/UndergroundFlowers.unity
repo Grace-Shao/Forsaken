@@ -1681,6 +1681,84 @@ Transform:
   - {fileID: 1430619943}
   m_Father: {fileID: 731498632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &169129211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169129212}
+  - component: {fileID: 169129213}
+  m_Layer: 10
+  m_Name: boundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &169129212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169129211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.46, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 306598827}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &169129213
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169129211}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 2.0281434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 19.552525}
+  m_EdgeRadius: 0
 --- !u!1 &182519210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3117,10 @@ PrefabInstance:
       propertyPath: outlineColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1679987632708151612, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
+      propertyPath: nextCutsceneIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2591959164288240870, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: m_Name
       value: glitch flower
@@ -3129,11 +3211,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8973582155782870065, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: m_Radius
-      value: 2
+      value: 2.9854507
       objectReference: {fileID: 0}
     - target: {fileID: 8973582155782870065, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       propertyPath: m_Offset.x
-      value: -5
+      value: -0.8977585
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3147,6 +3229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7765204724570999021, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1442816550}
+    - targetCorrespondingSourceObject: {fileID: 7765204724570999021, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 169129212}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2591959164288240870, guid: 388005600f1fdfd46926ef4be5d04441, type: 3}
       insertIndex: -1
@@ -6547,7 +6632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746474797}
   - component: {fileID: 746474799}
-  - component: {fileID: 746474798}
+  - component: {fileID: 746474800}
   m_Layer: 0
   m_Name: flowerDialogueTrigger
   m_TagString: Untagged
@@ -6570,19 +6655,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 306598827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &746474798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746474796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99fc8a33a61b1964ebf86da551092384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 732192994}
 --- !u!61 &746474799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6617,7 +6689,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 7.1023827}
+  m_Offset: {x: 2.9126205, y: 7.1023827}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6627,8 +6699,23 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 27.909027}
+  m_Size: {x: 6.083847, y: 27.909027}
   m_EdgeRadius: 0
+--- !u!114 &746474800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746474796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f3c7996dbf0d942a77a1894a99e85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptPanel: {fileID: 2774664288447594276}
+  prompt: {fileID: 2197704452368217310}
+  promptText: Press E to Interact
 --- !u!1 &754864416
 GameObject:
   m_ObjectHideFlags: 0
@@ -7634,6 +7721,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7429220743804161415, guid: c39bb788edab37748b11e9c62bad316e, type: 3}
+      propertyPath: cutsceneManager
+      value: 
+      objectReference: {fileID: 1942510344041767442}
     - target: {fileID: 8385024766387800641, guid: c39bb788edab37748b11e9c62bad316e, type: 3}
       propertyPath: m_Name
       value: DialogueManagerUI

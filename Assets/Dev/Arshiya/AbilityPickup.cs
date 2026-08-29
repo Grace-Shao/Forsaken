@@ -25,12 +25,12 @@ public class AbilityPickup : MonoBehaviour
         outlineRenderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1; //
     }
     
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("collision");
-            manager.PlayCutScene(2);
-        }
-    }
+    // public void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("collision");
+    //         manager.PlayCutScene(2);
+    //     }
+    // }
 }
