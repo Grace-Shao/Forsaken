@@ -280,6 +280,8 @@ public class GameManager : MonoBehaviour
         saveData.canDash = playerStateMachine.CanDash;
         saveData.lastSaveSpotID = spotID;
         SaveManager.Save(saveData);
+        playerStateMachine.SetHealth(playerStateMachine.MaxHealth);
+        playerStateMachine.Energy = playerStateMachine.MaxEnergy;
     }
     private void LoadData()
     {
