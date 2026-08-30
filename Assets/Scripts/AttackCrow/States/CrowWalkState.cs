@@ -19,8 +19,15 @@ public class CrowWalkState : State
     {
         crowContext.Anim.SetTrigger("Idle");
         startPos = new Vector3(crowContext.RB.gameObject.transform.position.x, crowContext.RB.gameObject.transform.position.y, 0f);
-        endPos = new Vector3(crowContext.Player.gameObject.transform.position.x, 
-            crowContext.Player.gameObject.transform.position.y, 0f);
+        if (crowContext.IsEndless)
+        {
+            endPos = new Vector3(crowContext.Eva.gameObject.transform.position.x, 
+                crowContext.Eva.gameObject.transform.position.y, 0f);
+        } else
+        {
+            endPos = new Vector3(crowContext.Player.gameObject.transform.position.x, 
+                crowContext.Player.gameObject.transform.position.y, 0f);
+        }
         controlPoint = Vector3.down * 2f + startPos;
         t = 0f;
     }

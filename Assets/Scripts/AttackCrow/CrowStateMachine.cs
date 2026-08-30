@@ -14,8 +14,10 @@ public class CrowStateMachine : StateMachine, IDamageable
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
     [SerializeField] private int maxHealth = 50;
+    [SerializeField] private bool isEndless = false;
     [SerializeField] private Image healthBarFill;
 
+    private TestEvaStateMachine eva;
     private bool isFlipped = false;
     private bool isStunned = false;
     private bool inAttack = false;
@@ -35,7 +37,8 @@ public class CrowStateMachine : StateMachine, IDamageable
     public float StunInterval { get { return stunInterval; } }
     public float TargetDistance { get { return targetDistance; } }
     public float AggroDistance { get { return aggroDistance; } set { aggroDistance = value; } }
-
+    public bool IsEndless {get {return isEndless;}}
+    public TestEvaStateMachine Eva {get {return eva;}}
     public Action<CrowStateMachine> CrowDeath;
 
     protected override void Init()
@@ -45,6 +48,10 @@ public class CrowStateMachine : StateMachine, IDamageable
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         ApplyDamage(0);
+        if (isEndless)
+        {
+            eva = GameObject.FindGameObjectWithTag("Eva").GetComponent<TestEvaStateMachine>();
+        }
     }
 
     protected override void EnterBeginningState()
@@ -64,12 +71,17 @@ public class CrowStateMachine : StateMachine, IDamageable
     {
         Vector3 flipped = sprite.localScale;
         flipped.x *= -1f;
-        if (sprite.position.x < player.transform.position.x && isFlipped)
+        float targetX = player.transform.position.x;
+        if (isEndless)
+        {
+            targetX = eva.transform.position.x;
+        }
+        if (sprite.position.x < targetX && isFlipped)
         {
             sprite.localScale = flipped;
             isFlipped = false;
         }
-        else if (sprite.position.x > player.transform.position.x && !isFlipped)
+        else if (sprite.position.x > targetX && !isFlipped)
         {
             sprite.localScale = flipped;
             isFlipped = true;
@@ -81,6 +93,10 @@ public class CrowStateMachine : StateMachine, IDamageable
         if (other.gameObject.CompareTag("Player"))
         {
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+        if (isEndless && other.gameObject.CompareTag("Eva"))
+        {
+            eva.gameObject.GetComponent<TestEvaStateMachine>().ApplyDamage(Damage);
         }
     }
     public void flashCharacter()

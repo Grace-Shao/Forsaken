@@ -1,6 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine.UI;
+using System;
+using System.Collections.Generic;
+
 public class TestEvaStateMachine : StateMachine,IDamageable
 {
     [SerializeField] private GameManager gameManager;
@@ -39,6 +42,8 @@ public class TestEvaStateMachine : StateMachine,IDamageable
     public Transform TargetHideSpot { get; set; }
 
     public List<Transform> GetHidingSpots() {return hidingSpots;}
+
+    public Action<TestEvaStateMachine> EvaDeath;
 
     protected override void Init()
     {
@@ -197,9 +202,10 @@ public class TestEvaStateMachine : StateMachine,IDamageable
         //Debug.Log($"<color=cyan>[EVA HEALTH]</color> Eva took {damage} damage. Current Health is {Health}/{maxHealth}");
         // damageTakenParticles.Play();
 
-        // if (Health <= 0f)
-        // {
-        //     manager.CheckWinStatus();
-        // }
+        if (Health <= 0f)
+        {
+            EvaDeath?.Invoke(this);
+            gameObject.SetActive(false);
+        }
     }
 }
