@@ -29,6 +29,8 @@ public class PlayerIdleState : State
         if (playerContext.IsHurt)
         {
             SwitchState(new PlayerHurtState(playerContext));
+        } else if (playerContext.IsBlocking) {
+            SwitchState(new PlayerBlockState(playerContext));
         }
         else if (playerContext.IsHitPressed)
         {
@@ -46,8 +48,6 @@ public class PlayerIdleState : State
         } else if (playerContext.IsMovementPressed)
         {   
             SwitchState(new PlayerWalkState(playerContext));
-        } else if (playerContext.IsBlocking) {
-            SwitchState(new PlayerBlockState(playerContext));
         }
     }
 }
