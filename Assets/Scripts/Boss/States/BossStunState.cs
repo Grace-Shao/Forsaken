@@ -27,9 +27,6 @@ public class BossStunState : State
 
     public override void CheckSwitchStates()
     {
-        // if (bossContext.Health <= 0f)
-        // {
-        //     bossContext.BossDeath?.Invoke();
-        // } 
+        return;
     }
 }

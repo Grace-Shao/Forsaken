@@ -15,6 +15,7 @@ public class BossBeginUltimateState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.BossDialogue?.Invoke(bossContext.CurrentStage);
         bossContext.Chain.SetActive(true);
         bossContext.GrapplingFinished = 0;
@@ -31,6 +32,7 @@ public class BossBeginUltimateState : State
 
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
 
@@ -43,8 +45,9 @@ public class BossBeginUltimateState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.GrapplingFinished == 1)
+        if (bossContext.StateTimedOut || bossContext.GrapplingFinished == 1)
         {
+            bossContext.transform.position = bossContext.CenterPos.position;
             SwitchState(new BossUltimateState(bossContext));
         }
     }

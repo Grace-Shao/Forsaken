@@ -14,10 +14,12 @@ public class BossBeginSummonsState : State
         bossContext.AppliedMovementX = 0;
         bossContext.AttackFinished = 0;
         bossContext.Anim.SetTrigger("walk");
+        bossContext.TimeInState = 0f;
     }
     public override void UpdateState()
     {
         //Walking over to summon spot
+        bossContext.TimeInState += Time.deltaTime;
         Vector3 currentPos = new Vector3(bossContext.RB.gameObject.transform.position.x, bossContext.RB.gameObject.transform.position.y, 0f);
         Vector3 direction = (target - currentPos).normalized;
         bossContext.AppliedMovementX = direction.x * bossContext.MoveSpeed;
@@ -25,12 +27,13 @@ public class BossBeginSummonsState : State
     }
     public override void ExitState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.Anim.ResetTrigger("walk");
     }
 
     public override void CheckSwitchStates()
     {
-        if (Vector3.Distance(target, bossContext.RB.gameObject.transform.position) <= bossContext.TargetDistance)
+        if (bossContext.StateTimedOut || Vector3.Distance(target, bossContext.RB.gameObject.transform.position) <= bossContext.TargetDistance)
             SwitchState(new BossSummonState(bossContext));
     }
 }

@@ -22,6 +22,7 @@ public class BossLaserState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.AppliedMovementX = 0;
         bossContext.AppliedMovementY = 0;
         Vector3 direction = (bossContext.Flipped ? -1 : 1) * Vector2.right;
@@ -57,6 +58,7 @@ public class BossLaserState : State
 
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
 
@@ -72,7 +74,7 @@ public class BossLaserState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.LasersFinished == 1)
+        if (bossContext.StateTimedOut || bossContext.LasersFinished == 1)
         {
             SwitchState(new BossIdleState(bossContext));
         }

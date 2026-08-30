@@ -11,6 +11,7 @@ public class BossLaserWindupState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         //bossContext.flashCharacter();
         bossContext.LasersFinished = 0;
         bossContext.Anim.SetTrigger("laser_windup");
@@ -26,6 +27,7 @@ public class BossLaserWindupState : State
 
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         Vector3 direction = (bossContext.Flipped ? -1 : 1) * Vector2.right;
         // Update laser (line renderer) to display properly.
         if (laser != null)
@@ -55,7 +57,7 @@ public class BossLaserWindupState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.WindUpFinished)
+        if (bossContext.StateTimedOut || bossContext.WindUpFinished)
         {
             SwitchState(new BossLaserState(bossContext));
         }

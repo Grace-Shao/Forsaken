@@ -45,6 +45,7 @@ public class BossUltimateState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.Anim.SetTrigger("finalAttack");
         bossContext.InUltimate = true;
         bossContext.AppliedMovementX = 0;
@@ -62,6 +63,7 @@ public class BossUltimateState : State
 
     private void BeginUltimate()
     {
+        bossContext.TimeInState += Time.deltaTime;
         Vector3 bossOrigin = bossContext.transform.position + Vector3.up * 2f;
         slashes = new SlashInfo[numSlashes];
 
@@ -204,7 +206,7 @@ public class BossUltimateState : State
 
     public override void CheckSwitchStates()
     {
-        if (numLoops >= 3)
+        if (bossContext.StateTimedOut || numLoops >= 3)
         {
             SwitchState(new BossStunState(bossContext));
         }

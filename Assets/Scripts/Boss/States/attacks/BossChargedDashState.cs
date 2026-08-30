@@ -15,9 +15,11 @@ public class BossChargedDashState : State
         Physics2D.IgnoreLayerCollision(7, 8, true);
         bossContext.LastDashTime = Time.time;
         bossContext.IsDashing = true;
+        bossContext.TimeInState = 0f;
     }
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
     public override void ExitState()
@@ -31,7 +33,7 @@ public class BossChargedDashState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.AttackFinished == 1)
+        if (bossContext.StateTimedOut || bossContext.AttackFinished == 1)
         {
             SwitchState(new BossIdleState(bossContext));
         }

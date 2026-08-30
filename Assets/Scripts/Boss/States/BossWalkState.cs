@@ -9,6 +9,7 @@ public class BossWalkState : State
     public override void EnterState()
     {
         bossContext.Anim.SetTrigger("walk");
+        bossContext.TimeInState = 0f;
         
     }
     public override void UpdateState()
@@ -17,7 +18,7 @@ public class BossWalkState : State
         Vector3 currentPos = new Vector3(bossContext.RB.gameObject.transform.position.x, bossContext.RB.gameObject.transform.position.y, 0f);
         Vector3 direction = (target - currentPos).normalized;
         bossContext.AppliedMovementX = direction.x * bossContext.MoveSpeed;
-        
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
     public override void ExitState()
@@ -27,7 +28,7 @@ public class BossWalkState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.InRange())
+        if (bossContext.StateTimedOut || bossContext.InRange())
         {
             bossContext.NextAttack = 2;
             SwitchState(new BossMeleeAttackState(bossContext));
