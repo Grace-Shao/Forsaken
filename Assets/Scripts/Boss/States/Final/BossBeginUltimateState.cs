@@ -41,6 +41,7 @@ public class BossBeginUltimateState : State
         bossContext.Anim.ResetTrigger("final");
         lineRenderer.gameObject.SetActive(false);
         bossContext.Chain.SetActive(false);
+       
     }
 
     public override void CheckSwitchStates()
@@ -100,6 +101,7 @@ public class BossBeginUltimateState : State
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
             yield return null;
         }
+        hitBox.GetComponent<BoxCollider2D>().enabled = false;
         bossContext.GrapplingFinished = 1;
     }
 

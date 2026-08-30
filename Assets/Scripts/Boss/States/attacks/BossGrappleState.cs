@@ -125,6 +125,7 @@ public class BossGrappleState : State
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
             yield return new WaitForFixedUpdate();
         }
+        hitBox.GetComponent<BoxCollider2D>().enabled = false;
         bossContext.GrapplingFinished = 1;
     }
 

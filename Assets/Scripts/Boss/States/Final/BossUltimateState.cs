@@ -188,6 +188,7 @@ public class BossUltimateState : State
         {
             foreach (var slash in slashes)
                 if (slash != null && slash.LineRenderer != null) Object.Destroy(slash.LineRenderer.gameObject);
+                else if (slash != null && slash.Collider != null) Object.Destroy(slash.Collider.gameObject);
             slashes = null;
         }
 
