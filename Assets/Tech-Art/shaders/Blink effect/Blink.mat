@@ -46,7 +46,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
-    - _BlinkAmount: 0.034985304
+    - _BlinkAmount: 0
     - _BlinkSpeed: 0
     - _ColorMask: 15
     - _CurveExponent: 0.65
@@ -66,6 +66,6 @@ Material:
     - _BlinkColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _VignetteColor: {r: 0, g: 0, b: 0, a: 1}
+    - _VignetteColor: {r: 0.6, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

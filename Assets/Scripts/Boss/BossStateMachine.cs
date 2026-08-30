@@ -18,6 +18,7 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float stunInterval;
     [SerializeField] private int damage;
     [SerializeField] private float damageCooldown;
+    [SerializeField] private float maxTimeInState;
 
     [Header("Dash Targetting Controls")]
     [SerializeField] private float dashMovementCooldown;
@@ -62,6 +63,7 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
     private bool windUpFinished = true;
     private float lastDroneSummon = 0;
     private int curEnemies = 0;
+    private float timeInCurrentState = 0f;
     #endregion
 
     #region VFX
@@ -99,6 +101,8 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
     public float LastDashTime { get { return lastDashTime; } set { lastDashTime = value; } }
     public float LastDroneSummon { get { return lastDroneSummon; } set { lastDroneSummon = value; } }
     public float Cooldown {get {return damageCooldown;} set {damageCooldown = value;}}
+    public float TimeInState {get {return timeInCurrentState;} set {timeInCurrentState = value;}} 
+    public bool StateTimedOut {get {return maxTimeInState <= timeInCurrentState;}}
     public float TimeInIdle {get {return timeInIdle;}}
     public float StunTime {get {return stunTime;}}
     public float StunInterval {get {return stunInterval;}}

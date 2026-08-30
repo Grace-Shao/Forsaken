@@ -16,6 +16,7 @@ public class BossGrappleState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossBody = bossContext.RB;
         bossContext.Chain.SetActive(true);
         bossContext.GrapplingFinished = 0;
@@ -37,6 +38,7 @@ public class BossGrappleState : State
 
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
 
@@ -51,7 +53,7 @@ public class BossGrappleState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.GrapplingFinished == 1)
+        if (bossContext.StateTimedOut || bossContext.GrapplingFinished == 1)
         {
             SwitchState(new BossIdleState(bossContext));
         }
@@ -123,6 +125,7 @@ public class BossGrappleState : State
             hitBox.GetComponent<BoxCollider2D>().enabled = true;
             yield return new WaitForFixedUpdate();
         }
+        hitBox.GetComponent<BoxCollider2D>().enabled = false;
         bossContext.GrapplingFinished = 1;
     }
 

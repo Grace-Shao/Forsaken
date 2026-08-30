@@ -45,6 +45,7 @@ public class BossUltimateState : State
 
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.Anim.SetTrigger("finalAttack");
         bossContext.InUltimate = true;
         bossContext.AppliedMovementX = 0;
@@ -62,6 +63,7 @@ public class BossUltimateState : State
 
     private void BeginUltimate()
     {
+        bossContext.TimeInState += Time.deltaTime;
         Vector3 bossOrigin = bossContext.transform.position + Vector3.up * 2f;
         slashes = new SlashInfo[numSlashes];
 
@@ -186,6 +188,7 @@ public class BossUltimateState : State
         {
             foreach (var slash in slashes)
                 if (slash != null && slash.LineRenderer != null) Object.Destroy(slash.LineRenderer.gameObject);
+                else if (slash != null && slash.Collider != null) Object.Destroy(slash.Collider.gameObject);
             slashes = null;
         }
 
@@ -204,7 +207,7 @@ public class BossUltimateState : State
 
     public override void CheckSwitchStates()
     {
-        if (numLoops >= 3)
+        if (bossContext.StateTimedOut || numLoops >= 3)
         {
             SwitchState(new BossStunState(bossContext));
         }
