@@ -12,6 +12,7 @@ public class BossTeleportState : State
     }
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         Physics2D.IgnoreLayerCollision(6, 7, true);
         Physics2D.IgnoreLayerCollision(7, 8, true);
         //bossContext.Anim.SetTrigger("teleport");
@@ -26,6 +27,7 @@ public class BossTeleportState : State
     }
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         timer += Time.deltaTime;
         CheckSwitchStates();
     }
@@ -39,7 +41,7 @@ public class BossTeleportState : State
     //fill in transition logic
     public override void CheckSwitchStates()
     {
-        if (timer >= timeThreshold) {
+        if (bossContext.StateTimedOut || timer >= timeThreshold) {
             SwitchState(new BossIdleState(bossContext));
         }
     }

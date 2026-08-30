@@ -33,10 +33,13 @@ public class BossSummonState : State
             bossContext.AddedEnemy?.Invoke(crow.GetComponent<CrowStateMachine>());
             crow.GetComponent<CrowStateMachine>().Attack();
         }
+
+        bossContext.TimeInState = 0f;
     }
 
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
 

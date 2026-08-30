@@ -6352,6 +6352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b24d2188cc0df64faea167c825f17a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkAmount: 0
+  vignetteColor: {r: 0.6, g: 0, b: 0, a: 1}
 --- !u!95 &1051863204
 Animator:
   serializedVersion: 7
@@ -11590,6 +11592,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -7893792363976659561, guid: c1fb1571327fdfe4d917dedd9aee88f1, type: 3}
+    - target: {fileID: 4977668906085595731, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5064966858246261328, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11798,15 +11804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8290957854795559363, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.011
+      value: 0.0118756
       objectReference: {fileID: 0}
     - target: {fileID: 8290957854795559363, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.011
+      value: 0.0118756
       objectReference: {fileID: 0}
     - target: {fileID: 8290957854795559363, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.011
+      value: 0.0118756
       objectReference: {fileID: 0}
     - target: {fileID: 8321565966569492963, guid: a7925d66210ba184f9ab3a44fa3bbc8c, type: 3}
       propertyPath: m_IsActive

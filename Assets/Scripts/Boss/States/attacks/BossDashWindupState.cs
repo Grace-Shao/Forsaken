@@ -14,9 +14,11 @@ public class BossDashWindupState : State
         bossContext.Anim.SetTrigger("charge");
         bossContext.AppliedMovementX = 0;
         bossContext.LastDashTime = Time.time;
+        bossContext.TimeInState = 0f;
     }
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         CheckSwitchStates();
     }
     public override void ExitState()
@@ -33,7 +35,7 @@ public class BossDashWindupState : State
         {
             SwitchState(new BossStunState(bossContext));
         }
-        else if (bossContext.WindUpFinished == true)
+        else if (bossContext.StateTimedOut || bossContext.WindUpFinished == true)
         {
             SwitchState(new BossChargedDashState(bossContext));
         }

@@ -10,6 +10,7 @@ public class BossStartState : State
     }
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.Anim.Play("Idle");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
@@ -31,7 +32,6 @@ public class BossStartState : State
         {
             bossContext.AggroStart?.Invoke(bossContext);
             SwitchState(new BossTransitionState(bossContext));
-        
         } 
     }
 }

@@ -9,6 +9,7 @@ public class BossShootState : State
     }
     public override void EnterState()
     {
+        bossContext.TimeInState = 0f;
         bossContext.Anim.SetTrigger("shoot");
         bossContext.AppliedMovementX = 0f;
         bossContext.AppliedMovementY = 0f;
@@ -16,6 +17,7 @@ public class BossShootState : State
     }
     public override void UpdateState()
     {
+        bossContext.TimeInState += Time.deltaTime;
         // Call Shoot on the ranged weapon
         
         if (bossContext.RangedWeapon != null && bossContext.ShootStarted)
@@ -35,7 +37,7 @@ public class BossShootState : State
 
     public override void CheckSwitchStates()
     {
-        if (bossContext.ShootFinished)
+        if (bossContext.StateTimedOut || bossContext.ShootFinished)
         {
             SwitchState(new BossIdleState(bossContext));
         }
