@@ -224,6 +224,7 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
         Debug.Log("current difficulty: " + difficulty);
         switch (difficulty) {
             case Difficulty.Easy:
+                Health = 100;
                 targetDistance = 2f;
                 timeInIdle = 5f;
                 stunTime = 10;
@@ -243,11 +244,12 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
                 break;
 
             case Difficulty.Normal:
+                Health = 150;
                 targetDistance = 3f;
                 timeInIdle = 2f;
                 stunTime = 7;
                 stunInterval = 30;
-                damage = 1;
+                damage = 2;
                 damageCooldown = 1f;
                 dashMovementCooldown = 5f;
                 dashDistance = 3f;
@@ -262,6 +264,7 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
                 break;
 
             case Difficulty.Hard:
+                Health = 200;
                 targetDistance = 3f;
                 timeInIdle = 1f;
                 stunTime = 5;

@@ -714,7 +714,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             case Difficulty.Easy:
                 parryDuration = 15f;
                 parryCooldown = 15f;
-                maxHealth = 200;
+                maxHealth = 150;
                 SetHealth(maxHealth);
                 Cooldown = 6f;
                 break;
@@ -730,7 +730,7 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
             case Difficulty.Hard:
                 parryDuration = 5f;
                 parryCooldown = 5f;
-                maxHealth = 100;
+                maxHealth = 50;
                 SetHealth(maxHealth);
                 Cooldown = 1.5f;
                 break;
