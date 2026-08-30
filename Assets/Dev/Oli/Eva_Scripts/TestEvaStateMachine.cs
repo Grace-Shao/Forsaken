@@ -16,7 +16,7 @@ public class TestEvaStateMachine : StateMachine,IDamageable
     //private ParticleSystem damageTakenParticles;
     [Header("UI Setup")]
     [SerializeField] private Image healthBar;
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth = 50;
 
     private float damageCooldown = 0.6f; // tweak.
     private bool isFlipped = false;
@@ -49,7 +49,6 @@ public class TestEvaStateMachine : StateMachine,IDamageable
     {
         base.Init();
         sprite = transform.Find("Sprite");
-        maxHealth = 100;
         SetHealth(maxHealth);
         scaredParticles = GetComponentInChildren<ParticleSystem>();
         //damageTakenParticles = sprite.Find("hit received particles eva").GetComponent<ParticleSystem>();
