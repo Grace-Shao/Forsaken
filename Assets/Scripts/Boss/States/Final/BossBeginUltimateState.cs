@@ -53,7 +53,7 @@ public class BossBeginUltimateState : State
     {
         float elapsed = 0f;
         float duration = bossContext.GrappleDuration ;
-        float stopDistance = 0f;
+        float stopDistance = 1f;
 
         // The throwing of the chain
         while (elapsed < duration)
