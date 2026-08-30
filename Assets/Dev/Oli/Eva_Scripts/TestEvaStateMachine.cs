@@ -194,7 +194,7 @@ public class TestEvaStateMachine : StateMachine,IDamageable
         //damageTakenParticles.Play();
     
         
-        Debug.Log($"<color=cyan>[EVA HEALTH]</color> Eva took {damage} damage. Current Health is {Health}/{maxHealth}");
+        //Debug.Log($"<color=cyan>[EVA HEALTH]</color> Eva took {damage} damage. Current Health is {Health}/{maxHealth}");
         // damageTakenParticles.Play();
 
         // if (Health <= 0f)
