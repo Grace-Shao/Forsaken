@@ -19,8 +19,14 @@ MonoBehaviour:
     text: O-only five hundred...? Th-they must be scared...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: That could be why the streets are so empty...
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: ...
   - name: 
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
-    text: '*The professor did not inform me of this...*'
+    text: '*We have been in isolation for the past few years, away from human society.*'
+  - name: 
+    portrait: {fileID: -7681941923864288992, guid: f75a347f39494cc478f9891ed4ffb582, type: 3}
+    text: '*Why did the professor did not inform me of this...?*'
   responses: []

@@ -27,8 +27,11 @@ MonoBehaviour:
   - name: '-'
     portrait: {fileID: 21300000, guid: 37e07b1bd28380b4f9cbfa0fc8bd564c, type: 3}
     text: You pause for a second. Knowing that HUE could catch up any moment, it
-      is hard to say yes. But maybe Eva could be right about something. And she doesn't
-      have much time left...
+      is hard to say yes.
+  - name: '-'
+    portrait: {fileID: 21300000, guid: 37e07b1bd28380b4f9cbfa0fc8bd564c, type: 3}
+    text: But maybe Eva could be right about something. And she doesn't have much
+      time left...
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: Of course we can. Stay close to me, okay?

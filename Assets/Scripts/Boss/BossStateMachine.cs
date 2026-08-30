@@ -253,7 +253,7 @@ public class BossStateMachine : StateMachine, IDamageable, ISetDifficulty
                 timeInIdle = 2f;
                 stunTime = 7;
                 stunInterval = 30;
-                damage = 2;
+                damage = 3;
                 damageCooldown = 1f;
                 dashMovementCooldown = 5f;
                 dashDistance = 3f;

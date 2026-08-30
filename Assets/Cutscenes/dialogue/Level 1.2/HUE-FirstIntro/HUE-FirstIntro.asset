@@ -19,7 +19,7 @@ MonoBehaviour:
     text: Halt, where do you think you are going?
   - name: ONE
     portrait: {fileID: -7334636040450362905, guid: 978c015eeb6b01946a0c3c6f9014c5b6, type: 3}
-    text: I won't hand Eva over. Not to you...
+    text: I won't hand Eva over. Not to you HUE units...
   - name: HUE
     portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
     text: You are a threat to humanity. You broke into the quarantine zone and escaped

@@ -5423,7 +5423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2795862760670629994, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3240867934085300364, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5491,7 +5491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6040438501865548833, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6217942914267464521, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: manager
@@ -5523,7 +5523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6518560539986877611, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6520774366829320448, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5555,7 +5555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8254373201419796265, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: attackDamage
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8352545585238567646, guid: f658be0e1921d404fab436784adcace6, type: 3}
       propertyPath: m_LocalRotation.w
