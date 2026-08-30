@@ -14,8 +14,10 @@ public class DogStateMachine : StateMachine, IDamageable
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
     [SerializeField] private int maxHealth = 50;
+    [SerializeField] private bool isEndless = false;
     [SerializeField] private Image healthBarFill;
     
+    private TestEvaStateMachine eva;
     private bool isFlipped = false;
     private bool isStunned = false;
     private bool inAttack = false;
@@ -38,6 +40,8 @@ public class DogStateMachine : StateMachine, IDamageable
     public float TargetDistance {get {return targetDistance;}}
     public float AggroDistance {get {return aggroDistance;} set {aggroDistance = value;}}
 
+    public bool IsEndless {get {return isEndless;}}
+    public TestEvaStateMachine Eva {get {return eva;}}
     public Action<DogStateMachine> DogDeath;
     protected override void Init()
     {
@@ -46,6 +50,11 @@ public class DogStateMachine : StateMachine, IDamageable
         Health = maxHealth;
         damageTakenParticles = sprite.Find("hit received particles").GetComponent<ParticleSystem>();
         attackIndicator = sprite.Find("HeadTop").Find("Attack Indicator").GetComponent<ParticleSystem>();
+
+        if (isEndless)
+        {
+            eva = GameObject.FindGameObjectWithTag("Eva").GetComponent<TestEvaStateMachine>();
+        }
         EnterBeginningState();
     }
 
@@ -72,11 +81,17 @@ public class DogStateMachine : StateMachine, IDamageable
     {
         Vector3 flipped = sprite.localScale;
         flipped.x *= -1f;
-        if (sprite.position.x < player.transform.position.x && isFlipped)
+        float targetX = player.transform.position.x;
+        if (isEndless)
+        {
+            targetX = eva.transform.position.x;
+        }
+        if (sprite.position.x < targetX && isFlipped)
         {
             sprite.localScale = flipped;
             isFlipped = false;
-        } else if (sprite.position.x > player.transform.position.x && !isFlipped)
+        }
+        else if (sprite.position.x > targetX && !isFlipped)
         {
             sprite.localScale = flipped;
             isFlipped = true;
@@ -84,9 +99,14 @@ public class DogStateMachine : StateMachine, IDamageable
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log($"Dog physically collided with: {other.gameObject.name} (Tag: {other.gameObject.tag})");
         if (other.gameObject.CompareTag("Player"))
         {
             player.gameObject.GetComponent<PlayerStateMachine>().ApplyDamage(Damage);
+        }
+        if (isEndless && other.gameObject.CompareTag("Eva"))
+        {
+            eva.gameObject.GetComponent<TestEvaStateMachine>().ApplyDamage(Damage);
         }
         if (other.gameObject.CompareTag("Ground"))
         {

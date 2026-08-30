@@ -16,8 +16,16 @@ public class CrowRecoverState : State
     {
         crowContext.Anim.SetTrigger("Idle");
         startPos = new Vector3(crowContext.RB.gameObject.transform.position.x, crowContext.RB.gameObject.transform.position.y, 0f);
-        endPos = new Vector3(crowContext.RB.gameObject.transform.position.x + (crowContext.Flipped ? 1 : -1) * 5, 
+        if (crowContext.IsEndless)
+        {
+            endPos = new Vector3(crowContext.RB.gameObject.transform.position.x + (crowContext.Flipped ? 1 : -1) * 5, 
+            crowContext.Eva.gameObject.transform.position.y + 10, 0f);
+        } else
+        {
+            endPos = new Vector3(crowContext.RB.gameObject.transform.position.x + (crowContext.Flipped ? 1 : -1) * 5, 
             crowContext.Player.gameObject.transform.position.y + 10, 0f);
+        }
+        
         controlPoint = Vector3.down * 2f + endPos;
         t = 0f;
     }

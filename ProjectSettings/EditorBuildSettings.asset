@@ -56,6 +56,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Final Scenes/credits/Regular Credits.unity
     guid: a0342856cb9e35a4b84ab1c5ed0c3a40
+  - enabled: 1
+    path: Assets/Final Scenes/endless.unity
+    guid: b43fa72252a562b46a983edec1ce0b07
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 60bac20b8503b5b4da5c1ae9db39b948, type: 3}
   m_UseUCBPForAssetBundles: 0

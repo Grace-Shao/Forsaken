@@ -221,6 +221,11 @@ public class MenuManager : MonoBehaviour
     public void LoadBadCredits() {
         SceneManager.LoadScene(10);
     }
+
+    public void LoadEndless()
+    {
+        SceneManager.LoadScene(13);
+    }
     #endregion
 
 }
