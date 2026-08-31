@@ -281,7 +281,8 @@ public class GameManager : MonoBehaviour
         saveData.lastSaveSpotID = spotID;
         SaveManager.Save(saveData);
         playerStateMachine.SetHealth(playerStateMachine.MaxHealth);
-        playerStateMachine.Energy = playerStateMachine.MaxEnergy;
+        float newEnergy = Mathf.Max(playerStateMachine.MaxEnergy - playerStateMachine.Energy, 0f); 
+        playerStateMachine.updateEnergy(newEnergy);
     }
     private void LoadData()
     {
