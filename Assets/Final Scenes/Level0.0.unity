@@ -11345,6 +11345,56 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2646086250968796069, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646086250968796069, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646086250968796069, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913387198056477234, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007892789065725852, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_text
+      value: 'Press R to Rest
+
+        Press ESC to Pause/Load Saves'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007892789065725852, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007892789065725852, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_margin.z
+      value: -93.107216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007892789065725852, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007892789065725852, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818579238333126959, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 124.4673
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818579238333126959, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 29.2019
+      objectReference: {fileID: 0}
+    - target: {fileID: 5818579238333126959, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6323485789337428041, guid: 86b25b0a86760dd4ca66643ebe4f2c65, type: 3}
       propertyPath: player
       value: 
@@ -61707,7 +61757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MAIN MENU
+  m_text: MENU / SAVES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
